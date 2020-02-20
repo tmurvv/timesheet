@@ -16,5 +16,5 @@ Heroku deploy
 - git push your changes
 - for Heroku, deploy command login to heroku cli with command: heroku login
 - then once logged into Heroku execute command: git push heroku master
-- app located at schedulervarsityclinic.herokuapp.com
-- test signup, login, booking, recurring booking
+- app located at https://onestopharpshop-api.herokuapp.com/
+- test signup, login
