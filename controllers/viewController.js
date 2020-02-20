@@ -8,9 +8,18 @@ const usedHarps = require('../pl-scraper');
 exports.getUsedHarp = async (req, res) => {
     // send results
     res.status(200).json({
-        title: 'OneStopHarpShop | Used Harps',
-        status: 'success',
-        data: usedHarps
+        //Does not work
+        // title: 'OneStopHarpShop | Used Harps',
+        // status: 'success',
+        // data: usedHarps
+
+        seller: "Tisha Murvihill",
+        sellerCountry: "Canada",
+        harpTitle: 'Sierra 36 by Triplett',
+        harpShortDesc: 'Purchased 2011 Maple',
+        harpPrice: '$4600',
+        harpLongDesc: 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',
+        harpPhotoUrl: 'photo goes here'
     });
 
 
