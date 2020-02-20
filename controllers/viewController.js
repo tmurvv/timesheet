@@ -6,7 +6,7 @@ const usedHarps = require('../pl-scraper');
 
 //NOT YET IMPLEMENTED refactor day, week month views to calendar data
 exports.getUsedHarp = async (req, res) => {
-    const harpArray = {
+    const harpArray = [{
         seller: "Tisha Murvihill",
         sellerCountry: "Canada",
         harpTitle: 'Sierra 36 by Triplett',
@@ -14,13 +14,13 @@ exports.getUsedHarp = async (req, res) => {
         harpPrice: '$4600',
         harpLongDesc: 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',
         harpPhotoUrl: 'photo goes here'
-    }
+    }];
     // send results
     res.status(200).json({
         //Does not work
         // title: 'OneStopHarpShop | Used Harps',
         // status: 'success',
-        data: JSON.stringify(harpArray)       
+        usedHarpList: JSON.stringify(harpArray)       
     });
 
 
