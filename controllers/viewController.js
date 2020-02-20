@@ -3,27 +3,30 @@
 // const CompanyProfile = require('./../models/companyProfileModel');
 // const catchAsync = require('../utils/catchAsync');
 const usedHarps = require('../pl-scraper');
+const uuid = require('uuid');
 
 //NOT YET IMPLEMENTED refactor day, week month views to calendar data
 exports.getUsedHarp = async (req, res) => {
     const harpArray = [
         {
-        seller: "Tisha Murvihill",
-        sellerCountry: "Canada",
-        harpTitle: 'Sierra 36 by Triplett',
-        harpShortDesc: 'Purchased 2011 Maple',
-        harpPrice: '$4600',
-        harpLongDesc: 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',
-        harpPhotoUrl: 'photo goes here'
+            id: uuid(),
+            seller: "Tisha Murvihill",
+            sellerCountry: "Canada",
+            harpTitle: 'Sierra 36 by Triplett',
+            harpShortDesc: 'Purchased 2011 Maple',
+            harpPrice: '$4600',
+            harpLongDesc: 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',
+            harpPhotoUrl: 'photo goes here'
         },
         {
-        seller: "Tisha Murvihill",
-        sellerCountry: "Canada",
-        harpTitle: 'another Sierra 36 by Triplett',
-        harpShortDesc: 'Purchased 2011 Maple',
-        harpPrice: '$4600',
-        harpLongDesc: 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',
-        harpPhotoUrl: 'photo goes here'
+            id: uuid(),
+            seller: "Tisha Murvihill",
+            sellerCountry: "Canada",
+            harpTitle: 'another Sierra 36 by Triplett',
+            harpShortDesc: 'Purchased 2011 Maple',
+            harpPrice: '$4600',
+            harpLongDesc: 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',
+            harpPhotoUrl: 'photo goes here'
         },
     ];
     // send results
