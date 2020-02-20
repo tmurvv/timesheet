@@ -12,7 +12,6 @@ exports.getUsedHarp = async (req, res) => {
         // title: 'OneStopHarpShop | Used Harps',
         // status: 'success',
         // data: usedHarps
-
         seller: "Tisha Murvihill",
         sellerCountry: "Canada",
         harpTitle: 'Sierra 36 by Triplett',
