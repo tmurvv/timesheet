@@ -10,7 +10,7 @@ exports.getUsedHarp = async (req, res) => {
     res.status(200).json({
         title: 'OneStopHarpShop | Used Harps',
         status: 'success',
-        harpData: usedHarps
+        harpData: JSON.stringify(usedHarps)
     });
 
 
