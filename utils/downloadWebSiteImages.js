@@ -2,7 +2,6 @@ const fs = require('fs');
 const request = require('request');
 const { shortFileName } = require('./helpers.js');
 
-
 const download = function(uri, filename, callback){
   request.head(uri, function(err, res, body){
     console.log('content-type:', res.headers['content-type']);
