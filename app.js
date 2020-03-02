@@ -1,4 +1,5 @@
 const path = require('path');
+const cors = require('cors');
 const express = require('express');
 //const Holidays = require('date-holidays');
 
@@ -26,6 +27,7 @@ const viewRouter = require('./routes/viewRoutes');
 // const companyProfileRouter = require('./routes/companyProfileRoutes');
 
 const app = express();
+app.use(cors());
 express.static('img');
 app.use(express.static('img'));
 //app.set('view engine', 'pug');
