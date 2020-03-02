@@ -26,6 +26,8 @@ const viewRouter = require('./routes/viewRoutes');
 // const companyProfileRouter = require('./routes/companyProfileRoutes');
 
 const app = express();
+express.static('public');
+app.use(express.static('public'));
 //app.set('view engine', 'pug');
 //app.set('views', path.join(__dirname, 'views'));
 console.log(process.env.NODE_ENV);

@@ -12,6 +12,11 @@ exports.getUsedHarp = async (req, res) => {
         status: 'success',
         harpData: JSON.stringify(usedHarps)
     });
+    res.status(200).json({
+        title: 'OneStopHarpShop | Used Harps',
+        status: 'success',
+        harpData: JSON.stringify(usedHarps)
+    });
 
 
     // //1) get booking data

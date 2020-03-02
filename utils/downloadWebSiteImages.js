@@ -12,13 +12,9 @@ const download = function(uri, filename, callback){
 };
 
 exports.downloadImage = (url) => {
-    
-    // const myUrl = shortFileName(url);
-    // const myUrl = new URL('Ogden_3870.jpg', 'https://onestopharpshop-api.herokuapp.com/');
       
     const fullHarpPath = `https://www.harpconnection.com${url}`;
     const myUrl = `img/${shortFileName(url)}`;
-    console.log(fullHarpPath, myUrl)
     fs.stat(myUrl, function(err, stat) {
         if(err == null) { 
             console.log('File exists');
