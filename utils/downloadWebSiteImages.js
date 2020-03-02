@@ -14,10 +14,10 @@ const download = function(uri, filename, callback){
 
 exports.downloadImage = (url) => {
     
-    const myUrl = shortFileName(url);
+    // const myUrl = shortFileName(url);
     // const myUrl = new URL('Ogden_3870.jpg', 'https://onestopharpshop-api.herokuapp.com/');
      
-    //const myUrl = 'img/Ogden_3870.jpg';
+    const myUrl = 'img/Ogden_3870.jpg';
     console.log(myUrl, url)
     fs.stat(myUrl, function(err, stat) {
         console.log(err)
