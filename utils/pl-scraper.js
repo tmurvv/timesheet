@@ -33,8 +33,8 @@ axios(url)
             const harpShortDesc = $(this).parent().parent().find('p').first().text();
             const harpPrice = $(this).parent().parent().find('.THCsmall').text();
             const harpLongDesc = $(this).parent().parent().find('p:nth-child(2)').text();
-            const harpImage = shortFileName($(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src'));
-            downloadImage(harpImage);
+            const harpImageUrl = shortFileName($(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src'));
+            downloadImage(harpImageUrl);
             //console.log(harpImage);
             usedHarpsNorthAmerica.push({
                 id,
@@ -44,7 +44,7 @@ axios(url)
                 harpShortDesc,
                 harpPrice,
                 harpLongDesc,
-                harpImage
+                harpImageUrl
             });
         });
         

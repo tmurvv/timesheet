@@ -6,18 +6,13 @@ const usedHarps = require('../utils/pl-scraper');
 
 //NOT YET IMPLEMENTED refactor day, week month views to calendar data
 exports.getUsedHarp = async (req, res) => {
-    // send results
+    // send results 
+    res.sendFile('/img/Ogden_3870.jpg');
     res.status(200).json({
         title: 'OneStopHarpShop | Used Harps',
         status: 'success',
         harpData: JSON.stringify(usedHarps)
     });
-    res.status(200).json({
-        title: 'OneStopHarpShop | Used Harps',
-        status: 'success',
-        harpData: JSON.stringify(usedHarps)
-    });
-
 
     // //1) get booking data
     // const bookingItems = await BookingItems.find()

@@ -25,7 +25,6 @@ const express = require('express');
 // const bookingItemRouter = require('./routes/bookingItemRoutes');
 const viewRouter = require('./routes/viewRoutes');
 // const companyProfileRouter = require('./routes/companyProfileRoutes');
-
 const app = express();
 app.use(cors());
 express.static('img');
