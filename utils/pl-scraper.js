@@ -2,6 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
 const { downloadImage } = require('../utils/downloadWebSiteImages');
+const { shortFileName } = require('./helpers.js');
 
 const usedHarpsNorthAmerica = [];
 const url = 'https://www.harpconnection.com/harpstore/harp-UsedHarps.html';
@@ -32,7 +33,7 @@ axios(url)
             const harpShortDesc = $(this).parent().parent().find('p').first().text();
             const harpPrice = $(this).parent().parent().find('.THCsmall').text();
             const harpLongDesc = $(this).parent().parent().find('p:nth-child(2)').text();
-            const harpImage = `https://www.harpconnection.com/${$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src')}`;
+            const harpImage = shortFileName($(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src'));
             downloadImage(harpImage);
             console.log(harpImage);
             usedHarpsNorthAmerica.push({
