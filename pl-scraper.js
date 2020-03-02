@@ -31,7 +31,8 @@ axios(url)
             const harpShortDesc = $(this).parent().parent().find('p').first().text();
             const harpPrice = $(this).parent().parent().find('.THCsmall').text();
             const harpLongDesc = $(this).parent().parent().find('p:nth-child(2)').text();
-            const harpImage = $(this).parent().parent().find('.THCHarpImage').find('img').attr('src');
+            const harpImage = $(this).parent().parent().find('.THCHarpImage').attr('src');
+            
             console.log(harpImage);
             usedHarpsNorthAmerica.push({
                 id,
