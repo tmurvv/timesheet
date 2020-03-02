@@ -24,22 +24,24 @@ axios(url)
         const $ = cheerio.load(html);
         const usedHarpTable = $('.plusplus');
         usedHarpTable.each(function () {
-            // const id=uuid();
+            const id=uuid();
             const seller = 'Harp Connection';
             const sellerCountry = 'USA';
             const harpTitle = $(this).find('h3').text();
             const harpShortDesc = $(this).parent().parent().find('p').first().text();
             const harpPrice = $(this).parent().parent().find('.THCsmall').text();
             const harpLongDesc = $(this).parent().parent().find('p:nth-child(2)').text();
+            const harpImage = $(this).parent().parent().find('.THCHarpImage').text();
             
             usedHarpsNorthAmerica.push({
-                id: harpShortDesc,
+                id,
                 seller,
                 sellerCountry,
                 harpTitle,
                 harpShortDesc,
                 harpPrice,
-                harpLongDesc
+                harpLongDesc,
+                harpImage
             });
         });
         
