@@ -35,7 +35,7 @@ axios(url)
             const harpLongDesc = $(this).parent().parent().find('p:nth-child(2)').text();
             const harpImage = shortFileName($(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src'));
             downloadImage(harpImage);
-            console.log(harpImage);
+            //console.log(harpImage);
             usedHarpsNorthAmerica.push({
                 id,
                 seller,
