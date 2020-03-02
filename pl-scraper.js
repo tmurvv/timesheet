@@ -1,13 +1,13 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const uuid = 'uuid';
+const uuid = require('uuid');
 
 const usedHarpsNorthAmerica = [];
 const url = 'https://www.harpconnection.com/harpstore/harp-UsedHarps.html';
 
 //Tisha Murvihill Harp Services
 usedHarpsNorthAmerica.push({
-    id: "0",
+    id: uuid(),
     seller: "Tisha Murvihill",
     sellerCountry: "Canada",
     harpTitle: 'Sierra 36 by Triplett',
@@ -31,8 +31,8 @@ axios(url)
             const harpShortDesc = $(this).parent().parent().find('p').first().text();
             const harpPrice = $(this).parent().parent().find('.THCsmall').text();
             const harpLongDesc = $(this).parent().parent().find('p:nth-child(2)').text();
-            const harpImage = $(this).parent().parent().find('.THCHarpImage').text();
-            
+            const harpImage = $(this).parent().parent().find('.THCHarpImage').find('img').attr('src');
+            console.log(harpImage);
             usedHarpsNorthAmerica.push({
                 id,
                 seller,
