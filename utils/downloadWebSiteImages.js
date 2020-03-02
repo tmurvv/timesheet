@@ -16,22 +16,22 @@ exports.downloadImage = (url) => {
     
     // const myUrl = shortFileName(url);
     // const myUrl = new URL('Ogden_3870.jpg', 'https://onestopharpshop-api.herokuapp.com/');
-     
-    const myUrl = 'img/fh36s_16868.jpg';
-    console.log(myUrl, url)
+      
+    const fullHarpPath = `https://www.harpconnection.com${url}`;
+    const myUrl = `./img/${shortFileName(url)}`;
+    console.log(fullHarpPath, myUrl)
     fs.stat(myUrl, function(err, stat) {
-        console.log(err)
-        if(err == null) {
+        if(err == null) { 
             console.log('File exists');
         } else if(err.code === 'ENOENT') {
-            download(url, myUrl, function(){
+            download(fullHarpPath, myUrl, function(){
                 console.log(`Image saved to ${myUrl}`);
-            }); 
+            });
         } else {
             console.log('Some other error: ', err.code);
-        } 
-    });
-}
+        }
+    }); 
+} 
  
 
 // download('https://www.google.com/images/srpr/logo3w.png', 'google.png', function(){
