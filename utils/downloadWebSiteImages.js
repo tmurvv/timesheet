@@ -11,8 +11,7 @@ const download = function(uri, filename, callback){
   });
 };
 
-exports.downloadImage = (url) => {
-      
+exports.downloadImage = (url) => {    
     const fullHarpPath = `https://www.harpconnection.com${url}`;
     const myUrl = `img/${shortFileName(url)}`;
     fs.stat(myUrl, function(err, stat) {
