@@ -2,8 +2,8 @@
 // const User = require('./../models/userModel');
 // const CompanyProfile = require('./../models/companyProfileModel');
 // const catchAsync = require('../utils/catchAsync');
-const usedHarps = require('../pl-scraper');
-const downloadImages = require('../downloadWebSiteImages.js');
+const usedHarps = require('../utils/pl-scraper');
+const downloadImages = require('../utils/downloadWebSiteImages');
 
 //NOT YET IMPLEMENTED refactor day, week month views to calendar data
 exports.getUsedHarp = async (req, res) => {

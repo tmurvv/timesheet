@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
+const { shortFileName } = require('./helpers.js');
 
 const usedHarpsNorthAmerica = [];
 const url = 'https://www.harpconnection.com/harpstore/harp-UsedHarps.html';
@@ -14,7 +15,7 @@ usedHarpsNorthAmerica.push({
     harpShortDesc: 'Purchased 2011 Maple',
     harpPrice: '$4600',
     harpLongDesc: 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',
-    harpPhotoUrl: 'photo goes here'
+    harpImage: ''
 })
 
 // Harp Connection
@@ -31,9 +32,8 @@ axios(url)
             const harpShortDesc = $(this).parent().parent().find('p').first().text();
             const harpPrice = $(this).parent().parent().find('.THCsmall').text();
             const harpLongDesc = $(this).parent().parent().find('p:nth-child(2)').text();
-            const harpImage = $(this).parent().parent().find('.THCHarpImage').attr('src');
+            const harpImage = shortFileName($(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src'));
             
-            console.log(harpImage);
             usedHarpsNorthAmerica.push({
                 id,
                 seller,
