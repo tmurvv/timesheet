@@ -2,17 +2,25 @@
 // const User = require('./../models/userModel');
 // const CompanyProfile = require('./../models/companyProfileModel');
 // const catchAsync = require('../utils/catchAsync');
+const fs = require('fs');
 const usedHarps = require('../utils/pl-scraper');
 
 //NOT YET IMPLEMENTED refactor day, week month views to calendar data
 exports.getUsedHarp = async (req, res) => {
-    // send results 
-    res.sendFile('/img/Ogden_3870.jpg');
+    // // send results 
+     
+    //const image = '../img/fh36s_16868.jpg';
+    
     res.status(200).json({
         title: 'OneStopHarpShop | Used Harps',
         status: 'success',
-        harpData: JSON.stringify(usedHarps)
+        harpData: JSON.stringify("usedHarps")
+        //harpData: JSON.stringify(usedHarps)
     });
+};
+
+    
+    
 
     // //1) get booking data
     // const bookingItems = await BookingItems.find()
@@ -30,7 +38,7 @@ exports.getUsedHarp = async (req, res) => {
     //     daysInAdvance: companyProfile.daysInAdvance,
     //     companyProfile: JSON.stringify(companyProfile)
     // });
-};
+
 // exports.getWeekCalendar = catchAsync(async (req, res) => {
 //     // 1) get booking data
 //     const bookingItems = await BookingItems.find()
