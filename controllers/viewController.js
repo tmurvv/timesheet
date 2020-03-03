@@ -2,7 +2,6 @@
 // const User = require('./../models/userModel');
 // const CompanyProfile = require('./../models/companyProfileModel');
 // const catchAsync = require('../utils/catchAsync');
-const fs = require('fs');
 const usedHarps = require('../utils/pl-scraper');
 
 //NOT YET IMPLEMENTED refactor day, week month views to calendar data
@@ -14,8 +13,7 @@ exports.getUsedHarp = async (req, res) => {
     res.status(200).json({
         title: 'OneStopHarpShop | Used Harps',
         status: 'success',
-        harpData: JSON.stringify("usedHarps")
-        //harpData: JSON.stringify(usedHarps)
+        harpData: JSON.stringify(usedHarps)
     });
 };
 
