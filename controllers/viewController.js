@@ -3,7 +3,7 @@
 // const CompanyProfile = require('./../models/companyProfileModel');
 // const catchAsync = require('../utils/catchAsync');
 const usedHarps = require('../utils/pl-scraper');
-
+  
 //NOT YET IMPLEMENTED refactor day, week month views to calendar data
 exports.getUsedHarp = async (req, res) => {
     // // send results 
