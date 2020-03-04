@@ -16,7 +16,7 @@ usedHarpsNorthAmerica.push({
     harpShortDesc: 'Purchased 2011 Maple',
     harpPrice: '$4600',
     harpLongDesc: 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',
-    harpImage: ''
+    harpImage: 'triplettSierra36Maple.jpg'
 })
 
 // Harp Connection
