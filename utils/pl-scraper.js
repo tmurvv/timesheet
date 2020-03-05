@@ -14,9 +14,9 @@ usedHarpsNorthAmerica.push({
     sellerCountry: "Canada",
     harpTitle: 'Sierra 36 by Triplett',
     harpShortDesc: 'Purchased 2011 Maple',
-    harpPrice: '$4600',
+    harpPrice: '$4300',
     harpLongDesc: 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',
-    harpImage: 'triplettSierra36Maple.jpg'
+    harpImageUrl: 'triplettSierra36Maple.jpg'
 })
 
 // Harp Connection
@@ -35,7 +35,6 @@ axios(url)
             const harpLongDesc = $(this).parent().parent().find('p:nth-child(2)').text();
             const harpImageUrl = shortFileName($(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src'));
             downloadImage(harpImageUrl);
-            //console.log(harpImage);
             usedHarpsNorthAmerica.push({
                 id,
                 seller,
