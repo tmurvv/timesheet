@@ -1,0 +1,1 @@
+- add trim() to all strings fetching data
