@@ -34,8 +34,10 @@ axios(url)
             const harpShortDesc = $(this).parent().parent().find('p').first().text();
             const harpPrice = $(this).parent().parent().find('.THCsmall').text();
             const harpLongDesc = $(this).parent().parent().find('p:nth-child(2)').text();
-            const harpImageUrl = shortFileName($(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src'));
-            downloadImage('https://www.harpconnection.com', harpImageUrl);
+            const longHarpImageUrl = `https://www.harpconnection.com${$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src')}`;
+            const harpImageUrl = shortFileName(longHarpImageUrl);
+
+            downloadImage(longHarpImageUrl, harpImageUrl);
             usedHarpsNorthAmerica.push({
                 id,
                 seller,
@@ -59,8 +61,6 @@ axios(url)
         const $ = cheerio.load(html);
         const usedHarpTable = $('.Odd');
 
-        console.log(usedHarpTable.length);
-
         usedHarpTable.each(function () {
             const id=uuid();
             const seller = 'Atlanta Harp Center';
@@ -69,9 +69,10 @@ axios(url)
             const harpShortDesc = "Short Description not available.";
             const harpPrice = $(this).find('.ProductPriceRating').find('em').text();
             const harpLongDesc = "Long Description not available";
-            // const harpImageUrl = "https://cdn1.bigcommerce.com/n-yp39j5/ygaj12w/products/5336/images/10682/IMG_3719__80332.1582829290.220.290.jpg?c=2";
-            const harpImageUrl = $(this).find('img').attr('src');
-            downloadImage("", harpImageUrl);
+            const longHarpImageUrl = $(this).find('img').attr('src');
+            const harpImageUrl = shortFileName(longHarpImageUrl);
+            downloadImage(longHarpImageUrl, harpImageUrl);
+
             usedHarpsNorthAmerica.push({
                 id,
                 seller,
@@ -86,6 +87,7 @@ axios(url)
         });       
     })
     .catch(console.error);
+
 //Atlanta Harp Center .Even class
 url = "https://stores.atlantaharpcenter.com/pre-owned-lever-harps/"
 axios(url)
@@ -93,9 +95,7 @@ axios(url)
         const html = response.data;
         const $ = cheerio.load(html);
         const usedHarpTable = $('.Even');
-
-        console.log(usedHarpTable.length);
-
+        
         usedHarpTable.each(function () {
             const id=uuid();
             const seller = 'Atlanta Harp Center';
@@ -104,9 +104,10 @@ axios(url)
             const harpShortDesc = "Short Description not available.";
             const harpPrice = $(this).find('.ProductPriceRating').find('em').text();
             const harpLongDesc = "Long Description not available";
-            // const harpImageUrl = "https://cdn1.bigcommerce.com/n-yp39j5/ygaj12w/products/5336/images/10682/IMG_3719__80332.1582829290.220.290.jpg?c=2";
-            const harpImageUrl = $(this).find('img').attr('src');
-            downloadImage("", harpImageUrl);
+            const longHarpImageUrl = $(this).find('img').attr('src');
+            const harpImageUrl = shortFileName(longHarpImageUrl);
+            downloadImage(longHarpImageUrl, harpImageUrl);
+            
             usedHarpsNorthAmerica.push({
                 id,
                 seller,

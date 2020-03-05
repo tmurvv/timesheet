@@ -11,18 +11,14 @@ const download = function(uri, filename, callback){
   });
 };
 
-exports.downloadImage = (domain, url) => {    
-    const fullHarpPath = `${domain}${url}`;
-    console.log('urldownload')
-    console.log(url);
-
-    const myUrl = `img/${shortFileName(url)}`;
-    console.log(myUrl)
+exports.downloadImage = (longFileName, shortFileName) => {    
+    const myUrl = `img/${shortFileName}`;
+    
     fs.stat(myUrl, function(err, stat) {
         if(err == null) { 
             console.log('File exists');
         } else if(err.code === 'ENOENT') {
-            download(fullHarpPath, myUrl, function(){
+            download(longFileName, myUrl, function(){
                 console.log(`Image saved to ${myUrl}`);
             });
         } else {
