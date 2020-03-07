@@ -1,15 +1,8 @@
-// const BookingItems = require('../models/bookingItemModel');
-// const User = require('./../models/userModel');
-// const CompanyProfile = require('./../models/companyProfileModel');
-// const catchAsync = require('../utils/catchAsync');
-const usedHarps = require('../utils/pl-scraper');
+const usedHarps = require('../utils/harpAdScraper');
   
 //NOT YET IMPLEMENTED refactor day, week month views to calendar data
 exports.getUsedHarp = async (req, res) => {
-    // // send results 
-     
-    //const image = '../img/fh36s_16868.jpg';
-    
+    // send results 
     res.status(200).json({
         title: 'OneStopHarpShop | Used Harps',
         status: 'success',
@@ -17,9 +10,14 @@ exports.getUsedHarp = async (req, res) => {
     });
 };
 
-    
-    
 
+
+
+//** Reference Code ****/   
+// const BookingItems = require('../models/bookingItemModel');
+// const User = require('./../models/userModel');
+// const CompanyProfile = require('./../models/companyProfileModel');
+// const catchAsync = require('../utils/catchAsync');
     // //1) get booking data
     // const bookingItems = await BookingItems.find()
     //     .populate('rentalRoom')

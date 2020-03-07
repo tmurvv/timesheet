@@ -15,7 +15,7 @@ app.all('/', function(req, res, next) {
 });
 
 //Serve static image files
-express.static('img');
+express.static('assets');
 app.use(express.static('img'));
 
 //security ** see commented code below
@@ -28,7 +28,7 @@ app.use(express.static('img'));
 app.use('/', viewRouter);
 
 //Image Router code based on expressjs.com API reference
-app.get('/img/:name', function (req, res, next) {
+app.get('/assets/img/:name', function (req, res, next) {
     var options = {
         root: path.join(__dirname, 'img'),
         dotfiles: 'deny',

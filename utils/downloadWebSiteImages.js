@@ -12,7 +12,7 @@ const download = function(uri, filename, callback){
 };
 
 exports.downloadImage = (longFileName, shortFileName) => {    
-    const myUrl = `img/${shortFileName}`;
+    const myUrl = `assets/img/${shortFileName}`;
     
     fs.stat(myUrl, function(err, stat) {
         if(err == null) { 

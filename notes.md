@@ -1,3 +1,6 @@
+DataMuse npm maybe to find similar sounds to harp name
+
+
 Heroku deploy
 - config.env port to 3000
 
