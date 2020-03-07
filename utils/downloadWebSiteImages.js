@@ -15,7 +15,7 @@ exports.downloadImage = (longFileName, shortFileName) => {
     const myUrl = `assets/img/${shortFileName}`;
     
     fs.stat(myUrl, function(err, stat) {
-        if(err == null) { 
+        if(err == null) {
             console.log('File exists');
         } else if(err.code === 'ENOENT') {
             download(longFileName, myUrl, function(){
