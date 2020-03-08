@@ -30,7 +30,7 @@ app.use('/', viewRouter);
 //Image Router code based on expressjs.com API reference
 app.get('/assets/img/:name', function (req, res, next) {
     var options = {
-        root: path.join(__dirname, 'img'),
+        root: path.join(__dirname, 'assets/img'),
         dotfiles: 'deny',
         headers: {
             'x-timestamp': Date.now(),
