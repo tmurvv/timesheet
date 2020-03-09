@@ -1,4 +1,3 @@
-- finish refactoring scraper
 
 - scrape two more stores
 

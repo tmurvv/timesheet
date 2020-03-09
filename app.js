@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  //NOT YET IMPLEMENTED dangerous code
+
 const path = require('path');
 const cors = require('cors');
 const express = require('express');
