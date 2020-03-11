@@ -1,26 +1,25 @@
 const fs = require('fs');
 const request = require('request');
-const { shortFileNameFn } = require('./helpers.js');
 
 const download = function(uri, filename, callback) {
     try {
         request.head(uri, function(err, res, body) {
             console.log('content-type:', res.headers['content-type']);
             console.log('content-length:', res.headers['content-length']);
-    
-            request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+            process.on('uncaughtException', function (error) {
+                console.log('hello1');
+            });
+            const file = request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
         });
     } catch (err) {
-        console.log('Download image fuction:', err.message)
+        console.log('Image failed to write:', err.message)
     }    
 };
 
-exports.downloadImage = (longFileName, shortFileName) => {    
-    if (/^[\w,\s-]+\.[A-Za-z]{3}$/.test(shortFileName)) {
-        console.log('Valid filename', shortFileName);  
-        const myUrl = `assets/img/${shortFileName}`;       
+exports.downloadImage = (longFileName, shortFileName) => {
+    if (shortFileName !== undefined && /^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(shortFileName)) {
+        const myUrl = `assets/img/${shortFileName}`;
         fs.stat(myUrl, function(err, stat) {
-            console.log('imin')
             if(err == null) {
                 console.log('File exists');
             } else if(err.code === 'ENOENT') {

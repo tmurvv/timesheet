@@ -6,6 +6,8 @@ Heroku deploy
 
 ## STEPS TO DEPLOY and REVERT TO DEV
 
+- make sure download images is enabled
+- make sure get harp info is enabled
 - search for console.logs
 - remove values from login
 - remove values from signup

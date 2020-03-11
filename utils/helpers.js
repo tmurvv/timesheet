@@ -1,18 +1,18 @@
-exports.shortFileNameFn = (longFilePath) => {   
+exports.shortFileNameFn = (longFilePath) => {
     if (longFilePath) {
+        //remove possible url querystring
         if (longFilePath.lastIndexOf('?')>-1) longFilePath=longFilePath.substring(0,longFilePath.lastIndexOf('?'));
+            
+        //recursively remove the section after the last '/' until a valid filename occurs
         const idx = longFilePath.lastIndexOf('/');
         if (/^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(longFilePath.substring(idx + 1))) {         
-          console.log('if:', longFilePath.substring(idx + 1))
-          return longFilePath.substring(idx + 1);
-        } else {
-          console.log('else:', longFilePath.substring(idx + 1))
-          longFilePath = longFilePath.substring(0, idx);
-          this.shortFileNameFn(longFilePath);
-        }        
-    } else {
-        return false;
-    }
+            const returnThis = longFilePath.substring(idx + 1);
+            return returnThis;
+        }
+        //if name not yet valid, remove last section and call function again
+        longFilePath = longFilePath.substring(0, idx);
+        this.shortFileNameFn(longFilePath);
+    } 
 };
 
 exports.sellerSort = () => sellerArray.sort(function(a, b) {
@@ -28,3 +28,4 @@ exports.sellerSort = () => sellerArray.sort(function(a, b) {
     // names must be equal
     return 0;
 });
+

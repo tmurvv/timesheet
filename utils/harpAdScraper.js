@@ -19,7 +19,7 @@ const scrapeHarps = async () => {
         productTable.each(async function (item) {
             const id=uuid();
             let productTitle = seller.hasOwnProperty('productTitleFn') ? seller.productTitleFn($, this) : '';
-            console.log('product title:', productTitle);
+            // console.log('product title:', productTitle);
             let productPrice = seller.hasOwnProperty('productPriceFn') ? seller.productPriceFn($, this) : '';
             // console.log('price primary:', productPrice);
             let productShortDesc = seller.hasOwnProperty('productShortDescFn') ? seller.productShortDescFn($, this) : '';
@@ -42,7 +42,7 @@ const scrapeHarps = async () => {
                     if (!longProductImageUrl && secondaryUrlData.longProductImageUrl) longProductImageUrl = secondaryUrlData.longProductImageUrl;
                 }          
             }
-                       
+            
             const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
             const product = {
                 id,
@@ -57,7 +57,13 @@ const scrapeHarps = async () => {
                 divider: '00000000000000000000000'
             }
             usedHarpsNorthAmerica.push(product);
-            downloadImage(longProductImageUrl, shortFileNameFn(longProductImageUrl));
+            
+            fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+            });
+            
+            // downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
     }
     
