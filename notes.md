@@ -21,7 +21,7 @@ Heroku deploy
 - git push your changes
 - for Heroku, deploy command login to heroku cli with command: heroku login
 - then once logged into Heroku execute command: git push heroku master
-- app located at https://onestopharpshop-api.herokuapp.com/
+- app located at https://onestopharpshop-api.herokuapp.com/ or https://onestop-api-staging.herokuapp.com
 - test signup, login
 
 Lots of harp stores   https://www.lyonhealy.com/find-a-dealer-harps/

@@ -58,18 +58,17 @@ const scrapeHarps = async () => {
             }
             usedHarpsNorthAmerica.push(product);
             
-            fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
-                if (err) throw err;
-                console.log('Saved!');
-            });
+            // fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
+            //     if (err) throw err;
+            //     console.log('Saved!');
+            // });
             
-            // downloadImage(longProductImageUrl, shortProductImageUrl);
+            downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
     }
     
     sellerArray.map(async seller => {
         const response = await axios(seller.sellerUrl);
-        // console.log(response.data)
         parseStoreInfo(seller, response.data);
     });
     fs.writeFile('./assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
