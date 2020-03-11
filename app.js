@@ -8,6 +8,9 @@ const app = express();
 
 console.log(process.env.NODE_ENV);
 
+var rg1= /^(?=[\S])[^\\ \/ : * ? " < > | ]+$/;
+console.log(!rg1.test('myProjects/OneStopHarpShop-api/assets/img/myimage.jpg'))
+
 //CORS
 app.use(cors());
 app.all('/', function(req, res, next) {
