@@ -1,5 +1,4 @@
-
-- scrape two more stores
+- troubleshoot download images
 
 - start parsing models, makers for searches
 

@@ -150,7 +150,7 @@
 //         sellerName: 'Harp Connection',
 //         sellerUrl: 'https://www.harpconnection.com/harpstore/harp-UsedHarps.html',
 //         sellerCountry: 'Eastern USA',
-//         sellerParentIdentifier: '.plusplus',
+//         sellerArrayIdentifier: '.plusplus',
 //         harpTitle: $(this).find('h3').text().trim(),
 //         harpShortDesc: "$(this).parent().parent().find('p').first().text()",
 //         harpPrice: "$(this).parent().parent().find('.THCsmall').text()",

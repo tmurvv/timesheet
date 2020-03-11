@@ -1,12 +1,12 @@
-const usedHarps = require('../utils/harpAdScraper');
-  
-//NOT YET IMPLEMENTED refactor day, week month views to calendar data
+const usedHarpListFn = require('../utils/harpAdScraper');
+const usedHarps = usedHarpListFn();
+// const usedHarps = require('../assets/constants/usedHarpList.json');
 exports.getUsedHarp = async (req, res) => {
     // send results 
     res.status(200).json({
         title: 'OneStopHarpShop | Used Harps',
         status: 'success',
-        harpData: JSON.stringify(usedHarps)
+        harpData: usedHarps
     });
 };
 
