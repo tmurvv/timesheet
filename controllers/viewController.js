@@ -1,6 +1,6 @@
 const usedHarpListFn = require('../utils/harpAdScraper');
-// const usedHarps = usedHarpListFn();
-const usedHarps = require('../assets/constants/usedHarpList.json');
+const usedHarps = usedHarpListFn();
+// const usedHarps = require('../assets/constants/usedHarpList.json');
 const { leverMakers, pedalMakers } = require('../assets/constants/makerArray');
 const makerArray = pedalMakers.concat(leverMakers);
 exports.getUsedHarp = async (req, res) => {

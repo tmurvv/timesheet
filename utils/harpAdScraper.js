@@ -65,7 +65,7 @@ const scrapeHarps = async () => {
             //     console.log('Saved!');
             // });
             
-            //downloadImage(longProductImageUrl, shortProductImageUrl);
+            downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
     }
     
