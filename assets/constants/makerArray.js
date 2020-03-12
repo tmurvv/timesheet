@@ -10,14 +10,30 @@ exports.pedalMakers = [
     'Horngacher Harps'
 ];
 exports.leverMakers = [
+    'Dusty',
     'Dusty Strings',
     'Triplett',
     'Thormalen',
+    'Thormahlen',
+    'Lyon',
+    'Lyon Healy',
+    'Lyon and Healy',
     'Lyon & Healy',
     'Salvi',
     'Camac',
-    'Swanson Harps',
+    'Swanson',
     'Noteworthy',
+    'Yule',
     'Jack Yule',
-    'Newsom Harps'
+    'Newsom',
+    'Cunningham',
+    'Blevins',
+    'Pilgrim',
+    'Heartland',
+    'Clarke',
+    'Clark',
+    'Rees',
+    'Lewis',
+    'Mike Lewis',
+    'Pratt'
 ]

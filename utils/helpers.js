@@ -1,3 +1,6 @@
+const { leverMakers, pedalMakers } = require('../assets/constants/makerArray');
+const makerArray = pedalMakers.concat(leverMakers);
+
 exports.shortFileNameFn = (longFilePath) => {
     if (longFilePath) {
         //remove possible url querystring
@@ -29,3 +32,16 @@ exports.sellerSort = () => sellerArray.sort(function(a, b) {
     return 0;
 });
 
+exports.findMaker = (title) => {
+    let productMaker;
+    if (title) {
+        makerArray.map((maker) => {
+            if (title.indexOf(maker)>-1) {
+                productMaker = maker;
+            } 
+        });
+    } else {
+        console.log('no title')
+    }
+    return productMaker;
+}

@@ -52,6 +52,7 @@ const scrapeHarps = async () => {
                 sellerCountry: seller.sellerCountry,
                 sellerRegion: seller.sellerRegion,
                 productTitle,
+                productMaker,
                 productShortDesc,
                 productPrice,
                 productLongDesc,
