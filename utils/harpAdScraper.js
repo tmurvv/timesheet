@@ -19,9 +19,9 @@ const scrapeHarps = async () => {
         productTable.each(async function (item) {
             const id=uuid();
             let productTitle = seller.hasOwnProperty('productTitleFn') ? seller.productTitleFn($, this) : '';
-            console.log('product title:', productTitle);
+            // console.log('product title:', productTitle);
             let productMaker = seller.hasOwnProperty('productMakerFn') ? seller.productMakerFn(productTitle) : '';
-            console.log('product maker:', productMaker);
+            // console.log('product maker:', productMaker);
             let productPrice = seller.hasOwnProperty('productPriceFn') ? seller.productPriceFn($, this) : '';
             // console.log('price primary:', productPrice);
             let productShortDesc = seller.hasOwnProperty('productShortDescFn') ? seller.productShortDescFn($, this) : '';
@@ -30,7 +30,6 @@ const scrapeHarps = async () => {
             // console.log( 'Long desc primary:', productLongDesc);
             let longProductImageUrl = seller.hasOwnProperty('longProductImageUrlFn') ? seller.longProductImageUrlFn($, this) : '';
             if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = seller.specialFileNameFn(longProductImageUrl);
-            // if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = specialFileNameFn(longProductImageUrl);
             // console.log( 'longProductImageUrl primary:', longProductImageUrl);
      
             if (seller.hasOwnProperty('sellerLinkUrlFn')) {
@@ -60,8 +59,7 @@ const scrapeHarps = async () => {
                 divider: '00000000000000000000000'
             }
             usedHarpsNorthAmerica.push(product);
-            // console.log('has', usedHarpsNorthAmerica);
-            // // console.log(usedHarpsNorthAmerica)
+            // console.log('scraper', usedHarpsNorthAmerica);
             // fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
             //     if (err) throw err;
             //     console.log('Saved!');
