@@ -19,7 +19,9 @@ const scrapeHarps = async () => {
         productTable.each(async function (item) {
             const id=uuid();
             let productTitle = seller.hasOwnProperty('productTitleFn') ? seller.productTitleFn($, this) : '';
-            // console.log('product title:', productTitle);
+            console.log('product title:', productTitle);
+            let productMaker = seller.hasOwnProperty('productMakerFn') ? seller.productMakerFn(productTitle) : '';
+            console.log('product maker:', productMaker);
             let productPrice = seller.hasOwnProperty('productPriceFn') ? seller.productPriceFn($, this) : '';
             // console.log('price primary:', productPrice);
             let productShortDesc = seller.hasOwnProperty('productShortDescFn') ? seller.productShortDescFn($, this) : '';
@@ -29,7 +31,7 @@ const scrapeHarps = async () => {
             let longProductImageUrl = seller.hasOwnProperty('longProductImageUrlFn') ? seller.longProductImageUrlFn($, this) : '';
             if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = seller.specialFileNameFn(longProductImageUrl);
             // if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = specialFileNameFn(longProductImageUrl);
-            console.log( 'longProductImageUrl primary:', longProductImageUrl);
+            // console.log( 'longProductImageUrl primary:', longProductImageUrl);
      
             if (seller.hasOwnProperty('sellerLinkUrlFn')) {
                 const secondaryUrl = seller.sellerLinkUrlFn($, this);
@@ -44,7 +46,6 @@ const scrapeHarps = async () => {
             }
             
             const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
-            console.log('shortProd:', shortProductImageUrl);
             const product = {
                 id,
                 sellerName: seller.sellerName,
@@ -58,14 +59,14 @@ const scrapeHarps = async () => {
                 divider: '00000000000000000000000'
             }
             usedHarpsNorthAmerica.push(product);
-            console.log('has', usedHarpsNorthAmerica);
-            // console.log(usedHarpsNorthAmerica)
-            fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
-                if (err) throw err;
-                console.log('Saved!');
-            });
+            // console.log('has', usedHarpsNorthAmerica);
+            // // console.log(usedHarpsNorthAmerica)
+            // fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
+            //     if (err) throw err;
+            //     console.log('Saved!');
+            // });
             
-            downloadImage(longProductImageUrl, shortProductImageUrl);
+            //downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
     }
     

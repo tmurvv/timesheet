@@ -1,6 +1,5 @@
 exports.shortFileNameFn = (longFilePath) => {
     if (longFilePath) {
-        console.log('in short')
         //remove possible url querystring
         if (longFilePath.lastIndexOf('?')>-1) longFilePath=longFilePath.substring(0,longFilePath.lastIndexOf('?'));
             
@@ -8,7 +7,6 @@ exports.shortFileNameFn = (longFilePath) => {
         const idx = longFilePath.lastIndexOf('/');
         if (/^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(longFilePath.substring(idx + 1))) {         
             const returnThis = longFilePath.substring(idx + 1);
-            console.log('return:', returnThis);
             return returnThis;
         }
         //if name not yet valid, remove last section and call function again

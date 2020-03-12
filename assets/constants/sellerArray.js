@@ -2,6 +2,35 @@ const uuid = require('uuid');
 const cheerio = require('cheerio');
 const axios = require('axios');
 
+function findMaker(title) {
+    let returnThis;
+    const leverMakers = [
+        'Dusty Strings',
+        'Triplett',
+        'Thormalen',
+        'Lyon & Healy',
+        'Salvi',
+        'Camac',
+        'Swanson Harps',
+        'Noteworthy',
+        'Jack Yule',
+        'Newsom Harps'
+    ];
+    if (title) {
+        leverMakers.map((maker) => {
+            if (title.indexOf(maker)>-1) {
+                // console.log(title, maker);
+                returnThis = maker;
+                return;
+            }               
+        });
+        console.log('no maker found') 
+    } else {
+        console.log('no title')
+    }
+    return returnThis;
+}
+
 function parseStoreSecondaryInfo(seller, data) {
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  
     const $ = cheerio.load(html);   
@@ -100,6 +129,34 @@ exports.sellerArray = [
         sellerRegion: 'Western',
         sellerArrayIdentifier: '[data-field-id="contentCards.headline"]',
         productTitleFn: ($, item) => $(item).parent().find('h4').text().trim(),
+        productMakerFn: (title) => {
+            let productMaker;
+            // console.log(title);
+            const leverMakers = [
+                'Dusty Strings',
+                'Triplett',
+                'Thormalen',
+                'Lyon & Healy',
+                'Salvi',
+                'Camac',
+                'Swanson Harps',
+                'Noteworthy',
+                'Jack Yule',
+                'Newsom Harps'
+            ];
+            if (title) {
+                leverMakers.map((maker) => {
+                    if (title.indexOf(maker)>-1) {
+                        console.log('in', maker)
+                        productMaker = maker;
+                        // return;
+                    } 
+                });
+            } else {
+                console.log('no title')
+            }
+            return productMaker;
+        },
         productShortDescFn: ($, item) => {
             const productInfo = $(item).parent().find('[data-field-id="contentCards.description"]').text();
             return productInfo.substring(0, productInfo.indexOf('.') + 1);
@@ -110,7 +167,8 @@ exports.sellerArray = [
         },
         productLongDescFn: ($, item) => $(item).parent().find('[data-field-id="contentCards.description"]').text(),
         longProductImageUrlFn: ($, item) => `https:${$(item).parent().find('[data-field-id="contentCards.imageProperties"]').find('img').attr("src")}`,
-        specialFileNameFn: (longProductImageUrl) => longProductImageUrl.replace(/%20/g, '_').replace(/%25/g, '_').replace(/%/g, '_')
+        specialFileNameFn: (longProductImageUrl) => longProductImageUrl.replace(/%20/g, '_').replace(/%25/g, '_').replace(/%/g, '_'),
+        
     },   
     // {   
     //     sellerID: uuid(),
