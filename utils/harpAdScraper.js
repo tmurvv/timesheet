@@ -28,8 +28,8 @@ const scrapeHarps = async () => {
             // console.log( 'Long desc primary:', productLongDesc);
             let longProductImageUrl = seller.hasOwnProperty('longProductImageUrlFn') ? seller.longProductImageUrlFn($, this) : '';
             if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = seller.specialFileNameFn(longProductImageUrl);
-            // if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = console.log('imin');
-            // console.log( 'longProductImageUrl primary:', longProductImageUrl);
+            // if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = specialFileNameFn(longProductImageUrl);
+            console.log( 'longProductImageUrl primary:', longProductImageUrl);
      
             if (seller.hasOwnProperty('sellerLinkUrlFn')) {
                 const secondaryUrl = seller.sellerLinkUrlFn($, this);
@@ -44,6 +44,7 @@ const scrapeHarps = async () => {
             }
             
             const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
+            console.log('shortProd:', shortProductImageUrl);
             const product = {
                 id,
                 sellerName: seller.sellerName,
@@ -57,11 +58,12 @@ const scrapeHarps = async () => {
                 divider: '00000000000000000000000'
             }
             usedHarpsNorthAmerica.push(product);
-            
-            // fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
-            //     if (err) throw err;
-            //     console.log('Saved!');
-            // });
+            console.log('has', usedHarpsNorthAmerica);
+            // console.log(usedHarpsNorthAmerica)
+            fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+            });
             
             downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
@@ -70,11 +72,7 @@ const scrapeHarps = async () => {
     sellerArray.map(async seller => {
         const response = await axios(seller.sellerUrl);
         parseStoreInfo(seller, response.data);
-    });
-    fs.writeFile('./assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
-        if (err) console.log(err);
-        console.log('Saved!');
-    });         
+    });        
 }
 
 module.exports = scrapeHarps;
