@@ -2,6 +2,9 @@ DataMuse npm maybe to find similar sounds to harp name
 
 https://harp.fandom.com/wiki/Harp_Makers_and_Vendors_in_North_America
 
+to schedule cron job:
+http://www.modeo.co/blog/2015/1/8/heroku-scheduler-with-nodejs-tutorial
+
 Heroku deploy
 - config.env port to 3000
 
