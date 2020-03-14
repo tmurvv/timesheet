@@ -13,6 +13,11 @@ exports.productMakesModels = {
             'harptype': 'pedal',
             'strings': '47'
         },     
+        'Daphne 47 EX': {
+            'harptype': 'pedal',
+            'strings': '47',
+            'othernames': ['Daphne 47', 'Daphne', 'Daphne 47EX']
+        },     
         'Titan': {
             'harptype': 'lever',
             'strings': '38'
@@ -33,6 +38,10 @@ exports.productMakesModels = {
         'Egan': {
             'harptype': 'lever',
             'strings': '38'
+        },
+        'Juno': {
+            'harptype': 'lever',
+            'strings': ''
         }
     },
     'Lyon & Healy': {
@@ -65,10 +74,15 @@ exports.productMakesModels = {
             'harptype': 'pedal',
             'strings': '47',
             'othernames': ['17']
-        },  
+        },
         'Troubadour VI': {
             'harptype': 'lever',
             'strings': '36',
+            'othernames': ['Troubadour']
+        },
+        'Troubadour V': {
+            'harptype': 'lever',
+            'strings': '?',
             'othernames': ['Troubadour']
         },
         'Ogden': {
@@ -106,19 +120,29 @@ exports.productMakesModels = {
             'harptype': 'lever',
             'strings': '?',
             'othernames': 'Ulyses'
+        },    
+        'Isolde': {
+            'harptype': 'lever',
+            'strings': '?',
+        },    
+        'Clio': {
+            'harptype': 'lever',
+            'strings': '?',
         }      
     }, 
     'Wurlitzer': {}, 
-    'Venus': {
-        'pedal':{
-            'Diplomat': {
-                'harptype': 'pedal',
-                'strings': '46'
-            },
-            'Traditional': {
-                'harptype': 'pedal',
-                'strings': '47'
-            }
+    'Venus': {      
+        'Diplomat': {
+            'harptype': 'pedal',
+            'strings': '46'
+        },
+        'Traditional': {
+            'harptype': 'pedal',
+            'strings': '47'
+        },
+        'Premiere': {
+            'harptype': 'pedal',
+            'strings': '46'
         }
     }, 
     'Aoyama': {
@@ -131,7 +155,12 @@ exports.productMakesModels = {
             'strings': '34'
         }     
     }, 
-    'Swanson': {}, 
+    'Swanson': {
+        'La Scuola': {
+            'harptype': 'pedal',
+            'strings': '?'
+        }
+    }, 
     'Horngacher': {},
     'Dusty Strings': {
         'Ravenna 26': {
@@ -164,6 +193,16 @@ exports.productMakesModels = {
             'strings': '36',
             'othernames': []
         },
+        'FH26': {
+            'harptype': 'lever',
+            'strings': '26',
+            'othernames': []
+        },
+        'Allegro 26': {
+            'harptype': 'lever',
+            'strings': '26',
+            'othernames': []
+        },
         'othernames': ['Dusty']
     },
     'Triplett': {
@@ -184,7 +223,11 @@ exports.productMakesModels = {
         'Catalina': {
             'harptype': 'lever',
             'strings': '?'
-        }
+        },
+        'Celtic II': {
+            'harptype': 'lever',
+            'strings': '?'
+        },
         'othernames': ['Tripplett', 'Triplet', 'Tripplet']
     },
     'Thormahlen': {
@@ -192,24 +235,75 @@ exports.productMakesModels = {
             'harptype': 'lever',
             'strings': '36'
         },
+        'Ceili': {
+            'harptype': 'lever',
+            'strings': '?'
+        },
         'othernames': ['Thormalen']
     },
-    'Cunningham': {},
-    'Blevins': {},
+    'Cunningham': {
+        'Cunningham 35': {
+            'harptype': 'lever',
+            'strings': '35'
+        }
+    },
+    'Blevins': {
+        'Encore 34': {
+                'harptype': 'lever',
+                'strings': '34'
+            }
+    },
     'Pilgrim': {},
-    'Heartland': {},
-    'Noteworthy': {},
+    'Heartland': {
+        'Sylvan': {
+            'harptype': 'lever',
+            'strings': '?'
+        },
+        'Delight': {
+            'harptype': 'lever',
+            'strings': '?'
+        }
+    },
+    'Noteworthy': {
+        'Count Kerry': {
+            'harptype': 'lever',
+            'strings': '?'
+        }
+    },
     'Yule': {
+        'Clarsach': {
+            'harptype': 'lever',
+            'strings': '?'
+        },
         'othernames': 'Jack Yule'
     },
     'Newsome': {
         'othernames': 'Newsom'
     },
     'Pilgrim': {},
-    'Pratt': {},
+    'Pratt': {
+        'Chamber': {
+            'harptype': 'lever',
+            'strings': '?'
+        }
+    },
     'Clarke': {},
-    'Rees': {},
+    'Rees': {
+        'Harpsicle': {
+            'harptype': 'lap',
+            'strings': '?'
+        },
+        'Aberdeen Meadows': {
+            'harptype': 'lever',
+            'strings': '?'
+        }
+    },
     'Lewis': {
-        'othernames': 'Mike Lewis'
+        'Arie': {
+            'harptype': '?',
+            'strings': '22'
+
+        },
+        'othernames': ['Mike Lewis']
     },
 }

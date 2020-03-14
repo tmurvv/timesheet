@@ -31,8 +31,6 @@ exports.sellerSort = () => sellerArray.sort(function(a, b) {
     // names must be equal
     return 0;
 });
-//helps find nested object keys
-const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
 exports.findMaker = (title) => {
     let productMaker;
     const productKeys = Object.keys(productMakesModels);
@@ -48,6 +46,9 @@ exports.findMaker = (title) => {
     return productMaker;
 }
 function getModelList() {
+    //helps find nested object keys
+    const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+
     let productKeys = [];
 
     const makers = Object.keys(productMakesModels)
