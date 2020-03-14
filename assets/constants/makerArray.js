@@ -140,9 +140,10 @@ exports.productMakesModels = {
             'harptype': 'pedal',
             'strings': '47'
         },
-        'Premiere': {
+        'Premier': {
             'harptype': 'pedal',
-            'strings': '46'
+            'strings': '46',
+            'othernames': ['Premiere']
         }
     }, 
     'Aoyama': {

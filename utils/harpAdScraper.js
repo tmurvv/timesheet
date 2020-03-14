@@ -46,6 +46,8 @@ const scrapeHarps = async () => {
             // console.log('product maker:', productMaker);
             let productModel = seller.productModelFn(productTitle);
             // console.log('product model:', productModel);
+            let productType = seller.hasOwnProperty('productTypeFn')?seller.productTypeFn(productMaker, productModel):'';
+            // console.log('product Type:', productType);
             const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
             const product = {
                 id,
@@ -55,6 +57,7 @@ const scrapeHarps = async () => {
                 productTitle,
                 productMaker,
                 productModel,
+                productType,
                 productShortDesc,
                 productPrice,
                 productLongDesc,

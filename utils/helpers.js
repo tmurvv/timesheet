@@ -1,5 +1,15 @@
 const { productMakesModels } = require('../assets/constants/makerArray');
 
+/*********
+ * helper functions for helper functions
+ *********/
+//leaf function helps find nested object keys,
+const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+
+/***********
+ * helper functions
+ ***********/
+
 exports.shortFileNameFn = (longFilePath) => {
     if (longFilePath) {
         //remove possible url querystring
@@ -45,31 +55,33 @@ exports.findMaker = (title) => {
     return productMaker;
 }
 function getModelList() {
-    //helps find nested object keys
-    const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+    const productKeys = [];
 
-    let productKeys = [];
-
-    const makers = Object.keys(productMakesModels)
-    makers.map(maker => {
+    Object.keys(productMakesModels).map(maker => {
         productKeys.push(...Object.keys(leaf(productMakesModels, maker)));
     });
-    productKeys = new Set(productKeys);
-    return productKeys;
+
+    return new Set(productKeys);
 }
 exports.findModel = (title) => {
+    if (!title) return 'no model found';
     let productModel;
-    const productKeys = Array.from(getModelList());
-    // console.log(productKeys);
     
-    if (title) {
-        productKeys.map((model) => {
-            if (title.indexOf(model)>-1) {
-                productModel = model;
-            } 
-        });
-    } else {
-        console.log('no title')
-    }
+    Array.from(getModelList()).map((model) => {
+        if (title.indexOf(model)>-1) {
+            productModel = model;
+        } 
+    });
     return productModel;
 }
+
+exports.findProductType = ((maker, model) =>{
+    if (!model||!maker) return 'no model found';
+   
+    const makerHarps = leaf(productMakesModels, maker);
+    if (leaf(makerHarps, model)&&leaf(makerHarps, model).harptype) {
+        return leaf(makerHarps, model).harptype;
+    } else {
+        return 'harp type not found';
+    }
+});
