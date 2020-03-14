@@ -1,5 +1,4 @@
 const { productMakesModels } = require('../assets/constants/makerArray');
-console.log('blah,blah', productMakesModels);
 
 exports.shortFileNameFn = (longFilePath) => {
     if (longFilePath) {
