@@ -20,8 +20,6 @@ const scrapeHarps = async () => {
             const id=uuid();
             let productTitle = seller.hasOwnProperty('productTitleFn') ? seller.productTitleFn($, this) : '';
             // console.log('product title:', productTitle);
-            let productMaker = seller.hasOwnProperty('productMakerFn') ? seller.productMakerFn(productTitle) : '';
-            // console.log('product maker:', productMaker);
             let productPrice = seller.hasOwnProperty('productPriceFn') ? seller.productPriceFn($, this) : '';
             // console.log('price primary:', productPrice);
             let productShortDesc = seller.hasOwnProperty('productShortDescFn') ? seller.productShortDescFn($, this) : '';
@@ -43,7 +41,11 @@ const scrapeHarps = async () => {
                     if (!longProductImageUrl && secondaryUrlData.longProductImageUrl) longProductImageUrl = secondaryUrlData.longProductImageUrl;
                 }          
             }
-            
+            console.log('title:', productTitle);
+            let productMaker = seller.productMakerFn(productTitle);
+            console.log('product maker:', productMaker);
+            let productModel = seller.productModelFn(productTitle);
+            console.log('product model:', productModel);
             const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
             const product = {
                 id,
@@ -52,6 +54,7 @@ const scrapeHarps = async () => {
                 sellerRegion: seller.sellerRegion,
                 productTitle,
                 productMaker,
+                productModel,
                 productShortDesc,
                 productPrice,
                 productLongDesc,
@@ -60,12 +63,12 @@ const scrapeHarps = async () => {
             }
             usedHarpsNorthAmerica.push(product);
             // console.log('scraper', usedHarpsNorthAmerica);
-            // fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
-            //     if (err) throw err;
-            //     console.log('Saved!');
-            // });
+            fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+            });
             
-            downloadImage(longProductImageUrl, shortProductImageUrl);
+            // downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
     }
     

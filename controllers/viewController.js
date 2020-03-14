@@ -1,14 +1,14 @@
 const usedHarpListFn = require('../utils/harpAdScraper');
-// const usedHarps = usedHarpListFn();
-const usedHarps = require('../assets/constants/usedHarpList.json');
-const { leverMakers, pedalMakers } = require('../assets/constants/makerArray');
-const makerArray = pedalMakers.concat(leverMakers);
+const usedHarps = usedHarpListFn();
+// const usedHarps = require('../assets/constants/usedHarpList.json');
+const { productMakesModels } = require('../assets/constants/makerArray');
+
 exports.getUsedHarp = async (req, res) => {
     // send results 
     res.status(200).json({
         title: 'OneStopHarpShop | Used Harps',
         status: 'success',
-        harpMakerList: makerArray,
+        harpMakesModels: productMakesModels,
         harpData: usedHarps  
     });
 };

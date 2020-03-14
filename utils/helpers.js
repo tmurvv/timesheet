@@ -1,5 +1,5 @@
-const { leverMakers, pedalMakers } = require('../assets/constants/makerArray');
-const makerArray = pedalMakers.concat(leverMakers);
+const { productMakesModels } = require('../assets/constants/makerArray');
+console.log('blah,blah', productMakesModels);
 
 exports.shortFileNameFn = (longFilePath) => {
     if (longFilePath) {
@@ -31,11 +31,13 @@ exports.sellerSort = () => sellerArray.sort(function(a, b) {
     // names must be equal
     return 0;
 });
-
+//helps find nested object keys
+const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
 exports.findMaker = (title) => {
     let productMaker;
+    const productKeys = Object.keys(productMakesModels);
     if (title) {
-        makerArray.map((maker) => {
+        productKeys.map((maker) => {
             if (title.indexOf(maker)>-1) {
                 productMaker = maker;
             } 
@@ -44,4 +46,30 @@ exports.findMaker = (title) => {
         console.log('no title')
     }
     return productMaker;
+}
+function getModelList() {
+    let productKeys = [];
+
+    const makers = Object.keys(productMakesModels)
+    makers.map(maker => {
+        productKeys.push(...Object.keys(leaf(productMakesModels, maker)));
+    });
+    productKeys = new Set(productKeys);
+    return productKeys;
+}
+exports.findModel = (title) => {
+    let productModel;
+    const productKeys = Array.from(getModelList());
+    // console.log(productKeys);
+    
+    if (title) {
+        productKeys.map((model) => {
+            if (title.indexOf(model)>-1) {
+                productModel = model;
+            } 
+        });
+    } else {
+        console.log('no title')
+    }
+    return productModel;
 }

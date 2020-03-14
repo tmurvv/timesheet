@@ -1,7 +1,7 @@
 const uuid = require('uuid');
 const cheerio = require('cheerio');
 const axios = require('axios');
-const { findMaker } = require('../../utils/helpers');
+const { findMaker, findModel } = require('../../utils/helpers');
 
 function parseStoreSecondaryInfo(seller, data) {
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  
@@ -38,6 +38,7 @@ exports.sellerArray = [
         sellerArrayIdentifier: '.Odd',
         productTitleFn: ($, item) => $(item).find('.ProductDetails').text().trim(),
         productMakerFn: (title) => findMaker(title),
+        productModelFn: (title) => findModel(title),
         productShortDescFn: () => "Short Description not available.",
         productPriceFn: ($, item) => $(item).find('.ProductPriceRating').find('em').text().trim(),
         productLongDescFn: () => "Long Description not available",   
@@ -52,6 +53,7 @@ exports.sellerArray = [
         sellerArrayIdentifier: '.Even',
         productTitleFn: ($, item) => $(item).find('.ProductDetails').text().trim(),
         productMakerFn: (title) => findMaker(title),
+        productModelFn: (title) => findModel(title),
         productShortDescFn: () => "Short Description not available.",
         productPriceFn: ($, item) => $(item).find('.ProductPriceRating').find('em').text().trim(),
         productLongDescFn: () => "Long Description not available",   
@@ -65,7 +67,8 @@ exports.sellerArray = [
         sellerRegion: 'Eastern',
         sellerArrayIdentifier: '.plusplus',
         productTitleFn: ($, item) => $(item).find('h3').text().trim(),
-        productMakerFn: (title) => findMaker(title), 
+        productMakerFn: (title) => findMaker(title),
+        productModelFn: (title) => findModel(title),
         productShortDescFn: ($, item) => $(item).parent().parent().find('p').first().text().trim(),
         productPriceFn: ($, item) => $(item).parent().parent().find('.THCsmall').text().trim(),
         productLongDescFn: ($, item) => $(item).parent().parent().find('p:nth-child(2)').text().trim(),
@@ -92,6 +95,7 @@ exports.sellerArray = [
         },
         productTitleFn: ($, item) => $(item).find('.ty-product-list__item-name').text().trim(),
         productMakerFn: (title) => findMaker(title),
+        productModelFn: (title) => findModel(title),
         productShortDescFn: ($, item) => $(item).find('.ty-product-list__description').text().trim(),
         productPriceFn: ($, item) => $(item).find('.ty-product-list__price').text().trim(),
         productLongDescLinkFn: ($, item) => {if($(item).find('p').text().trim()) return $(item).find('p').text().trim()},
@@ -106,6 +110,7 @@ exports.sellerArray = [
         sellerArrayIdentifier: '[data-field-id="contentCards.headline"]',
         productTitleFn: ($, item) => $(item).parent().find('h4').text().trim(),
         productMakerFn: (title) => findMaker(title),
+        productModelFn: (title) => findModel(title),
         productShortDescFn: ($, item) => {
             const productInfo = $(item).parent().find('[data-field-id="contentCards.description"]').text();
             return productInfo.substring(0, productInfo.indexOf('.') + 1);
@@ -128,6 +133,7 @@ exports.sellerArray = [
         sellerArrayIdentifier: '.main',
         productTitleFn: () => 'Sierra 36 by Triplett',
         productMakerFn: (title) => findMaker(title),
+        productModelFn: (title) => findModel(title),
         productShortDescFn: () => 'Purchased 2011 Maple',
         productPriceFn: () => '$4300',
         productLongDescFn: () => 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',   
@@ -154,6 +160,7 @@ exports.sellerArray = [
         },        
         productTitleFn: ($, item) => $(item).find('.manufacturerName').text().trim(),
         productMakerFn: (title) => findMaker(title),
+        productModelFn: (title) => findModel(title),
         productShortDescFn: () => "Short Description not available.",
         productPriceLinkFn: ($, item) => {
             let priceString = $(item).find('.subheader').text().trim();
@@ -175,9 +182,9 @@ exports.sellerArray = [
                     .find('p').text()
                     .replace('/n', '').replace('/t','')
                     .replace('\\t', '').replace('\\n', '')
-                    .trim()
-                }
-            },   
+                    .trim();
+            }
+        },   
         longProductImageUrlLinkFn: ($, item) => $(item).find('#fancy_photos_id0').attr('href'),
         specialFileNameFn: (longProductImageUrl) => longProductImageUrl.replace(/\/n/g, '').replace(/\/t/g, '').replace(/\\n/g, '').replace(/\\t/g, '')
     }   
@@ -190,6 +197,8 @@ exports.sellerArray = [
     //     sellerArrayIdentifier: '.container',
     //     // productTitleFn: ($, item) => $(item).find('.wsite-content-title').text().trim(),
         
+    // productMakerFn: (title) => findMaker(title),
+    // productModelFn: (title) => findModel(title),
     //     // productShortDescFn: () => "Short Description not available.",
     //     productPriceFn: ($, item) => {
     //         if ($(item).find('span').text().trim() && $(item).find('span').text().indexOf('$') !== -1) {
