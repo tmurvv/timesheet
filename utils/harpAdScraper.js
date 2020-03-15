@@ -48,7 +48,7 @@ const scrapeHarps = async () => {
             // console.log('product model:', productModel);
             let productType = seller.hasOwnProperty('productTypeFn')?seller.productTypeFn(productMaker, productModel):'';
             // console.log('product Type:', productType);
-            const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
+            const shortProductImageUrl = seller.hasOwnProperty('imageFromWeb')?longProductImageUrl:shortFileNameFn(longProductImageUrl);
             const product = {
                 id,
                 sellerName: seller.sellerName,
@@ -71,7 +71,7 @@ const scrapeHarps = async () => {
                 // console.log('Saved!');
             });
             
-            // downloadImage(longProductImageUrl, shortProductImageUrl);
+            if (!seller.hasOwnProperty('imageFromWeb')) downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
     }
     
