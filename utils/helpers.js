@@ -85,3 +85,13 @@ exports.findProductType = ((maker, model) =>{
         return 'harp type not found';
     }
 });
+exports.findProductSize = ((maker, model) =>{
+    if (!maker||!model) return 'no model found';
+   
+    const makerHarps = leaf(productMakesModels, maker);
+    if (leaf(makerHarps, model)&&leaf(makerHarps, model).strings) {
+        return leaf(makerHarps, model).strings;
+    } else {
+        return 'harp size not found';
+    }
+});

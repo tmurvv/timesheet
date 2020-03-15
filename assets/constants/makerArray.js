@@ -82,7 +82,7 @@ exports.productMakesModels = {
         },
         'Troubadour V': {
             'harptype': 'lever',
-            'strings': '?',
+            'strings': '36',
             'othernames': ['Troubadour']
         },
         'Ogden': {
@@ -118,16 +118,16 @@ exports.productMakesModels = {
         },   
         'Ulysses': {
             'harptype': 'lever',
-            'strings': '?',
+            'strings': '34',
             'othernames': 'Ulyses'
         },    
         'Isolde': {
             'harptype': 'lever',
-            'strings': '?',
+            'strings': '38',
         },    
         'Clio': {
             'harptype': 'lever',
-            'strings': '?',
+            'strings': '44',
         }      
     }, 
     'Wurlitzer': {}, 
@@ -159,7 +159,7 @@ exports.productMakesModels = {
     'Swanson': {
         'La Scuola': {
             'harptype': 'pedal',
-            'strings': '?'
+            'strings': '47'
         }
     }, 
     'Horngacher': {},
@@ -223,11 +223,11 @@ exports.productMakesModels = {
         },
         'Catalina': {
             'harptype': 'lever',
-            'strings': '?'
+            'strings': '34'
         },
         'Celtic II': {
             'harptype': 'lever',
-            'strings': '?'
+            'strings': '34'
         },
         'othernames': ['Tripplett', 'Triplet', 'Tripplet']
     },
@@ -238,7 +238,7 @@ exports.productMakesModels = {
         },
         'Ceili': {
             'harptype': 'lever',
-            'strings': '?'
+            'strings': '34'
         },
         'othernames': ['Thormalen']
     },
@@ -258,23 +258,23 @@ exports.productMakesModels = {
     'Heartland': {
         'Sylvan': {
             'harptype': 'lever',
-            'strings': '?'
+            'strings': '36'
         },
         'Delight': {
             'harptype': 'lever',
-            'strings': '?'
+            'strings': '38'
         }
     },
     'Noteworthy': {
         'Count Kerry': {
             'harptype': 'lever',
-            'strings': '?'
+            'strings': '24'
         }
     },
     'Yule': {
         'Clarsach': {
             'harptype': 'lever',
-            'strings': '?'
+            'strings': '29'
         },
         'othernames': 'Jack Yule'
     },
@@ -285,25 +285,24 @@ exports.productMakesModels = {
     'Pratt': {
         'Chamber': {
             'harptype': 'lever',
-            'strings': '?'
+            'strings': '36'
         }
     },
     'Clarke': {},
     'Rees': {
         'Harpsicle': {
             'harptype': 'lap',
-            'strings': '?'
+            'strings': '26'
         },
         'Aberdeen Meadows': {
             'harptype': 'lever',
-            'strings': '?'
+            'strings': '36'
         }
     },
     'Lewis': {
         'Arie': {
-            'harptype': '?',
+            'harptype': 'lever',
             'strings': '22'
-
         },
         'othernames': ['Mike Lewis']
     },

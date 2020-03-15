@@ -48,8 +48,10 @@ const scrapeHarps = async () => {
             // console.log('product model:', productModel);
             let productType = seller.hasOwnProperty('productTypeFn')?seller.productTypeFn(productMaker, productModel):'';
             // console.log('product Type:', productType);
+            let productSize = seller.hasOwnProperty('productSizeFn')?seller.productSizeFn(productMaker, productModel):'';
+            // console.log('product Type:', productType);
             const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
-            const productImageUrl = seller.hasOwnProperty('imageFromWeb')?longProductImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortFileNameFn(longProductImageUrl)}`;
+            const productImageUrl = seller.hasOwnProperty('imageFromWeb')?longProductImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
             const product = {
                 id,
                 sellerName: seller.sellerName,
@@ -59,6 +61,7 @@ const scrapeHarps = async () => {
                 productMaker,
                 productModel,
                 productType,
+                productSize,
                 productShortDesc,
                 productPrice,
                 productLongDesc,
@@ -72,7 +75,7 @@ const scrapeHarps = async () => {
                 // console.log('Saved!');
             });
             
-            if (!seller.hasOwnProperty('imageFromWeb')) downloadImage(longProductImageUrl, shortProductImageUrl);
+            // if (!seller.hasOwnProperty('imageFromWeb')) downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
     }
     
