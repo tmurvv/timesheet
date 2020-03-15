@@ -1,6 +1,10 @@
 - get cron job on heroku
 
+- add stock photo for when photos not found
+
 - refactor so data manipulation is on frontend
+
+- refactor so type size etc is a factory
 
 - when parsing models, makers for searches
     - account for when maker not included in title, just model

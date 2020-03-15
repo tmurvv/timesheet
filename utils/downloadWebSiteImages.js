@@ -16,6 +16,7 @@ const formatPhoto = async photo => {
 }
 
 const download = function(uri, filename, callback) {
+    console.log('down', filename)
     try {
         request.head(uri, function(err, res, body) {
             console.log('content-type:', res.headers['content-type']);
@@ -24,7 +25,6 @@ const download = function(uri, filename, callback) {
                 console.log('hello1');
             });
             const file = request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-            jfifToPng(file);
         });
     } catch (err) {
         console.log('Image failed to write:', err.message)

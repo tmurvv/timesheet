@@ -3,7 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
 const { downloadImage } = require('../utils/downloadWebSiteImages.js');
-const { shortFileNameFn } = require('./helpers.js');
+const { shortFileNameFn, checkBadImages} = require('./helpers.js');
 
 const sellerArrayObject = require('../assets/constants/sellerArray');
 const sellerArray = sellerArrayObject.sellerArray;
@@ -41,6 +41,7 @@ const scrapeHarps = async () => {
                     if (!longProductImageUrl && secondaryUrlData.longProductImageUrl) longProductImageUrl = secondaryUrlData.longProductImageUrl;
                 }          
             }
+            
             // console.log('title:', productTitle);
             let productMaker = seller.productMakerFn(productTitle);
             // console.log('product maker:', productMaker);
@@ -50,8 +51,16 @@ const scrapeHarps = async () => {
             // console.log('product Type:', productType);
             let productSize = seller.hasOwnProperty('productSizeFn')?seller.productSizeFn(productMaker, productModel):'';
             // console.log('product Type:', productType);
-            const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
+            let shortProductImageUrl;
+            if (seller.hasOwnProperty('badImages') && productModel) {
+                if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
+            }
+            
+            if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(longProductImageUrl);
+            console.log('short', shortProductImageUrl)
             const productImageUrl = seller.hasOwnProperty('imageFromWeb')?longProductImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
+            
+            
             const product = {
                 id,
                 sellerName: seller.sellerName,
@@ -75,7 +84,8 @@ const scrapeHarps = async () => {
                 // console.log('Saved!');
             });
             
-            // if (!seller.hasOwnProperty('imageFromWeb')) downloadImage(longProductImageUrl, shortProductImageUrl);
+            downloadImage(longProductImageUrl, shortProductImageUrl);
+
         });         
     }
     

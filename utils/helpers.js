@@ -95,3 +95,11 @@ exports.findProductSize = ((maker, model) =>{
         return 'harp size not found';
     }
 });
+
+exports.checkBadImages = (model, badImages) => {
+    let returnMe
+    badImages.map(badImage => {
+        if (model === badImage) returnMe = `stock/${badImage}.jpg`;
+    });
+    return returnMe;
+}
