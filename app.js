@@ -30,6 +30,7 @@ app.all('/', function(req, res, next) {
 //Serve static image files
 express.static('assets');
 app.use(express.static('img'));
+app.use(express.static('img/stock/'));
 
 //security ** see commented code below
 
