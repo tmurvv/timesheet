@@ -97,9 +97,10 @@ exports.findProductSize = ((maker, model) =>{
 });
 
 exports.checkBadImages = (model, badImages) => {
-    let returnMe
+    let stockUrl;
     badImages.map(badImage => {
-        if (model === badImage) returnMe = `stock/${badImage}.jpg`;
+        if (model === badImage) stockUrl = `stock/${badImage}.jpg`.replace(' ','');
     });
-    return returnMe;
+    
+    return stockUrl;
 }

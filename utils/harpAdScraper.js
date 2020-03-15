@@ -55,12 +55,9 @@ const scrapeHarps = async () => {
             if (seller.hasOwnProperty('badImages') && productModel) {
                 if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
             }
-            
             if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(longProductImageUrl);
-            console.log('short', shortProductImageUrl)
             const productImageUrl = seller.hasOwnProperty('imageFromWeb')?longProductImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
-            
-            
+
             const product = {
                 id,
                 sellerName: seller.sellerName,
@@ -84,7 +81,7 @@ const scrapeHarps = async () => {
                 // console.log('Saved!');
             });
             
-            downloadImage(longProductImageUrl, shortProductImageUrl);
+            if (shortProductImageUrl && !shortProductImageUrl.startsWith('stock')) downloadImage(longProductImageUrl, shortProductImageUrl);
 
         });         
     }
