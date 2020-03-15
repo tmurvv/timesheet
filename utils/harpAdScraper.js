@@ -71,7 +71,7 @@ const scrapeHarps = async () => {
                 // console.log('Saved!');
             });
             
-            if (!seller.hasOwnProperty('imageFromWeb')) downloadImage(longProductImageUrl, shortProductImageUrl);
+            // if (!seller.hasOwnProperty('imageFromWeb')) downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
     }
     
