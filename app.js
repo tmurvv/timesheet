@@ -30,7 +30,6 @@ app.all('/', function(req, res, next) {
 //Serve static image files
 express.static('assets');
 app.use(express.static('img'));
-app.use(express.static('img/stock/'));
 
 //security ** see commented code below
 
@@ -43,7 +42,7 @@ app.use('/', viewRouter);
 
 //Image Router code based on expressjs.com API reference
 app.get('/assets/img/:name', function (req, res, next) {
-    var options = {
+    const options = {
         root: path.join(__dirname, 'assets/img'),
         dotfiles: 'deny',
         headers: {
@@ -52,7 +51,26 @@ app.get('/assets/img/:name', function (req, res, next) {
         }
     }
   
-    var fileName = req.params.name
+    const fileName = req.params.name
+    res.sendFile(fileName, options, function (err) {
+        if (err) {
+            next(err)
+        } else {
+            console.log('Sent:', fileName)
+        }
+    });
+});
+app.get('/assets/img/stock:name', function (req, res, next) {
+    const options = {
+        root: path.join(__dirname, 'assets/img'),
+        dotfiles: 'deny',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+        }
+    }
+  
+    const fileName = req.params.name
     res.sendFile(fileName, options, function (err) {
         if (err) {
             next(err)
