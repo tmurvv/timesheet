@@ -132,7 +132,7 @@ exports.sellerArray = [
         productLongDescFn: ($, item) => $(item).parent().find('[data-field-id="contentCards.description"]').text(),
         longProductImageUrlFn: ($, item) => `https:${$(item).parent().find('[data-field-id="contentCards.imageProperties"]').find('img').attr("src")}`,
         specialFileNameFn: (longProductImageUrl) => longProductImageUrl.replace(/%20/g, '_').replace(/%25/g, '_').replace(/%/g, '_'),
-        badImages: ['Arianna','85CG', 'Clarsach', 'Celtic II']
+        badImages: ['Arianna','85CG', 'Clarsach', 'Celtic II', 'County Kerry', 'FH36S', 'Ogden', 'Ravenna 34']
     },   
     {   
         sellerID: uuid(),
