@@ -81,8 +81,7 @@ const scrapeHarps = async () => {
                 // console.log('Saved!');
             });
             
-            if (shortProductImageUrl && !shortProductImageUrl.startsWith('stock')) downloadImage(longProductImageUrl, shortProductImageUrl);
-
+            if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(longProductImageUrl, shortProductImageUrl);
         });         
     }
     

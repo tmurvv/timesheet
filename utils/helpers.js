@@ -99,7 +99,7 @@ exports.findProductSize = ((maker, model) =>{
 exports.checkBadImages = (model, badImages) => {
     let stockUrl;
     badImages.map(badImage => {
-        if (model === badImage) stockUrl = `stock/${badImage}.jpg`.replace(' ','');
+        if (model === badImage) stockUrl = `${badImage}STOCK.jpg`.replace(' ','');
     });
     
     return stockUrl;
