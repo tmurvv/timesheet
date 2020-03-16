@@ -51,6 +51,7 @@ const scrapeHarps = async () => {
             // console.log('product Type:', productType);
             let productSize = seller.hasOwnProperty('productSizeFn')?seller.productSizeFn(productMaker, productModel):'';
             // console.log('product Type:', productType);
+            if (seller.hasOwnProperty('specialLongDescFn')) productLongDesc = seller.specialLongDescFn(productLongDesc);
             let shortProductImageUrl;
             if (seller.hasOwnProperty('badImages') && productModel) {
                 if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);

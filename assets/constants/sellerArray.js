@@ -132,7 +132,7 @@ exports.sellerArray = [
         productLongDescFn: ($, item) => $(item).parent().find('[data-field-id="contentCards.description"]').text(),
         longProductImageUrlFn: ($, item) => `https:${$(item).parent().find('[data-field-id="contentCards.imageProperties"]').find('img').attr("src")}`,
         specialFileNameFn: (longProductImageUrl) => longProductImageUrl.replace(/%20/g, '_').replace(/%25/g, '_').replace(/%/g, '_'),
-        badImages: ['Arianna','85CG', 'Clarsach', 'Celtic II', 'County Kerry', 'FH36S', 'Ogden', 'Ravenna 34']
+        badImages: ['Arianna','85CG', 'Clarsach', 'Celtic II', 'Count Kerry', 'FH36S', 'Ogden', 'Ravenna 34']
     },   
     {   
         sellerID: uuid(),
@@ -150,6 +150,80 @@ exports.sellerArray = [
         productPriceFn: () => '$4300',
         productLongDescFn: () => 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!',   
         longProductImageUrlFn: () => 'triplettSierra36Maple.jpg',
+    },
+    {   
+        sellerID: uuid(),
+        sellerName: 'Vanderbilt Music',
+        sellerUrl: 'https://vanderbiltmusic.com/harp-sales/used-harps/',
+        sellerCountry: 'USA',
+        sellerRegion: 'MidWest',
+        sellerArrayIdentifier: '.Odd',
+        sellerLinkUrlFn: ($, item) => $(item).find('.ProductDetails').find('a').attr('href'),
+        sellerLinkParentIdentifier: '.ProductMain',
+        linkFn: async (seller, url) => {
+            console.log(url)
+            try {
+                const response = await axios(url);
+                // console.log('secondary response', response.data)
+                secondaryData=parseStoreSecondaryInfo(seller, response.data); 
+                return secondaryData;
+            } catch (err) {
+                console.log(url, 'timed out', err.message);
+            }           
+        },        
+        productTitleFn: ($, item) => $(item).find('a').text().trim(),
+        productMakerFn: (title) => findMaker(title),
+        productModelFn: (title) => findModel(title),
+        productTypeFn: (maker, model) => findProductType(maker, model),     
+        productSizeFn: (maker, model) => findProductSize(maker, model),
+        productShortDescFn: () => "",
+        productPriceFn: ($, item) => $(item).find('em').text().trim(), 
+        productLongDescLinkFn: ($, item) => $(item).find('.prodAccordionContent').text(),
+        longProductImageUrlFn: ($, item) => $(item).find('.ProductImage').find('img').attr('src'),
+        // specialFileNameFn: (longProductImageUrl) => longProductImageUrl.replace(/\/n/g, '').replace(/\/t/g, '').replace(/\\n/g, '').replace(/\\t/g, '')
+        specialLongDescFn: (productLongDesc) => {
+            productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
+            if (productLongDesc.indexOf('HarpsNew') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsNew'));
+            if (productLongDesc.indexOf('HarpsUsed') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsUsed')).replace('  ', ' ');
+            return productLongDesc;
+        }
+    },
+    {   
+        sellerID: uuid(),
+        sellerName: 'Vanderbilt Music',
+        sellerUrl: 'https://vanderbiltmusic.com/harp-sales/used-harps/',
+        sellerCountry: 'USA',
+        sellerRegion: 'MidWest',
+        sellerArrayIdentifier: '.Even',
+        sellerLinkUrlFn: ($, item) => $(item).find('.ProductDetails').find('a').attr('href'),
+        sellerLinkParentIdentifier: '.ProductMain',
+        linkFn: async (seller, url) => {
+            console.log(url)
+            try {
+                const response = await axios(url);
+                // console.log('secondary response', response.data)
+                secondaryData=parseStoreSecondaryInfo(seller, response.data); 
+                return secondaryData;
+            } catch (err) {
+                console.log(url, 'timed out', err.message);
+            }           
+        },        
+        productTitleFn: ($, item) => $(item).find('a').text().trim(),
+        productMakerFn: (title) => findMaker(title),
+        productModelFn: (title) => findModel(title),
+        productTypeFn: (maker, model) => findProductType(maker, model),     
+        productSizeFn: (maker, model) => findProductSize(maker, model),
+        productShortDescFn: () => "",
+        productPriceFn: ($, item) => $(item).find('em').text().trim(), 
+        productLongDescLinkFn: ($, item) => $(item).find('.prodAccordionContent').text(),
+        longProductImageUrlFn: ($, item) => $(item).find('.ProductImage').find('img').attr('src'),
+        // specialFileNameFn: (longProductImageUrl) => longProductImageUrl.replace(/\/n/g, '').replace(/\/t/g, '').replace(/\\n/g, '').replace(/\\t/g, '')
+        specialLongDescFn: (productLongDesc) => {
+            productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
+            if (productLongDesc.indexOf('HarpsNew') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsNew'));
+            if (productLongDesc.indexOf('HarpsUsed') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsUsed')).replace('  ', ' ');
+            return productLongDesc;
+        }
     },
     {   
         sellerID: uuid(),
@@ -201,7 +275,7 @@ exports.sellerArray = [
         },   
         longProductImageUrlLinkFn: ($, item) => $(item).find('#fancy_photos_id0').attr('href'),
         specialFileNameFn: (longProductImageUrl) => longProductImageUrl.replace(/\/n/g, '').replace(/\/t/g, '').replace(/\\n/g, '').replace(/\\t/g, '')
-    }   
+    }  
     // {   THIS ONE IS HARD, SAVE FOR LATER
     //     sellerID: uuid(),
     //     sellerName: 'West Coast Harps',
