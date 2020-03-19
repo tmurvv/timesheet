@@ -4,7 +4,7 @@ const { productMakesModels } = require('../assets/constants/makerArray');
  * helper functions for helper functions
  *********/
 //leaf function helps find nested object keys,
-const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+exports.leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
 
 /***********
  * helper functions
