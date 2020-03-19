@@ -41,7 +41,6 @@ const scrapeHarps = async () => {
                     if (!longProductImageUrl && secondaryUrlData.longProductImageUrl) longProductImageUrl = secondaryUrlData.longProductImageUrl;
                 }          
             }
-            
             // console.log('title:', productTitle);
             let productMaker = seller.productMakerFn(productTitle);
             // console.log('product maker:', productMaker);
