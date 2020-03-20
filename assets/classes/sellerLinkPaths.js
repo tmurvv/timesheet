@@ -3,9 +3,6 @@ const cheerio = require('cheerio');
 const { SellerPaths } = require('./SellerPaths');
 
 exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
-    // constructor(name, productsUrl) {
-    //     super(name, productsUrl)
-    // }
     constructor(name, country, region, productsUrl, mainPathId, customFns, //from Seller.js
                     titleFn, priceFn, shortDescFn, longDescFn, imageUrlFn, //from SellerPaths.js
                     findLinkUrlFn, mainPathIdLink, titleLinkFn, priceLinkFn, 
@@ -34,7 +31,7 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
         const productLongDesc = seller.hasOwnProperty('longDescLinkFn')&&seller.longDescLinkFn ? seller.longDescLinkFn($, thisProduct) : '';
         
         // const productImageUrl = seller.hasOwnProperty('imageUrlLinkFn') ? seller.imageUrlLinkFn($, thisProduct) : '';
-        //console.log( 'longProductImageUrl secondary:', longProductImageUrl);
+        //console.log( 'longProductImageUrl secondary:', productImageUrl);
         const product = {
             productTitle,
             productShortDesc,
