@@ -13,7 +13,8 @@ const VanderbiltMusic_e = new SellerPathsLink(
     ($, item) => $(item).find('em').text().trim(), //priceFn 
     () => 'Short description not available', //shortDescFn
     null, //longDescFn
-    ($, item) => $(item).find('.ProductImage').find('img').attr('src'), //imageUrl
+    // ($, item) => $(item).find('.ProductImage').find('img').attr('src'), //imageUrl
+    () => 'https://onestop-api-staging.herokuapp.com/assets/img/Prelude_62530.jpg',
     ($, item) => $(item).find('.ProductDetails').find('a').attr('href'), //findLinkUrlFn
     '.ProductMain', //mainPathIdLink
     null, //titleLinkFn
@@ -22,7 +23,7 @@ const VanderbiltMusic_e = new SellerPathsLink(
     ($, item) => $(item).find('.prodAccordionContent').text(), //longDescLinkFn,
     null //imageUrlLinkFn
 );
-//() => 'Prelude_62530.jpg',
+() => 'Prelude_62530.jpg',
 VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
     let productLongDesc = product.productLongDesc;
     productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
@@ -47,6 +48,6 @@ const HarpConnection = new SellerPaths(
         ($, item) => `https://www.harpconnection.com${$(item).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src')}`  //longDescFn              
     );
 // console.log(VanderbiltMusic_e);
-const sellerArray = [VanderbiltMusic_e, HarpConnection];
+exports.sellerArray = [HarpConnection, VanderbiltMusic_e];
 // console.log('sellers.js', sellerArray);
-exports.sellerArray = sellerArray;
+// exports.sellerArray = sellerArray;

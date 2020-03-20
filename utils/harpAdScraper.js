@@ -95,7 +95,7 @@ const scrapeHarps = async () => {
             //     if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
             // }
             if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);
-            // productImageUrl = seller.hasOwnProperty('imageFromWeb')?productImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
+            productImageUrl = seller.hasOwnProperty('imageFromWeb')?productImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
 
             
                 
@@ -118,7 +118,7 @@ const scrapeHarps = async () => {
                 productModel,
                 productType,
                 productSize,
-                // productImageUrl,
+                productImageUrl,
                 // divider: '00000000000000000000000'
             }
             /***********

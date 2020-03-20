@@ -1,3 +1,5 @@
+- make sure Vanderbilt-e photos are fixed
+
 - get cron job on heroku
 
 - add stock photo for when photos not found

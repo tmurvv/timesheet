@@ -23,6 +23,7 @@ exports.shortFileNameFn = (longFilePath) => {
         }
         //if name not yet valid, remove last section and call function again
         longFilePath = longFilePath.substring(0, idx);
+        
         return this.shortFileNameFn(longFilePath);
     } 
 };
