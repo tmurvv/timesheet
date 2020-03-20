@@ -59,26 +59,26 @@ const scrapeHarps = async () => {
         console.log(productTable.length);
         productTable.each(async function (item) {
             const id=uuid();
-            let productTitle = seller.hasOwnProperty('titleFn') ? seller.titleFn($, this) : '';
-            console.log('product title:', productTitle);
-            // let productPrice = seller.hasOwnProperty('productPriceFn') ? seller.productPriceFn($, this) : '';
-            // // console.log('price primary:', productPrice);
-            // let productShortDesc = seller.hasOwnProperty('productShortDescFn') ? seller.productShortDescFn($, this) : '';
-            // // console.log( 'short desc primary:', productShortDesc);
-            let productLongDesc = seller.hasOwnProperty('productLongDescFn') ? seller.productLongDescFn($, this) : '';
-            // // console.log( 'Long desc primary:', productLongDesc);
+            let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? seller.titleFn($, this) : '';
+            // console.log('product title:', productTitle);
+            let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? seller.priceFn($, this) : '';
+            // console.log('price primary:', productPrice);
+            let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? seller.shortDescFn($, this) : '';
+            // console.log( 'short desc primary:', productShortDesc);
+            let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? seller.longDescFn($, this) : '';
+            // console.log( 'Long desc primary:', productLongDesc);
             // let longProductImageUrl = seller.hasOwnProperty('longProductImageUrlFn') ? seller.longProductImageUrlFn($, this) : '';
             // if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = seller.specialFileNameFn(longProductImageUrl);
             // // console.log( 'longProductImageUrl primary:', longProductImageUrl);
             if (typeof seller.linkFn === 'function') {          
-                const secondaryUrl = seller.linkUrlFn($, this);
+                const secondaryUrl = seller.findLinkUrlFn($, this);
                 const secondaryUrlData = await seller.linkFn(seller, secondaryUrl);
                 if (secondaryUrlData) {
-                    // console.log('imin secondary url', secondaryUrlData)
-                    // if (!productTitle && secondaryUrlData.productTitle) productTitle = secondaryUrlData.productTitle;
-            //         if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = secondaryUrlData.productShortDesc;
-            //         if (!productPrice && secondaryUrlData.productPrice) productPrice = secondaryUrlData.productPrice;
-                    if (!productLongDesc && secondaryUrlData.productLongDesc) productLongDesc = secondaryUrlData.productLongDesc;
+                // console.log('imin secondary url', secondaryUrlData)
+                if (!productTitle && secondaryUrlData.productTitle) productTitle = secondaryUrlData.productTitle;
+                if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = secondaryUrlData.productShortDesc;
+                if (!productPrice && secondaryUrlData.productPrice) productPrice = secondaryUrlData.productPrice;
+                if (!productLongDesc && secondaryUrlData.productLongDesc) productLongDesc = secondaryUrlData.productLongDesc;
             //         if (!longProductImageUrl && secondaryUrlData.longProductImageUrl) longProductImageUrl = secondaryUrlData.longProductImageUrl;
                 }          
             }
@@ -113,12 +113,12 @@ const scrapeHarps = async () => {
                 // sellerCountry: seller.sellerCountry,
                 // sellerRegion: seller.sellerRegion,
                 productTitle,
+                productPrice,
                 // productMaker,
                 // productModel,
                 // productType,
                 // productSize,
-                // productShortDesc,
-                // productPrice,
+                productShortDesc,               
                 productLongDesc,
                 // productImageUrl,
                 // divider: '00000000000000000000000'
@@ -129,14 +129,14 @@ const scrapeHarps = async () => {
             if (seller.hasOwnProperty('customFns') && seller.customFns) {
                 seller.customFns.map(customFuncString => {
                     customFunc = leaf(seller, customFuncString);
-                    // console.log(productLongDesc)
+                    //console.log('cust fn', productLongDesc)
                     return product = customFunc(product);
                     // console.log('maybe', customFunc(productLongDesc));
                 });
             }
             // if (productModel) usedHarpsNorthAmerica.push(product);
             usedHarpsNorthAmerica.push(product);
-            // console.log('scraper usedHarpsNA', usedHarpsNorthAmerica);
+            console.log('scraper usedHarpsNA', usedHarpsNorthAmerica);
             fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
                 if (err) throw err;
                 // console.log('Saved!');

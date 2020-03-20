@@ -6,12 +6,17 @@ const VanderbiltMusic_e = new SellerLinkPaths(
     'Vanderbilt', //name
     'https://vanderbiltmusic.com/harp-sales/used-harps/', //productsurl
     '.Even', //mainPathId
-    ($, item) => $(item).find('a').text().trim(), //titleFn
     ['longDescLinkCustomFn'], //customFns
-    ($, item) => $(item).find('.ProductDetails').find('a').attr('href'), //link url fn
+    ($, item) => $(item).find('a').text().trim(), //titleFn
+    ($, item) => $(item).find('em').text().trim(), //priceFn 
+    () => 'Short description not available', //shortDescFn
+    null, //longDescFn  
+    ($, item) => $(item).find('.ProductDetails').find('a').attr('href'), //findLinkUrlFn
     '.ProductMain', //mainPathIdLink
-    '', //titlelinkfn
-    ($, item) => $(item).find('.prodAccordionContent').text() //long desc link fn
+    null, //titleLinkFn
+    null, //priceLinkFn
+    null, //shortDescLinkFn
+    ($, item) => $(item).find('.prodAccordionContent').text() //longDescLinkFn
 );
 VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
     let productLongDesc = product.productLongDesc;
@@ -24,12 +29,15 @@ VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
 //-----
 const HarpConnection = new SellerPaths(
         'Harp Connection', //name
-        'https://www.harpconnection.com/harpstore/harp-UsedHarps.html', //products Url
+        'https://www.harpconnection.com/harpstore/harp-UsedHarps.html', //productsUrl
         '.plusplus', //mainPathId
+        null, //customFns 
         ($, item) => $(item).find('h3').text().trim(), //titleFn
-        '' //custom Fns
+        ($, item) => $(item).parent().parent().find('.THCsmall').text().trim(), //priceFn,
+        () => "Short Description not available.", //shortDescFn
+        () => "Long Description not available"  //longDescFn              
     );
 // console.log(VanderbiltMusic_e);
 const sellerArray = [VanderbiltMusic_e, HarpConnection];
-console.log('sellers.js', sellerArray);
+// console.log('sellers.js', sellerArray);
 exports.sellerArray = sellerArray;

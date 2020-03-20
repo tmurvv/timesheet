@@ -6,12 +6,14 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
     // constructor(name, productsUrl) {
     //     super(name, productsUrl)
     // }
-    constructor(name, productsUrl, mainPathId, titleFn, customFns,
-                    linkUrlFn, mainPathIdLink, titleLinkFn, longDescLinkFn) {
-        super(name, productsUrl, mainPathId, titleFn, customFns)
-        this.linkUrlFn = linkUrlFn;
+    constructor(name, productsUrl, mainPathId, customFns, titleFn, priceFn, shortDescFn, longDescFn,
+                    findLinkUrlFn, mainPathIdLink, titleLinkFn, priceLinkFn, shortDescLinkFn, longDescLinkFn) {
+        super(name, productsUrl, mainPathId, customFns, titleFn, priceFn, shortDescFn, longDescFn)
+        this.findLinkUrlFn = findLinkUrlFn;
         this.mainPathIdLink = mainPathIdLink;
         this.titleLinkFn = titleLinkFn;
+        this.priceLinkFn = priceLinkFn;
+        this.shortDescLinkFn = shortDescLinkFn;
         this.longDescLinkFn = longDescLinkFn;
     }
     parseStoreSecondaryInfo(seller, data) {
@@ -19,22 +21,22 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
         const $ = cheerio.load(html);   
         const thisProduct = $('.ProductMain');
         
-        const productTitle = seller.hasOwnProperty('productTitleLinkFn') ? seller.productTitleLinkFn($, thisProduct) : '';
+        const productTitle = seller.hasOwnProperty('titleLinkFn')&&seller.titleLinkFn ? seller.titleLinkFn($, thisProduct) : '';
         //console.log('title secondary:', productTitle);
-        const productPrice = seller.hasOwnProperty('productPriceLinkFn') ? seller.productPriceLinkFn($, thisProduct) : '';
+        const productPrice = seller.hasOwnProperty('priceLinkFn')&&seller.priceLinkFn ? seller.priceLinkFn($, thisProduct) : '';
         //console.log('price secondary:', productPrice);
-        const productShortDesc = seller.hasOwnProperty('productShortDescLinkFn') ? seller.productShortDescLinkFn($, thisProduct) : '';
+        const productShortDesc = seller.hasOwnProperty('shortDescLinkFn')&&seller.shortDescLinkFn ? seller.shortDescLinkFn($, thisProduct) : '';
         //console.log( 'short desc secondary:', productShortDesc);
-        const productLongDesc = seller.hasOwnProperty('longDescLinkFn') ? seller.longDescLinkFn($, thisProduct) : '';
+        const productLongDesc = seller.hasOwnProperty('longDescLinkFn')&&seller.longDescLinkFn ? seller.longDescLinkFn($, thisProduct) : '';
         
         const longProductImageUrl = seller.hasOwnProperty('longProductImageUrlLinkFn') ? seller.longProductImageUrlLinkFn($, thisProduct) : '';
         //console.log( 'longProductImageUrl secondary:', longProductImageUrl);
         const product = {
-            // productTitle,
-            // productShortDesc,
-            // productPrice,
+            productTitle,
+            productShortDesc,
+            productPrice,
             productLongDesc,
-            // longProductImageUrl
+            longProductImageUrl
         }
         // console.log('pasre sec product', product) 
         return product;
