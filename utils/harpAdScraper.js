@@ -8,11 +8,9 @@ const { shortFileNameFn, checkBadImages, findMaker, findModel, findProductType, 
 // const sellerArrayObject = require('../assets/constants/sellerArray');
 // const sellerArray = sellerArrayObject.sellerArray;
 const sellerArrayObject = require('../assets/constants/sellers');
-console.log(typeof(sellerArrayObject))
 const sellerArray = sellerArrayObject.sellerArray;
-console.log(sellerArray.length)
-const { SellerPaths } = require('../assets/classes/SellerPaths');
-const { SellerLinkPaths } = require('../assets/classes/SellerLinkPaths');
+//const { SellerPaths } = require('../assets/classes/SellerPaths');
+//const { SellerLinkPaths } = require('../assets/classes/SellerLinkPaths');
 
 console.log('scrpaer', sellerArray)
 
