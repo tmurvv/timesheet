@@ -13,6 +13,10 @@ exports.productMakesModels = {
             'harptype': 'pedal',
             'strings': '47'
         },     
+        'Diana': {
+            'harptype': 'pedal',
+            'strings': '47'
+        },     
         'Daphne 47 EX': {
             'harptype': 'pedal',
             'strings': '47',

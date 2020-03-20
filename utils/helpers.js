@@ -55,10 +55,13 @@ exports.findMaker = (title) => {
     return productMaker;
 }
 function getModelList() {
+    //leaf function helps find nested object keys,
+    const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+
     const productKeys = [];
 
     Object.keys(productMakesModels).map(maker => {
-        productKeys.push(...Object.keys(leaf(productMakesModels, maker)));
+        productKeys.push(...Object.keys(leafHelper(productMakesModels, maker)));
     });
 
     return new Set(productKeys);
@@ -76,21 +79,27 @@ exports.findModel = (title) => {
 }
 
 exports.findProductType = ((maker, model) =>{
+    //leaf function helps find nested object keys,
+    const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+
     if (!model||!maker) return 'no model found';
    
-    const makerHarps = leaf(productMakesModels, maker);
-    if (leaf(makerHarps, model)&&leaf(makerHarps, model).harptype) {
-        return leaf(makerHarps, model).harptype;
+    const makerHarps = leafHelper(productMakesModels, maker);
+    if (leafHelper(makerHarps, model)&&leafHelper(makerHarps, model).harptype) {
+        return leafHelper(makerHarps, model).harptype;
     } else {
         return 'harp type not found';
     }
 });
 exports.findProductSize = ((maker, model) =>{
+    //leaf function helps find nested object keys,
+    const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+
     if (!maker||!model) return 'no model found';
    
-    const makerHarps = leaf(productMakesModels, maker);
-    if (leaf(makerHarps, model)&&leaf(makerHarps, model).strings) {
-        return leaf(makerHarps, model).strings;
+    const makerHarps = leafHelper(productMakesModels, maker);
+    if (leafHelper(makerHarps, model)&&leafHelper(makerHarps, model).strings) {
+        return leafHelper(makerHarps, model).strings;
     } else {
         return 'harp size not found';
     }

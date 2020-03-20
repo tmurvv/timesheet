@@ -3,7 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
 const { downloadImage } = require('../utils/downloadWebSiteImages.js');
-const { shortFileNameFn, checkBadImages, leaf } = require('./helpers.js');
+const { shortFileNameFn, checkBadImages, findMaker, findModel, findProductType, findProductSize, leaf } = require('./helpers.js');
 
 // const sellerArrayObject = require('../assets/constants/sellerArray');
 // const sellerArray = sellerArrayObject.sellerArray;
@@ -82,15 +82,15 @@ const scrapeHarps = async () => {
             //         if (!longProductImageUrl && secondaryUrlData.longProductImageUrl) longProductImageUrl = secondaryUrlData.longProductImageUrl;
                 }          
             }
-            // // console.log('title:', productTitle);
-            // let productMaker = seller.productMakerFn(productTitle);
-            // // console.log('product maker:', productMaker);
-            // let productModel = seller.productModelFn(productTitle);
-            // // console.log('product model:', productModel);
-            // let productType = seller.hasOwnProperty('productTypeFn')?seller.productTypeFn(productMaker, productModel):'';
-            // // console.log('product Type:', productType);
-            // let productSize = seller.hasOwnProperty('productSizeFn')?seller.productSizeFn(productMaker, productModel):'';
-            // // console.log('product Type:', productType);
+            // console.log('title:', productTitle);
+            let productMaker = findMaker(productTitle);
+            // console.log('product maker:', productMaker);
+            let productModel = findModel(productTitle);
+            // console.log('product model:', productModel);
+            let productType = findProductType(productMaker, productModel);
+            // console.log('product Type:', productType);
+            let productSize = findProductSize(productMaker, productModel);
+            // console.log('product Type:', productType);
             // if (seller.hasOwnProperty('specialLongDescFn')) productLongDesc = seller.specialLongDescFn(productLongDesc);
             // let shortProductImageUrl;
             // if (seller.hasOwnProperty('badImages') && productModel) {
@@ -114,12 +114,12 @@ const scrapeHarps = async () => {
                 // sellerRegion: seller.sellerRegion,
                 productTitle,
                 productPrice,
-                // productMaker,
-                // productModel,
-                // productType,
-                // productSize,
                 productShortDesc,               
                 productLongDesc,
+                productMaker,
+                productModel,
+                productType,
+                productSize,
                 // productImageUrl,
                 // divider: '00000000000000000000000'
             }
