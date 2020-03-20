@@ -92,12 +92,12 @@ const scrapeHarps = async () => {
             let productSize = findProductSize(productMaker, productModel);
             // console.log('product Type:', productType);
             // if (seller.hasOwnProperty('specialLongDescFn')) productLongDesc = seller.specialLongDescFn(productLongDesc);
-            // let shortProductImageUrl;
+            let shortProductImageUrl;
             // if (seller.hasOwnProperty('badImages') && productModel) {
             //     if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
             // }
-            // if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(longProductImageUrl);
-            // const productImageUrl = seller.hasOwnProperty('imageFromWeb')?longProductImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
+            if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);
+            // productImageUrl = seller.hasOwnProperty('imageFromWeb')?productImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
 
             
                 
@@ -120,7 +120,7 @@ const scrapeHarps = async () => {
                 productModel,
                 productType,
                 productSize,
-                productImageUrl,
+                // productImageUrl,
                 // divider: '00000000000000000000000'
             }
             /***********

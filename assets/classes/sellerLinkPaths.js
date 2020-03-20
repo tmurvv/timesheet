@@ -33,14 +33,14 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
         //console.log( 'short desc secondary:', productShortDesc);
         const productLongDesc = seller.hasOwnProperty('longDescLinkFn')&&seller.longDescLinkFn ? seller.longDescLinkFn($, thisProduct) : '';
         
-        const productImageUrl = seller.hasOwnProperty('imageUrlLinkFn') ? seller.imageUrlLinkFn($, thisProduct) : '';
+        // const productImageUrl = seller.hasOwnProperty('imageUrlLinkFn') ? seller.imageUrlLinkFn($, thisProduct) : '';
         //console.log( 'longProductImageUrl secondary:', longProductImageUrl);
         const product = {
             productTitle,
             productShortDesc,
             productPrice,
             productLongDesc,
-            productImageUrl
+            // productImageUrl
         }
         // console.log('pasre sec product', product) 
         return product;

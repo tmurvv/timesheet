@@ -22,6 +22,7 @@ const VanderbiltMusic_e = new SellerLinkPaths(
     ($, item) => $(item).find('.prodAccordionContent').text(), //longDescLinkFn,
     null //imageUrlLinkFn
 );
+//() => 'Prelude_62530.jpg',
 VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
     let productLongDesc = product.productLongDesc;
     productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
@@ -30,6 +31,7 @@ VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
 
     return {...product, productLongDesc }
 }
+VanderbiltMusic_e.imageFromWeb = () => true;
 //-----
 const HarpConnection = new SellerPaths(
         'Harp Connection', //name
