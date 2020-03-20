@@ -1,8 +1,8 @@
 const { SellerPaths } = require('../classes/SellerPaths');
-const { SellerLinkPaths } = require('../classes/SellerLinkPaths');
+const { SellerPathsLink } = require('../classes/SellerPathsLink');
 
 //-----
-const VanderbiltMusic_e = new SellerLinkPaths(
+const VanderbiltMusic_e = new SellerPathsLink(
     'Vanderbilt', //name
     'USA', //country
     'Mid-West', //region
