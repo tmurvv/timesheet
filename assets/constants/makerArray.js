@@ -132,6 +132,14 @@ exports.productMakesModels = {
         'Clio': {
             'harptype': 'lever',
             'strings': '44',
+        },      
+        'DHC 32': {
+            'harptype': 'lever',
+            'strings': '32',
+        },     
+        'DHC 36': {
+            'harptype': 'lever',
+            'strings': '36',
         }      
     }, 
     'Wurlitzer': {}, 
@@ -232,6 +240,10 @@ exports.productMakesModels = {
         'Celtic II': {
             'harptype': 'lever',
             'strings': '34'
+        },
+        'Nino': {
+            'harptype': 'lever',
+            'strings': '30'
         },
         'othernames': ['Tripplett', 'Triplet', 'Tripplet']
     },

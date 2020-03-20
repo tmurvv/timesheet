@@ -1,6 +1,6 @@
-- make sure Vanderbilt-e photos are fixed
-
 - get cron job on heroku
+
+- HarpsEtc long description, short description cleanup
 
 - add stock photo for when photos not found
 

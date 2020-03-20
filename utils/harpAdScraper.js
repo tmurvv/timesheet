@@ -27,9 +27,8 @@ const scrapeHarps = async () => {
             // console.log( 'short desc primary:', productShortDesc);
             let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? seller.longDescFn($, this) : '';
             // console.log( 'Long desc primary:', productLongDesc);
-            let productImageUrl = seller.hasOwnProperty('imageUrlFn') ? seller.imageUrlFn($, this) : '';
-            // if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = seller.specialFileNameFn(longProductImageUrl);
-            // // console.log( 'longProductImageUrl primary:', longProductImageUrl);
+            let productImageUrl = seller.hasOwnProperty('imageUrlFn')&&seller.imageUrlFn ? seller.imageUrlFn($, this) : '';
+            // console.log( 'longProductImageUrl primary:', longProductImageUrl);
             if (typeof seller.linkFn === 'function') {          
                 const secondaryUrl = seller.findLinkUrlFn($, this);
                 const secondaryUrlData = await seller.linkFn(seller, secondaryUrl);
@@ -53,19 +52,11 @@ const scrapeHarps = async () => {
             // console.log('product Type:', productType);
             // if (seller.hasOwnProperty('specialLongDescFn')) productLongDesc = seller.specialLongDescFn(productLongDesc);
             let shortProductImageUrl;
-            // if (seller.hasOwnProperty('badImages') && productModel) {
-            //     if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
-            // }
+            if (seller.hasOwnProperty('badImages') && productModel) {
+                if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
+            }
             if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);
             productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
-
-            
-                
-            // {
-            //         customFns.map(sellerFunc => leaf(seller, longDescLinkCustomFn))
-            //     //     customFns.map(customFn => customFn[1](customFn[0]))
-            //     // productLongDesc = seller.formatLongDescLink(productLongDesc);
-            // }
             
             let product = {
                 id,
