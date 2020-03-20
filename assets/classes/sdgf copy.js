@@ -3,9 +3,6 @@ const cheerio = require('cheerio');
 const { SellerPaths } = require('./SellerPaths');
 
 exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
-    // constructor(name, productsUrl) {
-    //     super(name, productsUrl)
-    // }
     constructor(name, productsUrl, mainPathId, titleFn, customFns,
                     linkUrlFn, mainPathIdLink, titleLinkFn, longDescLinkFn) {
         super(name, productsUrl, mainPathId, titleFn, customFns)

@@ -5,36 +5,39 @@ const uuid = require('uuid');
 const { downloadImage } = require('../utils/downloadWebSiteImages.js');
 const { shortFileNameFn, checkBadImages, leaf } = require('./helpers.js');
 
-const sellerArrayObject = require('../assets/constants/sellerArray');
+// const sellerArrayObject = require('../assets/constants/sellerArray');
 // const sellerArray = sellerArrayObject.sellerArray;
-const sellerArray = [];
+const sellerArrayObject = require('../assets/constants/sellers');
+console.log(typeof(sellerArrayObject))
+const sellerArray = sellerArrayObject.sellerArray;
+console.log(sellerArray.length)
 const { SellerPaths } = require('../assets/classes/SellerPaths');
 const { SellerLinkPaths } = require('../assets/classes/SellerLinkPaths');
 
+console.log('scrpaer', sellerArray)
+
 // const { Seller } = require('../assets/classes/Seller');
 //-----
-const VanderbiltMusic_e = new SellerLinkPaths(
-        'Vanderbilt', //name
-        'https://vanderbiltmusic.com/harp-sales/used-harps/', //productsurl
-        '.Even', //mainPathId
-        ($, item) => $(item).find('a').text().trim(), //titleFn
-        ['longDescLinkCustomFn'], //customFns
-        ($, item) => $(item).find('.ProductDetails').find('a').attr('href'), //link url fn
-        '.ProductMain', //mainPathIdLink
-        '', //titlelinkfn
-        ($, item) => $(item).find('.prodAccordionContent').text() //long desc link fn
-    );
-VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
-    let productLongDesc = product.productLongDesc;
-    productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
-    if (productLongDesc.indexOf('HarpsNew') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsNew'));
-    if (productLongDesc.indexOf('HarpsUsed') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsUsed')).replace('  ', ' ');
-    
-    product = {...product, productLongDesc }
-    console.log('prod', product);
-    return product;
-}
-//-----
+// const VanderbiltMusic_e = new SellerLinkPaths(
+//         'Vanderbilt', //name
+//         'https://vanderbiltmusic.com/harp-sales/used-harps/', //productsurl
+//         '.Even', //mainPathId
+//         ($, item) => $(item).find('a').text().trim(), //titleFn
+//         ['longDescLinkCustomFn'], //customFns
+//         ($, item) => $(item).find('.ProductDetails').find('a').attr('href'), //link url fn
+//         '.ProductMain', //mainPathIdLink
+//         '', //titlelinkfn
+//         ($, item) => $(item).find('.prodAccordionContent').text() //long desc link fn
+//     );
+// VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
+//     let productLongDesc = product.productLongDesc;
+//     productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
+//     if (productLongDesc.indexOf('HarpsNew') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsNew')).replace('  ', ' ');
+//     if (productLongDesc.indexOf('HarpsUsed') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsUsed')).replace('  ', ' ');
+//     // console.log('custom',productLongDesc)
+//     return {...product, productLongDesc }
+// }
+// // -----
 // const HarpConnection = new SellerPaths(
 //         'Harp Connection', //name
 //         'https://www.harpconnection.com/harpstore/harp-UsedHarps.html', //products Url
@@ -42,8 +45,8 @@ VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
 //         ($, item) => $(item).find('h3').text().trim(), //titleFn
 //         '' //custom Fns
 //     );
-console.log(VanderbiltMusic_e);
-sellerArray.push(VanderbiltMusic_e);
+// console.log(VanderbiltMusic_e);
+// sellerArray.push(VanderbiltMusic_e, HarpConnection);
 
 const scrapeHarps = async () => {
     const usedHarpsNorthAmerica = [];
@@ -123,11 +126,11 @@ const scrapeHarps = async () => {
             /***********
              * custom Functions
              ***********/
-            if (seller.hasOwnProperty('customFns')) {
+            if (seller.hasOwnProperty('customFns') && seller.customFns) {
                 seller.customFns.map(customFuncString => {
                     customFunc = leaf(seller, customFuncString);
-                    console.log(productLongDesc)
-                    product = customFunc(product);
+                    // console.log(productLongDesc)
+                    return product = customFunc(product);
                     // console.log('maybe', customFunc(productLongDesc));
                 });
             }
