@@ -8,13 +8,12 @@ const VanderbiltMusic_e = new SellerPathsLink(
     'Mid-West', //region
     'https://vanderbiltmusic.com/harp-sales/used-harps/', //productsurl
     '.Even', //mainPathId
-    ['longDescLinkCustomFn'], //customFns
+    ['longDescLinkCustom', 'imageFromWebCustom'], //customFns
     ($, item) => $(item).find('a').text().trim(), //titleFn
     ($, item) => $(item).find('em').text().trim(), //priceFn 
     () => 'Short description not available', //shortDescFn
     null, //longDescFn
-    // ($, item) => $(item).find('.ProductImage').find('img').attr('src'), //imageUrl
-    () => 'https://onestop-api-staging.herokuapp.com/assets/img/Prelude_62530.jpg',
+    ($, item) => $(item).find('.ProductImage').find('img').attr('src'), //imageUrl
     ($, item) => $(item).find('.ProductDetails').find('a').attr('href'), //findLinkUrlFn
     '.ProductMain', //mainPathIdLink
     null, //titleLinkFn
@@ -23,8 +22,9 @@ const VanderbiltMusic_e = new SellerPathsLink(
     ($, item) => $(item).find('.prodAccordionContent').text(), //longDescLinkFn,
     null //imageUrlLinkFn
 );
-() => 'Prelude_62530.jpg',
-VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
+
+// () => 'https://onestop-api-staging.herokuapp.com/assets/img/Prelude_62530.jpg',
+VanderbiltMusic_e.longDescLinkCustom = (product) => {
     let productLongDesc = product.productLongDesc;
     productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
     if (productLongDesc.indexOf('HarpsNew') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsNew'));
@@ -32,7 +32,7 @@ VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
 
     return {...product, productLongDesc }
 }
-VanderbiltMusic_e.imageFromWeb = () => true;
+VanderbiltMusic_e.imageFromWebCustom = (product) => product;
 //-----
 const HarpConnection = new SellerPaths(
         'Harp Connection', //name

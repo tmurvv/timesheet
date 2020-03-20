@@ -95,7 +95,7 @@ const scrapeHarps = async () => {
             //     if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
             // }
             if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);
-            productImageUrl = seller.hasOwnProperty('imageFromWeb')?productImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
+            productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
 
             
                 
@@ -128,7 +128,7 @@ const scrapeHarps = async () => {
                 seller.customFns.map(customFuncString => {
                     customFunc = leaf(seller, customFuncString);
                     //console.log('cust fn', productLongDesc)
-                    return product = customFunc(product);
+                    product = customFunc(product);
                     // console.log('maybe', customFunc(productLongDesc));
                 });
             }
