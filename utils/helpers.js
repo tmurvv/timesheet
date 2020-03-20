@@ -1,3 +1,5 @@
+const cheerio = require('cheerio');
+const axios = require('axios');
 const { productMakesModels } = require('../assets/constants/makerArray');
 
 /*********
@@ -5,10 +7,41 @@ const { productMakesModels } = require('../assets/constants/makerArray');
  *********/
 //leaf function helps find nested object keys,
 exports.leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
-
+function parseStoreSecondaryInfo(seller, data) {
+    const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  
+    const $ = cheerio.load(html);   
+    const thisProduct = $(seller.mainPathIdLink);
+    
+    const productTitle = seller.hasOwnProperty('titleLinkFn')&&seller.titleLinkFn ? seller.titleLinkFn($, thisProduct) : '';
+    //console.log('title secondary:', productTitle);
+    const productPrice = seller.hasOwnProperty('priceLinkFn')&&seller.priceLinkFn ? seller.priceLinkFn($, thisProduct) : '';
+    //console.log('price secondary:', productPrice);
+    const productShortDesc = seller.hasOwnProperty('shortDescLinkFn')&&seller.shortDescLinkFn ? seller.shortDescLinkFn($, thisProduct) : '';
+    //console.log( 'short desc secondary:', productShortDesc);
+    const productLongDesc = seller.hasOwnProperty('longDescLinkFn')&&seller.longDescLinkFn ? seller.longDescLinkFn($, thisProduct) : '';
+    const productImageUrl = seller.hasOwnProperty('imageUrlLinkFn') ? seller.imageUrlLinkFn($, thisProduct) : '';
+    //console.log( 'longProductImageUrl secondary:', productImageUrl);
+    const product = {
+        productTitle,
+        productShortDesc,
+        productPrice,
+        productLongDesc,
+        productImageUrl
+    }
+    // console.log('pasre sec product', product) 
+    return product;
+}
 /***********
  * helper functions
  ***********/
+exports.linkFn = async (seller, url) => {
+    try {
+        const response = await axios(url);        
+        return parseStoreSecondaryInfo(seller, response.data);    
+    } catch (err) {
+        console.log(url, 'timed out', err.message);
+    }           
+}
 
 exports.shortFileNameFn = (longFilePath) => {
     if (longFilePath) {
@@ -113,4 +146,8 @@ exports.checkBadImages = (model, badImages) => {
     });
     
     return stockUrl;
+}
+
+exports.cleanText = (text) => {
+    return text.replace(/\/n/g, '').replace(/\/t/g, '').replace(/\\n/g, '').replace(/\\t/g, '').trim();
 }

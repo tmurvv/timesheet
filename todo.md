@@ -1,6 +1,6 @@
 - get cron job on heroku
 
-- HarpsEtc long description, short description cleanup
+- check Phoenix Harps photos
 
 - add stock photo for when photos not found
 

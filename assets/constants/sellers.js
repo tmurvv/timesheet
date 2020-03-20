@@ -174,14 +174,14 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
     );
     HarpsEtc.sellerAxiosResponsePath = '';
     //#endregion
-    //#region 
-    const VirginiaHarpCentre = new SellerPathsLink(
+    //#region VIrginia Harp Center
+    const VirginiaHarpCenter = new SellerPathsLink(
         'Virginia Harp Center', //name
         'USA', //country
         'Eastern', //region
         'https://www.vaharpcenter.com/harps/used-harps/', //productsurl
         '.category', //mainPathId
-        ['specialFileNameFn'], //customFns
+        null, //customFns
         ($, item) => $(item).find('.manufacturerName').text().trim(), //titleFn
         null, //priceFn
         () => "Short Description not available.", //shortDescFn
@@ -192,9 +192,8 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
         null, //titleLinkFn
         ($, item) => {   //priceLinkFn
             let priceString = $(item).find('.subheader').text().trim();
-            if(priceString) {
+            if(priceString) {   
                 const dollarSignIdx = priceString.indexOf('$');
-                //const nonNumberIndex = priceString.indexOf( /^(?!.*[0-9]{1,2}([,.][0-9]{1,2})?$)/ );  //NOT YET IMPLEMENTED = non-number regex
                 const nonNumberIndex = priceString.indexOf('\t\t\t\tAdditional Information');
                 if (nonNumberIndex) {
                     priceString = priceString.substring(dollarSignIdx, nonNumberIndex).trim();
@@ -215,21 +214,18 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
             }
         }, 
         ($, item) => $(item).find('#fancy_photos_id0').attr('href') //imageUrlLinkFn
-    );
-    VirginiaHarpCentre.specialFileNameFn = (product) => {
-        return product = {...product, productImageUrl: product.productImageUrl.replace(/\/n/g, '').replace(/\/t/g, '').replace(/\\n/g, '').replace(/\\t/g, '')}
-    }
+    );    
     //#endregion
 //#endregion
 
 exports.sellerArray = [
-    // HarpConnection, 
-    // VanderbiltMusic_e, 
-    // VanderbiltMusic_o,
-    // AtlantaHarpCenter_o, 
-    // AtlantaHarpCenter_e,
-    // HarpsEtc,
-    // PhoenixHarps,
-    // MurvihillHarpServices,
-    VirginiaHarpCentre
+    HarpConnection, 
+    VanderbiltMusic_e, 
+    VanderbiltMusic_o,
+    AtlantaHarpCenter_o, 
+    AtlantaHarpCenter_e,
+    HarpsEtc,
+    PhoenixHarps,
+    MurvihillHarpServices,
+    VirginiaHarpCenter
 ];

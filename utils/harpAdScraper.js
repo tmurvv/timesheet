@@ -3,7 +3,17 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
 const { downloadImage } = require('../utils/downloadWebSiteImages.js');
-const { shortFileNameFn, checkBadImages, findMaker, findModel, findProductType, findProductSize, leaf } = require('./helpers.js');
+const { 
+    shortFileNameFn, 
+    checkBadImages, 
+    findMaker, 
+    findModel, 
+    findProductType, 
+    findProductSize,
+    linkFn,
+    cleanText, 
+    leaf,
+ } = require('./helpers.js');
 
 const sellerArrayObject = require('../assets/constants/sellers');
 const sellerArray = sellerArrayObject.sellerArray;
@@ -15,7 +25,7 @@ const scrapeHarps = async () => {
         // console.log('html', html)  
         const $ = cheerio.load(html);
         const productTable = $(seller.mainPathId);
-        console.log('scrapeHarps seler', seller.name)
+        console.log('scrapeHarps seller', seller.name)
         console.log(productTable.length);
         productTable.each(async function (item) {
             const id=uuid();
@@ -25,19 +35,19 @@ const scrapeHarps = async () => {
             // console.log('price primary:', productPrice);
             let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? seller.shortDescFn($, this) : '';
             // console.log( 'short desc primary:', productShortDesc);
-            let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? seller.longDescFn($, this) : '';
+            let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
             // console.log( 'Long desc primary:', productLongDesc);
             let productImageUrl = seller.hasOwnProperty('imageUrlFn')&&seller.imageUrlFn ? seller.imageUrlFn($, this) : '';
             // console.log( 'longProductImageUrl primary:', longProductImageUrl);
-            if (typeof seller.linkFn === 'function') {          
+            if (seller.hasOwnProperty('findLinkUrlFn')&&seller.findLinkUrlFn) {  
                 const secondaryUrl = seller.findLinkUrlFn($, this);
-                const secondaryUrlData = await seller.linkFn(seller, secondaryUrl);
+                const secondaryUrlData = await linkFn(seller, secondaryUrl);
                 if (secondaryUrlData) {
                     // console.log('imin secondary url', secondaryUrlData)
                     if (!productTitle && secondaryUrlData.productTitle) productTitle = secondaryUrlData.productTitle;
                     if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = secondaryUrlData.productShortDesc;
                     if (!productPrice && secondaryUrlData.productPrice) productPrice = secondaryUrlData.productPrice;
-                    if (!productLongDesc && secondaryUrlData.productLongDesc) productLongDesc = secondaryUrlData.productLongDesc;
+                    if (!productLongDesc && secondaryUrlData.productLongDesc) productLongDesc = cleanText(secondaryUrlData.productLongDesc);
                     if (!productImageUrl && secondaryUrlData.productImageUrl) productImageUrl = secondaryUrlData.productImageUrl;
                 }          
             }
@@ -79,27 +89,27 @@ const scrapeHarps = async () => {
              ***********/
             if (seller.hasOwnProperty('customFns') && seller.customFns) {
                 seller.customFns.map(customFuncString => {
-                    customFunc = leaf(seller, customFuncString);
-                    //console.log('cust fn', productLongDesc)
-                    product = customFunc(product);
-                    // console.log('maybe', customFunc(productLongDesc));
+                    try {
+                        customFunc = leaf(seller, customFuncString);
+                        product = customFunc(product);
+                    } catch (err) {
+                        console.log('From custom functions:', err.message)
+                    }
+                    
                 });
             }
-            // if (productModel) usedHarpsNorthAmerica.push(product);
-            usedHarpsNorthAmerica.push(product);
-            console.log('scraper usedHarpsNA', usedHarpsNorthAmerica);
+            if (productModel) usedHarpsNorthAmerica.push(product);
+            // console.log('scraper usedHarpsNA', usedHarpsNorthAmerica);
             fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
                 if (err) throw err;
                 // console.log('Saved!');
             });
-            
-            // if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(longProductImageUrl, shortProductImageUrl);
+            if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
         });         
     }
     
     sellerArray.map(async seller => {
         const response = await axios(seller.productsUrl);
-        // console.log('sellarmap responste data', response.data)
         parseStoreInfo(seller, response.data);
     });        
 }
