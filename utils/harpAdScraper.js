@@ -67,7 +67,7 @@ const scrapeHarps = async () => {
             // console.log( 'short desc primary:', productShortDesc);
             let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? seller.longDescFn($, this) : '';
             // console.log( 'Long desc primary:', productLongDesc);
-            // let longProductImageUrl = seller.hasOwnProperty('longProductImageUrlFn') ? seller.longProductImageUrlFn($, this) : '';
+            let productImageUrl = seller.hasOwnProperty('imageUrlFn') ? seller.imageUrlFn($, this) : '';
             // if (seller.hasOwnProperty('specialFileNameFn')) longProductImageUrl = seller.specialFileNameFn(longProductImageUrl);
             // // console.log( 'longProductImageUrl primary:', longProductImageUrl);
             if (typeof seller.linkFn === 'function') {          
@@ -110,8 +110,8 @@ const scrapeHarps = async () => {
             let product = {
                 id,
                 sellerName: seller.name,
-                // sellerCountry: seller.sellerCountry,
-                // sellerRegion: seller.sellerRegion,
+                sellerCountry: seller.country,
+                sellerRegion: seller.region,
                 productTitle,
                 productPrice,
                 productShortDesc,               
@@ -120,7 +120,7 @@ const scrapeHarps = async () => {
                 productModel,
                 productType,
                 productSize,
-                // productImageUrl,
+                productImageUrl,
                 // divider: '00000000000000000000000'
             }
             /***********

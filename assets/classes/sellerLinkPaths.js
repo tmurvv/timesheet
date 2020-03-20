@@ -6,15 +6,19 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
     // constructor(name, productsUrl) {
     //     super(name, productsUrl)
     // }
-    constructor(name, productsUrl, mainPathId, customFns, titleFn, priceFn, shortDescFn, longDescFn,
-                    findLinkUrlFn, mainPathIdLink, titleLinkFn, priceLinkFn, shortDescLinkFn, longDescLinkFn) {
-        super(name, productsUrl, mainPathId, customFns, titleFn, priceFn, shortDescFn, longDescFn)
+    constructor(name, country, region, productsUrl, mainPathId, customFns, //from Seller.js
+                    titleFn, priceFn, shortDescFn, longDescFn, imageUrlFn, //from SellerPaths.js
+                    findLinkUrlFn, mainPathIdLink, titleLinkFn, priceLinkFn, 
+                    shortDescLinkFn, longDescLinkFn, imageUrlLinkFn) {
+        super(name, country, region, productsUrl, mainPathId, customFns, //from Seller.js
+                titleFn, priceFn, shortDescFn, longDescFn, imageUrlFn) //from SellerPaths.js
         this.findLinkUrlFn = findLinkUrlFn;
         this.mainPathIdLink = mainPathIdLink;
         this.titleLinkFn = titleLinkFn;
         this.priceLinkFn = priceLinkFn;
         this.shortDescLinkFn = shortDescLinkFn;
         this.longDescLinkFn = longDescLinkFn;
+        this.imageUrlLinkFn = imageUrlLinkFn;
     }
     parseStoreSecondaryInfo(seller, data) {
         const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  
@@ -29,14 +33,14 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
         //console.log( 'short desc secondary:', productShortDesc);
         const productLongDesc = seller.hasOwnProperty('longDescLinkFn')&&seller.longDescLinkFn ? seller.longDescLinkFn($, thisProduct) : '';
         
-        const longProductImageUrl = seller.hasOwnProperty('longProductImageUrlLinkFn') ? seller.longProductImageUrlLinkFn($, thisProduct) : '';
+        const productImageUrl = seller.hasOwnProperty('imageUrlLinkFn') ? seller.imageUrlLinkFn($, thisProduct) : '';
         //console.log( 'longProductImageUrl secondary:', longProductImageUrl);
         const product = {
             productTitle,
             productShortDesc,
             productPrice,
             productLongDesc,
-            longProductImageUrl
+            productImageUrl
         }
         // console.log('pasre sec product', product) 
         return product;
