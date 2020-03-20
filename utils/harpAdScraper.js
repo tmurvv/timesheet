@@ -5,46 +5,8 @@ const uuid = require('uuid');
 const { downloadImage } = require('../utils/downloadWebSiteImages.js');
 const { shortFileNameFn, checkBadImages, findMaker, findModel, findProductType, findProductSize, leaf } = require('./helpers.js');
 
-// const sellerArrayObject = require('../assets/constants/sellerArray');
-// const sellerArray = sellerArrayObject.sellerArray;
 const sellerArrayObject = require('../assets/constants/sellers');
 const sellerArray = sellerArrayObject.sellerArray;
-//const { SellerPaths } = require('../assets/classes/SellerPaths');
-//const { SellerLinkPaths } = require('../assets/classes/SellerLinkPaths');
-
-console.log('scrpaer', sellerArray)
-
-// const { Seller } = require('../assets/classes/Seller');
-//-----
-// const VanderbiltMusic_e = new SellerLinkPaths(
-//         'Vanderbilt', //name
-//         'https://vanderbiltmusic.com/harp-sales/used-harps/', //productsurl
-//         '.Even', //mainPathId
-//         ($, item) => $(item).find('a').text().trim(), //titleFn
-//         ['longDescLinkCustomFn'], //customFns
-//         ($, item) => $(item).find('.ProductDetails').find('a').attr('href'), //link url fn
-//         '.ProductMain', //mainPathIdLink
-//         '', //titlelinkfn
-//         ($, item) => $(item).find('.prodAccordionContent').text() //long desc link fn
-//     );
-// VanderbiltMusic_e.longDescLinkCustomFn = (product) => {
-//     let productLongDesc = product.productLongDesc;
-//     productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
-//     if (productLongDesc.indexOf('HarpsNew') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsNew')).replace('  ', ' ');
-//     if (productLongDesc.indexOf('HarpsUsed') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsUsed')).replace('  ', ' ');
-//     // console.log('custom',productLongDesc)
-//     return {...product, productLongDesc }
-// }
-// // -----
-// const HarpConnection = new SellerPaths(
-//         'Harp Connection', //name
-//         'https://www.harpconnection.com/harpstore/harp-UsedHarps.html', //products Url
-//         '.plusplus', //mainPathId
-//         ($, item) => $(item).find('h3').text().trim(), //titleFn
-//         '' //custom Fns
-//     );
-// console.log(VanderbiltMusic_e);
-// sellerArray.push(VanderbiltMusic_e, HarpConnection);
 
 const scrapeHarps = async () => {
     const usedHarpsNorthAmerica = [];
@@ -72,12 +34,12 @@ const scrapeHarps = async () => {
                 const secondaryUrl = seller.findLinkUrlFn($, this);
                 const secondaryUrlData = await seller.linkFn(seller, secondaryUrl);
                 if (secondaryUrlData) {
-                // console.log('imin secondary url', secondaryUrlData)
-                if (!productTitle && secondaryUrlData.productTitle) productTitle = secondaryUrlData.productTitle;
-                if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = secondaryUrlData.productShortDesc;
-                if (!productPrice && secondaryUrlData.productPrice) productPrice = secondaryUrlData.productPrice;
-                if (!productLongDesc && secondaryUrlData.productLongDesc) productLongDesc = secondaryUrlData.productLongDesc;
-            //         if (!longProductImageUrl && secondaryUrlData.longProductImageUrl) longProductImageUrl = secondaryUrlData.longProductImageUrl;
+                    // console.log('imin secondary url', secondaryUrlData)
+                    if (!productTitle && secondaryUrlData.productTitle) productTitle = secondaryUrlData.productTitle;
+                    if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = secondaryUrlData.productShortDesc;
+                    if (!productPrice && secondaryUrlData.productPrice) productPrice = secondaryUrlData.productPrice;
+                    if (!productLongDesc && secondaryUrlData.productLongDesc) productLongDesc = secondaryUrlData.productLongDesc;
+                    if (!productImageUrl && secondaryUrlData.productImageUrl) productImageUrl = secondaryUrlData.productImageUrl;
                 }          
             }
             // console.log('title:', productTitle);
