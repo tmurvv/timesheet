@@ -23,3 +23,5 @@
 - add jsdocs
 
 - implement othernames
+
+- refresh makesModelsData in viewController

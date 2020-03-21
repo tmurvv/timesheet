@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-// const usedHarps = require('../assets/constants/usedHarpList.json');
 const { productMakesModels } = require('../assets/constants/makerArray');
 
 exports.getUsedHarp = (req, res) => {
@@ -9,7 +8,7 @@ exports.getUsedHarp = (req, res) => {
             console.error(err)
             return
         }
-        console.log(JSON.parse(data))
+        
         // send results 
         res.status(200).json({
             title: 'OneStopHarpShop | Used Harps',
