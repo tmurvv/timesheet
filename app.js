@@ -55,7 +55,6 @@ app.get('/productads', async (req, res) => {
     });
 });
 
-
 //Image Router code based on expressjs.com API reference
 app.get('/assets/img/:name', function (req, res, next) {
     const options = {
