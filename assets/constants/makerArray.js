@@ -98,7 +98,8 @@ exports.productMakesModels = {
             'harptype': 'lever',
             'strings': '40',
             'othernames': ['Prelude']
-        }
+        },
+        'othernames': ['Lyon Healy', 'L & H', 'L&H']
     }, 
     'Camac': {      
         'Vendome': {
@@ -156,7 +157,8 @@ exports.productMakesModels = {
             'harptype': 'pedal',
             'strings': '46',
             'othernames': ['Premiere']
-        }
+        },
+        'othernames': ['W&W Harps', 'W & W Harps']
     }, 
     'Aoyama': {
         'Delphi': {
@@ -292,10 +294,10 @@ exports.productMakesModels = {
             'harptype': 'lever',
             'strings': '29'
         },
-        'othernames': 'Jack Yule'
+        'othernames': ['Jack Yule']
     },
-    'Newsome': {
-        'othernames': 'Newsom'
+    'Newsom': {
+        'othernames': ['Newsome']
     },
     'Pilgrim': {},
     'Pratt': {

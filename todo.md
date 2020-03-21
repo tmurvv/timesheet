@@ -1,5 +1,3 @@
-- get cron job on heroku
-
 - check Phoenix Harps photos
 
 - check Harps Etc photos

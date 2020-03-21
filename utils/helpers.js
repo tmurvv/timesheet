@@ -31,6 +31,35 @@ function parseStoreSecondaryInfo(seller, data) {
     // console.log('pasre sec product', product) 
     return product;
 }
+
+function findOtherNames() {
+    const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+    const otherNames = [];
+
+    
+    Object.keys(productMakesModels).map(maker => {
+        if (leaf(productMakesModels,maker).othernames) {
+            otherNames.push([maker,[...leaf(productMakesModels,maker).othernames]]);
+        }
+    });   
+    return otherNames;  
+}
+
+function checkOtherNames(title) {
+    const othernames = findOtherNames();
+    let foundName;
+    if (othernames) {
+        othernames.map(name => {
+            // console.log(name)
+            name[1].map(altName => {
+                if (title.toUpperCase().indexOf(altName.toUpperCase()) > -1) foundName = name[0]; 
+            });                     
+        });
+    } else {
+        console.log("Other names not found.");
+    }
+    return foundName;
+}
 /***********
  * helper functions
  ***********/
@@ -86,6 +115,9 @@ exports.findMaker = (title) => {
     } else {
         console.log('no title')
     }
+    if (!productMaker) productMaker = checkOtherNames(title);
+    
+    console.log(productMaker);
     return productMaker;
 }
 function getModelList() {

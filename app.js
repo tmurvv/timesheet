@@ -14,6 +14,8 @@ const emitter = new EventEmitter;
 emitter.setMaxListeners(50);
 console.log(process.env.NODE_ENV);
 
+const { productMakesModels } = require('./assets/constants/makerArray');
+
 
 // const longProductImageUrl = 'https://img1.wsimg.com/isteam/ip/7ed83e96-6fb7-4d7c-bfe9-1a34fcbed15e/SB_20Detail.jpg/:/cr=t:31.25_25,l:0_25,w:100_25,h:37.5_25/rs=w:388,h:194,cg:true';
 // const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
