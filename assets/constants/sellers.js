@@ -220,12 +220,12 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
 
 exports.sellerArray = [
     HarpConnection, 
-    VanderbiltMusic_e, 
-    VanderbiltMusic_o,
+    // VanderbiltMusic_e, 
+    // VanderbiltMusic_o,
     AtlantaHarpCenter_o, 
     AtlantaHarpCenter_e,
-    HarpsEtc,
-    PhoenixHarps,
-    MurvihillHarpServices,
-    VirginiaHarpCenter
+    // HarpsEtc,
+    // PhoenixHarps,
+    // MurvihillHarpServices,
+    // VirginiaHarpCenter
 ];

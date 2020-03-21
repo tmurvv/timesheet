@@ -5,9 +5,11 @@ const EventEmitter = require('events');
 const cors = require('cors');
 const express = require('express');
 const viewRouter = require('./routes/viewRoutes');
+const productRouter = require('./routes/productRoutes');
+const { scrapeAds } = require('./utils/harpAdScraper');
 const app = express();
 // const { shortFileNameFn } = require('./toStack');
-
+const usedHarps = require('./assets/constants/usedHarpList.json');
 const emitter = new EventEmitter;
 emitter.setMaxListeners(50);
 console.log(process.env.NODE_ENV);
@@ -40,6 +42,20 @@ app.use(express.static('img'));
 //Router
 app.use('/', viewRouter);
 
+// //Run get product ads
+app.get('/productads', async (req, res) => {
+    const usedHarps = await scrapeAds();
+    console.log('prodads', usedHarps)
+    // send results 
+    res.status(200).json({
+        title: 'FindAHarp.com | Get Harp Ads',
+        status: 'success',
+        //availableHarps: usedHarps.length,
+        harpData: usedHarps  
+    });
+});
+
+
 //Image Router code based on expressjs.com API reference
 app.get('/assets/img/:name', function (req, res, next) {
     const options = {
@@ -60,6 +76,16 @@ app.get('/assets/img/:name', function (req, res, next) {
         }
     });
 });
+// exports.getUsedHarp = async (req, res) => {
+//     // send results 
+//     res.status(200).json({
+//         title: 'OneStopHarpShop | Used Harps',
+//         status: 'success',
+//         harpMakesModels: productMakesModels,
+//         harpData: usedHarps  
+//     });
+// };
+
 app.get('/assets/img/stock:name', function (req, res, next) {
     const options = {
         root: path.join(__dirname, 'assets/img'),

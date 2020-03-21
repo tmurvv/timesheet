@@ -2,7 +2,11 @@
 
 - check Phoenix Harps photos
 
+- check Harps Etc photos
+
 - add stock photo for when photos not found
+
+- add watermark to stock photos
 
 - refactor so data manipulation is on frontend
 

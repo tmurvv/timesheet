@@ -1,18 +1,24 @@
-const usedHarpListFn = require('../utils/harpAdScraper');
-// const usedHarps = usedHarpListFn();
-const usedHarps = require('../assets/constants/usedHarpList.json');
+const fs = require('fs');
+const path = require('path');
+// const usedHarps = require('../assets/constants/usedHarpList.json');
 const { productMakesModels } = require('../assets/constants/makerArray');
 
-exports.getUsedHarp = async (req, res) => {
-    // send results 
-    res.status(200).json({
-        title: 'OneStopHarpShop | Used Harps',
-        status: 'success',
-        harpMakesModels: productMakesModels,
-        harpData: usedHarps  
+exports.getUsedHarp = (req, res) => {
+    fs.readFile(path.join(__dirname, '../assets/constants/usedHarpList.json'), (err, data) => {
+        if (err) {
+            console.error(err)
+            return
+        }
+        console.log(JSON.parse(data))
+        // send results 
+        res.status(200).json({
+            title: 'OneStopHarpShop | Used Harps',
+            status: 'success',
+            harpMakesModels: productMakesModels,
+            harpData: JSON.parse(data)
+        });
     });
 };
-
 
 //** Reference Code ****/   
 // const BookingItems = require('../models/bookingItemModel');
