@@ -17,7 +17,9 @@ const {
     leaf,
  } = require('./helpers.js');
 
-const parseStoreInfo = async (seller, data, mainProductList) => {
+let mainProductList = [];
+
+const parseStoreInfo = async (seller, data) => {
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;
     // console.log('html', html)  
     const $ = cheerio.load(html);
@@ -102,18 +104,17 @@ const parseStoreInfo = async (seller, data, mainProductList) => {
             if (err) throw err;
             // console.log('Saved!');
         });
-        
-        
+               
         return mainProductList;
     });         
 }
 
-exports.scrapeAds = () => {
-    const mainProductList = [];
+exports.scrapeAds = async () => {
+    mainProductList = [];
     const sellerArray = sellerArrayObject.sellerArray;
 
     sellerArray.map(async seller => {
         const response = await axios(seller.productsUrl);
-        parseStoreInfo(seller, response.data, mainProductList);
+        parseStoreInfo(seller, response.data);
     });
 };
