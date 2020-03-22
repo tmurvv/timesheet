@@ -80,7 +80,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'https://harptisha.com', //productsUrl
         '.main', //mainPathId
         null, //customFns 
-        () => 'Sierra 36 by Triplett', //titleFn
+        () => 'Siera 36 by Triplett', //titleFn
         () => '$4300', //priceFn,
         () => 'Purchased 2011 Maple', //shortDescFn
         () => 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!', //longDescFn 
@@ -91,7 +91,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
 //#region VENDORS LINKING TO PRODUCTS
     //#region Vanderbilt-even
 const VanderbiltMusic_e = new SellerPathsLink(
-    'Vanderbilt', //name
+    'Vanderbilt Music-e', //name
     'USA', //country
     'Mid-West', //region
     'https://vanderbiltmusic.com/harp-sales/used-harps/', //productsurl
@@ -122,7 +122,7 @@ VanderbiltMusic_e.imageFromWebCustom = (product) => product;
 //#endregion
     //#region Vanderbilt-odd
 const VanderbiltMusic_o = new SellerPathsLink(
-    'Vanderbilt', //name
+    'Vanderbilt Music-o', //name
     'USA', //country
     'Mid-West', //region
     'https://vanderbiltmusic.com/harp-sales/used-harps/', //productsurl
@@ -227,5 +227,5 @@ exports.sellerArray = [
     HarpsEtc,
     PhoenixHarps,
     MurvihillHarpServices,
-    VirginiaHarpCenter
+    // VirginiaHarpCenter
 ];

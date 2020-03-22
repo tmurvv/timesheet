@@ -8,10 +8,7 @@ const { downloadImage } = require('../utils/downloadWebSiteImages.js');
 const { 
     shortFileNameFn, 
     checkBadImages, 
-    findMaker, 
-    findModel, 
-    findProductType, 
-    findProductSize,
+    getMakeModelTypeSize,
     linkFn,
     cleanText, 
     leaf,
@@ -28,7 +25,7 @@ const parseStoreInfo = async (seller, data) => {
     console.log('# of Products:', productTable.length);
     productTable.each(async function (item) {
         const id=uuid();
-        let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? seller.titleFn($, this) : '';
+        let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? cleanText(seller.titleFn($, this)) : '';
         // console.log('product title:', productTitle);
         let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? seller.priceFn($, this) : '';
         // console.log('price primary:', productPrice);
@@ -43,23 +40,17 @@ const parseStoreInfo = async (seller, data) => {
             const secondaryUrlData = await linkFn(seller, secondaryUrl);
             if (secondaryUrlData) {
                 // console.log('imin secondary url', secondaryUrlData)
-                if (!productTitle && secondaryUrlData.productTitle) productTitle = secondaryUrlData.productTitle;
+                if (!productTitle && secondaryUrlData.productTitle) productTitle = cleanText(secondaryUrlData.productTitle);
                 if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = cleanText(secondaryUrlData.productShortDesc);
                 if (!productPrice && secondaryUrlData.productPrice) productPrice = secondaryUrlData.productPrice;
                 if (!productLongDesc && secondaryUrlData.productLongDesc) productLongDesc = cleanText(secondaryUrlData.productLongDesc);
                 if (!productImageUrl && secondaryUrlData.productImageUrl) productImageUrl = secondaryUrlData.productImageUrl;
             }          
         }
-        // console.log('title:', productTitle);
-        let productMaker = findMaker(productTitle);
-        // console.log('product maker:', productMaker);
-        let productModel = findModel(productTitle);
-        // console.log('product model:', productModel);
-        let productType = findProductType(productMaker, productModel);
-        // console.log('product Type:', productType);
-        let productSize = findProductSize(productMaker, productModel);
-        // console.log('product Type:', productType);
-        // if (seller.hasOwnProperty('specialLongDescFn')) productLongDesc = seller.specialLongDescFn(productLongDesc);
+
+        const makeModelTypeSize = getMakeModelTypeSize(productTitle);
+        // console.log('details', makeModelTypeSize);
+        
         let shortProductImageUrl;
         if (seller.hasOwnProperty('badImages') && productModel) {
             if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
@@ -78,10 +69,10 @@ const parseStoreInfo = async (seller, data) => {
             productPrice,
             productShortDesc,               
             productLongDesc,
-            productMaker,
-            productModel,
-            productType,
-            productSize,
+            productMaker: makeModelTypeSize[0],
+            productModel: makeModelTypeSize[1],
+            productType: makeModelTypeSize[2],
+            productSize: makeModelTypeSize[3],
             productImageUrl,
             divider: '00000000000000000000000'
         }
@@ -98,7 +89,7 @@ const parseStoreInfo = async (seller, data) => {
                 }              
             });
         }
-        if (productModel) mainProductList.push(product);
+        if (makeModelTypeSize[1]) mainProductList.push(product);
         // console.log('scraper usedHarpsNA', mainProductList);
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) throw err;

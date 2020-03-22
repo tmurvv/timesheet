@@ -1,8 +1,10 @@
-- check Phoenix Harps photos
+- add testing to two functions
 
-- add watermark to stock photos
+- add security
 
 - refactor so type size etc is a factory
+
+- make sure find type and size is not called until find model is returned
 
 - when parsing models, makers for searches
     - account for when maker not included in title, just model
@@ -12,6 +14,6 @@
 
 - create if statement for if no img directory for images
 
-- add jsdocs
+- add jsdocs to helper functions
 
-- implement othernames for models
+- check Phoenix Harps photos

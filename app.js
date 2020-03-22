@@ -5,7 +5,6 @@ const EventEmitter = require('events');
 const cors = require('cors');
 const express = require('express');
 const viewRouter = require('./routes/viewRoutes');
-const productRouter = require('./routes/productRoutes');
 const { scrapeAds } = require('./utils/harpAdScraper');
 const app = express();
 // const { shortFileNameFn } = require('./toStack');
@@ -15,11 +14,6 @@ emitter.setMaxListeners(50);
 console.log(process.env.NODE_ENV);
 
 const { productMakesModels } = require('./assets/constants/makerArray');
-
-
-// const longProductImageUrl = 'https://img1.wsimg.com/isteam/ip/7ed83e96-6fb7-4d7c-bfe9-1a34fcbed15e/SB_20Detail.jpg/:/cr=t:31.25_25,l:0_25,w:100_25,h:37.5_25/rs=w:388,h:194,cg:true';
-// const shortProductImageUrl = shortFileNameFn(longProductImageUrl);
-// console.log('Short File Name:', shortProductImageUrl); //Returns undefined
 
 
 //CORS

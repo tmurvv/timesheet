@@ -47,7 +47,7 @@ function getModelList() {
 }
 
 //helper of findMaker function in case maker name is spelled differently
-function findOtherNames() {
+function findOtherMakerNames() {
     const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     const otherNames = [];
     
@@ -58,13 +58,26 @@ function findOtherNames() {
     });   
     return otherNames;  
 }
+function findOtherModelNames() {
+    const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+    const otherModelNames = [];
+    const makerList = Object.keys(productMakesModels);
+    
+    makerList.map(maker => {      
+        Object.keys(leaf(productMakesModels, maker)).map(model => {
+            if (leaf(leaf(productMakesModels, maker), model).othernames) {
+                otherModelNames.push([model,[...leaf(leaf(productMakesModels, maker),model).othernames]]);
+            }
+        });
+    });
+    return otherModelNames;  
+}
 
-function checkOtherNames(title) {
-    const othernames = findOtherNames();
+function checkOtherNames(title, type) {
+    const othernames = type === 'maker'? findOtherMakerNames() : findOtherModelNames();
     let foundName;
     if (othernames) {
         othernames.map(name => {
-            // console.log(name)
             name[1].map(altName => {
                 if (title.toUpperCase().indexOf(altName.toUpperCase()) > -1) foundName = name[0]; 
             });                     
@@ -118,7 +131,8 @@ exports.sellerSort = () => sellerArray.sort(function(a, b) {
     // names must be equal
     return 0;
 });
-exports.findMaker = (title) => {
+
+function findMaker(title) {
     let productMaker;
     const productKeys = Object.keys(productMakesModels);
     if (title) {
@@ -130,13 +144,12 @@ exports.findMaker = (title) => {
     } else {
         console.log('no title')
     }
-    if (!productMaker) productMaker = checkOtherNames(title);
+    if (!productMaker) productMaker = checkOtherNames(title, 'maker');
     
-    // console.log(productMaker);
     return productMaker;
 }
 
-exports.findModel = (title) => {
+async function findModel(title) {
     if (!title) return 'no model found';
     let productModel;
     
@@ -145,10 +158,13 @@ exports.findModel = (title) => {
             productModel = model;
         } 
     });
+
+    if (!productModel) productModel = await checkOtherNames(title, 'model');
+    if (!productModel) productModel = 'no model found';
     return productModel;
 }
 
-exports.findProductType = ((maker, model) =>{
+function findProductType(maker, model) {
     //leaf function helps find nested object keys,
     const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
 
@@ -160,8 +176,8 @@ exports.findProductType = ((maker, model) =>{
     } else {
         return 'harp type not found';
     }
-});
-exports.findProductSize = ((maker, model) =>{
+}
+function findProductSize(maker, model) {
     //leaf function helps find nested object keys,
     const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
 
@@ -173,7 +189,16 @@ exports.findProductSize = ((maker, model) =>{
     } else {
         return 'harp size not found';
     }
-});
+}
+
+exports.getMakeModelTypeSize = async(title) => {
+    const maker = await findMaker(title);
+    const model = await findModel(title);
+    const type = findProductSize(maker, model);
+    const size = findProductSize(maker, model);
+    
+    return [maker, model, type, size];
+}
 
 exports.checkBadImages = (model, badImages) => {
     let stockUrl;
@@ -191,5 +216,6 @@ exports.cleanText = (text) => {
         .replace(/\\n/g, '')
         .replace(/\\t/g, '')
         .replace(/\\/g, '')
+        .replace(/Add To Cart/g, '')
         .trim();
 }

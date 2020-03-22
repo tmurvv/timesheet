@@ -7,13 +7,17 @@ exports.productMakesModels = {
         'Aurora': {
             'harptype': 'pedal',
             'strings': '47',
-            'othernames': 'Arora'
+            'othernames': ['Arora']
         },
         'Apollo': {
             'harptype': 'pedal',
             'strings': '47'
         },     
         'Diana': {
+            'harptype': 'pedal',
+            'strings': '47'
+        },     
+        'Iris': {
             'harptype': 'pedal',
             'strings': '47'
         },     
@@ -56,18 +60,15 @@ exports.productMakesModels = {
         },
         'Style 23': {
             'harptype': 'pedal',
-            'strings': '47',
-            'othernames': ['23']
+            'strings': '47'
         },
         'Style 30': {
             'harptype': 'pedal',
-            'strings': '47',
-            'othernames': ['30']
+            'strings': '47'
         },
         'Style 100': {
             'harptype': 'pedal',
-            'strings': '47',
-            'othernames': ['100']
+            'strings': '47'
         },
         '85E': {
             'harptype': 'pedal',
@@ -76,8 +77,7 @@ exports.productMakesModels = {
         },
         'Style 17': {
             'harptype': 'pedal',
-            'strings': '47',
-            'othernames': ['17']
+            'strings': '47'
         },
         'Troubadour VI': {
             'harptype': 'lever',
@@ -91,8 +91,7 @@ exports.productMakesModels = {
         },
         'Ogden': {
             'harptype': 'lever',
-            'strings': '34',
-            'othernames': ['']
+            'strings': '34'
         },
         'Prelude 40': {
             'harptype': 'lever',
@@ -114,17 +113,17 @@ exports.productMakesModels = {
         'Hermine': {
             'harptype': 'lever',
             'strings': '34',
-            'othernames': 'Hermine'
+            'othernames': ['Hermine']
         },
         'Musaline': {
             'harptype': 'lever',
             'strings': '38',
-            'othernames': 'Musaleen'
+            'othernames': ['Musaleen']
         },   
         'Ulysses': {
             'harptype': 'lever',
             'strings': '34',
-            'othernames': 'Ulyses'
+            'othernames': ['Ulyses', 'Ulisses', 'Ulises']
         },    
         'Isolde': {
             'harptype': 'lever',
@@ -205,26 +204,24 @@ exports.productMakesModels = {
         },
         'FH36S': {
             'harptype': 'lever',
-            'strings': '36',
-            'othernames': []
+            'strings': '36'
         },
         'FH26': {
             'harptype': 'lever',
-            'strings': '26',
-            'othernames': []
+            'strings': '26'
         },
         'Allegro 26': {
             'harptype': 'lever',
-            'strings': '26',
-            'othernames': []
+            'strings': '26'
         },
         'othernames': ['Dusty']
     },
     'Triplett': {
         'Sierra 34': {
             'harptype': 'lever',
-            'strings': '34'
-        },
+            'strings': '34',
+            'othernames': ['Sierra', 'Siera']
+        }, 
         'Sierra 36': {
             'harptype': 'lever',
             'strings': '36',
@@ -284,9 +281,10 @@ exports.productMakesModels = {
         }
     },
     'Noteworthy': {
-        'Count Kerry': {
+        'County Kerry': {
             'harptype': 'lever',
-            'strings': '24'
+            'strings': '24',
+            'othernames': ['Count Kerry']
         }
     },
     'Yule': {
