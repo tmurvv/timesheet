@@ -17,8 +17,9 @@ const {
 
 const sellerArrayObject = require('../assets/constants/sellers');
 const sellerArray = sellerArrayObject.sellerArray;
-const usedHarpsNorthAmerica = [];
+
 const parseStoreInfo = async (seller, data) => {
+    const usedHarpsNorthAmerica = [];
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;
     // console.log('html', html)  
     const $ = cheerio.load(html);

@@ -7,6 +7,8 @@ const { productMakesModels } = require('../assets/constants/makerArray');
  *********/
 //leaf function helps find nested object keys,
 exports.leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+
+//for parse store info function if secondary link
 function parseStoreSecondaryInfo(seller, data) {
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  
     const $ = cheerio.load(html);   
@@ -31,11 +33,23 @@ function parseStoreSecondaryInfo(seller, data) {
     // console.log('pasre sec product', product) 
     return product;
 }
+//helperfor findModel function
+function getModelList() {
+    //leaf function helps find nested object keys,
+    const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+    const productKeys = [];
 
+    Object.keys(productMakesModels).map(maker => {
+        productKeys.push(...Object.keys(leafHelper(productMakesModels, maker)));
+    });
+
+    return new Set(productKeys);
+}
+
+//helper of findMaker function in case maker name is spelled differently
 function findOtherNames() {
     const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     const otherNames = [];
-
     
     Object.keys(productMakesModels).map(maker => {
         if (leaf(productMakesModels,maker).othernames) {
@@ -60,6 +74,7 @@ function checkOtherNames(title) {
     }
     return foundName;
 }
+
 /***********
  * helper functions
  ***********/
@@ -120,18 +135,7 @@ exports.findMaker = (title) => {
     console.log(productMaker);
     return productMaker;
 }
-function getModelList() {
-    //leaf function helps find nested object keys,
-    const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
 
-    const productKeys = [];
-
-    Object.keys(productMakesModels).map(maker => {
-        productKeys.push(...Object.keys(leafHelper(productMakesModels, maker)));
-    });
-
-    return new Set(productKeys);
-}
 exports.findModel = (title) => {
     if (!title) return 'no model found';
     let productModel;
@@ -181,5 +185,10 @@ exports.checkBadImages = (model, badImages) => {
 }
 
 exports.cleanText = (text) => {
-    return text.replace(/\/n/g, '').replace(/\/t/g, '').replace(/\\n/g, '').replace(/\\t/g, '').trim();
+    return text
+        .replace(/\/n/g, '')
+        .replace(/\/t/g, '')
+        .replace(/\\n/g, '')
+        .replace(/\\t/g, '')
+        .trim();
 }
