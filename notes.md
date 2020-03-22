@@ -9,7 +9,6 @@ to schedule cron job:
 http://www.modeo.co/blog/2015/1/8/heroku-scheduler-with-nodejs-tutorial
 
 
-
 Heroku deploy
 - config.env port to 3000
 

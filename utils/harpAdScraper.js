@@ -32,7 +32,7 @@ const parseStoreInfo = async (seller, data) => {
         // console.log('product title:', productTitle);
         let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? seller.priceFn($, this) : '';
         // console.log('price primary:', productPrice);
-        let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? seller.shortDescFn($, this) : '';
+        let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
         // console.log( 'short desc primary:', productShortDesc);
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
         // console.log( 'Long desc primary:', productLongDesc);
@@ -44,7 +44,7 @@ const parseStoreInfo = async (seller, data) => {
             if (secondaryUrlData) {
                 // console.log('imin secondary url', secondaryUrlData)
                 if (!productTitle && secondaryUrlData.productTitle) productTitle = secondaryUrlData.productTitle;
-                if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = secondaryUrlData.productShortDesc;
+                if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = cleanText(secondaryUrlData.productShortDesc);
                 if (!productPrice && secondaryUrlData.productPrice) productPrice = secondaryUrlData.productPrice;
                 if (!productLongDesc && secondaryUrlData.productLongDesc) productLongDesc = cleanText(secondaryUrlData.productLongDesc);
                 if (!productImageUrl && secondaryUrlData.productImageUrl) productImageUrl = secondaryUrlData.productImageUrl;
@@ -64,7 +64,9 @@ const parseStoreInfo = async (seller, data) => {
         if (seller.hasOwnProperty('badImages') && productModel) {
             if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
         }
+        
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);
+        downloadImage(productImageUrl, shortProductImageUrl)
         productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api-development.herokuapp.com/assets/img/${shortProductImageUrl}`;
         
         let product = {
@@ -93,8 +95,7 @@ const parseStoreInfo = async (seller, data) => {
                     product = customFunc(product);
                 } catch (err) {
                     console.log('From custom functions:', err.message)
-                }
-                
+                }              
             });
         }
         if (productModel) usedHarpsNorthAmerica.push(product);
@@ -103,7 +104,7 @@ const parseStoreInfo = async (seller, data) => {
             if (err) throw err;
             // console.log('Saved!');
         });
-        if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
+        // if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) 
         
         return usedHarpsNorthAmerica;
     });         

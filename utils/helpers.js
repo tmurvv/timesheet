@@ -190,5 +190,6 @@ exports.cleanText = (text) => {
         .replace(/\/t/g, '')
         .replace(/\\n/g, '')
         .replace(/\\t/g, '')
+        .replace(/\\/g, '')
         .trim();
 }

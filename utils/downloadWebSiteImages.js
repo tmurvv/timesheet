@@ -18,6 +18,7 @@ const download = function(uri, filename, callback) {
 };
 
 exports.downloadImage = (longFileName, shortFileName) => {
+    console.log(longFileName, shortFileName);
     if (shortFileName !== undefined && /^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(shortFileName)) {
         const myUrl = `assets/img/${shortFileName}`;
         fs.stat(myUrl, function(err, stat) {

@@ -163,18 +163,18 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
         ($, item) => $(item).find('.ty-product-list__price').text().trim(), //priceFn 
         ($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
         null, //longDescFn
-        ($, item) => $(item).parent().prev().find('img').attr('src'), //imageUrl
+        null, //imageUrl
         ($, item) => $(item).parent().prev().find('a').attr('href'), //findLinkUrlFn
-        '.content-description', //mainPathIdLink
+        '.ty-product-block', //mainPathIdLink
         null, //titleLinkFn
         null, //priceLinkFn
         null, //shortDescLinkFn
-        ($, item) => {if($(item).find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
-        null //imageUrlLinkFn
+        ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
+        ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
     );
     HarpsEtc.sellerAxiosResponsePath = '';
     //#endregion
-    //#region VIrginia Harp Center
+    //#region Virginia Harp Center
     const VirginiaHarpCenter = new SellerPathsLink(
         'Virginia Harp Center', //name
         'USA', //country

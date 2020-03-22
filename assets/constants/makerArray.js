@@ -307,6 +307,10 @@ exports.productMakesModels = {
         }
     },
     'Clarke': {},
+    'Hayden': {
+        'harptype': 'Hayden 24',
+        'strings': '24'
+    },
     'Rees': {
         'Harpsicle': {
             'harptype': 'lap',
@@ -315,6 +319,10 @@ exports.productMakesModels = {
         'Aberdeen Meadows': {
             'harptype': 'lever',
             'strings': '36'
+        },
+        'Mariposa': {
+            'harptype': 'lever',
+            'strings': '34'
         }
     },
     'Lewis': {
