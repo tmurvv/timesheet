@@ -2,6 +2,8 @@ const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
+
+const sellerArrayObject = require('../assets/constants/sellers');
 const { downloadImage } = require('../utils/downloadWebSiteImages.js');
 const { 
     shortFileNameFn, 
@@ -15,17 +17,13 @@ const {
     leaf,
  } = require('./helpers.js');
 
-const sellerArrayObject = require('../assets/constants/sellers');
-const sellerArray = sellerArrayObject.sellerArray;
-
-const parseStoreInfo = async (seller, data) => {
-    const usedHarpsNorthAmerica = [];
+const parseStoreInfo = async (seller, data, mainProductList) => {
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;
     // console.log('html', html)  
     const $ = cheerio.load(html);
     const productTable = $(seller.mainPathId);
-    console.log('scrapeHarps seller', seller.name)
-    console.log(productTable.length);
+    console.log('Seller', seller.name)
+    console.log('# of Products:', productTable.length);
     productTable.each(async function (item) {
         const id=uuid();
         let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? seller.titleFn($, this) : '';
@@ -66,7 +64,7 @@ const parseStoreInfo = async (seller, data) => {
         }
         
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);
-        downloadImage(productImageUrl, shortProductImageUrl)
+        if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl)
         productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api-development.herokuapp.com/assets/img/${shortProductImageUrl}`;
         
         let product = {
@@ -98,21 +96,24 @@ const parseStoreInfo = async (seller, data) => {
                 }              
             });
         }
-        if (productModel) usedHarpsNorthAmerica.push(product);
-        // console.log('scraper usedHarpsNA', usedHarpsNorthAmerica);
-        fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
+        if (productModel) mainProductList.push(product);
+        // console.log('scraper usedHarpsNA', mainProductList);
+        fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) throw err;
             // console.log('Saved!');
         });
-        // if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) 
         
-        return usedHarpsNorthAmerica;
+        
+        return mainProductList;
     });         
 }
 
 exports.scrapeAds = () => {
-        sellerArray.map(async seller => {
+    const mainProductList = [];
+    const sellerArray = sellerArrayObject.sellerArray;
+
+    sellerArray.map(async seller => {
         const response = await axios(seller.productsUrl);
-        return parseStoreInfo(seller, response.data);
+        parseStoreInfo(seller, response.data, mainProductList);
     });
 };

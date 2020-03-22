@@ -15,7 +15,7 @@ const VanderbiltMusic_e = new ProductPaths('Vanderbilt', 'test');
 console.log(VanderbiltMusic_e)
 
 const scrapeHarps = async () => {
-    const usedHarpsNorthAmerica = [];
+    const mainProductList = [];
     function parseStoreInfo(seller, data) {  
         const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  
         const $ = cheerio.load(html);
@@ -80,9 +80,9 @@ const scrapeHarps = async () => {
                 productImageUrl,
                 divider: '00000000000000000000000'
             }
-            if (productModel) usedHarpsNorthAmerica.push(product);
-            // console.log('scraper', usedHarpsNorthAmerica);
-            fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(usedHarpsNorthAmerica), function (err) {
+            if (productModel) mainProductList.push(product);
+            // console.log('scraper', mainProductList);
+            fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
                 if (err) throw err;
                 // console.log('Saved!');
             });

@@ -97,7 +97,7 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
 //             const harpImageUrl = shortFileName(longHarpImageUrl);
 
 //             downloadImage(longHarpImageUrl, harpImageUrl);
-//             usedHarpsNorthAmerica.push({
+//             mainProductList.push({
 //                 id,
 //                 seller,
 //                 sellerCountry,
@@ -132,7 +132,7 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
 //             const harpImageUrl = shortFileName(longHarpImageUrl);
 //             downloadImage(longHarpImageUrl, harpImageUrl);
 
-//             usedHarpsNorthAmerica.push({
+//             mainProductList.push({
 //                 id,
 //                 seller,
 //                 sellerCountry,
@@ -167,7 +167,7 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
 //             const harpImageUrl = shortFileName(longHarpImageUrl);
 //             downloadImage(longHarpImageUrl, harpImageUrl);
             
-//             usedHarpsNorthAmerica.push({
+//             mainProductList.push({
 //                 id,
 //                 seller,
 //                 sellerCountry,
@@ -183,7 +183,7 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
 //     .catch(console.error);
 
 // //Tisha Murvihill Harp Services
-// usedHarpsNorthAmerica.push({
+// mainProductList.push({
 //     id: uuid(),
 //     seller: "Tisha Murvihill Harp Services",
 //     sellerCountry: "Canada",
@@ -221,7 +221,7 @@ exports.SellerLinkPaths = class SellerLinkPaths extends SellerPaths {
 //         const sellerName = seller.sellerName;
 //         const harpTitle = seller.harpTitle; 
     
-//         usedHarpsNorthAmerica.push({
+//         mainProductList.push({
 //             id,
 //             sellerName,
 //             harpTitle
