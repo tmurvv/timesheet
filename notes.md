@@ -13,7 +13,8 @@ http://www.modeo.co/blog/2015/1/8/heroku-scheduler-with-nodejs-tutorial
 Heroku deploy
 - config.env port to 3000
 
-### For staging: git push staging master
+### For staging: git push development master or git push staging master
+### to switch default from development to staging: git config heroku.remote staging
 ## STEPS TO DEPLOY and REVERT TO DEV
 
 - make sure download images is enabled

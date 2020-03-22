@@ -224,8 +224,8 @@ exports.sellerArray = [
     // VanderbiltMusic_o,
     // AtlantaHarpCenter_o, 
     // AtlantaHarpCenter_e,
-    // HarpsEtc,
-    PhoenixHarps,
+    HarpsEtc,
+    // PhoenixHarps,
     // MurvihillHarpServices,
     // VirginiaHarpCenter
 ];

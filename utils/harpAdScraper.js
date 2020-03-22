@@ -65,7 +65,7 @@ const parseStoreInfo = async (seller, data) => {
             if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
         }
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);
-        productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://onestop-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
+        productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api-development.herokuapp.com/assets/img/${shortProductImageUrl}`;
         
         let product = {
             id,
@@ -81,7 +81,7 @@ const parseStoreInfo = async (seller, data) => {
             productType,
             productSize,
             productImageUrl,
-            // divider: '00000000000000000000000'
+            divider: '00000000000000000000000'
         }
         /***********
          * custom Functions
@@ -104,6 +104,7 @@ const parseStoreInfo = async (seller, data) => {
             // console.log('Saved!');
         });
         if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
+        
         return usedHarpsNorthAmerica;
     });         
 }

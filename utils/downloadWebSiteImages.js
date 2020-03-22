@@ -1,20 +1,6 @@
 const fs = require('fs');
 const request = require('request');
 
-const formatPhoto = async photo => { 
-    try {
-        const lenna = await Jimp.read(photo);
-    
-        return lenna
-            .resize(256, 256) // resize
-            .quality(60) // set JPEG quality
-            .greyscale() // set greyscale
-            .write('lena-small-bw.jpg'); // save
-    } catch(err) {
-        console.log(err)
-    }
-}
-
 const download = function(uri, filename, callback) {
     console.log('down', filename)
     try {

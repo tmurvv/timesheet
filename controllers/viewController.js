@@ -2,6 +2,22 @@ const fs = require('fs');
 const path = require('path');
 const { productMakesModels } = require('../assets/constants/makerArray');
 
+// //#region local testing of get harps function
+// const usedHarpListFn = require('../utils/harpAdScraper');
+// const usedHarps = usedHarpListFn();
+
+// exports.getUsedHarp = (req, res) => {     
+//     // send results 
+//     res.status(200).json({
+//         title: 'OneStopHarpShop | Used Harps',
+//         status: 'success',
+//         harpMakesModels: productMakesModels,
+//         harpData: usedHarps
+//     });
+// };
+// //#endregion
+
+//#region Main program
 exports.getUsedHarp = (req, res) => {
     fs.readFile(path.join(__dirname, '../assets/constants/usedHarpList.json'), (err, data) => {
         if (err) {
@@ -18,6 +34,8 @@ exports.getUsedHarp = (req, res) => {
         });
     });
 };
+//#endregion
+
 
 //** Reference Code ****/   
 // const BookingItems = require('../models/bookingItemModel');

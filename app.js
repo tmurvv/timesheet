@@ -9,7 +9,7 @@ const productRouter = require('./routes/productRoutes');
 const { scrapeAds } = require('./utils/harpAdScraper');
 const app = express();
 // const { shortFileNameFn } = require('./toStack');
-const usedHarps = require('./assets/constants/usedHarpList.json');
+// const usedHarps = require('./assets/constants/usedHarpList.json');
 const emitter = new EventEmitter;
 emitter.setMaxListeners(50);
 console.log(process.env.NODE_ENV);
@@ -42,7 +42,8 @@ app.use(express.static('img'));
 //Error handling ** see below commented code
 
 //Router
-app.use('/', viewRouter);
+app.use('/', viewRouter); 
+// app.use('/productads', productRouter); 
 
 // //Run get product ads
 app.get('/productads', async (req, res) => {
