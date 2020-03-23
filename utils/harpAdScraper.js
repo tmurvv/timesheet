@@ -48,12 +48,12 @@ const parseStoreInfo = async (seller, data) => {
             }          
         }
 
-        const makeModelTypeSize = getMakeModelTypeSize(productTitle);
+        const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
         // console.log('details', makeModelTypeSize);
         
         let shortProductImageUrl;
-        if (seller.hasOwnProperty('badImages') && productModel) {
-            if (checkBadImages(productModel, seller.badImages)) shortProductImageUrl = checkBadImages(productModel, seller.badImages);
+        if (seller.hasOwnProperty('badImages') && makeModelTypeSize[1]) {
+            if (checkBadImages(makeModelTypeSize[1], seller.badImages)) shortProductImageUrl = checkBadImages(makeModelTypeSize[1], seller.badImages);
         }
         
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);
@@ -89,6 +89,7 @@ const parseStoreInfo = async (seller, data) => {
                 }              
             });
         }
+        //console.log(makeModelTypeSize)
         if (makeModelTypeSize[1]) mainProductList.push(product);
         // console.log('scraper usedHarpsNA', mainProductList);
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {

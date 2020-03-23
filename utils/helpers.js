@@ -168,7 +168,7 @@ function findProductType(maker, model) {
     //leaf function helps find nested object keys,
     const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
 
-    if (!model||!maker) return 'no model found';
+    if (!model||!maker) return 'no lever/pedal type found';
    
     const makerHarps = leafHelper(productMakesModels, maker);
     if (leafHelper(makerHarps, model)&&leafHelper(makerHarps, model).harptype) {
@@ -194,9 +194,9 @@ function findProductSize(maker, model) {
 exports.getMakeModelTypeSize = async(title) => {
     const maker = await findMaker(title);
     const model = await findModel(title);
-    const type = findProductSize(maker, model);
+    const type = findProductType(maker, model);
     const size = findProductSize(maker, model);
-    
+    console.log('wrapper', title, maker, model, type, size)
     return [maker, model, type, size];
 }
 

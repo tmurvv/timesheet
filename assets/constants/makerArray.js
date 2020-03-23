@@ -79,15 +79,14 @@ exports.productMakesModels = {
             'harptype': 'pedal',
             'strings': '47'
         },
-        'Troubadour VI': {
+        'Troubadour VI ': {
             'harptype': 'lever',
             'strings': '36',
             'othernames': ['Troubadour']
         },
-        'Troubadour V': {
+        'Troubadour V ': {
             'harptype': 'lever',
-            'strings': '36',
-            'othernames': ['Troubadour']
+            'strings': '36'
         },
         'Ogden': {
             'harptype': 'lever',
@@ -306,8 +305,11 @@ exports.productMakesModels = {
     },
     'Clarke': {},
     'Hayden': {
-        'harptype': 'Hayden 24',
-        'strings': '24'
+        'Hayden 24': {
+            'harptype': 'lever',
+            'strings': '24',
+            'othernames': 'Hayden Harp'
+        }
     },
     'Rees': {
         'Harpsicle': {
@@ -329,5 +331,5 @@ exports.productMakesModels = {
             'strings': '22'
         },
         'othernames': ['Mike Lewis']
-    },
+    }
 }

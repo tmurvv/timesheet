@@ -13,9 +13,6 @@ const emitter = new EventEmitter;
 emitter.setMaxListeners(50);
 console.log(process.env.NODE_ENV);
 
-const { productMakesModels } = require('./assets/constants/makerArray');
-
-
 //CORS
 app.use(cors());
 
@@ -72,15 +69,6 @@ app.get('/assets/img/:name', function (req, res, next) {
         }
     });
 });
-// exports.getUsedHarp = async (req, res) => {
-//     // send results 
-//     res.status(200).json({
-//         title: 'OneStopHarpShop | Used Harps',
-//         status: 'success',
-//         harpMakesModels: productMakesModels,
-//         harpData: usedHarps  
-//     });
-// };
 
 app.get('/assets/img/stock:name', function (req, res, next) {
     const options = {
