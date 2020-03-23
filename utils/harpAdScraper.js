@@ -18,28 +18,24 @@ let mainProductList = [];
 
 const parseStoreInfo = async (seller, data) => {
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;
-    // console.log('html', html)  
     const $ = cheerio.load(html);
     const productTable = $(seller.mainPathId);
     console.log('Seller', seller.name)
     console.log('# of Products:', productTable.length);
     productTable.each(async function (item) {
         const id=uuid();
+        // five main product data points
         let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? cleanText(seller.titleFn($, this)) : '';
-        // console.log('product title:', productTitle);
         let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? seller.priceFn($, this) : '';
-        // console.log('price primary:', productPrice);
         let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
-        // console.log( 'short desc primary:', productShortDesc);
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
-        // console.log( 'Long desc primary:', productLongDesc);
         let productImageUrl = seller.hasOwnProperty('imageUrlFn')&&seller.imageUrlFn ? seller.imageUrlFn($, this) : '';
-        // console.log( 'longProductImageUrl primary:', longProductImageUrl);
+        
+        //if website links to secondary product detail page
         if (seller.hasOwnProperty('findLinkUrlFn')&&seller.findLinkUrlFn) {  
             const secondaryUrl = seller.findLinkUrlFn($, this);
             const secondaryUrlData = await linkFn(seller, secondaryUrl);
             if (secondaryUrlData) {
-                // console.log('imin secondary url', secondaryUrlData)
                 if (!productTitle && secondaryUrlData.productTitle) productTitle = cleanText(secondaryUrlData.productTitle);
                 if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = cleanText(secondaryUrlData.productShortDesc);
                 if (!productPrice && secondaryUrlData.productPrice) productPrice = secondaryUrlData.productPrice;
@@ -47,18 +43,23 @@ const parseStoreInfo = async (seller, data) => {
                 if (!productImageUrl && secondaryUrlData.productImageUrl) productImageUrl = secondaryUrlData.productImageUrl;
             }          
         }
+
+        // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
-        console.log('details', makeModelTypeSize);
         
+        //handle image specifics
         let shortProductImageUrl;
+        //grab stock photo url if bad image
         if (seller.hasOwnProperty('badImages') && makeModelTypeSize[1]) {
             if (checkBadImages(makeModelTypeSize[1], seller.badImages)) shortProductImageUrl = checkBadImages(makeModelTypeSize[1], seller.badImages);
         }
         
-        if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);
+        //download image if not from web or stock
+        if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);       
         if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl)
         productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api-development.herokuapp.com/assets/img/${shortProductImageUrl}`;
         
+        //create product
         let product = {
             id,
             sellerName: seller.name,
@@ -75,25 +76,23 @@ const parseStoreInfo = async (seller, data) => {
             productImageUrl,
             divider: '00000000000000000000000'
         }
-        /***********
-         * custom Functions
-         ***********/
+        
+        // check for vendor custom functions
         if (seller.hasOwnProperty('customFns') && seller.customFns) {
             seller.customFns.map(customFuncString => {
                 try {
                     customFunc = leaf(seller, customFuncString);
                     product = customFunc(product);
                 } catch (err) {
-                    console.log('From custom functions:', err.message)
+                    console.log('Error executing custom functions:', err.message)
                 }              
             });
         }
-        //console.log(makeModelTypeSize)
+        //write to product file
         if (makeModelTypeSize[1]) mainProductList.push(product);
         // console.log('scraper usedHarpsNA', mainProductList);
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
-            if (err) throw err;
-            // console.log('Saved!');
+            if (err) console.log('Error writing used-harp list function:', err.message);
         });
                
         return mainProductList;
@@ -101,7 +100,7 @@ const parseStoreInfo = async (seller, data) => {
 }
 
 exports.scrapeAds = async () => {
-    //mainProductList = [];
+    mainProductList = [];
     const sellerArray = sellerArrayObject.sellerArray;
 
     sellerArray.map(async seller => {

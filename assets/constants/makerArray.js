@@ -246,7 +246,7 @@ exports.productMakesModels = {
         'othernames': ['Tripplett', 'Triplet', 'Tripplet']
     },
     'Thormahlen': {
-        'Swan': {
+        'Swan ': {
             'harptype': 'lever',
             'strings': '36'
         },

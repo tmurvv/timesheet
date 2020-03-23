@@ -13,3 +13,5 @@
 - check Phoenix Harps photos
 
 - add promise all to makerModelTypeSize
+
+- download images check if statements

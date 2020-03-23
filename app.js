@@ -39,7 +39,6 @@ app.use('/', viewRouter);
 // //Run get product ads
 app.get('/productads', async (req, res) => {
     const usedHarps = await scrapeAds();
-    console.log('prodads', usedHarps)
     // send results 
     res.status(200).json({
         title: 'FindAHarp.com | Get Harp Ads',
