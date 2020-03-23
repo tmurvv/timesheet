@@ -308,7 +308,7 @@ exports.productMakesModels = {
         'Hayden 24': {
             'harptype': 'lever',
             'strings': '24',
-            'othernames': 'Hayden Harp'
+            'othernames': ['Hayden Harp']
         }
     },
     'Rees': {

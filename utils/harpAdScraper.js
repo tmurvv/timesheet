@@ -47,9 +47,8 @@ const parseStoreInfo = async (seller, data) => {
                 if (!productImageUrl && secondaryUrlData.productImageUrl) productImageUrl = secondaryUrlData.productImageUrl;
             }          
         }
-
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
-        // console.log('details', makeModelTypeSize);
+        console.log('details', makeModelTypeSize);
         
         let shortProductImageUrl;
         if (seller.hasOwnProperty('badImages') && makeModelTypeSize[1]) {
@@ -102,7 +101,7 @@ const parseStoreInfo = async (seller, data) => {
 }
 
 exports.scrapeAds = async () => {
-    mainProductList = [];
+    //mainProductList = [];
     const sellerArray = sellerArrayObject.sellerArray;
 
     sellerArray.map(async seller => {

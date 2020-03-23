@@ -2,9 +2,7 @@
 
 - add security
 
-- when parsing models, makers for searches
-    - account for when maker not included in title, just model
-    - account for more than one maker in title (use model)
+- make find all models and find all makers helpers only run when makerModel file updated
 
 - add trim() to all strings fetching data
 
@@ -13,3 +11,5 @@
 - add jsdocs to helper functions
 
 - check Phoenix Harps photos
+
+- add promise all to makerModelTypeSize
