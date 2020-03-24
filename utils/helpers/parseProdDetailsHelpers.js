@@ -1,8 +1,8 @@
 const { productMakesModels } = require('../../assets/constants/makerArray');
 
 //helper for findModel function
-function getModelList(makesModels) {
-    if (!makesModels) throw(err);
+const getModelList = makesModels => {
+    if (!makesModels) throw 'makesModels parameter is empty';
     //leaf function helps find nested object keys,
     const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     const productKeys = [];
@@ -10,13 +10,13 @@ function getModelList(makesModels) {
     Object.keys(makesModels).map(maker => {
         productKeys.push(...Object.keys(leafHelper(makesModels, maker)));
     });
-
+   
     return new Set(productKeys);
 }
 
 //helper of findMaker function in case maker name is spelled differently
-function findMakerFromModel(model) {
-    if (!model) return null;
+const findMakerFromModel = (model) => {
+    if (!model) throw 'model parameter is empty';
     const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     
     let foundName;
@@ -133,13 +133,15 @@ function findProductSize(maker, model) {
     }
 }
 
-exports.getMakeModelTypeSize = async (title) => {
+const getMakeModelTypeSize = async (title) => {
     const model = await findModel(title);
     const maker = await findMaker(title, model);
     const type = findProductType(maker, model);
     const size = findProductSize(maker, model);
     
-    return [maker, model, type, size];
-    
+    return [maker, model, type, size];  
 }
-//#endregion
+
+exports.getModelList = getModelList;
+exports.findMakerFromModel = findMakerFromModel;
+exports.getMakeModelTypeSize = getMakeModelTypeSize;

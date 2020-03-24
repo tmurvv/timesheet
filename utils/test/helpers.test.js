@@ -6,21 +6,21 @@ const {expect} = require('chai');
 const {sinon} = require('sinon');
 
 // The code under test
-const helpers = require('../helpers/helpers');
-// const getModelList = (makesModels) => {
-//     console.log('makemods', makesModels);
-//     // return 'here';
-//     if (!makesModels) throw (Error);
-//     // leaf function helps find nested object keys,
-//     const leafHelper = (obj, path) => (path.split('.').reduce((value, el) => value[el], obj)); // from StackOverflow
+const { getModelList, findMakerFromModel } = require('../helpers/parseProdDetailsHelpers');
+// const helpers = require('../helpers/helpers');
+// function getModelList(makesModels) {
+//     if (!makesModels) throw 'makesModels variable is null/undefined';
+//     //leaf function helps find nested object keys,
+//     const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
 //     const productKeys = [];
 
-//     Object.keys(makesModels).map((maker) => {
+//     Object.keys(makesModels).map(maker => {
 //         productKeys.push(...Object.keys(leafHelper(makesModels, maker)));
 //     });
-
+   
 //     return new Set(productKeys);
-// };
+// }
+
 let stubMakesModels = {
     'Venus': {
         'Diplomat': {
@@ -56,17 +56,34 @@ let stubMakesModels = {
     }
 };
 describe('Get Product Details Helper Functions', () => {
-    describe('Get Model List Helper Function', () => {       
-        describe('MakerModel Variable absent throws error', () => {
-            it('should throw error when no make/model list passed in.', () => {
-                stubMakesModels = null;
-                expect(() => helpers.getModelList(stubMakesModels)).to.throw();
-            });
+    describe('Get Model List Helper Function', () => {
+        it('should throw error when no make/model list passed in.', () => {
+            expect(() => getModelList(null)).to.throw();
+            expect(() => getModelList(undefined)).to.throw();
         });
-        describe('MakerModel Variable present does not throw error', () => {
-            it('should throw error when no make/model list passed in.', () => {
-                expect(() => helpers.getModelList(stubMakesModels)).to.throw();
-            });
+        it('Generates correct list when stub variable entered', () => {
+            expect(Array.from(getModelList(stubMakesModels))).to.eql([ 'Diplomat',
+            'Traditional',
+            'Premier',
+            'othernames',
+            'Delphi',
+            'Irish 34',
+            'La Scuola' ]);
+        });
+    });
+    describe('Find Maker From Model Function', () => {
+        it('should throw error when no model passed in.', () => {
+            expect(() => findMakerFromModel(null)).to.throw();
+            expect(() => findMakerFromModel(undefined)).to.throw();
+        });
+
+        // model is already validated in calling function
+        it('Generates correct Maker when model variable entered', () => {
+            expect(findMakerFromModel("Encore 34")).to.equal('Blevins');
+            expect(findMakerFromModel("85CG")).to.equal('Lyon & Healy');
+            expect(findMakerFromModel("Swan ")).to.equal('Thormahlen');
+            expect(findMakerFromModel("La Scuola")).to.equal('Swanson');
+            expect(findMakerFromModel("Troubadour V ")).to.equal('Lyon & Healy');
         });
     });
 });

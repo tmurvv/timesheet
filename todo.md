@@ -2,8 +2,6 @@
 
 - make end point for ad upload
 
-- refactor helpers file to helpers folder
-
 - finish testing getModelList function
 
 - add security
@@ -21,5 +19,9 @@
 - add promise all to makerModelTypeSize
 
 - download images check if statements
+
+- think about adding a space after all models before search ('troubadour V returns troubadour VI, Swan returns Swanson)
+
+- this is an npm json schema validator to validate the makerModel object https://github.com/tdegrunt/jsonschema/blob/HEAD/examples/all.js
 
 - HarpsEtc, certificate issue, worked on it. you have to create a CA certificate maybe using forge, then try this Medium to implement. https://medium.com/@jamomani/adding-trusted-ca-to-node-client-with-axios-2792024bca4 -- last resort, add this to top of app file: "process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';"  //NOT YET IMPLEMENTED dangerous code
