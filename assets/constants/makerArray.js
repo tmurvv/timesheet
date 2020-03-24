@@ -264,9 +264,9 @@ exports.productMakesModels = {
     },
     'Blevins': {
         'Encore 34': {
-                'harptype': 'lever',
-                'strings': '34'
-            }
+            'harptype': 'lever',
+            'strings': '34'
+        }
     },
     'Pilgrim': {},
     'Heartland': {
@@ -289,14 +289,13 @@ exports.productMakesModels = {
     'Yule': {
         'Clarsach': {
             'harptype': 'lever',
-            'strings': '29'
+            'strings': '34'
         },
         'othernames': ['Jack Yule']
     },
     'Newsom': {
         'othernames': ['Newsome']
     },
-    'Pilgrim': {},
     'Pratt': {
         'Chamber': {
             'harptype': 'lever',

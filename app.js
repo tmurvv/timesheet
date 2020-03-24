@@ -13,7 +13,7 @@ const { scrapeAds } = require('./utils/harpAdScraper');
 const app = express();
 // const usedHarps = require('./assets/constants/usedHarpList.json');
 //const emitter = new EventEmitter;
-emitter.setMaxListeners(50);
+// emitter.setMaxListeners(50);
 console.log(process.env.NODE_ENV);
 
 //security ** see commented code below

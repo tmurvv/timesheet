@@ -7,12 +7,12 @@ const sellerArrayObject = require('../assets/constants/sellers');
 const { downloadImage } = require('../utils/downloadWebSiteImages.js');
 const { 
     shortFileNameFn, 
-    checkBadImages, 
-    getMakeModelTypeSize,
+    checkBadImages,
     linkFn,
     cleanText, 
-    leaf,
- } = require('./helpers.js');
+    leaf
+ } = require('./helpers/helpers.js');
+const {getMakeModelTypeSize} = require('./helpers/parseProdDetailsHelpers');
 
 let mainProductList = [];
 

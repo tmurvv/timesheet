@@ -1,6 +1,10 @@
 - change productads route to api v1
 
-- add testing to two functions
+- make end point for ad upload
+
+- refactor helpers file to helpers folder
+
+- finish testing getModelList function
 
 - add security
 
