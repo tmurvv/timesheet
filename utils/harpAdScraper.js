@@ -104,7 +104,7 @@ exports.scrapeAds = async () => {
     const sellerArray = sellerArrayObject.sellerArray;
 
     sellerArray.map(async seller => {
-        const response = await axios(seller.productsUrl);
+        const response = await axios({url: seller.productsUrl, 'strictSSL': false});
         parseStoreInfo(seller, response.data);
     });
 };

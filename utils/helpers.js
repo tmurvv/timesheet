@@ -62,13 +62,15 @@ exports.sellerSort = () => sellerArray.sort(function(a, b) {
 //#endregion
 //#region Helper functions for get details
 //helper for findModel function
-function getModelList() {
+function getModelList(makesModels) {
+    console.log("makemods", makesModels);
+    if (!makeModels) throw(err);
     //leaf function helps find nested object keys,
     const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     const productKeys = [];
 
-    Object.keys(productMakesModels).map(maker => {
-        productKeys.push(...Object.keys(leafHelper(productMakesModels, maker)));
+    Object.keys(makesModels).map(maker => {
+        productKeys.push(...Object.keys(leafHelper(makesModels, maker)));
     });
 
     return new Set(productKeys);
@@ -155,7 +157,7 @@ function findModel(title) {
     if (!title) return null;
     let productModel;
     
-    Array.from(getModelList()).map((model) => {
+    Array.from(getModelList(productMakesModels)).map((model) => {
         if (title.indexOf(model)>-1) {
             productModel = model;
         } 

@@ -1,4 +1,6 @@
 {
     "workbench.colorTheme": "Tomorrow Night Blue",
-    "prettier.proseWrap": "always"
+    "prettier.proseWrap": "always",
+    "eslint.run": "onSave",
+    "editor.formatOnSave": true
 }

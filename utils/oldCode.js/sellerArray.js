@@ -1,7 +1,7 @@
 const axios = require('axios');
 const uuid = require('uuid');
 const cheerio = require('cheerio');
-const { findMaker, findModel, findProductType, findProductSize } = require('../../utils/helpers');
+const { findMaker, findModel, findProductType, findProductSize } = require('../helpers');
 
 function parseStoreSecondaryInfo(seller, data) {
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  

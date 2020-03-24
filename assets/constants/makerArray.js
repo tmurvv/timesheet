@@ -12,20 +12,20 @@ exports.productMakesModels = {
         'Apollo': {
             'harptype': 'pedal',
             'strings': '47'
-        },     
+        },
         'Diana': {
             'harptype': 'pedal',
             'strings': '47'
-        },     
+        },
         'Iris': {
             'harptype': 'pedal',
             'strings': '47'
-        },     
+        },
         'Daphne 47 EX': {
             'harptype': 'pedal',
             'strings': '47',
             'othernames': ['Daphne 47', 'Daphne', 'Daphne 47EX']
-        },     
+        },
         'Titan': {
             'harptype': 'lever',
             'strings': '38'
@@ -98,8 +98,8 @@ exports.productMakesModels = {
             'othernames': ['Prelude']
         },
         'othernames': ['Lyon Healy', 'L & H', 'L&H']
-    }, 
-    'Camac': {      
+    },
+    'Camac': {
         'Vendome': {
             'harptype': 'pedal',
             'strings': '47'
@@ -118,31 +118,31 @@ exports.productMakesModels = {
             'harptype': 'lever',
             'strings': '38',
             'othernames': ['Musaleen']
-        },   
+        },
         'Ulysses': {
             'harptype': 'lever',
             'strings': '34',
             'othernames': ['Ulyses', 'Ulisses', 'Ulises']
-        },    
+        },
         'Isolde': {
             'harptype': 'lever',
             'strings': '38',
-        },    
+        },
         'Clio': {
             'harptype': 'lever',
             'strings': '44',
-        },      
+        },
         'DHC 32': {
             'harptype': 'lever',
             'strings': '32',
-        },     
+        },
         'DHC 36': {
             'harptype': 'lever',
             'strings': '36',
-        }      
-    }, 
-    'Wurlitzer': {}, 
-    'Venus': {      
+        }
+    },
+    'Wurlitzer': {},
+    'Venus': {
         'Diplomat': {
             'harptype': 'pedal',
             'strings': '46'
@@ -157,7 +157,7 @@ exports.productMakesModels = {
             'othernames': ['Premiere']
         },
         'othernames': ['W&W Harps', 'W & W Harps']
-    }, 
+    },
     'Aoyama': {
         'Delphi': {
             'harptype': 'pedal',
@@ -166,14 +166,14 @@ exports.productMakesModels = {
         'Irish 34': {
             'harptype': 'lever',
             'strings': '34'
-        }     
-    }, 
+        }
+    },
     'Swanson': {
         'La Scuola': {
             'harptype': 'pedal',
             'strings': '47'
         }
-    }, 
+    },
     'Horngacher': {},
     'Dusty Strings': {
         'Ravenna 26': {
@@ -220,7 +220,7 @@ exports.productMakesModels = {
             'harptype': 'lever',
             'strings': '34',
             'othernames': ['Sierra', 'Siera']
-        }, 
+        },
         'Sierra 36': {
             'harptype': 'lever',
             'strings': '36',

@@ -1,3 +1,5 @@
+- change productads route to api v1
+
 - add testing to two functions
 
 - add security
@@ -15,3 +17,5 @@
 - add promise all to makerModelTypeSize
 
 - download images check if statements
+
+- HarpsEtc, certificate issue, worked on it. you have to create a CA certificate maybe using forge, then try this Medium to implement. https://medium.com/@jamomani/adding-trusted-ca-to-node-client-with-axios-2792024bca4 -- last resort, add this to top of app file: "process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';"  //NOT YET IMPLEMENTED dangerous code

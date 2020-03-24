@@ -1,17 +1,33 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  //NOT YET IMPLEMENTED dangerous code
-
+require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
 const path = require('path');
-const EventEmitter = require('events');
+//const EventEmitter = require('events');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+const helmet = require('helmet');
 const express = require('express');
 const viewRouter = require('./routes/viewRoutes');
 const { scrapeAds } = require('./utils/harpAdScraper');
 // const { findMakerFromModel } = require('./utils/helpers');
 const app = express();
 // const usedHarps = require('./assets/constants/usedHarpList.json');
-const emitter = new EventEmitter;
+//const emitter = new EventEmitter;
 emitter.setMaxListeners(50);
 console.log(process.env.NODE_ENV);
+
+//security ** see commented code below
+app.use(helmet());
+app.use(xss());
+app.use(hpp())
+
+const limiter = rateLimit.apply({
+    max: 300,
+    windowMs: 60 * 60 * 1000,
+    message: 'Too many requests from this IP, please try again in an hour.'
+});
+
+app.use('/api', limiter);
 
 //CORS
 app.use(cors());
@@ -26,9 +42,8 @@ app.all('/', function(req, res, next) {
 express.static('assets');
 app.use(express.static('img'));
 
-//security ** see commented code below
-
 //utilities ** see commented code below
+app.use(express.json({limit: '10kb'}))
 
 //Error handling ** see below commented code
 
