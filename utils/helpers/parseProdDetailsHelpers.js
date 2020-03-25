@@ -1,29 +1,56 @@
 const { productMakesModels } = require('../../assets/constants/makerArray');
 
+const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+    
 //helper for findModel function
 const getModelList = makesModels => {
-    if (!makesModels) throw 'makesModels parameter is empty';
+    if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from getModelList: makes/models parameter is empty';
     //leaf function helps find nested object keys,
-    const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     const productKeys = [];
 
     Object.keys(makesModels).map(maker => {
-        productKeys.push(...Object.keys(leafHelper(makesModels, maker)));
+        productKeys.push(...Object.keys(leaf(makesModels, maker)));
     });
    
     return new Set(productKeys);
 }
 
+const getOtherMakerModelNames = (type, makesModels) => {
+    if (!type) throw 'from getOtherMakerModelNames: type parameter is empty';
+    if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from getOtherMakerModelNames: type parameter is empty';
+    const otherNames = [];
+    const makerList = Object.keys(makesModels);
+    
+    if (type === 'maker') {
+        Object.keys(makesModels).map(maker => {
+            if (leaf(makesModels,maker).othernames) {
+                otherNames.push([maker,[...leaf(makesModels,maker).othernames]]);
+            }
+        }); 
+    } else if (type==='model') {
+        makerList.map(maker => {      
+            Object.keys(leaf(makesModels, maker)).map(model => {
+                if (leaf(leaf(makesModels, maker), model).othernames) {
+                    otherNames.push([model,[...leaf(leaf(makesModels, maker),model).othernames]]);
+                }
+            });
+        });
+    }
+    console.log(otherNames)
+    return otherNames;  
+}
+
 //helper of findMaker function in case maker name is spelled differently
-const findMakerFromModel = (model) => {
-    if (!model) throw 'model parameter is empty';
+const findMakerFromModel = (model, makesModels) => {
+    if (!model) throw 'from findMakerFromModel: model parameter is empty';
+    if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from findMakerFromModel: makesModels parameter is empty';
     const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     
     let foundName;
-    const makerList = Object.keys(productMakesModels);
+    const makerList = Object.keys(makesModels);
     
     makerList.map(maker => {      
-        Object.keys(leafHelper(productMakesModels,maker)).map(makerModel => {
+        Object.keys(leafHelper(makesModels,maker)).map(makerModel => {
             if (makerModel.toUpperCase() === model.toUpperCase()) {               
                 foundName = maker;
             }
@@ -32,45 +59,10 @@ const findMakerFromModel = (model) => {
     if (!foundName) foundName = null;
     return foundName;
 }
-// function findOtherMakerNames() {
-//     const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
-//     const otherNames = [];
-    
-//     Object.keys(productMakesModels).map(maker => {
-//         if (leaf(productMakesModels,maker).othernames) {
-//             otherNames.push([maker,[...leaf(productMakesModels,maker).othernames]]);
-//         }
-//     });   
-//     return otherNames;  
-// }
-function findOtherMakerModelNames(type) {
-    const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
-    const otherNames = [];
-    const makerList = Object.keys(productMakesModels);
-    
-    if (type === 'maker') {
-        Object.keys(productMakesModels).map(maker => {
-            if (leaf(productMakesModels,maker).othernames) {
-                otherNames.push([maker,[...leaf(productMakesModels,maker).othernames]]);
-            }
-        }); 
-    } else if (type==='model') {
-        makerList.map(maker => {      
-            Object.keys(leaf(productMakesModels, maker)).map(model => {
-                if (leaf(leaf(productMakesModels, maker), model).othernames) {
-                    otherNames.push([model,[...leaf(leaf(productMakesModels, maker),model).othernames]]);
-                }
-            });
-        });
-    } else {
-        throw 'From findOtherMakerModelNames, type variable is invalid.'
-    }
 
-    return otherNames;  
-}
 
 function checkOtherNames(title, type, model) {
-    const othernames = findOtherMakerModelNames(type);
+    const othernames = getOtherMakerModelNames(type, productMakesModels);
     let foundName;
     if (othernames) {
         othernames.map(name => {
@@ -81,7 +73,7 @@ function checkOtherNames(title, type, model) {
     } else {
         console.log("Other names not found.");
     }
-    if (!foundName || type === 'maker') foundName = findMakerFromModel(model);
+    if (!foundName || type === 'maker') foundName = findMakerFromModel(model, productMakesModels);
     return foundName;
 }
 
@@ -152,6 +144,8 @@ const getMakeModelTypeSize = async (title) => {
     return [maker, model, type, size];  
 }
 
+exports.leaf = leaf;
 exports.getModelList = getModelList;
 exports.findMakerFromModel = findMakerFromModel;
 exports.getMakeModelTypeSize = getMakeModelTypeSize;
+exports.getOtherMakerModelNames = getOtherMakerModelNames;
