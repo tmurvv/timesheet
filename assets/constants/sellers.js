@@ -225,7 +225,7 @@ exports.sellerArray = [
     AtlantaHarpCenter_o, 
     AtlantaHarpCenter_e,
     // HarpsEtc, removed for SSL violations
-    PhoenixHarps,
+    // PhoenixHarps,
     MurvihillHarpServices,
-    VirginiaHarpCenter
+    // VirginiaHarpCenter
 ];

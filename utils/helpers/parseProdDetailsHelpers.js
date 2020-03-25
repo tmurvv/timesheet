@@ -32,35 +32,45 @@ const findMakerFromModel = (model) => {
     if (!foundName) foundName = null;
     return foundName;
 }
-function findOtherMakerNames() {
+// function findOtherMakerNames() {
+//     const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+//     const otherNames = [];
+    
+//     Object.keys(productMakesModels).map(maker => {
+//         if (leaf(productMakesModels,maker).othernames) {
+//             otherNames.push([maker,[...leaf(productMakesModels,maker).othernames]]);
+//         }
+//     });   
+//     return otherNames;  
+// }
+function findOtherMakerModelNames(type) {
     const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     const otherNames = [];
-    
-    Object.keys(productMakesModels).map(maker => {
-        if (leaf(productMakesModels,maker).othernames) {
-            otherNames.push([maker,[...leaf(productMakesModels,maker).othernames]]);
-        }
-    });   
-    return otherNames;  
-}
-function findOtherModelNames() {
-    const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
-    const otherModelNames = [];
     const makerList = Object.keys(productMakesModels);
     
-    makerList.map(maker => {      
-        Object.keys(leaf(productMakesModels, maker)).map(model => {
-            if (leaf(leaf(productMakesModels, maker), model).othernames) {
-                otherModelNames.push([model,[...leaf(leaf(productMakesModels, maker),model).othernames]]);
+    if (type === 'maker') {
+        Object.keys(productMakesModels).map(maker => {
+            if (leaf(productMakesModels,maker).othernames) {
+                otherNames.push([maker,[...leaf(productMakesModels,maker).othernames]]);
             }
+        }); 
+    } else if (type==='model') {
+        makerList.map(maker => {      
+            Object.keys(leaf(productMakesModels, maker)).map(model => {
+                if (leaf(leaf(productMakesModels, maker), model).othernames) {
+                    otherNames.push([model,[...leaf(leaf(productMakesModels, maker),model).othernames]]);
+                }
+            });
         });
-    });
+    } else {
+        throw 'From findOtherMakerModelNames, type variable is invalid.'
+    }
 
-    return otherModelNames;  
+    return otherNames;  
 }
 
 function checkOtherNames(title, type, model) {
-    const othernames = type === 'maker'? findOtherMakerNames() : findOtherModelNames();
+    const othernames = findOtherMakerModelNames(type);
     let foundName;
     if (othernames) {
         othernames.map(name => {
@@ -71,7 +81,7 @@ function checkOtherNames(title, type, model) {
     } else {
         console.log("Other names not found.");
     }
-    if (!foundName) foundName = findMakerFromModel(model);
+    if (!foundName || type === 'maker') foundName = findMakerFromModel(model);
     return foundName;
 }
 

@@ -1,6 +1,6 @@
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
 const path = require('path');
-//const EventEmitter = require('events');
+const EventEmitter = require('events');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
@@ -12,8 +12,8 @@ const { scrapeAds } = require('./utils/harpAdScraper');
 // const { findMakerFromModel } = require('./utils/helpers');
 const app = express();
 // const usedHarps = require('./assets/constants/usedHarpList.json');
-//const emitter = new EventEmitter;
-// emitter.setMaxListeners(50);
+const emitter = new EventEmitter;
+emitter.setMaxListeners(50);
 console.log(process.env.NODE_ENV);
 
 //security ** see commented code below
