@@ -172,7 +172,8 @@ exports.productMakesModels = {
     'Swanson': {
         'La Scuola': {
             'harptype': 'pedal',
-            'strings': '47'
+            'strings': '47',
+            'othernames': ['La Scuala']
         },
         'othernames': ['Swansen']
     },

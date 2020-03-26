@@ -113,40 +113,59 @@ const findMakerFromModel = (model, makesModels) => {
  * @function checkOtherMakerNames
  * @param {String} title the title of the product ad 
  * @param {String} model optional, model if known
- * @returns {String} - Maker name
+ * @returns {String} - Maker name or undefined
  */
 const checkOtherMakerNames = (title, model) => {
     if (!title) throw 'from searchOtherNamesArrray: title parameter is empty';
     
     const otherNames = getOtherMakerNames(productMakesModels);  
     let foundName = searchOtherNamesArray(title, otherNames); //business preference to try to parse maker from title before using model to find maker 
-    if (!foundName) foundName = findMakerFromModel(model, productMakesModels);
+    
+    if (!foundName && model) foundName = findMakerFromModel(model, productMakesModels);
     
     return foundName;
 }
+/**
+ * Checks other model names if initial model search fails from makers/models JSON-style object
+ * @function checkOtherModelNames
+ * @param {String} title the title of the product ad
+ * @returns {String} - Model name or undefined
+ */
 const checkOtherModelNames = (title) => {
+    if (!title) throw 'from checkOtherModelNames: title parameter is empty';
+    
     const otherNames = getOtherModelNames(productMakesModels);
     return searchOtherNamesArray(title, otherNames)
 }
-
-function findMaker(title, model) {
+/**
+ * Parses maker from Product ad title using makers/models JSON-style object
+ * @function Find Maker
+ * @param {String} title the title of the product ad
+ * @param {String} validated model name in case maker can not be found
+ * @returns {String} - Maker name or undefined
+ */
+const findMaker = (title, model) => {
+    if (!title) throw 'from findMaker: title parameter is empty';
+    
     let productMaker;
     const productKeys = Object.keys(productMakesModels);
-    if (title) {
-        productKeys.map((maker) => {
-            if (title.indexOf(maker)>-1) {
-                productMaker = maker;
-            } 
-        });
-    } else {
-        console.log('no title')
-    }
+    productKeys.map((maker) => {
+        if (title.indexOf(maker)>-1) {
+            productMaker = maker;
+        } 
+    });
     if (!productMaker) productMaker = checkOtherMakerNames(title, model);
     return productMaker;
 }
 
-function findModel(title) {
-    if (!title) return null;
+/**
+ * Parses maker from Product ad title using makers/models JSON-style object
+ * @function Find Maker
+ * @param {String} title the title of the product ad
+ * @returns {String} - Model name or undefined
+ */
+const findModel = (title) => {
+    if (!title) throw 'from findMaker: title parameter is empty';
     let productModel;
     
     Array.from(getModelList(productMakesModels)).map((model) => {
@@ -154,7 +173,6 @@ function findModel(title) {
             productModel = model;
         } 
     });
-    
     if (!productModel) productModel = checkOtherModelNames(title);
     
     return productModel;
@@ -190,6 +208,7 @@ function findProductSize(maker, model) {
 const getMakeModelTypeSize = async (title) => {
     const model = await findModel(title);
     const maker = await findMaker(title, model);
+    console.log('getmake...', title, model)
     const type = findProductType(maker, model);
     const size = findProductSize(maker, model);
     
@@ -205,3 +224,5 @@ exports.getOtherMakerNames = getOtherMakerNames;
 exports.searchOtherNamesArray = searchOtherNamesArray;
 exports.checkOtherMakerNames = checkOtherMakerNames;
 exports.checkOtherModelNames = checkOtherModelNames;
+exports.findMaker = findMaker;
+exports.findModel = findModel;

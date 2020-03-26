@@ -15,7 +15,9 @@ const {
     getOtherModelNames,
     searchOtherNamesArray,
     checkOtherMakerNames,
-    checkOtherModelNames
+    checkOtherModelNames,
+    findMaker,
+    findModel
 } = require('../helpers/parseProdDetailsHelpers');
 
 const stubMakesModels = {
@@ -154,6 +156,9 @@ describe('Get Product Details Helper Functions', () => {
             expect(checkOtherMakerNames('Beautiful La Scuola for sale', 'La Scuola')).to.equal('Swanson');
             expect(checkOtherMakerNames('Primiere (misspelled) Harp priced to sell', 'Premier')).to.equal('Venus');
         });
+        it('returns undefined if model parameter is missing', () => {
+            expect(checkOtherMakerNames('Premiere (misspelled) Harp priced to sell')).to.equal(undefined);
+        });        
     });
     describe('check Other Model Names function', () => {
         it('should throw error when no title passed in.', () => {
@@ -163,6 +168,41 @@ describe('Get Product Details Helper Functions', () => {
         it('Finds corrected model name', () => {
             expect(checkOtherModelNames('Aoyama Delphy Harp')).to.equal('Delphi');
             expect(checkOtherModelNames('W & W Harps Premiere')).to.equal('Premier');
+        });
+    });
+    describe('find maker function', () => {
+        it('should throw error when no title passed in.', () => {
+            expect(() => findMaker(null)).to.throw();
+            expect(() => findMaker(undefined)).to.throw();
+        });
+        it('Finds maker name', () => {
+            expect(findMaker('Swanson La Scuola', 'La Scuola')).to.equal('Swanson');
+            expect(findMaker('Venus Premiere', 'Premier')).to.equal('Venus');
+        });
+        it('Finds maker when misspelled', () => {
+            expect(findMaker('Swansen La Scuola', 'La Scuola')).to.equal('Swanson');
+            expect(findMaker('W&W Harps Premiere', 'Premier')).to.equal('Venus');
+        });
+        it('Finds maker when no maker in title', () => {
+            expect(findMaker('Beautiful La Scuola', 'La Scuola')).to.equal('Swanson');
+            expect(findMaker('Premiere priced to sell', 'Premier')).to.equal('Venus');
+        });
+        it('returns undefined if model parameter is missing', () => {
+            expect(findMaker('Premiere (misspelled) Harp priced to sell')).to.equal(undefined);
+        });
+    });
+    describe('find model function', () => {
+        it('should throw error when no title passed in.', () => {
+            expect(() => findModel(null)).to.throw();
+            expect(() => findModel(undefined)).to.throw();
+        });
+        it('Finds model name', () => {
+            expect(findModel('Swanson La Scuola')).to.equal('La Scuola');
+            expect(findModel('Venus Premiere')).to.equal('Premier');
+        });
+        it('Finds model when misspelled', () => {
+            expect(findModel('Swansen La Scuala')).to.equal('La Scuola');
+            expect(findModel('W&W Harps Premiere')).to.equal('Premier');
         });
     });
 });
