@@ -52,7 +52,7 @@ app.use('/', viewRouter);
 // app.use('/productads', productRouter); 
 
 // //Run get product ads
-app.get('/productads', async (req, res) => {
+app.get('/api/v1/productads', async (req, res) => {
     const usedHarps = await scrapeAds();
     // send results 
     res.status(200).json({

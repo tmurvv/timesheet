@@ -1,20 +1,37 @@
 const { productMakesModels } = require('../../assets/constants/makerArray');
 
+/**
+ * Traverses an object parsing out an object from the next levelfrom maker/model JSON-style object
+ * @function
+ * @param {Object} makesModels JSON-style object of product makers with models
+ * @returns {Set} - Set of Models
+ */
 const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     
-//helper for findModel function
+/**
+ * Gets a list of unique model names from maker/model JSON-style object
+ * @function
+ * @param {Object} makesModels JSON-style object of product makers with models
+ * @returns {Set} - Set of model names
+ */
 const getModelList = makesModels => {
-    if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from getModelList: makes/models parameter is empty';
-    //leaf function helps find nested object keys,
+    if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from getModelList: makes/models parameter is empty'; 
     const productKeys = [];
 
     Object.keys(makesModels).map(maker => {
-        productKeys.push(...Object.keys(leaf(makesModels, maker)));
+        productKeys.push(...Object.keys(leaf(makesModels, maker))); //leaf function helps find nested object keys from Stackoverflow
     });
    
     return new Set(productKeys);
 }
 
+/**
+ * Gets a list of all misspellings and colloquialisms of maker or model names from maker/model JSON-style object
+ * @function
+ * @param {String} type either 'maker' or 'model'
+ * @param {Object} makesModels JSON-style object of product makers with models
+ * @returns {Array} - Array of Arrays containing [correctMakerName, [othernames]] or [correctModelName, [othernames]]
+ */
 const getOtherMakerModelNames = (type, makesModels) => {
     if (!type) throw 'from getOtherMakerModelNames: type parameter is empty';
     if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from getOtherMakerModelNames: type parameter is empty';
@@ -36,21 +53,25 @@ const getOtherMakerModelNames = (type, makesModels) => {
             });
         });
     }
-    console.log(otherNames)
     return otherNames;  
 }
 
-//helper of findMaker function in case maker name is spelled differently
+/**
+ * Finds the maker of a certain Model from makers/models JSON-style object
+ * @function
+ * @param {String} model model name to search on
+ * @param {Object} makesModels JSON-style object of product makers with models
+ * @returns {String} - Maker name
+ */
 const findMakerFromModel = (model, makesModels) => {
     if (!model) throw 'from findMakerFromModel: model parameter is empty';
     if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from findMakerFromModel: makesModels parameter is empty';
-    const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
     
     let foundName;
     const makerList = Object.keys(makesModels);
     
     makerList.map(maker => {      
-        Object.keys(leafHelper(makesModels,maker)).map(makerModel => {
+        Object.keys(leaf(makesModels,maker)).map(makerModel => {
             if (makerModel.toUpperCase() === model.toUpperCase()) {               
                 foundName = maker;
             }

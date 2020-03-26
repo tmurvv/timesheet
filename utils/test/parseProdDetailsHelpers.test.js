@@ -1,6 +1,6 @@
 // Mocha API
-const {describe, it, beforeEach, afterEach, before, after} = require('mocha');
-// Assertions module - chai!
+const {describe, it} = require('mocha');
+// Assertions module - Chai!
 const {expect} = require('chai');
 // Sinon for fakes, stubs, and spies
 const {sinon} = require('sinon');
@@ -111,14 +111,14 @@ describe('Get Product Details Helper Functions', () => {
             expect(() => getOtherMakerModelNames('model', undefined)).to.throw();
             expect(() => getOtherMakerModelNames('model', {})).to.throw();
         });
-        it('Generates correct list when stub variable entered and type = model', () => {
+        it('Generates correct other name list when stub variable entered and type = model', () => {
             expect(Array.from(getOtherMakerModelNames('model', stubMakesModels))).to.eql([
                 ["Traditional", ["Trad"]],
                 ["Premier", ["Premiere", "Premeire"]], 
                 ["Delphi", ["Delphy"]]
             ]);
         });
-        it('Generates correct list when stub variable entered and type = maker', () => {
+        it('Generates correct other name list when stub variable entered and type = maker', () => {
             expect(Array.from(getOtherMakerModelNames('maker', stubMakesModels))).to.eql([
                 ["Venus", ["W&W Harps","W & W Harps"]],
                 ["Swanson", ["Swansen"]]

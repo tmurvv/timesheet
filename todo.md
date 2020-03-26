@@ -2,11 +2,30 @@
 
 - make end point for ad upload
 
-- finish testing getModelList function
+- finish parseProdHelper tests
 
-- add security
+- make find all models and find all makers helpers only run when makerModel file updated -- You should use the stat function :
 
-- make find all models and find all makers helpers only run when makerModel file updated
+According to the documentation :
+
+fs.stat(path, [callback])
+Asynchronous stat(2). The callback gets two arguments (err, stats) where stats is a fs.Stats object. It looks like this:
+
+{ dev: 2049
+, ino: 305352
+, mode: 16877
+, nlink: 12
+, uid: 1000
+, gid: 1000
+, rdev: 0
+, size: 4096
+, blksize: 4096
+, blocks: 8
+, atime: '2009-06-29T11:11:55Z'
+, mtime: '2009-06-29T11:11:40Z'
+, ctime: '2009-06-29T11:11:40Z' 
+}
+As you can see, the mtime is the last modified time.
 
 - add trim() to all strings fetching data
 
