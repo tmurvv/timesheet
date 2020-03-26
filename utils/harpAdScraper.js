@@ -26,7 +26,7 @@ const parseStoreInfo = async (seller, data) => {
         const id=uuid();
         // five main product data points
         let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? cleanText(seller.titleFn($, this)) : '';
-        let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? seller.priceFn($, this) : '';
+        let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? cleanText(seller.priceFn($, this)) : '';
         let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
         let productImageUrl = seller.hasOwnProperty('imageUrlFn')&&seller.imageUrlFn ? seller.imageUrlFn($, this) : '';
@@ -38,7 +38,7 @@ const parseStoreInfo = async (seller, data) => {
             if (secondaryUrlData) {
                 if (!productTitle && secondaryUrlData.productTitle) productTitle = cleanText(secondaryUrlData.productTitle);
                 if (!productShortDesc && secondaryUrlData.productShortDesc) productShortDesc = cleanText(secondaryUrlData.productShortDesc);
-                if (!productPrice && secondaryUrlData.productPrice) productPrice = secondaryUrlData.productPrice;
+                if (!productPrice && secondaryUrlData.productPrice) productPrice = cleanText(secondaryUrlData.productPrice);
                 if (!productLongDesc && secondaryUrlData.productLongDesc) productLongDesc = cleanText(secondaryUrlData.productLongDesc);
                 if (!productImageUrl && secondaryUrlData.productImageUrl) productImageUrl = secondaryUrlData.productImageUrl;
             }          

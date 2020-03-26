@@ -80,7 +80,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'https://harptisha.com', //productsUrl
         '.main', //mainPathId
         null, //customFns 
-        () => 'Siera 36 by Triplett', //titleFn
+        () => 'Premiere by W&W Harps', //titleFn
         () => '$4300', //priceFn,
         () => 'Purchased 2011 Maple', //shortDescFn
         () => 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!', //longDescFn 

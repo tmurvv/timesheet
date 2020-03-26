@@ -161,7 +161,8 @@ exports.productMakesModels = {
     'Aoyama': {
         'Delphi': {
             'harptype': 'pedal',
-            'strings': '46'
+            'strings': '46',
+            'othernames': ['Delphy']
         },
         'Irish 34': {
             'harptype': 'lever',
@@ -172,7 +173,8 @@ exports.productMakesModels = {
         'La Scuola': {
             'harptype': 'pedal',
             'strings': '47'
-        }
+        },
+        'othernames': ['Swansen']
     },
     'Horngacher': {},
     'Dusty Strings': {

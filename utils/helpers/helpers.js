@@ -26,6 +26,18 @@ exports.cleanText = (text) => {
         .replace(/Add To Cart/g, '')
         .trim();
 }
+exports.cleanUrlText = (text) => {
+    return text
+        .replace(/\/n/g, '')
+        .replace(/\/t/g, '')
+        .replace(/\\n/g, '')
+        .replace(/\\t/g, '')
+        .replace(/\\/g, '')
+        .replace(/\/n/g, ' ')
+        .replace(/\/t/g, '')
+        .replace(/Add To Cart/g, '')
+        .trim();
+}
 
 exports.shortFileNameFn = (longFilePath) => {
     if (longFilePath) {

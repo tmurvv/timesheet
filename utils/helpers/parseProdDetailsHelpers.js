@@ -10,7 +10,7 @@ const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj
     
 /**
  * Gets a list of unique model names from maker/model JSON-style object
- * @function
+ * @function getModelList
  * @param {Object} makesModels JSON-style object of product makers with models
  * @returns {Set} - Set of model names
  */
@@ -24,41 +24,69 @@ const getModelList = makesModels => {
    
     return new Set(productKeys);
 }
+/**
+ * Searches list of other names
+ * @function searchOtherNamesArray
+ * @param {String} title the title of the product ad
+ * @param {Array} - Array of Arrays containing [correctName, [othernames]]
+ * @returns {String} - Corrected name, if found
+ */
+const searchOtherNamesArray = (title, otherNamesArray) => {
+    if (!title) throw 'from searchOtherNamesArrray: title parameter is empty';
+    if (!otherNamesArray) throw 'from searchOtherNamesArray: otherNamesArray parameter is empty';
+    let foundName;
+    otherNamesArray.map(name => {
+        name[1].map(altName => {
+            if (title.toUpperCase().indexOf(altName.toUpperCase()) > -1) foundName = name[0]; 
+        });                     
+    });
+
+    return foundName;
+}
 
 /**
- * Gets a list of all misspellings and colloquialisms of maker or model names from maker/model JSON-style object
- * @function
- * @param {String} type either 'maker' or 'model'
+ * Gets a list of all misspellings and colloquialisms of maker names from maker/model JSON-style object
+ * @function getOtherMakerNames
  * @param {Object} makesModels JSON-style object of product makers with models
  * @returns {Array} - Array of Arrays containing [correctMakerName, [othernames]] or [correctModelName, [othernames]]
  */
-const getOtherMakerModelNames = (type, makesModels) => {
-    if (!type) throw 'from getOtherMakerModelNames: type parameter is empty';
+const getOtherMakerNames = (makesModels) => {
+    if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from getOtherMakerModelNames: type parameter is empty';
+    const otherNames = [];
+    
+    Object.keys(makesModels).map(maker => {
+        if (leaf(makesModels,maker).othernames) {
+            otherNames.push([maker,[...leaf(makesModels,maker).othernames]]);
+        }
+    }); 
+    return otherNames;  
+}
+
+/**
+ * Gets a list of all misspellings and colloquialisms of model names from maker/model JSON-style object
+ * @function getOtherModelNames
+ * @param {Object} makesModels JSON-style object of product makers with models
+ * @returns {Array} - Array of Arrays containing [correctMakerName, [othernames]] or [correctModelName, [othernames]]
+ */
+const getOtherModelNames = (makesModels) => {
     if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from getOtherMakerModelNames: type parameter is empty';
     const otherNames = [];
     const makerList = Object.keys(makesModels);
     
-    if (type === 'maker') {
-        Object.keys(makesModels).map(maker => {
-            if (leaf(makesModels,maker).othernames) {
-                otherNames.push([maker,[...leaf(makesModels,maker).othernames]]);
+    makerList.map(maker => {      
+        Object.keys(leaf(makesModels, maker)).map(model => {
+            if (leaf(leaf(makesModels, maker), model).othernames) {
+                otherNames.push([model,[...leaf(leaf(makesModels, maker),model).othernames]]);
             }
-        }); 
-    } else if (type==='model') {
-        makerList.map(maker => {      
-            Object.keys(leaf(makesModels, maker)).map(model => {
-                if (leaf(leaf(makesModels, maker), model).othernames) {
-                    otherNames.push([model,[...leaf(leaf(makesModels, maker),model).othernames]]);
-                }
-            });
         });
-    }
+    });
+    
     return otherNames;  
 }
 
 /**
  * Finds the maker of a certain Model from makers/models JSON-style object
- * @function
+ * @function findMakerFromModel
  * @param {String} model model name to search on
  * @param {Object} makesModels JSON-style object of product makers with models
  * @returns {String} - Maker name
@@ -80,22 +108,25 @@ const findMakerFromModel = (model, makesModels) => {
     if (!foundName) foundName = null;
     return foundName;
 }
-
-
-function checkOtherNames(title, type, model) {
-    const othernames = getOtherMakerModelNames(type, productMakesModels);
-    let foundName;
-    if (othernames) {
-        othernames.map(name => {
-            name[1].map(altName => {
-                if (title.toUpperCase().indexOf(altName.toUpperCase()) > -1) foundName = name[0]; 
-            });                     
-        });
-    } else {
-        console.log("Other names not found.");
-    }
-    if (!foundName || type === 'maker') foundName = findMakerFromModel(model, productMakesModels);
+/**
+ * Finds the maker of a certain Model from makers/models JSON-style object
+ * @function checkOtherMakerNames
+ * @param {String} title the title of the product ad 
+ * @param {String} model optional, model if known
+ * @returns {String} - Maker name
+ */
+const checkOtherMakerNames = (title, model) => {
+    if (!title) throw 'from searchOtherNamesArrray: title parameter is empty';
+    
+    const otherNames = getOtherMakerNames(productMakesModels);  
+    let foundName = searchOtherNamesArray(title, otherNames); //business preference to try to parse maker from title before using model to find maker 
+    if (!foundName) foundName = findMakerFromModel(model, productMakesModels);
+    
     return foundName;
+}
+const checkOtherModelNames = (title) => {
+    const otherNames = getOtherModelNames(productMakesModels);
+    return searchOtherNamesArray(title, otherNames)
 }
 
 function findMaker(title, model) {
@@ -110,7 +141,7 @@ function findMaker(title, model) {
     } else {
         console.log('no title')
     }
-    if (!productMaker) productMaker = checkOtherNames(title, 'maker', model);
+    if (!productMaker) productMaker = checkOtherMakerNames(title, model);
     return productMaker;
 }
 
@@ -124,7 +155,7 @@ function findModel(title) {
         } 
     });
     
-    if (!productModel) productModel = checkOtherNames(title, 'model');
+    if (!productModel) productModel = checkOtherModelNames(title);
     
     return productModel;
 }
@@ -169,4 +200,8 @@ exports.leaf = leaf;
 exports.getModelList = getModelList;
 exports.findMakerFromModel = findMakerFromModel;
 exports.getMakeModelTypeSize = getMakeModelTypeSize;
-exports.getOtherMakerModelNames = getOtherMakerModelNames;
+exports.getOtherModelNames = getOtherModelNames;
+exports.getOtherMakerNames = getOtherMakerNames;
+exports.searchOtherNamesArray = searchOtherNamesArray;
+exports.checkOtherMakerNames = checkOtherMakerNames;
+exports.checkOtherModelNames = checkOtherModelNames;

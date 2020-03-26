@@ -1,8 +1,8 @@
-- change productads route to api v1
-
 - make end point for ad upload
 
 - finish parseProdHelper tests
+
+- make error catching system
 
 - make find all models and find all makers helpers only run when makerModel file updated -- You should use the stat function :
 
@@ -26,8 +26,6 @@ Asynchronous stat(2). The callback gets two arguments (err, stats) where stats i
 , ctime: '2009-06-29T11:11:40Z' 
 }
 As you can see, the mtime is the last modified time.
-
-- add trim() to all strings fetching data
 
 - create if statement for if no img directory for images
 
