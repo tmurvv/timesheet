@@ -1,7 +1,6 @@
 // Mocha API
 const {describe, it} = require('mocha');
 
-
 // Assertions module - Chai!
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
@@ -251,8 +250,8 @@ describe('Get Product Details Helper Functions', () => {
         //   });
         
         it('should throw error when no title passed in.', async function() {
-            expect(getMakeModelTypeSize(null)).to.be.rejectedWith(Error);
-            expect(getMakeModelTypeSize(undefined)).to.be.rejectedWith(Error);
+            expect(getMakeModelTypeSize(null)).to.be.rejectedWith();
+            expect(getMakeModelTypeSize(undefined)).to.be.rejectedWith();
         });
         
         it('responds with matching records', async function() {

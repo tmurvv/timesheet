@@ -1,59 +1,82 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
 
-//#region helper functions for helper functions
-//leaf function helps find nested object keys,
+/**
+ * Traverses an object parsing out an object from the next levelfrom maker/model JSON-style object
+ * @function leaf
+ * @param {Object} makesModels JSON-style object of product makers with models
+ * @returns {Set} - Set of Models
+ */
 exports.leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
-//#endregion
 //#region Helper Functions
+/**
+ * When scraping products, does a second Axios call if seller uses secondary page
+ * @function linkFn  
+ * @param {Object} seller - seller info
+ * @param {Object} url - url for secondary page
+ * @returns {Cheerio Object} - HTML of secondary page
+ */
 exports.linkFn = async (seller, url) => {
     try {
+        if (!seller) throw 'from linkFn: missing seller parameter';
+        if (!url) throw 'from linkFn: missing url parameter';
+    } catch(err) {
+        throw(err);
+    }
+    try {   
         const response = await axios(url);        
         return parseStoreSecondaryInfo(seller, response.data);    
     } catch (err) {
         console.log(url, 'timed out', err.message);
-    }           
+        throw (err)
+    }      
 }
+/**
+ * Removes /n/t\n\t 'Add to cart' and trims text
+ * @function cleanText 
+ * @param {string} text - text to clean
+ * @returns {string} - clean text
+ */
 exports.cleanText = (text) => {
-    return text
-        .replace(/\/n/g, '')
-        .replace(/\/t/g, '')
-        .replace(/\\n/g, '')
-        .replace(/\\t/g, '')
-        .replace(/\\/g, '')
-        .replace(/\/n/g, ' ')
-        .replace(/\/t/g, '')
-        .replace(/Add To Cart/g, '')
-        .trim();
+    if (!text) throw 'from cleanText: missing text parameter';
+        
+    return text.replace(/\/n/g, '').replace(/\/t/g, '').replace(/Add To Cart/gi, '').replace(/AddToCart/gi, '').replace(/\s/g, '');
 }
+/**
+ * Removes url encodes and trims text
+ * @function cleanUrlText 
+ * @param {string} text - url to clean
+ * @returns {string} - clean url
+ */
 exports.cleanUrlText = (text) => {
+    if (!text) throw 'from cleanUrlText: missing text parameter';
     return text
-        .replace(/\/n/g, '')
-        .replace(/\/t/g, '')
-        .replace(/\\n/g, '')
-        .replace(/\\t/g, '')
-        .replace(/\\/g, '')
-        .replace(/\/n/g, ' ')
-        .replace(/\/t/g, '')
-        .replace(/Add To Cart/g, '')
+        .replace(/%20/g, '_')
+        .replace(/%25/g, '_')
+        .replace(/%/g, '_')
         .trim();
 }
-
-exports.shortFileNameFn = (longFilePath) => {
-    if (longFilePath) {
+/**
+ * Recursive function that gets the filename from a long url string
+ * @function shortFileNameFn 
+ * @param {string} longUrlPath 
+ * @returns {string} - filename
+ */
+exports.shortFileNameFn = (longUrlPath) => {
+    if (longUrlPath) {
         //remove possible url querystring
-        if (longFilePath.lastIndexOf('?')>-1) longFilePath=longFilePath.substring(0,longFilePath.lastIndexOf('?'));
+        if (longUrlPath.lastIndexOf('?')>-1) longUrlPath=longUrlPath.substring(0,longUrlPath.lastIndexOf('?'));
             
         //recursively remove the section after the last '/' until a valid filename occurs
-        const idx = longFilePath.lastIndexOf('/');
-        if (/^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(longFilePath.substring(idx + 1))) {         
-            const returnThis = longFilePath.substring(idx + 1);
+        const idx = longUrlPath.lastIndexOf('/');
+        if (/^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(longUrlPath.substring(idx + 1))) {         
+            const returnThis = longUrlPath.substring(idx + 1);
             return returnThis;
         }
         //if name not yet valid, remove last section and call function again
-        longFilePath = longFilePath.substring(0, idx);
+        longUrlPath = longUrlPath.substring(0, idx);
         
-        return this.shortFileNameFn(longFilePath);
+        return this.shortFileNameFn(longUrlPath);
     } 
 };
 

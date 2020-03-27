@@ -1,13 +1,6 @@
 const { productMakesModels } = require('../../assets/constants/makerArray');
+const { leaf } = require('./helpers');
 
-/**
- * Traverses an object parsing out an object from the next levelfrom maker/model JSON-style object
- * @function
- * @param {Object} makesModels JSON-style object of product makers with models
- * @returns {Set} - Set of Models
- */
-const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
-    
 /**
  * Gets a list of unique model names from maker/model JSON-style object
  * @function getModelList
@@ -36,14 +29,13 @@ const searchOtherNamesArray = (title, otherNamesArray) => {
     if (!otherNamesArray) throw 'from searchOtherNamesArray: otherNamesArray parameter is empty';
     let foundName;
     otherNamesArray.map(name => {
-        name[1].map(altName => {
-            if (title.toUpperCase().indexOf(altName.toUpperCase()) > -1) foundName = name[0]; 
+        name[1].map(otherName => {
+            if (title.toUpperCase().indexOf(otherName.toUpperCase()) > -1) foundName = name[0]; 
         });                     
     });
 
     return foundName;
 }
-
 /**
  * Gets a list of all misspellings and colloquialisms of maker names from maker/model JSON-style object
  * @function getOtherMakerNames
@@ -214,16 +206,18 @@ const getMakeModelTypeSize = async (title) => {
     return [maker, model, type, size];  
 }
 
-exports.leaf = leaf;
-exports.getModelList = getModelList;
-exports.findMakerFromModel = findMakerFromModel;
-exports.getOtherModelNames = getOtherModelNames;
-exports.getOtherMakerNames = getOtherMakerNames;
-exports.searchOtherNamesArray = searchOtherNamesArray;
-exports.checkOtherMakerNames = checkOtherMakerNames;
-exports.checkOtherModelNames = checkOtherModelNames;
-exports.findMaker = findMaker;
-exports.findModel = findModel;
-exports.findProductType = findProductType;
-exports.findProductSize = findProductSize;
-exports.getMakeModelTypeSize = getMakeModelTypeSize;
+module.exports = {
+    leaf,
+    getModelList,
+    findMakerFromModel,
+    getOtherModelNames,
+    getOtherMakerNames,
+    searchOtherNamesArray,
+    checkOtherMakerNames,
+    checkOtherModelNames,
+    findMaker,
+    findModel,
+    findProductType,
+    findProductSize,
+    getMakeModelTypeSize
+}

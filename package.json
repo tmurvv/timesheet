@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "re-init from Feb 20, 2020",
   "main": "server.js",
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=text mocha ./utils/test/helpers.test.js",
+    "start": "node server.js",
+    "startdev": "nodemon server.js"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "chai-as-promised": "^7.1.1",
@@ -68,11 +73,6 @@
   "eslintIgnore": [
     "node_modules"
   ],
-  "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha ./utils/test",
-    "start": "node server.js",
-    "startdev": "nodemon server.js"
-  },
   "engines": {
     "node": "^10"
   },
