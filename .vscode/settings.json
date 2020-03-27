@@ -2,5 +2,6 @@
     "workbench.colorTheme": "Visual Studio Light",
     "prettier.proseWrap": "always",
     "eslint.run": "onSave",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "workbench.preferredHighContrastColorTheme": "IBM Colors Theme"
 }

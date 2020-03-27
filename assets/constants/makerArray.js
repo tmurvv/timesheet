@@ -60,15 +60,18 @@ exports.productMakesModels = {
         },
         'Style 23': {
             'harptype': 'pedal',
-            'strings': '47'
+            'strings': '47',
+            'othernames': [' 23 ']
         },
         'Style 30': {
             'harptype': 'pedal',
-            'strings': '47'
+            'strings': '47',
+            'othernames': [' 30 ']
         },
         'Style 100': {
             'harptype': 'pedal',
-            'strings': '47'
+            'strings': '47',
+            'othernames': [' 100 ']
         },
         '85E': {
             'harptype': 'pedal',
@@ -77,7 +80,8 @@ exports.productMakesModels = {
         },
         'Style 17': {
             'harptype': 'pedal',
-            'strings': '47'
+            'strings': '47',
+            'othernames': ' 17 '
         },
         'Troubadour VI ': {
             'harptype': 'lever',

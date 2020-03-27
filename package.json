@@ -52,7 +52,7 @@
     "node_modules"
   ],
   "scripts": {
-    "test": "nyc mocha ./utils/test",
+    "test": "nyc --reporter=html --reporter=text mocha ./utils/test",
     "start": "node server.js",
     "startdev": "nodemon server.js"
   },

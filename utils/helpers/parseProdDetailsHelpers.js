@@ -105,7 +105,6 @@ const findMakerFromModel = (model, makesModels) => {
             }
         });
     });
-    if (!foundName) foundName = null;
     return foundName;
 }
 /**
@@ -139,7 +138,7 @@ const checkOtherModelNames = (title) => {
 }
 /**
  * Parses maker from Product ad title using makers/models JSON-style object
- * @function Find Maker
+ * @function findMaker
  * @param {String} title the title of the product ad
  * @param {String} validated model name in case maker can not be found
  * @returns {String} - Maker name or undefined
@@ -157,10 +156,9 @@ const findMaker = (title, model) => {
     if (!productMaker) productMaker = checkOtherMakerNames(title, model);
     return productMaker;
 }
-
 /**
  * Parses maker from Product ad title using makers/models JSON-style object
- * @function Find Maker
+ * @function findModel
  * @param {String} title the title of the product ad
  * @returns {String} - Model name or undefined
  */
@@ -177,38 +175,39 @@ const findModel = (title) => {
     
     return productModel;
 }
-
-function findProductType(maker, model) {
+/**
+ * Finds product type ('lever', 'pedal') with make and model using makers/models JSON-style object
+ * @function findProductType
+ * @param {String} maker the product maker
+ * @param {String} model the product model
+ * @returns {String} - Product Type or undefined
+ */
+const findProductType = (maker, model) => {
     //short circuit
-    if (!model||!maker) return null;
-    //leaf function helps find nested object keys,
-    const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+    if (!maker) throw 'from findProductType: maker parameter is empty';
+    if (!model) throw 'from findProductType: model parameter is empty';
 
-    const makerHarps = leafHelper(productMakesModels, maker);
-    if (leafHelper(makerHarps, model)&&leafHelper(makerHarps, model).harptype) {
-        return leafHelper(makerHarps, model).harptype;
-    } else {
-        return null;
-    }
+    return leaf(leaf(productMakesModels, maker), model).harptype;
 }
+/**
+ * Finds product size with make and model using makers/models JSON-style object
+ * @function findProductSize
+ * @param {String} maker the product maker
+ * @param {String} model the product model
+ * @returns {String} - Product size or undefined
+ */
 function findProductSize(maker, model) {
-    //short circuit
-    if (!model||!maker) return null;
-    //leaf function helps find nested object keys,
-    const leafHelper = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
-  
-    const makerHarps = leafHelper(productMakesModels, maker);
-    if (leafHelper(makerHarps, model)&&leafHelper(makerHarps, model).strings) {
-        return leafHelper(makerHarps, model).strings;
-    } else {
-        return null;
-    }
+   //short circuit
+   if (!maker) throw 'from findProductType: maker parameter is empty';
+   if (!model) throw 'from findProductType: model parameter is empty';
+    
+   return leaf(leaf(productMakesModels, maker), model).strings;
 }
 
 const getMakeModelTypeSize = async (title) => {
+    if (!title) throw 'from getMakeModelTypeSize: title parameter is empty';
     const model = await findModel(title);
     const maker = await findMaker(title, model);
-    console.log('getmake...', title, model)
     const type = findProductType(maker, model);
     const size = findProductSize(maker, model);
     
@@ -218,7 +217,6 @@ const getMakeModelTypeSize = async (title) => {
 exports.leaf = leaf;
 exports.getModelList = getModelList;
 exports.findMakerFromModel = findMakerFromModel;
-exports.getMakeModelTypeSize = getMakeModelTypeSize;
 exports.getOtherModelNames = getOtherModelNames;
 exports.getOtherMakerNames = getOtherMakerNames;
 exports.searchOtherNamesArray = searchOtherNamesArray;
@@ -226,3 +224,6 @@ exports.checkOtherMakerNames = checkOtherMakerNames;
 exports.checkOtherModelNames = checkOtherModelNames;
 exports.findMaker = findMaker;
 exports.findModel = findModel;
+exports.findProductType = findProductType;
+exports.findProductSize = findProductSize;
+exports.getMakeModelTypeSize = getMakeModelTypeSize;

@@ -17,7 +17,10 @@ const {
     checkOtherMakerNames,
     checkOtherModelNames,
     findMaker,
-    findModel
+    findModel,
+    findProductType,
+    findProductSize,
+    getMakeModelTypeSize
 } = require('../helpers/parseProdDetailsHelpers');
 
 const stubMakesModels = {
@@ -122,9 +125,14 @@ describe('Get Product Details Helper Functions', () => {
         });
     });
     describe('search other name array function', () => {
-        it('should throw error when no title passed in.', () => {
-            expect(() => findMakerFromModel(null)).to.throw();
-            expect(() => findMakerFromModel(undefined)).to.throw();
+        it('should throw error when no search item passed in', () => {
+            expect(() => searchOtherNamesArray(null, ['1',['1','2']])).to.throw();
+            expect(() => searchOtherNamesArray(undefined ['1',['1','2']])).to.throw();
+        });
+        it('should throw error when no other name array passed in.', () => {
+            expect(() => searchOtherNamesArray('Salvi')).to.throw();
+            expect(() => searchOtherNamesArray('Salvi', null)).to.throw();
+            expect(() => searchOtherNamesArray('Ogden', undefined)).to.throw();
         });
         it('Finds corrected maker and model names', () => {
             const makerArray = [
@@ -203,6 +211,49 @@ describe('Get Product Details Helper Functions', () => {
         it('Finds model when misspelled', () => {
             expect(findModel('Swansen La Scuala')).to.equal('La Scuola');
             expect(findModel('W&W Harps Premiere')).to.equal('Premier');
+        });
+    });
+    describe('find product type function', () => {
+        it('should throw error when no maker passed in.', () => {
+            expect(() => findProductType(null, 'Ogden')).to.throw();
+            expect(() => findProductType(undefined, 'Ogden')).to.throw();
+        });
+        it('should throw error when no model passed in.', () => {
+            expect(() => findProductType('Salvi', null)).to.throw();
+            expect(() => findProductType('Salvi', undefined)).to.throw();
+        });
+        it('Finds correct product type', () => {
+            expect(findProductType('Swanson', 'La Scuola')).to.equal('pedal');
+            expect(findProductType('Blevins', 'Encore 34')).to.equal('lever');
+        });
+    });
+    describe('find product size function', () => {
+        it('should throw error when no maker passed in.', () => {
+            expect(() => findProductSize(null, 'Ogden')).to.throw();
+            expect(() => findProductSize(undefined, 'Ogden')).to.throw();
+        });
+        it('should throw error when no model passed in.', () => {
+            expect(() => findProductSize('Salvi', null)).to.throw();
+            expect(() => findProductSize('Salvi', undefined)).to.throw();
+        });
+        it('Finds correct product type', () => {
+            expect(findProductSize('Swanson', 'La Scuola')).to.equal('47');
+            expect(findProductSize('Blevins', 'Encore 34')).to.equal('34');
+        });
+    });
+    describe('#getMakeModelSizeType function', function() {
+        it('should throw error when no title passed in.', async function() {
+            expect(await getMakeModelTypeSize(null)).to.throw();
+            expect(await getMakeModelTypeSize(undefined)).to.throw();
+        });
+        
+        it('responds with matching records', async function() {
+            let detailArray = await getMakeModelTypeSize("Salvi Iris for sale");
+            expect(detailArray).to.eql(['Salvi', 'Iris', 'pedal', '47']);
+            detailArray = await getMakeModelTypeSize("Tripplett Siera 36 now available");
+            expect(detailArray).to.eql(['Triplett', 'Sierra 36', 'lever', '36']);
+            detailArray = await getMakeModelTypeSize('L&H 17 the best I have seen');
+            expect(detailArray).to.eql(['Lyon & Healy', 'Style 17', 'pedal', '47']);
         });
     });
 });
