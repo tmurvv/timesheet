@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "axios": "^0.19.2",
+    "chai-as-promised": "^7.1.1",
     "cheerio": "^1.0.0-rc.3",
     "cheerio-advanced-selectors": "^2.0.1",
     "cors": "^2.8.5",
@@ -32,19 +33,35 @@
     "sinon": "^9.0.1"
   },
   "eslintConfig": {
-    "extends": ["eslint:recommended", "google"],
+    "extends": [
+      "eslint:recommended",
+      "google"
+    ],
     "env": {
-        "node" : true
+      "node": true
     },
     "parserOptions": {
       "ecmaVersion": 6
     },
-    "rules" : {
-      "max-len": [2, 120, 4, {"ignoreUrls": true}],
+    "rules": {
+      "max-len": [
+        2,
+        120,
+        4,
+        {
+          "ignoreUrls": true
+        }
+      ],
       "no-console": 0,
       "linebreak-style": 0,
-      "indent": ["error", 4],
-      "comma-dangle": ["error", "never"],
+      "indent": [
+        "error",
+        4
+      ],
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
       "es6": 0
     }
   },

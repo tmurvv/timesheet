@@ -1,10 +1,14 @@
 // Mocha API
 const {describe, it} = require('mocha');
-// Assertions module - Chai!
-const {expect} = require('chai');
-// Sinon for fakes, stubs, and spies
-const {sinon} = require('sinon');
 
+
+// Assertions module - Chai!
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+
+const expect = chai.expect;
+chai.use(chaiAsPromised);
+ 
 const {productMakesModels} = require('../../assets/constants/makerArray');
 
 // The code under test
@@ -242,9 +246,13 @@ describe('Get Product Details Helper Functions', () => {
         });
     });
     describe('#getMakeModelSizeType function', function() {
+        // it('should throw an error when no user ID is provided', () => {
+        //     expect(Client.getUserRecommendations(null, {})).be.rejectedWith(/Missing/);
+        //   });
+        
         it('should throw error when no title passed in.', async function() {
-            expect(await getMakeModelTypeSize(null)).to.throw();
-            expect(await getMakeModelTypeSize(undefined)).to.throw();
+            expect(getMakeModelTypeSize(null)).to.be.rejectedWith(Error);
+            expect(getMakeModelTypeSize(undefined)).to.be.rejectedWith(Error);
         });
         
         it('responds with matching records', async function() {
