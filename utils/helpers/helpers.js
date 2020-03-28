@@ -40,7 +40,7 @@ exports.linkFn = async (seller, url) => {
 exports.cleanText = (text) => {
     if (!text) throw 'from cleanText: missing text parameter';
         
-    return text.replace(/\/n/g, '').replace(/\/t/g, '').replace(/Add To Cart/gi, '').replace(/AddToCart/gi, '').replace(/\s/g, '');
+    return text.replace(/\/n/g, '').replace(/\/t/g, '').replace(/Add To Cart/gi, '').replace(/AddToCart/gi, '').replace(/\s/g, ' ');
 }
 /**
  * Removes url encodes and trims text
@@ -105,7 +105,6 @@ exports.checkBadImages = (model, badImages) => {
  * @returns {Object} - Product information
  */
 const parseStoreSecondaryInfo = (seller, data) => {
-    console.log('inparsestoretop', seller.name)
     if (!seller) throw 'from parseStoreSecondaryInfo: missing seller parameter';
     if (!data) throw 'from parseStoreSecondaryInfo: missing data parameter';
 

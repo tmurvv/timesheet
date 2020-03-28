@@ -30,7 +30,7 @@ const parseStoreInfo = async (seller, data) => {
         let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
         let productImageUrl = seller.hasOwnProperty('imageUrlFn')&&seller.imageUrlFn ? seller.imageUrlFn($, this) : '';
-        
+        console.log(productTitle);
         //if website links to secondary product detail page
         if (seller.hasOwnProperty('findLinkUrlFn')&&seller.findLinkUrlFn) {  
             const secondaryUrl = seller.findLinkUrlFn($, this);
@@ -46,19 +46,21 @@ const parseStoreInfo = async (seller, data) => {
 
         // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
-        
-        //handle image specifics
+        if (!productImageUrl) productImageUrl = 'harp-genericSTOCK.jpg';
+        // handle image specifics
         let shortProductImageUrl;
-        //grab stock photo url if bad image
+        // grab stock photo url if bad image
         if (seller.hasOwnProperty('badImages') && makeModelTypeSize[1]) {
             if (checkBadImages(makeModelTypeSize[1], seller.badImages)) shortProductImageUrl = checkBadImages(makeModelTypeSize[1], seller.badImages);
         }
         
-        //download image if not from web or stock
+        // //download image if not from web or stock
+        // console.log(shortProductImageUrl, productImageUrl)
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);       
-        if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl)
+        console.log(shortProductImageUrl, productImageUrl)
+        if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
         productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api-development.herokuapp.com/assets/img/${shortProductImageUrl}`;
-        
+        // console.log(shortProductImageUrl);
         //create product
         let product = {
             id,

@@ -77,14 +77,14 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Tisha Murvihill, harp services', //name
         'Canada', //country
         'West', //region
-        'https://harptisha.com', //productsUrl
-        '.main', //mainPathId
+        'https://harptisha.com/harpSalesRent.php', //productsUrl
+        '.productContainer', //mainPathId
         null, //customFns 
-        () => 'Premiere by W&W Harps', //titleFn
-        () => '$4300', //priceFn,
-        () => 'Purchased 2011 Maple', //shortDescFn
-        () => 'Excellent condition, lightly used, beautiful Triplett sound. This one is a winner!', //longDescFn 
-        () => 'triplettSierra36Maple.jpg' //productImageUrlFn            
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).parent().parent().find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
 //#endregion
@@ -221,11 +221,11 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
 exports.sellerArray = [
     // HarpConnection, 
     // VanderbiltMusic_e, 
-    VanderbiltMusic_o,
+    // VanderbiltMusic_o,
     // AtlantaHarpCenter_o, 
     // AtlantaHarpCenter_e,
     // HarpsEtc, removed for SSL violations
     // PhoenixHarps,
-    // MurvihillHarpServices,
+    MurvihillHarpServices,
     // VirginiaHarpCenter
 ];
