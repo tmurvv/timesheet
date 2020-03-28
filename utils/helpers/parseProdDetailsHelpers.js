@@ -207,7 +207,6 @@ const getMakeModelTypeSize = async (title) => {
 }
 
 module.exports = {
-    leaf,
     getModelList,
     findMakerFromModel,
     getOtherModelNames,

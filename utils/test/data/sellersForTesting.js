@@ -1,5 +1,7 @@
-const { SellerPaths } = require('../classes/SellerPaths');
-const { SellerPathsLink } = require('../classes/SellerPathsLink');
+/* instanbul ignore file */
+
+const { SellerPaths } = require('../../../assets/classes/SellerPaths');
+const { SellerPathsLink } = require('../../../assets/classes/SellerPathsLink');
 
 //#region VENDORS NOT LINKING TO PRODUCTS
     //#region Harp Connection
@@ -219,13 +221,13 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
 //#endregion
 
 exports.sellerArray = [
-    // HarpConnection, 
-    // VanderbiltMusic_e, 
+    HarpConnection, 
+    VanderbiltMusic_e, 
     VanderbiltMusic_o,
-    // AtlantaHarpCenter_o, 
-    // AtlantaHarpCenter_e,
+    AtlantaHarpCenter_o, 
+    AtlantaHarpCenter_e,
     // HarpsEtc, removed for SSL violations
     // PhoenixHarps,
-    // MurvihillHarpServices,
+    MurvihillHarpServices,
     // VirginiaHarpCenter
 ];

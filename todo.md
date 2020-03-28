@@ -1,6 +1,10 @@
+- learn this https://support.google.com/webmasters/answer/9128669?hl=en
+
 - make end point for ad upload
 
-- finish parseProdHelper tests
+- finishHelper tests
+
+-create dummy store on my site for testing
 
 - make error catching system
 
@@ -40,5 +44,9 @@ As you can see, the mtime is the last modified time.
 - think about adding a space after all models before search ('troubadour V returns troubadour VI, Swan returns Swanson)
 
 - this is an npm json schema validator to validate the makerModel object https://github.com/tdegrunt/jsonschema/blob/HEAD/examples/all.js
+
+- clean extra white spaces in description fields
+
+- function to delete unused harp photos from server (once the harps sell)
 
 - HarpsEtc, certificate issue, worked on it. you have to create a CA certificate maybe using forge, then try this Medium to implement. https://medium.com/@jamomani/adding-trusted-ca-to-node-client-with-axios-2792024bca4 -- last resort, add this to top of app file: "process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';"  //NOT YET IMPLEMENTED dangerous code

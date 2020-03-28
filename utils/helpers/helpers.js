@@ -7,8 +7,8 @@ const axios = require('axios');
  * @param {Object} makesModels JSON-style object of product makers with models
  * @returns {Set} - Set of Models
  */
-exports.leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
-//#region Helper Functions
+const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj)) //from StackOverflow
+
 /**
  * When scraping products, does a second Axios call if seller uses secondary page
  * @function linkFn  
@@ -24,7 +24,7 @@ exports.linkFn = async (seller, url) => {
         throw(err);
     }
     try {   
-        const response = await axios(url);        
+        const response = await axios(url);  
         return parseStoreSecondaryInfo(seller, response.data);    
     } catch (err) {
         console.log(url, 'timed out', err.message);
@@ -63,70 +63,74 @@ exports.cleanUrlText = (text) => {
  * @returns {string} - filename
  */
 exports.shortFileNameFn = (longUrlPath) => {
-    if (longUrlPath) {
-        //remove possible url querystring
-        if (longUrlPath.lastIndexOf('?')>-1) longUrlPath=longUrlPath.substring(0,longUrlPath.lastIndexOf('?'));
-            
-        //recursively remove the section after the last '/' until a valid filename occurs
-        const idx = longUrlPath.lastIndexOf('/');
-        if (/^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(longUrlPath.substring(idx + 1))) {         
-            const returnThis = longUrlPath.substring(idx + 1);
-            return returnThis;
-        }
-        //if name not yet valid, remove last section and call function again
-        longUrlPath = longUrlPath.substring(0, idx);
+    if (!longUrlPath) throw 'from shortFileNameFn: missing longUrlPath parameter';
+    
+    //remove possible url querystring
+    if (longUrlPath.lastIndexOf('?')>-1) longUrlPath=longUrlPath.substring(0,longUrlPath.lastIndexOf('?'));
         
-        return this.shortFileNameFn(longUrlPath);
-    } 
+    //recursively remove the section after the last '/' until a valid filename occurs
+    const idx = longUrlPath.lastIndexOf('/');
+    if (/^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(longUrlPath.substring(idx + 1))) {         
+        const returnThis = longUrlPath.substring(idx + 1);
+        return returnThis;
+    }
+    //if name not yet valid, remove last section and call function again
+    longUrlPath = longUrlPath.substring(0, idx);
+    
+    return this.shortFileNameFn(longUrlPath);  
 };
-
-exports.sellerSort = () => sellerArray.sort(function(a, b) {
-    var nameA = a.sellerName.toUpperCase(); // ignore upper and lowercase
-    var nameB = b.sellerName.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-        return -1;
-    }
-    if (nameA > nameB) {
-       return 1;
-    }
-  
-    // names must be equal
-    return 0;
-});
-//#endregion
-
-//#region Helper functions for images
+/**
+ * Checks if stock images need to be used because of bad or missing images from store
+ * @function checkBadImages 
+ * @param {string} model 
+ * @param {Array} list of models that need stock photos (comes from seller info)
+ * @returns {string} - filename
+ */
 exports.checkBadImages = (model, badImages) => {
-    let stockUrl;
+    if (!model) throw 'from checkBadImages: missing model parameter';
+    if (!badImages) throw 'from checkBadImages: missing badImages parameter';
+
+    let stockImageUrl;
     badImages.map(badImage => {
-        if (model === badImage) stockUrl = `${badImage}STOCK.jpg`.replace(' ','');
+        if (model === badImage) stockImageUrl = `${badImage}STOCK.jpg`.replace(' ','');
     });
     
-    return stockUrl;
+    return stockImageUrl;
 }
-//#endregion
+/**
+ * Parses information from a secondary linked page on a vendor website
+ * @function parseStoreSecondaryInfo 
+ * @param {Object} - seller info
+ * @param {Cheerio Object} - page html
+ * @returns {Object} - Product information
+ */
+const parseStoreSecondaryInfo = (seller, data) => {
+    console.log('inparsestoretop', seller.name)
+    if (!seller) throw 'from parseStoreSecondaryInfo: missing seller parameter';
+    if (!data) throw 'from parseStoreSecondaryInfo: missing data parameter';
 
-//#region Main Functions parse Secondary
-    //for parse store info function if secondary link
-    function parseStoreSecondaryInfo(seller, data) {
-        const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  
-        const $ = cheerio.load(html);   
-        const thisProduct = $(seller.mainPathIdLink);
-        
-        const productTitle = seller.hasOwnProperty('titleLinkFn')&&seller.titleLinkFn ? seller.titleLinkFn($, thisProduct) : '';
-        const productPrice = seller.hasOwnProperty('priceLinkFn')&&seller.priceLinkFn ? seller.priceLinkFn($, thisProduct) : '';
-        const productShortDesc = seller.hasOwnProperty('shortDescLinkFn')&&seller.shortDescLinkFn ? seller.shortDescLinkFn($, thisProduct) : '';
-        const productLongDesc = seller.hasOwnProperty('longDescLinkFn')&&seller.longDescLinkFn ? seller.longDescLinkFn($, thisProduct) : '';
-        const productImageUrl = seller.hasOwnProperty('imageUrlLinkFn')&&seller.imageUrlLinkFn ? seller.imageUrlLinkFn($, thisProduct) : '';
-        
-        const product = {
-            productTitle,
-            productShortDesc,
-            productPrice,
-            productLongDesc,
-            productImageUrl
-        }
-        
-        return product;
+    const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  
+    const $ = cheerio.load(html);   
+    const thisProduct = $(seller.mainPathIdLink);
+    /* istanbul ignore next */
+    const productTitle = seller.hasOwnProperty('titleLinkFn')&&seller.titleLinkFn ? seller.titleLinkFn($, thisProduct) : '';
+    /* istanbul ignore next */
+    const productPrice = seller.hasOwnProperty('priceLinkFn')&&seller.priceLinkFn ? seller.priceLinkFn($, thisProduct) : '';
+    /* istanbul ignore next */
+    const productShortDesc = seller.hasOwnProperty('shortDescLinkFn')&&seller.shortDescLinkFn ? seller.shortDescLinkFn($, thisProduct) : '';
+    const productLongDesc = seller.hasOwnProperty('longDescLinkFn')&&seller.longDescLinkFn ? seller.longDescLinkFn($, thisProduct) : '';
+    const productImageUrl = seller.hasOwnProperty('imageUrlLinkFn')&&seller.imageUrlLinkFn ? seller.imageUrlLinkFn($, thisProduct) : '';
+    
+    const product = {
+        productTitle,
+        productShortDesc,
+        productPrice,
+        productLongDesc,
+        productImageUrl
     }
-//#endregion
+    
+    return product;
+}
+
+exports.leaf = leaf;
+exports.parseStoreSecondaryInfo = parseStoreSecondaryInfo;
