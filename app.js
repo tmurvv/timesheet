@@ -1,5 +1,6 @@
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
 const path = require('path');
+const uuid = require('uuid');
 const EventEmitter = require('events');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
@@ -51,6 +52,37 @@ app.use(express.json({limit: '10kb'}))
 app.use('/', viewRouter); 
 // app.use('/productads', productRouter); 
 
+
+
+app.post('/api/v1/privateads', async (req, res) => {
+    console.log(req.body);
+  
+    const productId = uuid();
+    const product = Object.assign({ productId }, req.body);
+    
+    // add to json usedharplist
+    console.log(product)
+    res.status(200).json({
+        title: 'FindAHarp.com | Create Private Ad',
+        status: 'success',
+        data: {
+            product
+        }
+    });
+    // fs.writeFile(
+    //   `${__dirname}/dev-data/data/tours-simple.json`,
+    //   JSON.stringify(tours),
+    //   err => {
+    //     res.status(201).json({
+    //       status: 'success',
+    //       data: {
+    //         tour: newTour
+    //       }
+    //     });
+    //   }
+    // );
+});
+  
 // //Run get product ads
 app.get('/api/v1/productads', async (req, res) => {
     const usedHarps = await scrapeAds();

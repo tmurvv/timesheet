@@ -2,7 +2,6 @@ const fs = require('fs');
 const request = require('request');
 
 const download = function(uri, filename, callback) {
-    console.log('in download', uri, filename)
     try {
         request.head(uri, function(err, res, body) {
             console.log('content-type:', res.headers['content-type']);
@@ -20,7 +19,6 @@ const download = function(uri, filename, callback) {
 exports.downloadImage = (longFileName, shortFileName) => {
     if (shortFileName !== undefined && /^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(shortFileName)) {
         const myUrl = `assets/img/${shortFileName}`;
-        console.log('mine', 'long', myUrl, longFileName);
         fs.stat(myUrl, function(err, stat) {
             if(err == null) {
             } else if(err.code === 'ENOENT') {

@@ -30,7 +30,6 @@ const parseStoreInfo = async (seller, data) => {
         let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
         let productImageUrl = seller.hasOwnProperty('imageUrlFn')&&seller.imageUrlFn ? seller.imageUrlFn($, this) : '';
-        console.log(productTitle);
         //if website links to secondary product detail page
         if (seller.hasOwnProperty('findLinkUrlFn')&&seller.findLinkUrlFn) {  
             const secondaryUrl = seller.findLinkUrlFn($, this);
@@ -54,13 +53,11 @@ const parseStoreInfo = async (seller, data) => {
             if (checkBadImages(makeModelTypeSize[1], seller.badImages)) shortProductImageUrl = checkBadImages(makeModelTypeSize[1], seller.badImages);
         }
         
-        // //download image if not from web or stock
-        // console.log(shortProductImageUrl, productImageUrl)
+        //download image if not from web or stock
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);       
-        console.log(shortProductImageUrl, productImageUrl)
         if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
         productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api-development.herokuapp.com/assets/img/${shortProductImageUrl}`;
-        // console.log(shortProductImageUrl);
+       
         //create product
         let product = {
             id,
@@ -77,8 +74,7 @@ const parseStoreInfo = async (seller, data) => {
             productSize: makeModelTypeSize[3],
             productImageUrl,
             divider: '00000000000000000000000'
-        }
-        
+        }       
         // check for vendor custom functions
         if (seller.hasOwnProperty('customFns') && seller.customFns) {
             seller.customFns.map(customFuncString => {
@@ -92,7 +88,6 @@ const parseStoreInfo = async (seller, data) => {
         }
         //write to product file
         if (makeModelTypeSize[1]) mainProductList.push(product);
-        // console.log('scraper usedHarpsNA', mainProductList);
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) console.log('Error writing used-harp list function:', err.message);
         });
