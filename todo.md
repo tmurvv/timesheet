@@ -1,5 +1,6 @@
 - finishHelper tests
 
+- figure out how to deal with Swan, Swanson, Swan:, Swan,, Swan-
 - add check that all othernames in makerArray are an array, not string
 
 - make error catching system
