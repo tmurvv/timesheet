@@ -7,7 +7,7 @@ const download = function(uri, filename, callback) {
             console.log('content-type:', res.headers['content-type']);
             console.log('content-length:', res.headers['content-length']);
             process.on('uncaughtException', function (error) {
-                console.log('hello1');
+                console.log('from download function in downloadWebSiteImages.js:', error.message);
             });
             const file = request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
         });

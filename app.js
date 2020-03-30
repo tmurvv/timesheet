@@ -55,13 +55,10 @@ app.use('/', viewRouter);
 
 
 app.post('/api/v1/privateads', async (req, res) => {
-    console.log(req.body);
-  
     const productId = uuid();
     const product = Object.assign({ productId }, req.body);
     
     // add to json usedharplist
-    console.log(product)
     res.status(200).json({
         title: 'FindAHarp.com | Create Private Ad',
         status: 'success',
