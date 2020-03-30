@@ -178,8 +178,16 @@ const findProductType = (maker, model) => {
     //short circuit
     if (!maker) throw 'from findProductType: maker parameter is empty';
     if (!model) throw 'from findProductType: model parameter is empty';
+    
+    let type;
+    
+    try {
+        type = (leaf(leaf(productMakesModels, maker), model).harptype);
+    } catch (err) {
+        return 'not found';
+    }
 
-    return leaf(leaf(productMakesModels, maker), model).harptype;
+    return type;
 }
 /**
  * Finds product size with make and model using makers/models JSON-style object
@@ -189,21 +197,29 @@ const findProductType = (maker, model) => {
  * @returns {String} - Product size or undefined
  */
 function findProductSize(maker, model) {
-   //short circuit
-   if (!maker) throw 'from findProductType: maker parameter is empty';
-   if (!model) throw 'from findProductType: model parameter is empty';
+    //short circuit
+    if (!maker) throw 'from findProductType: maker parameter is empty';
+    if (!model) throw 'from findProductType: model parameter is empty';
     
-   return leaf(leaf(productMakesModels, maker), model).strings;
+    let numStrings;
+    try{
+        numStrings = leaf(leaf(productMakesModels, maker), model).strings;
+    } catch (err) {
+        return 'not found';
+    }
+        
+    return numStrings;
 }
 
 const getMakeModelTypeSize = async (title) => {
     if (!title) throw 'from getMakeModelTypeSize: title parameter is empty';
     const model = await findModel(title);
+    if (!model) return [];
     const maker = await findMaker(title, model);
     const type = findProductType(maker, model);
     const size = findProductSize(maker, model);
     
-    return [maker, model, type, size];  
+    return [maker, model, type, size];
 }
 
 module.exports = {

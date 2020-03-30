@@ -59,7 +59,8 @@ const parseStoreInfo = async (seller, data) => {
         productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api-development.herokuapp.com/assets/img/${shortProductImageUrl}`;
        
         //create product
-        let product = {
+        let product;
+        if (makeModelTypeSize[1]) product = {
             id,
             sellerName: seller.name,
             sellerCountry: seller.country,
@@ -87,7 +88,8 @@ const parseStoreInfo = async (seller, data) => {
             });
         }
         //write to product file
-        if (makeModelTypeSize[1]) mainProductList.push(product);
+        // mainProductList.push(product); 
+        if (product) mainProductList.push(product);
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) console.log('Error writing used-harp list function:', err.message);
         });

@@ -1,6 +1,6 @@
-- make end point for ad upload
-
 - finishHelper tests
+
+- add check that all othernames in makerArray are an array, not string
 
 - make error catching system
 
@@ -39,3 +39,7 @@
 - function to delete unused harp photos from server (once the harps sell)
 
 - HarpsEtc, certificate issue, worked on it. you have to create a CA certificate maybe using forge, then try this Medium to implement. https://medium.com/@jamomani/adding-trusted-ca-to-node-client-with-axios-2792024bca4 -- last resort, add this to top of app file: "process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';"  //NOT YET IMPLEMENTED dangerous code -- IDEA MAKE API JUST FOR STORES WITH BROKEN CERTIFICATES SO IT IS ISOLATED
+
+### PHASE 2?
+
+- finish endpoint for adupload

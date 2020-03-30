@@ -41,15 +41,15 @@ describe('Helper functions', () => {
             expect(() => cleanText(undefined)).to.throw();
         });
         it('text should be properly cleaned.', () => {
-            expect(cleanText('here')).to.equal('here');
+            expect(cleanText('here')).to.equal('here'); 
             expect(cleanText('/nhere')).to.equal('here');
             expect(cleanText('/nhereAdd to Cart')).to.equal('here');
             expect(cleanText('/nheaddtoCartre')).to.equal('here');
             expect(cleanText('headd to Cartre')).to.equal('here');
+            expect(cleanText('/nhere/t/t                  /t/t/t')).to.equal('here ');
             expect(cleanText('/nhere/t/t/t/t/t')).to.equal('here');
-            expect(cleanText('/nhere/t/t/t/t/t')).to.equal('here');
-            expect(cleanText('/nher/n/n/n/n/n/ne/t/t/t/t/t')).to.equal('here');
-            expect(cleanText('/nher\n\n\n\n\t\t\t\t\taddTOCART/n/n/n/n/n/ne/t/t/t/t/t')).to.equal('here');
+            expect(cleanText('/nhere/n/n/n           /n/n/n/t/t          /t/t/t')).to.equal('here ');
+            expect(cleanText('/nhere\n\n\n\n\t\t\t\t\taddTOCART/n/n/n/n/n/n/t/t/t/t/t')).to.equal('here ');
         });
     });
     describe('cleanUrlText function', () => {

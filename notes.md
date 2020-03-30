@@ -18,7 +18,9 @@ Heroku deploy
 ### to switch default from development to staging: git config heroku.remote staging
 ## STEPS TO DEPLOY and REVERT TO DEV
 
+- Check for // BREAKING
 - make sure download images is enabled
+- make sure correct sellers are allowed
 - make sure get harp info is enabled
 - search for console.logs
 - remove values from login
