@@ -5,6 +5,8 @@
 
 - make error catching system
 
+- test daily update with my website
+
 - learn this https://support.google.com/webmasters/answer/9128669?hl=en
 
 - make find all models and find all makers helpers only run when makerModel file    

@@ -88,7 +88,6 @@ const parseStoreInfo = async (seller, data) => {
             });
         }
         //write to product file
-        // mainProductList.push(product); 
         if (product) mainProductList.push(product);
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) console.log('Error writing used-harp list function:', err.message);

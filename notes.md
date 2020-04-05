@@ -14,11 +14,12 @@ Heroku deploy
 ### Choose environment to deploy to: 
 - git push development master
 - git push staging master
-- git push production master
+- git push heroku master (for production)
+
 ### to switch default from development to staging: git config heroku.remote staging
 ## STEPS TO DEPLOY and REVERT TO DEV
 
-- Check for // BREAKING
+- Check for BREAKING
 - make sure download images is enabled
 - make sure correct sellers are allowed
 - make sure get harp info is enabled
