@@ -2,6 +2,9 @@
 
 - figure out how to deal with Swan, Swanson, Swan:, Swan,, Swan-
 - add check that all othernames in makerArray are an array, not string
+- add crud endpoints for private listings
+
+- add date listing created
 
 - make error catching system
 
