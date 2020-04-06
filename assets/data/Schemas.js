@@ -27,8 +27,13 @@ const makesModelsSchema = new mongoose.Schema({
     sellerProducts: [productSchema], 
 });
 
-exports.productSchema = productSchema;
-exports.makesModelsSchema = makesModelsSchema;
+const MakesModels = mongoose.model('MakesModels', makesModelsSchema);
+// const MakesModels = mongoose.model('MakesModels', makesModelsSchema);
+//console.log(MakesModels.find())
+module.exports.MakesModels = MakesModels;
+// module.exports.productSchema = productSchema;
+// module.exports.makesModelsSchema = makesModelsSchema;
+
 // const vendorDeets = {
 //     vendorName: 'Murvihill Harps',
 //     vendorAliases: ['Mervihill','Murvihill', 'Murvahill'],

@@ -1,7 +1,8 @@
 ### Last Deployment To: 
 
-# PRODUCTION
+# TESTING
 
+- Search for "BREAKING"
 - make sure testing set to all tests
 - run tests
 
@@ -9,6 +10,7 @@ Heroku deploy
 - config.env port to 3000
 - change where new image url in harpAdScraper (search on 'findaharp) depends on environment you are deploying to
 - check that all stores uncommented in constants/sellers.js
+- make sure download images is enabled
 - don't forget to commit and push
 
 ### Choose environment to deploy to: 
@@ -19,10 +21,6 @@ Heroku deploy
 ### to switch default from development to staging: git config heroku.remote staging
 ## STEPS TO DEPLOY and REVERT TO DEV
 
-- Check for BREAKING
-- make sure download images is enabled
-- make sure correct sellers are allowed
-- make sure get harp info is enabled
 - search for console.logs
 - remove values from login
 - remove values from signup
@@ -36,5 +34,5 @@ Heroku deploy
 - git push your changes
 - for Heroku, deploy command login to heroku cli with command: heroku login
 - then once logged into Heroku execute command: git push heroku master or git push development master
-- app located at https://onestopharpshop-api.herokuapp.com/ or https://onestop-api-staging.herokuapp.com or https://onestop-api-development.herokuapp.com
+- app located at https://findaharp-api.herokuapp.com/ or https://findaharp-api-staging.herokuapp.com or https://findaharp-api-testing.herokuapp.com
 - test signup, login

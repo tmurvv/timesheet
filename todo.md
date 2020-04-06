@@ -1,5 +1,7 @@
 - decide whether to reconsitute makerModel Object or send separately
 
+- set up Production env variables, image url etc
+
 - figure out how to deal with Swan, Swanson, Swan:, Swan, Swan- (then fix tests)
 
 - add crud endpoints for private listings

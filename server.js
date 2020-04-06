@@ -1,9 +1,23 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-
+const {makesModelsSchema} = require('./assets/data/Schemas');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
+//%^%^%^%^^%^%^%^%^%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//Sub Docs
+
+
+
+
+// const go = (async () => {
+//     const result = await MakesModels.find(); 
+//     console.log(JSON.stringify(result));
+// });
+// go();
+// console.log(MakesModels.find());
+
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 /************ 
 *Connect DB

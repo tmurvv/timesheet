@@ -202,7 +202,6 @@ function findProductSize(maker, model) {
     //short circuit
     if (!maker) throw 'from findProductType: maker parameter is empty';
     if (!model) throw 'from findProductType: model parameter is empty';
-    console.log('from findProductSize', maker, model)
     let numStrings;
     try{
         numStrings = leaf(leaf(productMakesModels, maker), model).strings;
