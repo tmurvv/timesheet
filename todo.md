@@ -1,7 +1,7 @@
-- finishHelper tests
+- decide whether to reconsitute makerModel Object or send separately
 
-- figure out how to deal with Swan, Swanson, Swan:, Swan,, Swan-
-- add check that all othernames in makerArray are an array, not string
+- figure out how to deal with Swan, Swanson, Swan:, Swan, Swan- (then fix tests)
+
 - add crud endpoints for private listings
 
 - add date listing created
@@ -46,6 +46,4 @@
 
 - HarpsEtc, certificate issue, worked on it. you have to create a CA certificate maybe using forge, then try this Medium to implement. https://medium.com/@jamomani/adding-trusted-ca-to-node-client-with-axios-2792024bca4 -- last resort, add this to top of app file: "process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';"  //NOT YET IMPLEMENTED dangerous code -- IDEA MAKE API JUST FOR STORES WITH BROKEN CERTIFICATES SO IT IS ISOLATED
 
-### PHASE 2?
-
-- finish endpoint for adupload
+- finishHelper tests

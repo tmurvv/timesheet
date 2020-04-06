@@ -1,13 +1,17 @@
-//const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-// const DB = process.env.DATABASE.replace(
-//     '<PASSWORD>',
-//     process.env.DATABASE_PASSWORD
-// );
+
+/************ 
+*Connect DB
+*************/
+const DB = process.env.DATABASE.replace(
+    '<PASSWORD>',
+    process.env.DATABASE_PASSWORD
+);
 // const DEVDB = process.env.DEV_DATABASE.replace(
 //     '<PASSWORD>',
 //     process.env.DEV_DATABASE_PASSWORD
@@ -18,19 +22,23 @@ const app = require('./app');
 //     process.env.PORTFOLIO_DATABASE_PASSWORD
 // );
 
-// mongoose
-//     .connect(PORTDB, {
-//         useNewUrlParser: true,
-//         useCreateIndex: true,
-//         useFindAndModify: true,
-//         useUnifiedTopology: true
-//     })
-//     .then(() => console.log('DB connection successful'));
+mongoose
+    .connect(DB, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log('DB connection successful'));
 
+/**************
+ * Start Server
+ *************/
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
     console.log(`onestopharpshop-api running on port: ${port}...`);
 });
+
 //fallback exception handler (will not handle exceptions above this line of code)
 process.on('uncaughtException', err => {
     console.log('Uncaught Exception.');

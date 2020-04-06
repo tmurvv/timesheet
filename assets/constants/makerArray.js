@@ -174,7 +174,7 @@ exports.productMakesModels = {
         }
     },
     'Swanson': {
-        'La Scuola ': {
+        'La Scuola': {
             'harptype': 'pedal',
             'strings': '47',
             'othernames': ['La Scuala']
@@ -253,7 +253,7 @@ exports.productMakesModels = {
         'othernames': ['Tripplett', 'Triplet', 'Tripplet']
     },
     'Thormahlen': {
-        'Swan': {
+        'Swan ': {
             'harptype': 'lever',
             'strings': '36'
         },
@@ -319,7 +319,7 @@ exports.productMakesModels = {
     },
     'Rees': {
         'Harpsicle': {
-            'harptype': 'lap',
+            'harptype': 'lever-free',
             'strings': '26'
         },
         'Aberdeen Meadows': {

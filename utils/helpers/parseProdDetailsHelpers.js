@@ -48,6 +48,7 @@ const getOtherMakerNames = (makesModels) => {
     
     Object.keys(makesModels).map(maker => {
         if (leaf(makesModels,maker).othernames) {
+            if (!Array.isArray(leaf(makesModels,maker).othernames)) throw 'from getOtherMakerNames: other names must be arrays';
             otherNames.push([maker,[...leaf(makesModels,maker).othernames]]);
         }
     }); 
@@ -67,6 +68,7 @@ const getOtherModelNames = (makesModels) => {
     
     makerList.map(maker => {      
         Object.keys(leaf(makesModels, maker)).map(model => {
+            if (leaf(leaf(makesModels, maker), model).othernames && !Array.isArray(leaf(leaf(makesModels, maker), model).othernames)) throw 'from getOtherMakerNames: other names must be arrays';
             if (leaf(leaf(makesModels, maker), model).othernames) {
                 otherNames.push([model,[...leaf(leaf(makesModels, maker),model).othernames]]);
             }
@@ -200,7 +202,7 @@ function findProductSize(maker, model) {
     //short circuit
     if (!maker) throw 'from findProductType: maker parameter is empty';
     if (!model) throw 'from findProductType: model parameter is empty';
-    
+    console.log('from findProductSize', maker, model)
     let numStrings;
     try{
         numStrings = leaf(leaf(productMakesModels, maker), model).strings;

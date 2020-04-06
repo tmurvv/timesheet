@@ -1,8 +1,14 @@
-LAST DEPLOYMENT TO: PRODUCTION
+### Last Deployment To: 
+
+# PRODUCTION
+
+- make sure testing set to all tests
+- run tests
 
 Heroku deploy
 - config.env port to 3000
 - change where new image url in harpAdScraper (search on 'findaharp) depends on environment you are deploying to
+- check that all stores uncommented in constants/sellers.js
 - don't forget to commit and push
 
 ### Choose environment to deploy to: 

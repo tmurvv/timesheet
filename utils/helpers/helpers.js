@@ -1,6 +1,61 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
+const {productSchema,makesModelsSchema} = require('../../assets/data/Schemas');
+const {productMakesModels} = require('../../assets/constants/makerArray');
+const mongoose = require('mongoose');
 
+/**
+ * Only used to get initial maker/model array into noSQL (Mongo) DB format
+ * @function initialMakerArraytoDB
+ * @returns nothing (saves to Mongo DB)
+ */
+
+const MakesModels = mongoose.model('MakesModels', makesModelsSchema);
+
+exports.initialMakerArraytoDB = async () => {
+    //Sub Docs
+    var Product = mongoose.model('Product', productSchema);
+    const makers = Object.keys(productMakesModels);
+    makers.map(maker => {
+        // maker product info
+        const sellerProducts = [];
+        const product = (leaf(productMakesModels, maker));
+        const productDeets = Object.keys(product);
+        
+        productDeets.map((deet, idx) => {
+            const productDetails = leaf(product, deet);
+            if (productDetails.harptype) {
+                const newProduct = {
+                    productTitle: Object.keys(product)[idx],
+                    productMaker: maker,
+                    productType: productDetails.harptype,
+                    productSize: productDetails.strings,
+                    productAliases: product.othernames
+                }
+                sellerProducts.push(newProduct);
+            }        
+        })
+
+        // main maker info
+        const seller = (leaf(productMakesModels, maker));
+        const newSeller = {
+            sellerName: maker,
+            sellerAliases: seller.othernames,
+            sellerProducts
+        }
+
+        const makesmodels = new MakesModels(newSeller);
+
+        /*******************
+         * THIS CHANGES THE DATABASE!!!
+         * uncomment to run initial data upload
+         ******************/
+        // makesmodels.save(function (err) {
+        //       if (err) return console.log(err)
+        //       console.log('Success!');
+        //     });       
+    });
+}
 /**
  * Traverses an object parsing out an object from the next levelfrom maker/model JSON-style object
  * @function leaf
@@ -126,8 +181,7 @@ const parseStoreSecondaryInfo = (seller, data) => {
         productPrice,
         productLongDesc,
         productImageUrl
-    }
-    
+    }   
     return product;
 }
 
