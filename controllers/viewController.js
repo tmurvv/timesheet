@@ -33,8 +33,8 @@ exports.getUsedHarp = async (req, res) => {
         res.status(200).json({
             title: 'OneStopHarpShop | Used Harps',
             status: 'success',
-            harpMakesModels: JSON.stringify(productMakesModels),
-            harpData: JSON.parse(data)
+            // harpMakesModels: JSON.stringify(productMakesModels),
+            // harpData: data
         });
     });
 };

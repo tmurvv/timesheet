@@ -1,4 +1,6 @@
-- decide whether to reconsitute makerModel Object or send separately
+- make sure getMakesModels is returning all 23 makers
+
+- instead of location zip/postal code where harp located
 
 - set up Production env variables, image url etc
 

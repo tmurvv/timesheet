@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema({
     },
     productSize: Number,
     productAliases: Array
-});
+},{ versionKey: false });
 
 // Main Doc
 const makesModelsSchema = new mongoose.Schema({
@@ -24,15 +24,15 @@ const makesModelsSchema = new mongoose.Schema({
     sellerAliases: Array,
     
     // Array of subdocuments
-    sellerProducts: [productSchema], 
-});
+    sellerProducts: [productSchema],
+    
+},{ versionKey: false });
 
 const MakesModels = mongoose.model('MakesModels', makesModelsSchema);
-// const MakesModels = mongoose.model('MakesModels', makesModelsSchema);
+const Products = mongoose.model('MakesModels', makesModelsSchema);
 //console.log(MakesModels.find())
 module.exports.MakesModels = MakesModels;
-// module.exports.productSchema = productSchema;
-// module.exports.makesModelsSchema = makesModelsSchema;
+module.exports.Products = MakesModels;
 
 // const vendorDeets = {
 //     vendorName: 'Murvihill Harps',

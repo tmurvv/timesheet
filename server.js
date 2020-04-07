@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const {makesModelsSchema} = require('./assets/data/Schemas');
+const {refreshMakesModels} = require('./utils/helpers/helpers');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
 //%^%^%^%^^%^%^%^%^%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 //Sub Docs
 
-
+// refreshMakesModels();
 
 
 // const go = (async () => {

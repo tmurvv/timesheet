@@ -1,27 +1,28 @@
 ### Last Deployment To: 
-
 # TESTING
 
+#### Prepare code
+- change where new image url in harpAdScraper (search on 'findaharp) depends on environment you are deploying to
+- check that all stores uncommented in constants/sellers.js
+- make sure download images is enabled
+- search for console.logs
+
+#### Run tests
 - Search for "BREAKING"
 - make sure testing set to all tests
 - run tests
 
-Heroku deploy
-- config.env port to 3000
-- change where new image url in harpAdScraper (search on 'findaharp) depends on environment you are deploying to
-- check that all stores uncommented in constants/sellers.js
-- make sure download images is enabled
+#### Commit and push
 - don't forget to commit and push
 
-### Choose environment to deploy to: 
-- git push development master (rename testing)
+#### Choose environment to deploy to: 
+- git push testing master
 - git push staging master
 - git push heroku master (for production)
+- to switch default, git config heroku.remote staging
 
-### to switch default from development to staging: git config heroku.remote staging
-## STEPS TO DEPLOY and REVERT TO DEV
-
-- search for console.logs
+#### For Heroku
+- config.env port to 3000
 - remove values from login
 - remove values from signup
 - check NOT YET IMPLEMENTED's
