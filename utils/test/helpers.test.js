@@ -58,12 +58,15 @@ describe('Helper functions', () => {
             expect(() => cleanUrlText(undefined)).to.throw();
         });
         it('url should be properly cleaned.', () => {
-            expect(cleanUrlText('https://%20%25hsdflk.com')).to.equal('https://__hsdflk.com');
-            expect(cleanUrlText('https://mysite.com/Clarsach%201%20full%20harp.jpg')).to.equal('https://mysite.com/Clarsach_1_full_harp.jpg');
-            expect(cleanUrlText('https://mysite.com/Clarsach%201%25full%25harp.jpg')).to.equal('https://mysite.com/Clarsach_1_full_harp.jpg');
-            expect(cleanUrlText('https://mysite.com/Clarsach%201%20fu%%ll%20harp.jpg')).to.equal('https://mysite.com/Clarsach_1_fu__ll_harp.jpg');
-            expect(cleanUrlText('https://mysite.com/Clarsach%201%20full%20harp.jpg     ')).to.equal('https://mysite.com/Clarsach_1_full_harp.jpg');
-            expect(cleanUrlText('     https://mysite.com/Clarsach%201%20full%20harp.jpg')).to.equal('https://mysite.com/Clarsach_1_full_harp.jpg');
+            expect(cleanUrlText('https://%20%25hsdflk.com')).to.eql('https://__hsdflk.com');
+            expect(cleanUrlText('https://mysite.com/Clarsach%201%20full%20harp.jpg')).to.eql('https://mysite.com/Clarsach_1_full_harp.jpg');
+            expect(cleanUrlText('https://mysite.com/Clarsach%201%25full%25harp.jpg')).to.eql('https://mysite.com/Clarsach_1_full_harp.jpg');
+            expect(cleanUrlText('https://mysite.com/Clarsach%201%20fu%%ll%20harp.jpg')).to.eql('https://mysite.com/Clarsach_1_fu__ll_harp.jpg');
+            expect(cleanUrlText('https://mysite.com/Clarsach%201%20full%20harp.jpg     ')).to.eql('https://mysite.com/Clarsach_1_full_harp.jpg');
+            expect(cleanUrlText('     https://mysite.com/Clarsach%201%20full%20harp.jpg')).to.eql('https://mysite.com/Clarsach_1_full_harp.jpg');
+            expect(cleanUrlText('https://mysite.com/Clarsach%201%20full%20harp.jpg')).to.eql('https://mysite.com/Clarsach_1_full_harp.jpg');
+            expect(cleanUrlText('mysite.com/Clarsach1.full.harp.jpg')).to.eql('mysite.com/Clarsach1_full_harp.jpg');
+            expect(cleanUrlText('https://mysite.com/Clarsach1.full.harp.jpg')).to.eql('https://mysite.com/Clarsach1_full_harp.jpg');
         });
     });
     describe('short file name function', () => {

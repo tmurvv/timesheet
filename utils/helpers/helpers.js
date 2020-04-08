@@ -1,5 +1,8 @@
+const url = require('url');
+const path = require('path');
 const cheerio = require('cheerio');
 const axios = require('axios');
+const slugify = require('slugify');
 
 /**
  * Traverses an object parsing out an object from the next levelfrom maker/model JSON-style object
@@ -48,14 +51,24 @@ exports.cleanText = (text) => {
  * @param {string} text - url to clean
  * @returns {string} - clean url
  */
-exports.cleanUrlText = (text) => {
+const cleanUrlText = (text) => {
     if (!text) throw 'from cleanUrlText: missing text parameter';
-    return text
+    let protocolDir;
+    if (path.parse(text).dir.trim().length>0) protocolDir=`${(path.parse(text).dir).trim()}/`;
+    let urlNoExt = 
+        path.basename(text)
+        .substring(0,path.basename(text)
+        .length-path.extname(text).length)
+    ;
+    urlNoExt = urlNoExt
+        .replace(/\./g,'_')
         .replace(/%20/g, '_')
         .replace(/%25/g, '_')
-        .replace(/%2E/g, '_')
         .replace(/%/g, '_')
-        .trim();
+        .trim()
+    ;
+    if (protocolDir) return `${protocolDir}${urlNoExt}${path.extname(text).trim()}`;
+    return `${urlNoExt}${path.extname(text).trim()}`
 }
 /**
  * Recursive function that gets the filename from a long url string
@@ -72,7 +85,7 @@ exports.shortFileNameFn = (longUrlPath) => {
     //recursively remove the section after the last '/' until a valid filename occurs
     const idx = longUrlPath.lastIndexOf('/');
     if (/^(?=[\S])[^\\ \/ : * ? " < > | ]+$/.test(longUrlPath.substring(idx + 1))) {         
-        const returnThis = longUrlPath.substring(idx + 1);
+        const returnThis = cleanUrlText(longUrlPath.substring(idx + 1));
         return returnThis;
     }
     //if name not yet valid, remove last section and call function again
@@ -133,3 +146,4 @@ const parseStoreSecondaryInfo = (seller, data) => {
 
 exports.leaf = leaf;
 exports.parseStoreSecondaryInfo = parseStoreSecondaryInfo;
+exports.cleanUrlText = cleanUrlText;
