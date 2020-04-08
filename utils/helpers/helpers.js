@@ -53,6 +53,7 @@ exports.cleanUrlText = (text) => {
     return text
         .replace(/%20/g, '_')
         .replace(/%25/g, '_')
+        .replace(/%2E/g, '_')
         .replace(/%/g, '_')
         .trim();
 }
