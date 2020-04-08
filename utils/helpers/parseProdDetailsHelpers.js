@@ -1,4 +1,4 @@
-const { globalMakesModels }= require('../../assets/constants/makesModels'); //BREAKING
+const { globalMakesModels }= require('../../assets/constants/makesModels'); // NOT YET IMPLEMENTED make scrape function pass in makesModels
 
 /**
  * Gets a list of unique model names from maker/model JSON-style object

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 // const { productMakesModels } = require('../assets/constants/makerArray');
-const { MakesModels } = require('../assets/data/Schemas');
+const { globalMakesModels } = require('../assets/constants/makesModels');
 
 // //#region local testing of get harps function
 // const usedHarpListFn = require('../utils/harpAdScraper');
@@ -20,9 +20,7 @@ const { MakesModels } = require('../assets/data/Schemas');
 
 //#region Main program
 exports.getUsedHarp = async (req, res) => {
-    
-    const productMakesModels = await MakesModels.find();;
-    
+    // get product list
     fs.readFile(path.join(__dirname, '../assets/constants/usedHarpList.json'), (err, data) => {
         if (err) {
             console.error(err)
@@ -30,11 +28,12 @@ exports.getUsedHarp = async (req, res) => {
         }
         
         // send results 
+        data = JSON.parse(data)
         res.status(200).json({
             title: 'OneStopHarpShop | Used Harps',
             status: 'success',
-            // harpMakesModels: JSON.stringify(productMakesModels),
-            // harpData: data
+            harpMakesModels: JSON.stringify(globalMakesModels),
+            harpData: data
         });
     });
 };
