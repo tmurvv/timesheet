@@ -1,4 +1,4 @@
-const { makesModels } = require('../../assets/constants/makesModels');
+const { globalMakesModels }= require('../../assets/constants/makesModels'); //BREAKING
 
 /**
  * Gets a list of unique model names from maker/model JSON-style object
@@ -37,15 +37,13 @@ const searchAliasArray = (title, aliasArray) => {
 }
 /**
  * Gets a list of all misspellings and colloquialisms of maker names from maker/model JSON-style object
- * @function getMakerAliases
+ * @function getMakerAliasArray
  * @param {array} makesModels array product makers with models
  * @returns {Array} - Array of Arrays containing [correctMakerName, [othernames]] or [correctModelName, [othernames]]
  */
-const getMakerAliases = (makesModels) => {
-
-    if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from getOtherMakerModelNames: type parameter is empty';
+const getMakerAliasArray = (makesModels) => {
+    if (!makesModels || makesModels.length === 0) throw 'from getMakerAliasArray: makesModels parameter is empty';
     const allSellerAliases = [];
-    
     makesModels.map(maker => {
         if (maker.sellerAliases.length>0) {
             allSellerAliases.push([maker.sellerName, [...maker.sellerAliases]]);
@@ -57,12 +55,11 @@ const getMakerAliases = (makesModels) => {
 
 /**
  * Gets a list of all misspellings and colloquialisms of model names from maker/model JSON-style object
- * @function getModelAliases
+ * @function getModelAliasArray
  * @param {array} makesModels array product makers with models
  * @returns {Array} - Array of Arrays containing [correctMakerName, [othernames]] or [correctModelName, [othernames]]
  */
-const getModelAliases = (makesModels) => {
-    
+const getModelAliasArray = (makesModels) => {
     const allProductAliases = [];
     
     makesModels.map(maker => { 
@@ -104,10 +101,10 @@ const findMakerFromModel = (model, makesModels) => {
  * @param {String} model optional, model if known
  * @returns {String} - Maker name or undefined
  */
-const checkMakerAliases = (title, model) => {
-    if (!title) throw 'from searchOtherNamesArrray: title parameter is empty';
+const checkMakerAliases = (title, model, makesModels) => {
+    if (!title) throw 'from checkMakerAliases: title parameter is empty';
     
-    const aliases = getMakerAliases(makesModels);
+    const aliases = getMakerAliasArray(makesModels);
     let foundName = searchAliasArray(title, aliases); //business preference to try to parse maker from title before using model to find maker 
     
     if (!foundName && model) foundName = findMakerFromModel(model, makesModels);
@@ -120,10 +117,10 @@ const checkMakerAliases = (title, model) => {
  * @param {String} title the title of the product ad
  * @returns {String} - Model name or undefined
  */
-const checkModelAliases = (title) => {
+const checkModelAliases = (title, makesModels) => {
     if (!title) throw 'from checkModelAliases: title parameter is empty';
     
-    const modelAliases = getModelAliases(makesModels);
+    const modelAliases = getModelAliasArray(makesModels);
     return searchAliasArray(title, modelAliases)
 }
 /**
@@ -133,18 +130,17 @@ const checkModelAliases = (title) => {
  * @param {String} validated model name in case maker can not be found
  * @returns {String} - Maker name or undefined
  */
-const findMaker = (title, model) => {
+const findMaker = (title, model='', makesModels) => {
     if (!title) throw 'from findMaker: title parameter is empty';
     
     let productMaker;
-    
     makesModels.map(maker => {
         if (title.indexOf(maker.sellerName)>-1) {
             productMaker = maker.sellerName;
         } 
     });
 
-    if (!productMaker) productMaker = checkMakerAliases(title, model);
+    if (!productMaker) productMaker = checkMakerAliases(title, model, makesModels);
     return productMaker;
 }
 /**
@@ -153,7 +149,7 @@ const findMaker = (title, model) => {
  * @param {String} title the title of the product ad
  * @returns {String} - Model name or undefined
  */
-const findModel = (title) => {
+const findModel = (title, makesModels) => {
     if (!title) throw 'from findMaker: title parameter is empty';
     let productModel;
     
@@ -162,7 +158,7 @@ const findModel = (title) => {
             productModel = model;
         } 
     });
-    if (!productModel) productModel = checkModelAliases(title);
+    if (!productModel) productModel = checkModelAliases(title, makesModels);
     
     return productModel;
 }
@@ -173,7 +169,7 @@ const findModel = (title) => {
  * @param {String} model the product model
  * @returns {String} - Product Type or undefined
  */
-const findProductType = (maker, model) => {
+const findProductType = (maker, model, makesModels) => {
     //short circuit
     if (!maker) throw 'from findProductType: maker parameter is empty';
     if (!model) throw 'from findProductType: model parameter is empty';
@@ -200,7 +196,7 @@ const findProductType = (maker, model) => {
  * @param {String} model the product model
  * @returns {String} - Product size or undefined
  */
-function findProductSize(maker, model) {
+function findProductSize(maker, model, makesModels) {
     //short circuit
     if (!maker) throw 'from findProductType: maker parameter is empty';
     if (!model) throw 'from findProductType: model parameter is empty';
@@ -220,11 +216,11 @@ function findProductSize(maker, model) {
 
 const getMakeModelTypeSize = async (title) => {
     if (!title) throw 'from getMakeModelTypeSize: title parameter is empty';
-    const model = await findModel(title);
+    const model = await findModel(title, globalMakesModels);
     if (!model) return [];
-    const maker = await findMaker(title, model);
-    const type = findProductType(maker, model);
-    const size = findProductSize(maker, model);
+    const maker = await findMaker(title, model, globalMakesModels);
+    const type = findProductType(maker, model, globalMakesModels);
+    const size = findProductSize(maker, model, globalMakesModels);
     
     return [maker, model, type, size];
 }
@@ -232,8 +228,8 @@ const getMakeModelTypeSize = async (title) => {
 module.exports = {
     getModelList,
     findMakerFromModel,
-    getModelAliases,
-    getMakerAliases,
+    getModelAliasArray,
+    getMakerAliasArray,
     searchAliasArray,
     checkMakerAliases,
     checkModelAliases,

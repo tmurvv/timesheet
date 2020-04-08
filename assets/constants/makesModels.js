@@ -1,4 +1,4 @@
-exports.makesModels = [
+exports.globalMakesModels = [
     {
         "sellerAliases": [],
         "sellerName": "Aoyama",

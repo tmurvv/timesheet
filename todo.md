@@ -1,4 +1,4 @@
-- make sure getMakesModels is returning all 23 makers
+- pass makes models into parse details functions instead of global var at top
 
 - instead of location zip/postal code where harp located
 
