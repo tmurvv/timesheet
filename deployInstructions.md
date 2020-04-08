@@ -1,5 +1,5 @@
 ### Last Deployment To: 
-# TESTING
+# PRODUCTION
 
 #### Prepare code
 - change where new image url in harpAdScraper (search on 'findaharp) depends on environment you are deploying to
