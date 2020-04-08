@@ -1,44 +1,17 @@
-const fs = require('fs');
-const path = require('path');
-// const { productMakesModels } = require('../../assets/constants/makerArray');
 const { makesModels } = require('../../assets/constants/makesModels');
-const { leaf } = require('./helpers');
-
-
-// const getMakesModels = async () => {
-//     const util = require('util');
-
-//     // Convert fs.readFile into Promise version of same    
-//     const readFile = util.promisify(fs.readFile);
-
-//     function getStuff() {
-//         return readFile(path.join(__dirname, '../../assets/constants/makesModels.json'));
-//     }
-
-//     // Can't use `await` outside of an async function so you need to chain
-//     // with then()
-//     return getStuff().then(data => {
-//         return JSON.parse(data);
-//     })
-// };
-// const makesModels = getMakesModels();
-// console.log('---------------------------', makesModels[0])
-
 
 /**
  * Gets a list of unique model names from maker/model JSON-style object
  * @function getModelList
- * @param {Object} makesModels JSON-style object of product makers with models
+ * @param {array} makesModels array product makers with models
  * @returns {Set} - Set of model names
  */
 const getModelList = makesModels => {
-    if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from getModelList: makes/models variable is empty'; 
+    if (!makesModels || makesModels.length === 0) throw 'from getModelList: makes/models variable is empty'; 
     const productKeys = [];
 
     makesModels.map(maker => {
-        // console.log(maker.productTitle)
-        // console.log(Array.from(maker))
-        productKeys.push(...maker.sellerProducts.map(product => product.productTitle)); //leaf function helps find nested object keys from Stackoverflow
+        productKeys.push(...maker.sellerProducts.map(product => product.productTitle));
     });
 
     return productKeys.sort();
@@ -54,7 +27,6 @@ const searchAliasArray = (title, aliasArray) => {
     if (!title) throw 'from searchOtherNamesArrray: title parameter is empty';
     if (!aliasArray) throw 'from searchAliasArray: otherNamesArray parameter is empty';
     let foundName;
-    console.log('alias', aliasArray, title)
     aliasArray.map(name => {
         name[1].map(otherName => {
             if (title.toUpperCase().indexOf(otherName.toUpperCase()) > -1) foundName = name[0]; 
@@ -66,7 +38,7 @@ const searchAliasArray = (title, aliasArray) => {
 /**
  * Gets a list of all misspellings and colloquialisms of maker names from maker/model JSON-style object
  * @function getMakerAliases
- * @param {Object} makesModels JSON-style object of product makers with models
+ * @param {array} makesModels array product makers with models
  * @returns {Array} - Array of Arrays containing [correctMakerName, [othernames]] or [correctModelName, [othernames]]
  */
 const getMakerAliases = (makesModels) => {
@@ -79,12 +51,6 @@ const getMakerAliases = (makesModels) => {
             allSellerAliases.push([maker.sellerName, [...maker.sellerAliases]]);
         }
     });
-    // Object.keys(makesModels).map(maker => {
-    //     if (leaf(makesModels,maker).othernames) {
-    //         if (!Array.isArray(leaf(makesModels,maker).othernames)) throw 'from getMakerAliases: other names must be arrays';
-    //         otherNames.push([maker,[...leaf(makesModels,maker).othernames]]);
-    //     }
-    // });
    
     return allSellerAliases;  
 }
@@ -92,13 +58,12 @@ const getMakerAliases = (makesModels) => {
 /**
  * Gets a list of all misspellings and colloquialisms of model names from maker/model JSON-style object
  * @function getModelAliases
- * @param {Object} makesModels JSON-style object of product makers with models
+ * @param {array} makesModels array product makers with models
  * @returns {Array} - Array of Arrays containing [correctMakerName, [othernames]] or [correctModelName, [othernames]]
  */
 const getModelAliases = (makesModels) => {
     
     const allProductAliases = [];
-    // const makerList = Object.keys(makesModels);
     
     makesModels.map(maker => { 
         maker.sellerProducts.map(model => {
@@ -107,16 +72,6 @@ const getModelAliases = (makesModels) => {
             }
         });
     });
-    // makerList.map(maker => {      
-    //     Object.keys(leaf(makesModels, maker)).map(model => {
-    //         if (leaf(leaf(makesModels, maker), model).othernames && !Array.isArray(leaf(leaf(makesModels, maker), model).othernames)) throw 'from getMakerAliases: other names must be arrays';
-    //         if (leaf(leaf(makesModels, maker), model).othernames) {
-    //             otherNames.push([model,[...leaf(leaf(makesModels, maker),model).othernames]]);
-    //         }
-    //     });
-    // });
-    console.log('btott', allProductAliases)
-    
     return allProductAliases;  
 }
 
@@ -124,31 +79,21 @@ const getModelAliases = (makesModels) => {
  * Finds the maker of a certain Model from makers/models JSON-style object
  * @function findMakerFromModel
  * @param {String} model model name to search on
- * @param {Object} makesModels JSON-style object of product makers with models
+ * @param {array} makesModels array product makers with models
  * @returns {String} - Maker name
  */
-const findMakerFromModel = (model, makesModels) => {
-    
+const findMakerFromModel = (model, makesModels) => {   
     if (!model) throw 'from findMakerFromModel: model parameter is empty';
-    if (!makesModels || (Object.keys(makesModels).length === 0 && makesModels.constructor === Object)) throw 'from findMakerFromModel: makesModels parameter is empty';
+    if (!makesModels || makesModels.length === 0) throw 'from findMakerFromModel: makesModels parameter is empty';
     
     let foundName;
-    // const makerList = Object.keys(makesModels);
-    
-    makesModels.map(maker => {      
+    makesModels.map((maker,idx) => {
         maker.sellerProducts.map(sellerProduct => {
-            if (sellerProduct.toUpperCase() === model.toUpperCase()) {               
-                foundName = maker;
+            if (sellerProduct.productTitle.toUpperCase() === model.toUpperCase()) {               
+                foundName = maker.sellerName;
             }
         });
     });
-    // makerList.map(maker => {      
-    //     Object.keys(leaf(makesModels,maker)).map(makerModel => {
-    //         if (makerModel.toUpperCase() === model.toUpperCase()) {               
-    //             foundName = maker;
-    //         }
-    //     });
-    // });
 
     return foundName;
 }
@@ -163,12 +108,9 @@ const checkMakerAliases = (title, model) => {
     if (!title) throw 'from searchOtherNamesArrray: title parameter is empty';
     
     const aliases = getMakerAliases(makesModels);
-    console.log('aliases', aliases)
-    // const otherNames = getMakerAliases(productMakesModels);  
     let foundName = searchAliasArray(title, aliases); //business preference to try to parse maker from title before using model to find maker 
     
     if (!foundName && model) foundName = findMakerFromModel(model, makesModels);
-    // if (!foundName && model) foundName = findMakerFromModel(model, productMakesModels);
     
     return foundName;
 }
@@ -182,8 +124,6 @@ const checkModelAliases = (title) => {
     if (!title) throw 'from checkModelAliases: title parameter is empty';
     
     const modelAliases = getModelAliases(makesModels);
-    // console.log(modelAliases, title);
-    // const otherNames = getModelAliases(productMakesModels);
     return searchAliasArray(title, modelAliases)
 }
 /**
@@ -203,12 +143,7 @@ const findMaker = (title, model) => {
             productMaker = maker.sellerName;
         } 
     });
-    // const productKeys = Object.keys(productMakesModels);
-    // productKeys.map((maker) => {
-    //     if (title.indexOf(maker)>-1) {
-    //         productMaker = maker;
-    //     } 
-    // });
+
     if (!productMaker) productMaker = checkMakerAliases(title, model);
     return productMaker;
 }
@@ -246,7 +181,6 @@ const findProductType = (maker, model) => {
     let type;
     
     try {
-        console.log('hehh', maker, model)
         const foundModel = makesModels
             .find(thisMaker => thisMaker.sellerName===maker)
             .sellerProducts
@@ -282,8 +216,6 @@ function findProductSize(maker, model) {
     } catch (err) {
         return 'not found';
     }
-    // console.log("boo'", size)
-    // return size;
 }
 
 const getMakeModelTypeSize = async (title) => {
