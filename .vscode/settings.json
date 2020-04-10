@@ -3,5 +3,6 @@
     "prettier.proseWrap": "always",
     "eslint.run": "onSave",
     "editor.formatOnSave": true,
-    "workbench.preferredHighContrastColorTheme": "Default Light+"
+    "workbench.preferredHighContrastColorTheme": "Default Light+",
+    "terminal.ansiBlack": "#FFFFFF"
 }

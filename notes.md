@@ -1,3 +1,5 @@
+list of all color edit possibilities https://code.visualstudio.com/api/references/theme-color#editor-colors
+
 DataMuse npm maybe to find similar sounds to harp name
 
 https://harp.fandom.com/wiki/Harp_Makers_and_Vendors_in_North_America

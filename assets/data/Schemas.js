@@ -17,22 +17,20 @@ const productSchema = new mongoose.Schema({
 
 // Main Doc
 const makesModelsSchema = new mongoose.Schema({
-    sellerName: {
+    makerName: {
         type: String,
         required: [true, 'A product maker (manufacturer) name is required.']
     },
-    sellerAliases: Array,
+    makerAliases: Array,
     
     // Array of subdocuments
-    sellerProducts: [productSchema],
+    makerProducts: [productSchema],
     
 },{ versionKey: false });
 
 const MakesModels = mongoose.model('MakesModels', makesModelsSchema);
-const Products = mongoose.model('MakesModels', makesModelsSchema);
 //console.log(MakesModels.find())
 module.exports.MakesModels = MakesModels;
-module.exports.Products = MakesModels;
 
 // const vendorDeets = {
 //     vendorName: 'Murvihill Harps',

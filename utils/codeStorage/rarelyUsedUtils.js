@@ -1,4 +1,6 @@
-
+let productMakesModels = require('../../assets/constants/makerArray');
+const { leaf } = require('../helpers/helpers');
+const { MakesModels, Products } = require('../../assets/data/Schemas');
 
 /**
  * Refresh makesModels Object from db
@@ -21,11 +23,12 @@ exports.refreshMakesModels = async () => {
 exports.initialMakerArraytoDB = async () => {
     //Sub Docs
     // var Product = mongoose.model('Product', productSchema);
-    const makers = Object.keys(productMakesModels);
+    const makerObj = productMakesModels.productMakesModels
+    const makers = Object.keys(makerObj);
     makers.map(maker => {
         // maker product info
-        const sellerProducts = [];
-        const products = (leaf(productMakesModels, maker));
+        const makerProducts = [];
+        const products = (leaf(makerObj, maker));
         const productDeets = Object.keys(products);
         
         productDeets.map((deet, idx) => {
@@ -38,27 +41,27 @@ exports.initialMakerArraytoDB = async () => {
                     productSize: productDetails.strings,
                     productAliases: productDetails.othernames
                 }
-                sellerProducts.push(newProduct);
+                makerProducts.push(newProduct);
             }        
         })
 
         // main maker info
-        const seller = (leaf(productMakesModels, maker));
-        const newSeller = {
-            sellerName: maker,
-            sellerAliases: seller.othernames,
-            sellerProducts
+        const makerObject = (leaf(makerObj, maker));
+        const newMaker = {
+            makerName: maker,
+            makerAliases: makerObject.othernames,
+            makerProducts
         }
 
         /*******************
          * THIS CHANGES THE DATABASE!!!
          * uncomment to run initial data upload
          ******************/
-        // const makesmodels = new MakesModels(newSeller);
-
+        // const makesmodels = new MakesModels(newMaker);
+        // // console.log(makesmodels);
         // makesmodels.save(function (err) {
-        //       if (err) return console.log(err)
-        //       console.log('Success!');
-        //     });       
+        //     if (err) return console.log(err)
+        //     console.log('Success!');
+        // });   
     });
 }
