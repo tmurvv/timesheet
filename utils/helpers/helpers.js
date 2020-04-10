@@ -29,8 +29,8 @@ const leaf = (obj, path) => (path.split('.').reduce((value,el) => value[el], obj
  */
 exports.linkFn = async (seller, url) => {
     try {
-        if (!seller) throw 'from linkFn: missing seller parameter';
-        if (!url) throw 'from linkFn: missing url parameter';
+        if (!seller) throw new AppError('from linkFn: missing seller parameter');
+        if (!url) throw new AppError('from linkFn: missing url parameter');
     } catch(err) {
         throw(err);
     }
@@ -38,7 +38,7 @@ exports.linkFn = async (seller, url) => {
         const response = await axios(url);  
         return parseStoreSecondaryInfo(seller, response.data);    
     } catch (err) {
-        console.log(url, 'timed out', err.message);
+        console.log(url, 'from linkFn: timed out', err.message);
         throw (err)
     }      
 }
@@ -109,8 +109,8 @@ exports.shortFileNameFn = (longUrlPath) => {
  * @returns {string} - filename
  */
 exports.checkBadImages = (model, badImages) => {
-    if (!model) throw 'from checkBadImages: missing model parameter';
-    if (!badImages) throw 'from checkBadImages: missing badImages parameter';
+    if (!model) throw new AppError('from checkBadImages: missing model parameter');
+    if (!badImages) throw new AppError('from checkBadImages: missing badImages parameter');
 
     let stockImageUrl;
     badImages.map(badImage => {
@@ -127,8 +127,8 @@ exports.checkBadImages = (model, badImages) => {
  * @returns {Object} - Product information
  */
 const parseStoreSecondaryInfo = (seller, data) => {
-    if (!seller) throw 'from parseStoreSecondaryInfo: missing seller parameter';
-    if (!data) throw 'from parseStoreSecondaryInfo: missing data parameter';
+    if (!seller) throw new AppError('from parseStoreSecondaryInfo: missing seller parameter');
+    if (!data) throw new AppError('from parseStoreSecondaryInfo: missing data parameter');
 
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;  
     const $ = cheerio.load(html);   

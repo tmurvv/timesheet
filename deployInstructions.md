@@ -6,6 +6,7 @@
 - check that all stores uncommented in constants/sellers.js
 - make sure download images is enabled
 - search for console.logs
+- config.env node.env command
 
 #### Run tests
 - Search for "BREAKING"

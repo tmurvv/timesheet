@@ -1,4 +1,4 @@
-const { globalMakesModels }= require('../../assets/constants/makesModels'); // NOT YET IMPLEMENTED make scrape function pass in makesModels
+const { globalMakesModels } = require('../../assets/constants/makesModels'); // NOT YET IMPLEMENTED make scrape function pass in makesModels
 
 /**
  * Gets a list of unique model names from maker/model JSON-style object
@@ -7,7 +7,7 @@ const { globalMakesModels }= require('../../assets/constants/makesModels'); // N
  * @returns {Set} - Set of model names
  */
 const getModelList = makesModels => {
-    if (!makesModels || makesModels.length === 0) throw 'from getModelList: makes/models variable is empty'; 
+    if (!makesModels || makesModels.length === 0) throw new AppError('from getModelList: makes/models variable is empty'); 
     const productKeys = [];
 
     makesModels.map(maker => {
@@ -24,8 +24,8 @@ const getModelList = makesModels => {
  * @returns {String} - Corrected name, if found
  */
 const searchAliasArray = (title, aliasArray) => {
-    if (!title) throw 'from searchOtherNamesArrray: title parameter is empty';
-    if (!aliasArray) throw 'from searchAliasArray: otherNamesArray parameter is empty';
+    if (!title) throw new AppError('from searchOtherNamesArrray: title parameter is empty');
+    if (!aliasArray) throw new AppError('from searchAliasArray: otherNamesArray parameter is empty');
     let foundName;
     aliasArray.map(name => {
         name[1].map(otherName => {
@@ -42,7 +42,7 @@ const searchAliasArray = (title, aliasArray) => {
  * @returns {Array} - Array of Arrays containing [correctMakerName, [othernames]] or [correctModelName, [othernames]]
  */
 const getMakerAliasArray = (makesModels) => {
-    if (!makesModels || makesModels.length === 0) throw 'from getMakerAliasArray: makesModels parameter is empty';
+    if (!makesModels || makesModels.length === 0) throw new AppError('from getMakerAliasArray: makesModels parameter is empty');
     const allSellerAliases = [];
     makesModels.map(maker => {
         if (maker.sellerAliases.length>0) {
@@ -50,7 +50,7 @@ const getMakerAliasArray = (makesModels) => {
         }
     });
    
-    return allSellerAliases;  
+    return allSellerAliases;
 }
 
 /**
@@ -80,8 +80,8 @@ const getModelAliasArray = (makesModels) => {
  * @returns {String} - Maker name
  */
 const findMakerFromModel = (model, makesModels) => {   
-    if (!model) throw 'from findMakerFromModel: model parameter is empty';
-    if (!makesModels || makesModels.length === 0) throw 'from findMakerFromModel: makesModels parameter is empty';
+    if (!model) throw new AppError('from findMakerFromModel: model parameter is empty');
+    if (!makesModels || makesModels.length === 0) throw new AppError('from findMakerFromModel: makesModels parameter is empty');
     
     let foundName;
     makesModels.map((maker,idx) => {
@@ -102,7 +102,7 @@ const findMakerFromModel = (model, makesModels) => {
  * @returns {String} - Maker name or undefined
  */
 const checkMakerAliases = (title, model, makesModels) => {
-    if (!title) throw 'from checkMakerAliases: title parameter is empty';
+    if (!title) throw new AppError('from checkMakerAliases: title parameter is empty');
     
     const aliases = getMakerAliasArray(makesModels);
     let foundName = searchAliasArray(title, aliases); //business preference to try to parse maker from title before using model to find maker 
@@ -118,7 +118,7 @@ const checkMakerAliases = (title, model, makesModels) => {
  * @returns {String} - Model name or undefined
  */
 const checkModelAliases = (title, makesModels) => {
-    if (!title) throw 'from checkModelAliases: title parameter is empty';
+    if (!title) throw new AppError('from checkModelAliases: title parameter is empty');
     
     const modelAliases = getModelAliasArray(makesModels);
     return searchAliasArray(title, modelAliases)
@@ -131,7 +131,7 @@ const checkModelAliases = (title, makesModels) => {
  * @returns {String} - Maker name or undefined
  */
 const findMaker = (title, model='', makesModels) => {
-    if (!title) throw 'from findMaker: title parameter is empty';
+    if (!title) throw new AppError('from findMaker: title parameter is empty');
     
     let productMaker;
     makesModels.map(maker => {
@@ -150,7 +150,7 @@ const findMaker = (title, model='', makesModels) => {
  * @returns {String} - Model name or undefined
  */
 const findModel = (title, makesModels) => {
-    if (!title) throw 'from findMaker: title parameter is empty';
+    if (!title) throw new AppError('from findMaker: title parameter is empty');
     let productModel;
     
     getModelList(makesModels).map((model) => {
@@ -171,8 +171,8 @@ const findModel = (title, makesModels) => {
  */
 const findProductType = (maker, model, makesModels) => {
     //short circuit
-    if (!maker) throw 'from findProductType: maker parameter is empty';
-    if (!model) throw 'from findProductType: model parameter is empty';
+    if (!maker) throw new AppError('from findProductType: maker parameter is empty');
+    if (!model) throw new AppError('from findProductType: model parameter is empty');
     
     let type;
     
@@ -198,8 +198,8 @@ const findProductType = (maker, model, makesModels) => {
  */
 function findProductSize(maker, model, makesModels) {
     //short circuit
-    if (!maker) throw 'from findProductType: maker parameter is empty';
-    if (!model) throw 'from findProductType: model parameter is empty';
+    if (!maker) throw new AppError('from findProductType: maker parameter is empty');
+    if (!model) throw new AppError('from findProductType: model parameter is empty');
     let size;
     try{
         const foundModel = makesModels
@@ -215,7 +215,7 @@ function findProductSize(maker, model, makesModels) {
 }
 
 const getMakeModelTypeSize = async (title) => {
-    if (!title) throw 'from getMakeModelTypeSize: title parameter is empty';
+    if (!title) throw new AppError('from getMakeModelTypeSize: title parameter is empty');
     const model = await findModel(title, globalMakesModels);
     if (!model) return [];
     const maker = await findMaker(title, model, globalMakesModels);
