@@ -12,7 +12,8 @@
 - make sure testing set to all tests
 - run tests
 
-#### Commit and push
+#### Config, Commit and push
+- don't forgetCRUD operations in config.env have to be entered manually in Heroku
 - don't forget to commit and push
 
 #### Choose environment to deploy to: 

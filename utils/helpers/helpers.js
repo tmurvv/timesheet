@@ -1,9 +1,17 @@
-const url = require('url');
 const path = require('path');
 const cheerio = require('cheerio');
 const axios = require('axios');
-const slugify = require('slugify');
+const AppError = require('../AppError');
 
+/**
+ * Traverses an object parsing out an object from the next levelfrom maker/model JSON-style object
+ * @function catchAsync
+ * @param {req,res,next} makesModels Standard request/response params
+ * @returns {Error} - Return errors for async functions
+ */
+exports.catchAsync = fn => {
+    return (req,res,next) => fn(req,res,next).catch(next);
+}
 /**
  * Traverses an object parsing out an object from the next levelfrom maker/model JSON-style object
  * @function leaf
@@ -41,7 +49,7 @@ exports.linkFn = async (seller, url) => {
  * @returns {string} - clean text
  */
 exports.cleanText = (text) => {
-    if (!text) throw 'from cleanText: missing text parameter';
+    if (!text) throw new AppError('from cleanText: missing text parameter');
         
     return text.replace(/\/n/g, '').replace(/\/t/g, '').replace(/Add To Cart/gi, '').replace(/AddToCart/gi, '').replace(/\s/g, ' ').replace(/  +/g, ' ');
 }
@@ -52,7 +60,7 @@ exports.cleanText = (text) => {
  * @returns {string} - clean url
  */
 const cleanUrlText = (text) => {
-    if (!text) throw 'from cleanUrlText: missing text parameter';
+    if (!text) throw new AppError('from cleanUrlText: missing text parameter');
     let protocolDir;
     if (path.parse(text).dir.trim().length>0) protocolDir=`${(path.parse(text).dir).trim()}/`;
     let urlNoExt = 
@@ -77,7 +85,7 @@ const cleanUrlText = (text) => {
  * @returns {string} - filename
  */
 exports.shortFileNameFn = (longUrlPath) => {
-    if (!longUrlPath) throw 'from shortFileNameFn: missing longUrlPath parameter';
+    if (!longUrlPath) throw new AppError('from shortFileNameFn: missing longUrlPath parameter');
     
     //remove possible url querystring
     if (longUrlPath.lastIndexOf('?')>-1) longUrlPath=longUrlPath.substring(0,longUrlPath.lastIndexOf('?'));

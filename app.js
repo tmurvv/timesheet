@@ -1,6 +1,9 @@
-require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
+// require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
+// packages
 const path = require('path');
 const uuid = require('uuid');
+
+// security
 const EventEmitter = require('events');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
@@ -8,16 +11,21 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const helmet = require('helmet');
 const express = require('express');
+
+// internal
+const AppError = require('./utils/AppError');
 const viewRouter = require('./routes/viewRoutes');
+const globalErrorHandler = require('./controllers/errorController');
 const { scrapeAds } = require('./utils/harpAdScraper');
-// const { findMakerFromModel } = require('./utils/helpers');
+const { catchAsync } = require('./utils/helpers/helpers');
+
+// program setup
 const app = express();
-// const usedHarps = require('./assets/constants/usedHarpList.json');
 const emitter = new EventEmitter;
 emitter.setMaxListeners(50);
 console.log(process.env.NODE_ENV);
 
-//security ** see commented code below
+//security setup ** see commented code below
 app.use(helmet());
 app.use(xss());
 app.use(hpp())
@@ -46,13 +54,8 @@ app.use(express.static('img'));
 //utilities ** see commented code below
 app.use(express.json({limit: '10kb'}))
 
-//Error handling ** see below commented code
-
 //Router
 app.use('/', viewRouter); 
-// app.use('/productads', productRouter); 
-
-
 
 app.post('/api/v1/privateads', async (req, res) => {
     const productId = uuid();
@@ -66,31 +69,20 @@ app.post('/api/v1/privateads', async (req, res) => {
             product
         }
     });
-    // fs.writeFile(
-    //   `${__dirname}/dev-data/data/tours-simple.json`,
-    //   JSON.stringify(tours),
-    //   err => {
-    //     res.status(201).json({
-    //       status: 'success',
-    //       data: {
-    //         tour: newTour
-    //       }
-    //     });
-    //   }
-    // );
+    
 });
-  
-// //Run get product ads
-app.get('/api/v1/productads', async (req, res) => {
+
+
+// Run get product ads
+app.get('/api/v1/productads', catchAsync(async (req, res) => {
     const usedHarps = await scrapeAds();
-    // send results 
+
     res.status(200).json({
         title: 'FindAHarp.com | Get Harp Ads',
         status: 'success',
-        //availableHarps: usedHarps.length,
         harpData: usedHarps  
     });
-});
+}));
 
 //Image Router code based on expressjs.com API reference
 app.get('/assets/img/:name', function (req, res, next) {
@@ -104,14 +96,16 @@ app.get('/assets/img/:name', function (req, res, next) {
     }
   
     const fileName = req.params.name
+    
     res.sendFile(fileName, options, function (err) {
         if (err) {
-            next(err)
+            next(new AppError(`No image found with the file name '${fileName}'.`, 404))
         } else {
             console.log('Sent:', fileName)
-        }
+        } 
     });
 });
+
 
 app.get('/assets/img/stock:name', function (req, res, next) {
     const options = {
@@ -132,6 +126,13 @@ app.get('/assets/img/stock:name', function (req, res, next) {
         }
     });
 });
+
+// Catch invalid routes
+app.all('*', (req,res,next) => {
+    next(new AppError(`Web address 'findaharp-api${req.originalUrl}' not found. Please see findaharp-api docs for valid addresses.`, 404));
+});
+
+app.use(globalErrorHandler);
 
 //Export
 module.exports = app;

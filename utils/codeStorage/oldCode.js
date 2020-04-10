@@ -1,3 +1,19 @@
+// fs.writeFile(
+    //   `${__dirname}/dev-data/data/tours-simple.json`,
+    //   JSON.stringify(tours),
+    //   err => {
+    //     res.status(201).json({
+    //       status: 'success',
+    //       data: {
+    //         tour: newTour
+    //       }
+    //     });
+    //   }
+    // );
+
+
+
+
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { SellerPaths } = require('./SellerPaths');
