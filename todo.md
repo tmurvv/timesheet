@@ -1,5 +1,3 @@
-- continue implementing error handling
-
 - try again to get private ad routes to work
 
 - pass makes models into parse details functions instead of global var at top
@@ -13,8 +11,6 @@
 - add crud endpoints for private listings
 
 - add date listing created
-
-- make error catching system
 
 - test daily update with my website
 

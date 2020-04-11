@@ -1,5 +1,5 @@
 ### Last Deployment To: 
-# PRODUCTION
+# TESTING
 
 #### Prepare code
 - change where new image url in harpAdScraper (search on 'findaharp) depends on environment you are deploying to
@@ -9,9 +9,10 @@
 - config.env node.env command
 
 #### Run tests
-- Search for "BREAKING"
+- Search for "BREAKINk"
 - make sure testing set to all tests
 - run tests
+- make sure server runs with npm start
 
 #### Config, Commit and push
 - don't forgetCRUD operations in config.env have to be entered manually in Heroku

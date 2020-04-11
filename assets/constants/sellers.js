@@ -84,7 +84,8 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
         ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
         ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
-        ($, item) => `https://www.harptisha.com/${$(item).parent().parent().find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+        // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
 //#endregion
