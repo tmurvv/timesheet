@@ -2,8 +2,6 @@
 
 - refactor parseStoreInfo into parseStoreInfoHelpers.js
 
-- check leaf function in custom functions
-
 - set up Production env variables, image url etc
 
 - add crud endpoints for private listings

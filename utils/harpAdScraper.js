@@ -4,6 +4,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
 // internal
+const AppError = require('./AppError');
 const sellerArrayObject = require('../assets/constants/sellers');
 const { downloadImage } = require('../utils/downloadWebSiteImages.js');
 const {getMakeModelTypeSize} = require('./helpers/parseProdDetailsHelpers');
@@ -56,7 +57,7 @@ const parseStoreInfo = async (seller, data) => {
         //download image if not from web or stock
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);       
         if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
-        productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api-testing.herokuapp.com/assets/img/${shortProductImageUrl}`;
+        productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api-staging.herokuapp.com/assets/img/${shortProductImageUrl}`;
        
         //create product
         let product;
@@ -84,7 +85,7 @@ const parseStoreInfo = async (seller, data) => {
                     customFunc = leaf(seller, customFuncString);
                     product = customFunc(product);
                 } catch (err) {
-                    console.log('Error executing custom functions:', err.message)
+                    throw new AppError('Error executing custom functions:', err.message)
                 }              
             });
         }

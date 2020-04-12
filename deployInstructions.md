@@ -2,7 +2,7 @@
 # TESTING
 
 #### Prepare code
-- change where new image url in harpAdScraper (search on 'findaharp) depends on environment you are deploying to
+- change where new image url in harpAdScraper (search on 'findaharp') depends on environment you are deploying to
 - check that all stores uncommented in constants/sellers.js
 - make sure download images is enabled
 - search for console.logs
@@ -13,9 +13,10 @@
 - make sure testing set to all tests
 - run tests
 - make sure server runs with npm start
+- test api/v1/productads
 
 #### Config, Commit and push
-- don't forgetCRUD operations in config.env have to be entered manually in Heroku
+- did you update config.env? Don't forget CRUD operations in config.env have to be entered manually in Heroku
 - don't forget to commit and push
 
 #### Choose environment to deploy to: 

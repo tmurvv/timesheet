@@ -119,7 +119,7 @@ VanderbiltMusic_e.longDescLinkCustom = (product) => {
 
     return {...product, productLongDesc }
 }
-VanderbiltMusic_e.imageFromWebCustom = (product) => product;
+VanderbiltMusic_e.imageFromWebCustom = (product) => product; // simple returns true to leave the url untouched. It is already complete.
 //#endregion
     //#region Vanderbilt-odd
 const VanderbiltMusic_o = new SellerPathsLink(
@@ -220,13 +220,13 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
 //#endregion
 
 exports.sellerArray = [
-    // HarpConnection, 
-    // AtlantaHarpCenter_o, 
-    // AtlantaHarpCenter_e,
+    HarpConnection, 
+    AtlantaHarpCenter_o, 
+    AtlantaHarpCenter_e,
     MurvihillHarpServices,
-    // VanderbiltMusic_e, 
-    // VanderbiltMusic_o,
-    // VirginiaHarpCenter
+    VanderbiltMusic_e, 
+    VanderbiltMusic_o,
+    VirginiaHarpCenter
     // PhoenixHarps, // crashes program, not sure why
     // HarpsEtc, //removed for SSL violations
 ];
