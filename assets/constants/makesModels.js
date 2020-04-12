@@ -281,7 +281,7 @@ exports.globalMakesModels = [
         "sellerName": "Lewis",
         "sellerProducts": [
             {
-                "productAliases": [],
+                "productAliases": [ "Aries" ],
                 "_id": "5e8b7deea03397444c70627d",
                 "productTitle": "Arie",
                 "productMaker": "Lewis",

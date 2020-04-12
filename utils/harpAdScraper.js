@@ -95,7 +95,7 @@ const parseStoreInfo = async (seller, data) => {
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) console.log('Error writing used-harp list function:', err.message);
         });
-               
+        // console.log(mainProductList)
         return mainProductList;
     });         
 }

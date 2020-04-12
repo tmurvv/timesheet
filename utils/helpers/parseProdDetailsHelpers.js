@@ -154,11 +154,10 @@ const findModel = (title, makesModels) => {
     if (!title) throw new AppError('from findMaker: title parameter is empty');
     
     let productModel;
-    
     getModelList(makesModels).map((model) => {
-        if (title.indexOf(model)>-1) {
-            productModel = model;
-        }
+        const modRegEx = String.raw`\b${model}\b`;
+        const regExPattern = new RegExp(modRegEx);
+        if (title.match(regExPattern)) productModel = model;
     });
     if (!productModel) productModel = checkModelAliases(title, makesModels);
     
