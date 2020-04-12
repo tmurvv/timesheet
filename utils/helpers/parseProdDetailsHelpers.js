@@ -1,3 +1,4 @@
+const AppError = require('../AppError');
 const { globalMakesModels } = require('../../assets/constants/makesModels'); // NOT YET IMPLEMENTED make scrape function pass in makesModels
 
 /**
@@ -151,12 +152,13 @@ const findMaker = (title, model='', makesModels) => {
  */
 const findModel = (title, makesModels) => {
     if (!title) throw new AppError('from findMaker: title parameter is empty');
+    
     let productModel;
     
     getModelList(makesModels).map((model) => {
         if (title.indexOf(model)>-1) {
             productModel = model;
-        } 
+        }
     });
     if (!productModel) productModel = checkModelAliases(title, makesModels);
     
@@ -221,7 +223,6 @@ const getMakeModelTypeSize = async (title) => {
     const maker = await findMaker(title, model, globalMakesModels);
     const type = findProductType(maker, model, globalMakesModels);
     const size = findProductSize(maker, model, globalMakesModels);
-    
     return [maker, model, type, size];
 }
 

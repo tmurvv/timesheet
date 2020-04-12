@@ -6,7 +6,9 @@ const AppError = require('../AppError');
 /**
  * Traverses an object parsing out an object from the next levelfrom maker/model JSON-style object
  * @function catchAsync
- * @param {req,res,next} makesModels Standard request/response params
+ * @param {req} Object Standard request/response params
+ * @param {res} Object Standard request/response params
+ * @param {next} Function Standard request/response params
  * @returns {Error} - Return errors for async functions
  */
 exports.catchAsync = fn => {

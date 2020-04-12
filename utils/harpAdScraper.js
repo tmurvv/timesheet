@@ -1,10 +1,12 @@
+// packages
 const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
-
+// internal
 const sellerArrayObject = require('../assets/constants/sellers');
 const { downloadImage } = require('../utils/downloadWebSiteImages.js');
+const {getMakeModelTypeSize} = require('./helpers/parseProdDetailsHelpers');
 const { 
     shortFileNameFn, 
     checkBadImages,
@@ -12,20 +14,20 @@ const {
     cleanText, 
     leaf
  } = require('./helpers/helpers.js');
-const {getMakeModelTypeSize} = require('./helpers/parseProdDetailsHelpers');
 
-let mainProductList = [];
-
+let mainProductList;
 const parseStoreInfo = async (seller, data) => {
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;
     const $ = cheerio.load(html);
     const productTable = $(seller.mainPathId);
+    console.log(productTable.length)
     console.log('Seller', seller.name)
     console.log('# of Products:', productTable.length);
     productTable.each(async function (item) {
         const id=uuid();
         // five main product data points
         let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? cleanText(seller.titleFn($, this)) : '';
+        console.log(productTitle)
         let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? cleanText(seller.priceFn($, this)) : '';
         let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
@@ -60,6 +62,7 @@ const parseStoreInfo = async (seller, data) => {
        
         //create product
         let product;
+        //console.log(makeModelTypeSize)
         if (makeModelTypeSize[1]) product = {
             id,
             sellerName: seller.name,

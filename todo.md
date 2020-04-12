@@ -1,8 +1,8 @@
 - try again to get private ad routes to work
 
-- pass makes models into parse details functions instead of global var at top
+- refactor parseStoreInfo into parseStoreInfoHelpers.js
 
-- instead of location zip/postal code where harp located
+- check leaf function in custom functions
 
 - set up Production env variables, image url etc
 
