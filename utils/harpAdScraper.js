@@ -20,14 +20,12 @@ const parseStoreInfo = async (seller, data) => {
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;
     const $ = cheerio.load(html);
     const productTable = $(seller.mainPathId);
-    console.log(productTable.length)
     console.log('Seller', seller.name)
     console.log('# of Products:', productTable.length);
     productTable.each(async function (item) {
         const id=uuid();
         // five main product data points
         let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? cleanText(seller.titleFn($, this)) : '';
-        console.log(productTitle)
         let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? cleanText(seller.priceFn($, this)) : '';
         let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
@@ -47,8 +45,8 @@ const parseStoreInfo = async (seller, data) => {
 
         // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
-        if (!productImageUrl) productImageUrl = 'harp-genericSTOCK.jpg';
         // handle image specifics
+        if (!productImageUrl) productImageUrl = 'harp-genericSTOCK.jpg';
         let shortProductImageUrl;
         // grab stock photo url if bad image
         if (seller.hasOwnProperty('badImages') && makeModelTypeSize[1]) {

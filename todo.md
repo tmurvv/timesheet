@@ -6,8 +6,6 @@
 
 - set up Production env variables, image url etc
 
-- in dealing with Swan, Swanson, Swan:, Swan, Swan- findModel is done. Still need the rest of the finds (maker, size, type, check if others)
-
 - add crud endpoints for private listings
 
 - add date listing created

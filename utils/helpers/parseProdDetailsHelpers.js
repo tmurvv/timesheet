@@ -30,7 +30,9 @@ const searchAliasArray = (title, aliasArray) => {
     let foundName;
     aliasArray.map(name => {
         name[1].map(otherName => {
-            if (title.toUpperCase().indexOf(otherName.toUpperCase()) > -1) foundName = name[0]; 
+            const modRegEx = String.raw`\b${otherName}\b`;
+            const regExPattern = new RegExp(modRegEx);
+            if (title.match(regExPattern)) foundName = name[0];
         });                     
     });
 
@@ -136,9 +138,9 @@ const findMaker = (title, model='', makesModels) => {
     
     let productMaker;
     makesModels.map(maker => {
-        if (title.indexOf(maker.sellerName)>-1) {
-            productMaker = maker.sellerName;
-        } 
+        const modRegEx = String.raw`\b${maker}\b`;
+        const regExPattern = new RegExp(modRegEx);
+        if (title.match(regExPattern)) productModel = model;
     });
 
     if (!productMaker) productMaker = checkMakerAliases(title, model, makesModels);

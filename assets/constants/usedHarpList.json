@@ -1,1 +1,50 @@
-[{"id":"20de8092-a0cf-4feb-8c23-4ad1e190b27f","sellerName":"Tisha Murvihill, harp services","sellerCountry":"Canada","sellerRegion":"West","productTitle":"Triplett Sierra 36 Lever Harp","productPrice":"$3000usd / $4300cad","productShortDesc":"Pristine condition. One owner. Purchased in 2011. Just regulated.","productLongDesc":"This like new harp has a lovely, gentle, classic sound from one of our finest and most respected harp makers, Triplett Harps. A beautiful instrument that will add joy and warmth to any home. The harp is maple. Click here for photo of actual harp. Rent-to-own available in the Calgary area.","productMaker":"Triplett","productModel":"Sierra 36","productType":"lever","productSize":36,"productImageUrl":"https://findaharp-api-testing.herokuapp.com/assets/img/sierra36.jpg","divider":"00000000000000000000000"},{"id":"1ec77780-abe1-4d23-a086-41b4700d73f0","sellerName":"Tisha Murvihill, harp services","sellerCountry":"Canada","sellerRegion":"West","productTitle":"The ever-popular Rees Harpsicle harp","productPrice":"$800usd / $1200cad","productShortDesc":"Take this harp for a spin!!","productLongDesc":"This fun little harp is great for your roadtrip!","productMaker":"Rees","productModel":"Harpsicle","productType":"lever-free","productSize":26,"productImageUrl":"https://findaharp-api-testing.herokuapp.com/assets/img/Harpsicle-Maple.jpg","divider":"00000000000000000000000"},{"id":"6867325f-6d45-4e1b-9965-9a047b5bc78c","sellerName":"Tisha Murvihill, harp services","sellerCountry":"Canada","sellerRegion":"West","productTitle":"Mike Lewis Aries 26","productPrice":"$1200usd / $1800cad","productShortDesc":"One owner. Purchased in 2005.","productLongDesc":"This one is a cutie!!","productMaker":"Lewis","productModel":"Arie","productType":"lever","productSize":22,"productImageUrl":"https://findaharp-api-testing.herokuapp.com/assets/img/DSC03649_407x700.jpg","divider":"00000000000000000000000"}]
+[
+    {
+        "id": "870c0b3b-02ed-4135-9740-bc076f033888",
+        "sellerName": "Tisha Murvihill, harp services",
+        "sellerCountry": "Canada",
+        "sellerRegion": "West",
+        "productTitle": "Triplett Sierra 36 Lever Harp",
+        "productPrice": "$3000usd / $4300cad",
+        "productShortDesc": "Pristine condition. One owner. Purchased in 2011. Just regulated.",
+        "productLongDesc": "This like new harp has a lovely, gentle, classic sound from one of our finest and most respected harp makers, Triplett Harps. A beautiful instrument that will add joy and warmth to any home. The harp is maple. Click here for photo of actual harp. Rent-to-own available in the Calgary area.",
+        "productMaker": "Triplett",
+        "productModel": "Sierra 36",
+        "productType": "lever",
+        "productSize": 36,
+        "productImageUrl": "https://findaharp-api-testing.herokuapp.com/assets/img/sierra36.jpg",
+        "divider": "00000000000000000000000"
+    },
+    {
+        "id": "806b2dcc-b421-4fb3-b810-196910983e39",
+        "sellerName": "Tisha Murvihill, harp services",
+        "sellerCountry": "Canada",
+        "sellerRegion": "West",
+        "productTitle": "The ever-popular Rees Harpsicle harp",
+        "productPrice": "$800usd / $1200cad",
+        "productShortDesc": "Take this harp for a spin!!",
+        "productLongDesc": "This fun little harp is great for your roadtrip!",
+        "productMaker": "Rees",
+        "productModel": "Harpsicle",
+        "productType": "lever-free",
+        "productSize": 26,
+        "productImageUrl": "https://findaharp-api-testing.herokuapp.com/assets/img/Harpsicle-Maple.jpg",
+        "divider": "00000000000000000000000"
+    },
+    {
+        "id": "86022ce3-54dd-40d2-8548-e202ce7f76c1",
+        "sellerName": "Tisha Murvihill, harp services",
+        "sellerCountry": "Canada",
+        "sellerRegion": "West",
+        "productTitle": "Mike Lewis Aries 26",
+        "productPrice": "$1200usd / $1800cad",
+        "productShortDesc": "One owner. Purchased in 2005.",
+        "productLongDesc": "This one is a cutie!!",
+        "productMaker": "Lewis",
+        "productModel": "Arie",
+        "productType": "lever",
+        "productSize": 22,
+        "productImageUrl": "https://findaharp-api-testing.herokuapp.com/assets/img/DSC03649_407x700.jpg",
+        "divider": "00000000000000000000000"
+    }
+]
