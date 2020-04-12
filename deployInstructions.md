@@ -1,5 +1,5 @@
 ### Last Deployment To: 
-# TESTING
+# PRODUCTION 4/12/2020
 
 #### Prepare code
 - change where new image url in harpAdScraper (search on 'findaharp') depends on environment you are deploying to
@@ -10,14 +10,15 @@
 
 #### Run tests
 - Search for "BREAKINk"
-- make sure testing set to all tests
-- run tests
+- in package.json make sure testing set to all tests
+- run tests "npm tests"
 - make sure server runs with npm start
 - test api/v1/productads
 
 #### Config, Commit and push
 - did you update config.env? Don't forget CRUD operations in config.env have to be entered manually in Heroku
 - don't forget to commit and push
+- don't forget afterward to download current ads onto the deployed server by going to relative path plus api/v1/productsads
 
 #### Choose environment to deploy to: 
 - git push testing master
