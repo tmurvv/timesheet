@@ -1,3 +1,7 @@
+- on Tuesday, look at findaharp.com to see if CRON job worked
+
+- check console.logs and change to AppErrors
+
 - test daily update with my website
 
 - try again to get private ad routes to work

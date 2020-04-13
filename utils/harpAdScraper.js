@@ -3,6 +3,9 @@ const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
+const dotenv = require('dotenv');
+dotenv.config({ path: './config.env' });
+
 // internal
 const AppError = require('./AppError');
 const sellerArrayObject = require('../assets/constants/sellers');

@@ -2,15 +2,14 @@
 # PRODUCTION 4/12/2020
 
 #### Prepare code
-- change where new image url in harpAdScraper (search on 'findaharp') depends on environment you are deploying to
 - check that all stores uncommented in constants/sellers.js
 - make sure download images is enabled
 - search for console.logs
+- Search for "BREAKINk"
 
 #### Run tests
-- Search for "BREAKINk"
 - in package.json make sure testing set to all tests
-- run tests "npm tests"
+- run tests "npm test"
 - make sure server runs with npm start
 - test api/v1/productads
 
