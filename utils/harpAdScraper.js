@@ -57,7 +57,7 @@ const parseStoreInfo = async (seller, data) => {
         //download image if not from web or stock
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);       
         if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
-        productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://findaharp-api.herokuapp.com/assets/img/${shortProductImageUrl}`;
+        productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://${process.env.DEPLOY_SITE_PARTIAL}.herokuapp.com/assets/img/${shortProductImageUrl}`;
        
         //create product
         let product;

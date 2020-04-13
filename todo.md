@@ -1,14 +1,14 @@
+- test daily update with my website
+
 - try again to get private ad routes to work
 
 - refactor parseStoreInfo into parseStoreInfoHelpers.js
 
-- set up Production env variables, image url etc
+- create fake data set
 
 - add crud endpoints for private listings
 
 - add date listing created
-
-- test daily update with my website
 
 - learn this https://support.google.com/webmasters/answer/9128669?hl=en
 

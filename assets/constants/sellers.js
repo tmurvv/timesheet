@@ -76,7 +76,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const MurvihillHarpServices = new SellerPaths(
         'Tisha Murvihill, harp services', //name
         'Canada', //country
-        'West', //region
+        'Western', //region
         'https://harptisha.com/harpSalesRent.php', //productsUrl
         '.productContainer', //mainPathId
         null, //customFns 
