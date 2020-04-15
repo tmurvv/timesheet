@@ -8,7 +8,6 @@ const app = require('./app');
 
 // refreshMakesModels();
 
-
 // const go = (async () => {
 //     const result = await MakesModels.find(); 
 //     console.log(JSON.stringify(result));
