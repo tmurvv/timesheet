@@ -68,7 +68,7 @@ const parseStoreInfo = async (seller, data) => {
         // get thin image border color
         const productImageBestColors = await getColors(path.join(__dirname, `../assets/img/${shortProductImageUrl}`));
         
-        let bestColor = ['#fff38e', 0]
+        let bestColor = ['#eeeeee', 0]
         productImageBestColors.map((color, idx) => {
             const colorArray = [color.hex(), color.luminance()];
             if (colorArray && colorArray.length > 0 && colorArray[1] < .80 && colorArray[1] > .40) {     
@@ -80,10 +80,9 @@ const parseStoreInfo = async (seller, data) => {
             //else {console.log('else', colorArray[1], bestColor[1]); bestColor = colorArray};
         });
         const productImageBestColor = bestColor[0];
-        // const productImageBestColor = '747473';
+
         //create product
         let product;
-        //console.log(makeModelTypeSize)
         if (makeModelTypeSize[1]) product = {
             id,
             sellerName: seller.name,
@@ -126,9 +125,13 @@ const parseStoreInfo = async (seller, data) => {
 exports.scrapeAds = async () => {
     mainProductList = [];
     const sellerArray = sellerArrayObject.sellerArray;
-
+    
     sellerArray.map(async seller => {
-        const response = await axios({url: seller.productsUrl, 'strictSSL': false});
-        parseStoreInfo(seller, response.data);
+        try {
+            const response = await axios({url: seller.productsUrl, 'strictSSL': false});
+            parseStoreInfo(seller, response.data);
+        } catch (err) {
+            console.log("Error from scrapeAds:", err.message);
+        }
     });
 };
