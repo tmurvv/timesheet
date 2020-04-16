@@ -772,6 +772,20 @@ const makesModels = [
                 "productSize": 34
             }
         ]
+    },
+    {
+        "sellerAliases": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'other'],
+        "sellerName": "finishes",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": "",
+                "productTitle": "",
+                "productMaker": "",
+                "productType": "",
+                "productSize": 0
+            }
+        ],
     }
 ];
 
@@ -1120,13 +1134,13 @@ describe('Get Product Details Helper Functions', () => {
         
         it('responds with matching records', async function() {
             let detailArray = await getMakeModelTypeSize("Salvi Iris for sale");
-            expect(detailArray).to.eql(['Salvi', 'Iris', 'pedal', 47]);
-            detailArray = await getMakeModelTypeSize("Tripplett Sierra 36 now available");
-            expect(detailArray).to.eql(['Triplett', 'Sierra 36', 'lever', 36]);
-            detailArray = await getMakeModelTypeSize("Triplett Sierra 36 now available");
-            expect(detailArray).to.eql(['Triplett', 'Sierra 36', 'lever', 36]);
+            expect(detailArray).to.eql(['Salvi', 'Iris', 'pedal', 47, undefined]);
+            detailArray = await getMakeModelTypeSize("Tripplett Sierra 36 now available - maple");
+            expect(detailArray).to.eql(['Triplett', 'Sierra 36', 'lever', 36, 'maple']);
+            detailArray = await getMakeModelTypeSize("Triplett Sierra Maple 36 now available");
+            expect(detailArray).to.eql(['Triplett', 'Sierra 36', 'lever', 36, 'maple']);
             detailArray = await getMakeModelTypeSize('L&H 17 the best I have seen');
-            expect(detailArray).to.eql(['Lyon & Healy', 'Style 17', 'pedal', 47]);
+            expect(detailArray).to.eql(['Lyon & Healy', 'Style 17', 'pedal', 47, undefined]);
         });
     });
 });

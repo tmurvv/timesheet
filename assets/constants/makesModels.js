@@ -745,6 +745,20 @@ exports.globalMakesModels = [
                 "productType": "lever",
                 "productSize": 34
             }
-        ]
+        ],
+    },
+    {
+        "sellerAliases": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'other'],
+        "sellerName": "findaharpFinishes",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": "",
+                "productTitle": "",
+                "productMaker": "",
+                "productType": "",
+                "productSize": 0
+            }
+        ],
     }
 ]

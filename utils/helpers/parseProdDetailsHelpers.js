@@ -48,7 +48,7 @@ const getMakerAliasArray = (makesModels) => {
     if (!makesModels || makesModels.length === 0) throw new AppError('from getMakerAliasArray: makesModels parameter is empty');
     const allSellerAliases = [];
     makesModels.map(maker => {
-        if (maker.sellerAliases.length>0) {
+        if (maker.sellerAliases.length>0 && maker.sellerName !== 'findaharpFinishes') {
             allSellerAliases.push([maker.sellerName, [...maker.sellerAliases]]);
         }
     });
@@ -85,7 +85,7 @@ const getModelAliasArray = (makesModels) => {
 const findMakerFromModel = (model, makesModels) => {   
     if (!model) throw new AppError('from findMakerFromModel: model parameter is empty');
     if (!makesModels || makesModels.length === 0) throw new AppError('from findMakerFromModel: makesModels parameter is empty');
-    
+    console.log('amkermomdel', model);
     let foundName;
     makesModels.map((maker,idx) => {
         maker.sellerProducts.map(sellerProduct => {
@@ -135,16 +135,40 @@ const checkModelAliases = (title, makesModels) => {
  */
 const findMaker = (title, model='', makesModels) => {
     if (!title) throw new AppError('from findMaker: title parameter is empty');
-    
+    const titleUpper = title.toUpperCase();
     let productMaker;
     makesModels.map(maker => {
-        const modRegEx = String.raw`\b${maker}\b`;
+        const makerUpper=maker.sellerName.toUpperCase();
+        const modRegEx = String.raw`\b${makerUpper}\b`;
         const regExPattern = new RegExp(modRegEx);
-        if (title.match(regExPattern)) productModel = model;
+        if (titleUpper.match(regExPattern)) productMaker = maker.sellerName;
     });
-
     if (!productMaker) productMaker = checkMakerAliases(title, model, makesModels);
+    
     return productMaker;
+}
+/**
+ * Parses maker from Product ad title using makers/models JSON-style object
+ * @function findProductFinish
+ * @param {String} title the title of the product ad
+ * @param {Object} makesModels list of product makers and models
+ * @returns {String} - Maker name or undefined
+ */
+const findProductFinish = (title, makesModels) => {
+    if (!title) throw new AppError('from findMaker: title parameter is empty');
+    const upperTitle = title.toUpperCase();
+    const finishes =makesModels[makesModels.length-1].sellerAliases;
+    
+    let productFinish;
+    finishes.map(finish => {
+        
+        const upperFinish=finish.toUpperCase();
+        console.log(upperFinish, upperTitle)
+        const modRegEx = String.raw`\b${upperFinish}\b`;
+        const regExPattern = new RegExp(modRegEx);
+        if (upperTitle.match(regExPattern)) productFinish = finish;
+    });
+    return productFinish;
 }
 /**
  * Parses maker from Product ad title using makers/models JSON-style object
@@ -224,7 +248,9 @@ const getMakeModelTypeSize = async (title) => {
     const maker = await findMaker(title, model, globalMakesModels);
     const type = findProductType(maker, model, globalMakesModels);
     const size = findProductSize(maker, model, globalMakesModels);
-    return [maker, model, type, size];
+    const finish = findProductFinish(title, globalMakesModels);
+    console.log(title, finish);
+    return [maker, model, type, size, finish];
 }
 
 module.exports = {

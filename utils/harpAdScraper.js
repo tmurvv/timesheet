@@ -78,6 +78,7 @@ const parseStoreInfo = async (seller, data) => {
             productModel: makeModelTypeSize[1],
             productType: makeModelTypeSize[2],
             productSize: makeModelTypeSize[3],
+            productFinish: makeModelTypeSize[4],
             productImageUrl,
             divider: '00000000000000000000000'
         }       

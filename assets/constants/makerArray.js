@@ -337,5 +337,6 @@ exports.productMakesModels = {
             'strings': '22'
         },
         'othernames': ['Mike Lewis']
-    }
+    },
+    'finishes': ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'other']
 }
