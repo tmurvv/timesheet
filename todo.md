@@ -1,5 +1,7 @@
 - on Tuesday, look at findaharp.com to see if CRON job worked. Aries changed to Dusty Strings
 
+- refactor get best color out of harpscraper
+
 - check console.logs and change to AppErrors
 
 - try again to get private ad routes to work

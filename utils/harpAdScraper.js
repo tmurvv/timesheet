@@ -3,6 +3,8 @@ const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const uuid = require('uuid');
+const path = require('path')
+const getColors = require('get-image-colors')
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 
@@ -49,6 +51,7 @@ const parseStoreInfo = async (seller, data) => {
 
         // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
+        
         // handle image specifics
         if (!productImageUrl) productImageUrl = 'harp-genericSTOCK.jpg';
         let shortProductImageUrl;
@@ -61,7 +64,23 @@ const parseStoreInfo = async (seller, data) => {
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);       
         if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
         productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://${process.env.DEPLOY_SITE_PARTIAL}.herokuapp.com/assets/img/${shortProductImageUrl}`;
-       
+        
+        // get thin image border color
+        const productImageBestColors = await getColors(path.join(__dirname, `../assets/img/${shortProductImageUrl}`));
+        
+        let bestColor = ['#fff38e', 0]
+        productImageBestColors.map((color, idx) => {
+            const colorArray = [color.hex(), color.luminance()];
+            if (colorArray && colorArray.length > 0 && colorArray[1] < .80 && colorArray[1] > .40) {     
+                bestColor = colorArray
+            }
+            else if (colorArray && colorArray.length > 0 && colorArray[1] > bestColor[1] && colorArray[1] < .80 && colorArray[1] > .40) {  
+                bestColor = colorArray
+            }
+            //else {console.log('else', colorArray[1], bestColor[1]); bestColor = colorArray};
+        });
+        const productImageBestColor = bestColor[0];
+        // const productImageBestColor = '747473';
         //create product
         let product;
         //console.log(makeModelTypeSize)
@@ -80,6 +99,7 @@ const parseStoreInfo = async (seller, data) => {
             productSize: makeModelTypeSize[3],
             productFinish: makeModelTypeSize[4],
             productImageUrl,
+            productImageBestColor,
             divider: '00000000000000000000000'
         }       
         // check for vendor custom functions

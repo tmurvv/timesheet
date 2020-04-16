@@ -85,7 +85,7 @@ const getModelAliasArray = (makesModels) => {
 const findMakerFromModel = (model, makesModels) => {   
     if (!model) throw new AppError('from findMakerFromModel: model parameter is empty');
     if (!makesModels || makesModels.length === 0) throw new AppError('from findMakerFromModel: makesModels parameter is empty');
-    console.log('amkermomdel', model);
+
     let foundName;
     makesModels.map((maker,idx) => {
         maker.sellerProducts.map(sellerProduct => {
@@ -161,9 +161,7 @@ const findProductFinish = (title, makesModels) => {
     
     let productFinish;
     finishes.map(finish => {
-        
         const upperFinish=finish.toUpperCase();
-        console.log(upperFinish, upperTitle)
         const modRegEx = String.raw`\b${upperFinish}\b`;
         const regExPattern = new RegExp(modRegEx);
         if (upperTitle.match(regExPattern)) productFinish = finish;
@@ -249,7 +247,6 @@ const getMakeModelTypeSize = async (title) => {
     const type = findProductType(maker, model, globalMakesModels);
     const size = findProductSize(maker, model, globalMakesModels);
     const finish = findProductFinish(title, globalMakesModels);
-    console.log(title, finish);
     return [maker, model, type, size, finish];
 }
 

@@ -1,5 +1,7 @@
 const fs = require('fs');
 const request = require('request');
+const path = require('path')
+const getColors = require('get-image-colors')
 
 const download = function(uri, filename, callback) {
     try {

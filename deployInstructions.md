@@ -1,5 +1,5 @@
 ### Last Deployment To: 
-# PRODUCTION 4/12/2020
+# TESTING 4/16/2020
 
 #### Prepare code
 - check that all stores uncommented in constants/sellers.js
@@ -15,7 +15,7 @@
 
 #### Config, Commit and push
 - did you update config.env? Don't forget CRUD operations in config.env have to be entered manually in Heroku
-- don't forget to commit and push
+- commit and push
 - don't forget afterward to download current ads onto the deployed server by going to relative path plus api/v1/productsads
 
 #### Choose environment to deploy to: 
