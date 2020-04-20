@@ -1,5 +1,5 @@
 ### Last Deployment To: 
-# TESTING 4/16/2020
+# PRODUCTION 4/20/2020
 
 #### Prepare code
 - check that all stores uncommented in constants/sellers.js

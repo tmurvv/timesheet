@@ -1,4 +1,5 @@
-// require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
 
 // packages
 const path = require('path');
