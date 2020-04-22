@@ -52,7 +52,9 @@ app.all('/', function(req, res, next) {
 //Serve static image files
 express.static('assets');
 app.use(express.static('img'));
-app.use(express.static('img/testdataimg'));
+// app.use(express.static('img/testdataimg'));
+// app.use('/img', express.static(__dirname + '/public'));
+// app.use('/img/datatestimg', express.static(__dirname + '/public/'));
 
 //utilities ** see commented code below
 app.use(express.json({limit: '10kb'}))
@@ -108,7 +110,7 @@ app.get('/assets/img/:name', function (req, res, next) {
         } 
     });
 });
-app.get('/assets/img/testdataimg:name', function (req, res, next) {
+app.get('/assets/img/testdataimg/:name', function (req, res, next) {
     const options = {
         root: path.join(__dirname, 'assets/img'),
         dotfiles: 'deny',
