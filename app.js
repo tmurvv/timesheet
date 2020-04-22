@@ -52,6 +52,7 @@ app.all('/', function(req, res, next) {
 //Serve static image files
 express.static('assets');
 app.use(express.static('img'));
+app.use(express.static('img/testdataimg'));
 
 //utilities ** see commented code below
 app.use(express.json({limit: '10kb'}))
@@ -88,6 +89,26 @@ app.get('/api/v1/productads', catchAsync(async (req, res) => {
 
 //Image Router code based on expressjs.com API reference
 app.get('/assets/img/:name', function (req, res, next) {
+    const options = {
+        root: path.join(__dirname, 'assets/img'),
+        dotfiles: 'deny',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+        }
+    }
+  
+    const fileName = req.params.name
+    
+    res.sendFile(fileName, options, function (err) {
+        if (err) {
+            next(new AppError(`No image found with the file name '${fileName}'.`, 404))
+        } else {
+            console.log('Sent:', fileName)
+        } 
+    });
+});
+app.get('/assets/img/testdataimg:name', function (req, res, next) {
     const options = {
         root: path.join(__dirname, 'assets/img'),
         dotfiles: 'deny',
