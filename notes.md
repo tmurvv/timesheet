@@ -4,6 +4,7 @@ DataMuse npm maybe to find similar sounds to harp name
 
 https://harp.fandom.com/wiki/Harp_Makers_and_Vendors_in_North_America
 
+summerhaysmusic
 
 https://vanderbiltmusic.com/strings-guide/
 

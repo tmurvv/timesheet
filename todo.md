@@ -1,5 +1,3 @@
-- sign up for heroku
-
 - on Tuesday, look at findaharp.com to see if CRON job worked. Aries changed to Dusty Strings
 
 - refactor get best color out of harpscraper
