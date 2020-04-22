@@ -12,7 +12,7 @@
         "productModel": "Troubadour VI",
         "productType": "lever",
         "productSize": 36,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/prelude40_11207.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/prelude40_11207.jpg",
         "productImageBestColor": "#dfd6ca",
         "divider": "00000000000000000000000"
     },
@@ -29,7 +29,7 @@
         "productModel": "Ogden",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Ogden_3870.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Ogden_3870.jpg",
         "productImageBestColor": "#dfd0c3",
         "divider": "00000000000000000000000"
     },
@@ -46,7 +46,7 @@
         "productModel": "Prelude 40",
         "productType": "lever",
         "productSize": 40,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Prelude_62530.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Prelude_62530.jpg",
         "productImageBestColor": "#adacaa",
         "divider": "00000000000000000000000"
     },
@@ -63,7 +63,7 @@
         "productModel": "Prelude 40",
         "productType": "lever",
         "productSize": 40,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Prelude_62477.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Prelude_62477.jpg",
         "productImageBestColor": "#eeeeee",
         "divider": "00000000000000000000000"
     },
@@ -80,7 +80,7 @@
         "productModel": "Ogden",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Ogden_3864.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Ogden_3864.jpg",
         "productImageBestColor": "#dbcdbc",
         "divider": "00000000000000000000000"
     },
@@ -98,7 +98,7 @@
         "productType": "lever",
         "productSize": 26,
         "productFinish": "natural",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DSC03649_407x700.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DSC03649_407x700.jpg",
         "productImageBestColor": "#bcbab5",
         "divider": "00000000000000000000000"
     },
@@ -116,7 +116,7 @@
         "productType": "lever",
         "productSize": 36,
         "productFinish": "maple",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/jeffreyTriplettSierra.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/jeffreyTriplettSierra.jpg",
         "productImageBestColor": "#b2ac9f",
         "divider": "00000000000000000000000"
     },
@@ -134,7 +134,7 @@
         "productType": "lever-free",
         "productSize": 26,
         "productFinish": "natural",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Harpsicle-Maple.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Harpsicle-Maple.jpg",
         "productImageBestColor": "#d1ae96",
         "divider": "00000000000000000000000"
     },
@@ -152,7 +152,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "mahogany",
-        "productImageUrl": "/img/testImg/LH30.jpg",
+        "productImageUrl": "/img/LH30.jpg",
         "productImageBestColor": "#d2d1d6",
         "divider": "00000000000000000000000"
     },
@@ -169,7 +169,7 @@
         "productModel": "85CG",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "/img/testImg/LH30.jpg",
+        "productImageUrl": "/img/LH30.jpg",
         "productImageBestColor": "#dfdfde",
         "divider": "00000000000000000000000"
     },
@@ -187,7 +187,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "natural",
-        "productImageUrl": "/img/testImg/LHBlue42.jpg",
+        "productImageUrl": "/img/LHBlue42.jpg",
         "productImageBestColor": "#dbe2dd",
         "divider": "00000000000000000000000"
     },
@@ -205,7 +205,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "walnut",
-        "productImageUrl": "/img/testImg/LH85CG.jpg",
+        "productImageUrl": "/img/LH85CG.jpg",
         "productImageBestColor": "#eeeeee",
         "divider": "00000000000000000000000"
     },
@@ -223,7 +223,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "ebony",
-        "productImageUrl": "/img/testImg/LH85CG.jpg",
+        "productImageUrl": "/img/LH85CG.jpg",
         "productImageBestColor": "#e8d1a0",
         "divider": "00000000000000000000000"
     },
@@ -241,7 +241,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "mahogany",
-        "productImageUrl": "/img/testImg/camacVendome.jpg",
+        "productImageUrl": "/img/camacVendome.jpg",
         "productImageBestColor": "#d3cfcb",
         "divider": "00000000000000000000000"
     },
@@ -277,7 +277,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "ebony",
-        "productImageUrl": "/img/testImg/LH30.jpg",
+        "productImageUrl": "/img/LH30.jpg",
         "productImageBestColor": "#f1e1c6",
         "divider": "00000000000000000000000"
     },
@@ -295,7 +295,7 @@
         "productType": "lever",
         "productSize": 36,
         "productFinish": "cherry",
-        "productImageUrl": "img/testImg/Cheyenne26.jpg",
+        "productImageUrl": "img/Cheyenne26.jpg",
         "productImageBestColor": "#e1d3be",
         "divider": "00000000000000000000000"
     },
@@ -313,7 +313,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "ebony",
-        "productImageUrl": "/img/testImg/LH30.jpg",
+        "productImageUrl": "/img/LH30.jpg",
         "productImageBestColor": "#f1e1c5",
         "divider": "00000000000000000000000"
     },
@@ -331,7 +331,7 @@
         "productType": "lever",
         "productSize": 34,
         "productFinish": "ebony",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LHOgden40.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LHOgden40.jpg",
         "productImageBestColor": "#d2c3ad",
         "divider": "00000000000000000000000"
     },
@@ -348,7 +348,7 @@
         "productModel": "Arie",
         "productType": "lever",
         "productSize": 22,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Heather28.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Heather28.jpg",
         "productImageBestColor": "#d0dcde",
         "divider": "00000000000000000000000"
     },
@@ -365,7 +365,7 @@
         "productModel": "DHC 32",
         "productType": "lever",
         "productSize": 32,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyFH36S.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyFH36S.jpg",
         "productImageBestColor": "#d1c2b1",
         "divider": "00000000000000000000000"
     },
@@ -382,7 +382,7 @@
         "productModel": "Style 23",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH23.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH23.jpg",
         "productImageBestColor": "#eeeeee",
         "divider": "00000000000000000000000"
     },
@@ -399,7 +399,7 @@
         "productModel": "Allegro 26",
         "productType": "lever",
         "productSize": 26,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyAllegro26.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyAllegro26.jpg",
         "productImageBestColor": "#cdb394",
         "divider": "00000000000000000000000"
     },
@@ -417,7 +417,7 @@
         "productType": "lever",
         "productSize": 30,
         "productFinish": "cherry",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyRavenna34.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyRavenna34.jpg",
         "productImageBestColor": "#cfb9a0",
         "divider": "00000000000000000000000"
     },
@@ -435,7 +435,7 @@
         "productType": "lever",
         "productSize": 26,
         "productFinish": "walnut",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Cheyenne26.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Cheyenne26.jpg",
         "productImageBestColor": "#dac6ad",
         "divider": "00000000000000000000000"
     },
@@ -453,7 +453,7 @@
         "productType": "lever",
         "productSize": 34,
         "productFinish": "maple",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyBoulevard34.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyBoulevard34.jpg",
         "productImageBestColor": "#cccce4",
         "divider": "00000000000000000000000"
     },
@@ -470,7 +470,7 @@
         "productModel": "85E",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH85CG.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH85CG.jpg",
         "productImageBestColor": "#c7b2a6",
         "divider": "00000000000000000000000"
     },
@@ -488,7 +488,7 @@
         "productType": "lever",
         "productSize": 36,
         "productFinish": "bubinga",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyFH36S.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyFH36S.jpg",
         "productImageBestColor": "#d5bab3",
         "divider": "00000000000000000000000"
     },
@@ -505,7 +505,7 @@
         "productModel": "Daphne 47 EX",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH30.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH30.jpg",
         "productImageBestColor": "#dccab5",
         "divider": "00000000000000000000000"
     },
@@ -522,7 +522,7 @@
         "productModel": "Livia",
         "productType": "lever",
         "productSize": 36,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyRavenna26.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyRavenna26.jpg",
         "productImageBestColor": "#ddc3ba",
         "divider": "00000000000000000000000"
     },
@@ -539,7 +539,7 @@
         "productModel": "Ulysses",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/StoneyEnd38.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/StoneyEnd38.jpg",
         "productImageBestColor": "#eee7ce",
         "divider": "00000000000000000000000"
     },
@@ -556,7 +556,7 @@
         "productModel": "Ceili",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Cheyenne26.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Cheyenne26.jpg",
         "productImageBestColor": "#f3dcd1",
         "divider": "00000000000000000000000"
     },
@@ -574,7 +574,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "gold",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH20.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH20.jpg",
         "productImageBestColor": "#f4e094",
         "divider": "00000000000000000000000"
     },
@@ -591,7 +591,7 @@
         "productModel": "Ulysses",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Cheyenne26.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Cheyenne26.jpg",
         "productImageBestColor": "#e6d4ce",
         "divider": "00000000000000000000000"
     },
@@ -608,7 +608,7 @@
         "productModel": "Aberdeen Meadows",
         "productType": "lever",
         "productSize": 36,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Cheyenne26.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Cheyenne26.jpg",
         "productImageBestColor": "#f0d6a6",
         "divider": "00000000000000000000000"
     },
@@ -625,7 +625,7 @@
         "productModel": "Livia",
         "productType": "lever",
         "productSize": 36,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LHOgden40.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LHOgden40.jpg",
         "productImageBestColor": "#d6c3ab",
         "divider": "00000000000000000000000"
     },
@@ -642,7 +642,7 @@
         "productModel": "Egan",
         "productType": "lever",
         "productSize": 38,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyBoulevard34.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyBoulevard34.jpg",
         "productImageBestColor": "#decca6",
         "divider": "00000000000000000000000"
     },
@@ -659,7 +659,7 @@
         "productModel": "Style 23",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH23.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH23.jpg",
         "productImageBestColor": "#dccca4",
         "divider": "00000000000000000000000"
     },
@@ -676,7 +676,7 @@
         "productModel": "Troubadour VI",
         "productType": "lever",
         "productSize": 36,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LHOgden40.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LHOgden40.jpg",
         "productImageBestColor": "#d6bcb4",
         "divider": "00000000000000000000000"
     },
@@ -693,7 +693,7 @@
         "productModel": "Troubadour V",
         "productType": "lever",
         "productSize": 36,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LHOgden40.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LHOgden40.jpg",
         "productImageBestColor": "#c4aba2",
         "divider": "00000000000000000000000"
     },
@@ -711,7 +711,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "gold",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH23.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH23.jpg",
         "productImageBestColor": "#f4de94",
         "divider": "00000000000000000000000"
     },
@@ -729,7 +729,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "gold",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH20.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH20.jpg",
         "productImageBestColor": "#bfb48f",
         "divider": "00000000000000000000000"
     },
@@ -746,7 +746,7 @@
         "productModel": "Sylvan",
         "productType": "lever",
         "productSize": 36,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyAllegro26.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyAllegro26.jpg",
         "productImageBestColor": "#f3d694",
         "divider": "00000000000000000000000"
     },
@@ -764,7 +764,7 @@
         "productType": "pedal",
         "productSize": 47,
         "productFinish": "gold",
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH20.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH20.jpg",
         "productImageBestColor": "#f6e295",
         "divider": "00000000000000000000000"
     },
@@ -781,7 +781,7 @@
         "productModel": "Style 23",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH23.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH23.jpg",
         "productImageBestColor": "#dacca8",
         "divider": "00000000000000000000000"
     },
@@ -798,7 +798,7 @@
         "productModel": "La Scuola",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/SwansonLaScuola.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/SwansonLaScuola.jpg",
         "productImageBestColor": "#e5d7cd",
         "divider": "00000000000000000000000"
     },
@@ -815,7 +815,7 @@
         "productModel": "Style 100",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/SwansonLaScuola.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/SwansonLaScuola.jpg",
         "productImageBestColor": "#e0cabc",
         "divider": "00000000000000000000000"
     },
@@ -832,7 +832,7 @@
         "productModel": "Style 30",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH30.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH30.jpg",
         "productImageBestColor": "#b8ad88",
         "divider": "00000000000000000000000"
     },
@@ -849,7 +849,7 @@
         "productModel": "Daphne 47 EX",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LH85CG.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LH85CG.jpg",
         "productImageBestColor": "#ecd08a",
         "divider": "00000000000000000000000"
     },
@@ -866,7 +866,7 @@
         "productModel": "Troubadour VI",
         "productType": "lever",
         "productSize": 36,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/LHOgden40.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/LHOgden40.jpg",
         "productImageBestColor": "#e2ccc3",
         "divider": "00000000000000000000000"
     },
@@ -883,7 +883,7 @@
         "productModel": "Vendome",
         "productType": "pedal",
         "productSize": 47,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/camacVendome.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/camacVendome.jpg",
         "productImageBestColor": "#e8d6a4",
         "divider": "00000000000000000000000"
     },
@@ -900,7 +900,7 @@
         "productModel": "Hermine",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/StoneyEnd38.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/StoneyEnd38.jpg",
         "divider": "00000000000000000000000"
     },
     {
@@ -916,7 +916,7 @@
         "productModel": "Boulevard Classic 34",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyBoulevard34.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyBoulevard34.jpg",
         "divider": "00000000000000000000000"
     },
     {
@@ -932,7 +932,7 @@
         "productModel": "Boulevard Classic 34",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyBoulevard34.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyBoulevard34.jpg",
         "divider": "00000000000000000000000"
     },
     {
@@ -948,7 +948,7 @@
         "productModel": "Encore 34",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyBoulevard34.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyBoulevard34.jpg",
         "divider": "00000000000000000000000"
     },
     {
@@ -964,7 +964,7 @@
         "productModel": "Cunningham 35",
         "productType": "lever",
         "productSize": 35,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/Cheyenne26.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/Cheyenne26.jpg",
         "divider": "00000000000000000000000"
     },
     {
@@ -980,7 +980,7 @@
         "productModel": "Boulevard Classic 34",
         "productType": "lever",
         "productSize": 34,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyBoulevard34.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyBoulevard34.jpg",
         "divider": "00000000000000000000000"
     },
     {
@@ -996,7 +996,7 @@
         "productModel": "FH36S",
         "productType": "lever",
         "productSize": 36,
-        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/testImg/DustyFH36S.jpg",
+        "productImageUrl": "https://findaharp-api.herokuapp.com/assets/img/DustyFH36S.jpg",
         "divider": "00000000000000000000000"
     }
 ]
