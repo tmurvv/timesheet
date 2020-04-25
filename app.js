@@ -20,6 +20,7 @@ const viewRouter = require('./routes/viewRoutes');
 const globalErrorHandler = require('./controllers/errorController');
 const { scrapeAds } = require('./utils/harpAdScraper');
 const { catchAsync } = require('./utils/helpers/helpers');
+const { ContactRequests } = require('./assets/data/Schemas');
 
 // program setup
 const app = express();
@@ -75,6 +76,20 @@ app.post('/api/v1/privateads', async (req, res) => {
         }
     });
     
+});
+app.post('/api/v1/contactform', (req, res) => {
+    const contactId = uuid();
+    const contact = Object.assign({ contactId }, req.body);
+    // const contact = Object.assign({ firstname, lastname, email, productmaker, productmodel, sellername }, req.body);
+    ContactRequests.create(contact);
+    // add to json usedharplist
+    res.status(200).json({
+        title: 'FindAHarp.com | Create Contact',
+        status: 'success',
+        data: {
+            contact
+        }
+    });
 });
 
 

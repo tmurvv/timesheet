@@ -30,7 +30,27 @@ const makesModelsSchema = new mongoose.Schema({
 
 const MakesModels = mongoose.model('MakesModels', makesModelsSchema);
 //console.log(MakesModels.find())
+// Main Doc
+const contactRequestsSchema = new mongoose.Schema({
+    firstname: {type: String},
+    lastname: {type: String},
+    email: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        required: 'Email address is required',
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email address not valid. Please try again.']
+    },
+    productmaker: {type: String},
+    productmodel: {type: String},
+    sellername: {type: String},
+    comments: {type: String}
+},{ versionKey: false });
+
+const ContactRequests = mongoose.model('ContactRequests', contactRequestsSchema);
+
 module.exports.MakesModels = MakesModels;
+module.exports.ContactRequests = ContactRequests;
 
 // const vendorDeets = {
 //     vendorName: 'Murvihill Harps',
