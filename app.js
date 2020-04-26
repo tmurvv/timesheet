@@ -77,17 +77,18 @@ app.post('/api/v1/privateads', async (req, res) => {
     });
     
 });
-app.post('/api/v1/contactform', (req, res) => {
+app.post('/api/v1/contactform', async (req, res) => {
     const contactId = uuid();
     const contact = Object.assign({ contactId }, req.body);
+    console.log("HERE I AM",contact, req.body)
     // const contact = Object.assign({ firstname, lastname, email, productmaker, productmodel, sellername }, req.body);
-    ContactRequests.create(contact);
+    const added = await ContactRequests.create(contact);
     // add to json usedharplist
     res.status(200).json({
         title: 'FindAHarp.com | Create Contact',
         status: 'success',
         data: {
-            contact
+            added
         }
     });
 });

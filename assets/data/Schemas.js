@@ -38,8 +38,8 @@ const contactRequestsSchema = new mongoose.Schema({
         type: String,
         trim: true,
         lowercase: true,
-        required: 'Email address is required',
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email address not valid. Please try again.']
+        // required: 'Email address is required',
+        // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email address not valid. Please try again.']
     },
     productmaker: {type: String},
     productmodel: {type: String},
