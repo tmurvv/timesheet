@@ -2,25 +2,11 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
-var favicon = require('serve-favicon');
-var path = require('path');
+// // var favicon = require('serve-favicon');
+// // var path = require('path');
 
-app.use(favicon(path.join(__dirname, 'assets/img', 'favicon.ico')))
+// app.use(favicon(path.join(__dirname, 'assets/img', 'favicon.ico')))
 
-
-//%^%^%^%^^%^%^%^%^%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//Sub Docs
-
-// refreshMakesModels();
-
-// const go = (async () => {
-//     const result = await MakesModels.find(); 
-//     console.log(JSON.stringify(result));
-// });
-// go();
-// console.log(MakesModels.find());
-
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 /************ 
 *Connect DB

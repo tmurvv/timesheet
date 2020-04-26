@@ -79,8 +79,8 @@ app.post('/api/v1/privateads', async (req, res) => {
 });
 app.post('/api/v1/contactform', async (req, res) => {
     const contactId = uuid();
-    const contact = Object.assign({ contactId }, req.body);
-    console.log("HERE I AM",contact, req.body)
+    const contact = Object.assign({ contactId }, req.body.user);
+    console.log("HERE I AM",contact, req.body.user)
     // const contact = Object.assign({ firstname, lastname, email, productmaker, productmodel, sellername }, req.body);
     const added = await ContactRequests.create(contact);
     // add to json usedharplist
