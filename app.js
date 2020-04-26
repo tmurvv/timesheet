@@ -81,6 +81,7 @@ app.post('/api/v1/contactform', async (req, res) => {
     const contactId = uuid();
     const contact = Object.assign({ contactId }, req.body);
     console.log("HERE I AM",contact, req.body)
+    console.log('contact', contact);
     // const contact = Object.assign({ firstname, lastname, email, productmaker, productmodel, sellername }, req.body);
     const added = await ContactRequests.create(contact);
     // add to json usedharplist
