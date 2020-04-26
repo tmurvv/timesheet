@@ -83,7 +83,7 @@ app.post('/api/v1/contactform', async (req, res) => {
     console.log("HERE I AM",contact, req.body)
     console.log('contact', contact);
     // const contact = Object.assign({ firstname, lastname, email, productmaker, productmodel, sellername }, req.body);
-    const added = await ContactRequests.create({ "firstname": "Tisha", "lastname":"murvihill"});
+    const added = await ContactRequests.create(contact);
     // add to json usedharplist
     res.status(200).json({
         title: 'FindAHarp.com | Create Contact',
