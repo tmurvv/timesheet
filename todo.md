@@ -2,6 +2,8 @@
 
 - refactor get best color out of harpscraper
 
+- add pedal harps to Atlanta Harp Center
+
 - make sure only "admin" can create a new "admin"
 
 - make user email unique after testing

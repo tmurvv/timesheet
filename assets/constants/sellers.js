@@ -22,7 +22,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Atlanta Harp Center-o', //name
         'USA', //country
         'South', //region
-        'https://stores.atlantaharpcenter.com/pre-owned-lever-harps/', //productsUrl
+        'https://atlantaharpcenter.com/pre-owned-lever-harps/', //productsUrl
         '.Odd', //mainPathId
         null, //customFns 
         ($, item) => $(item).find('.ProductDetails').text().trim(), //titleFn
@@ -37,7 +37,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Atlanta Harp Center-e', //name
         'USA', //country
         'South', //region
-        'https://stores.atlantaharpcenter.com/pre-owned-lever-harps/', //productsUrl
+        'https://atlantaharpcenter.com/pre-owned-lever-harps/', //productsUrl
         '.Even', //mainPathId
         null, //customFns 
         ($, item) => $(item).find('.ProductDetails').text().trim(), //titleFn

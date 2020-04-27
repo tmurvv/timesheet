@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
-// // var favicon = require('serve-favicon');
-// // var path = require('path');
-
-// app.use(favicon(path.join(__dirname, 'assets/img', 'favicon.ico')))
-
 
 /************ 
 *Connect DB
@@ -29,7 +24,7 @@ mongoose
     .connect(DB, {
         useNewUrlParser: true,
         useCreateIndex: true,
-        useFindAndModify: true,
+        useFindAndModify: false,
         useUnifiedTopology: true
     })
     .then(() => console.log('DB connection successful'));
@@ -39,7 +34,7 @@ mongoose
  *************/
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-    console.log(`onestopharpshop-api running on port: ${port}...`);
+    console.log(`findaharp-api running on port: ${port}...`);
 });
 
 //fallback exception handler (will not handle exceptions above this line of code)
