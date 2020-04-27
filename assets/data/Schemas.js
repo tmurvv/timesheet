@@ -38,8 +38,8 @@ const contactRequestsSchema = new mongoose.Schema({
         type: String,
         trim: true,
         lowercase: true,
-        // required: 'Email address is required',
-        // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email address not valid. Please try again.']
+        required: 'Email address is required',
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email address not valid. Please try again.']
     },
     productmaker: {type: String},
     productmodel: {type: String},
@@ -48,9 +48,35 @@ const contactRequestsSchema = new mongoose.Schema({
 },{ versionKey: false });
 
 const ContactRequests = mongoose.model('ContactRequests', contactRequestsSchema);
+// Users
+const usersSchema = new mongoose.Schema({
+    name: {type: String},
+    email: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        required: 'Email address is required',
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email address not valid. Please try again.']
+    },
+    password: {
+        type: String,
+        minlength: 8
+    },
+    usertype: {
+        type: String, 
+        enum: {
+            values: ['user', 'seller', 'admin', 'other'],
+            message: 'User Type must be user, seller, admin or other.'
+        },
+        default: 'user'
+    }
+},{ versionKey: false });
+
+const Users = mongoose.model('Users', usersSchema);
 
 module.exports.MakesModels = MakesModels;
 module.exports.ContactRequests = ContactRequests;
+module.exports.Users = Users;
 
 // const vendorDeets = {
 //     vendorName: 'Murvihill Harps',

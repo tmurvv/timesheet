@@ -21,6 +21,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const { scrapeAds } = require('./utils/harpAdScraper');
 const { catchAsync } = require('./utils/helpers/helpers');
 const { ContactRequests } = require('./assets/data/Schemas');
+const { Users } = require('./assets/data/Schemas');
 
 // program setup
 const app = express();
@@ -78,22 +79,27 @@ app.post('/api/v1/privateads', async (req, res) => {
     
 });
 app.post('/api/v1/contactform', async (req, res) => {
-    const contactId = uuid();
-    const contact = Object.assign({ contactId }, req.body);
-    console.log("HERE I AM",contact, req.body)
-    console.log('contact', contact);
-    // const contact = Object.assign({ firstname, lastname, email, productmaker, productmodel, sellername }, req.body);
-    const added = await ContactRequests.create(contact);
-    // add to json usedharplist
-    res.status(200).json({
-        title: 'FindAHarp.com | Create Contact',
-        status: 'success',
-        data: {
-            added
-        }
-    });
+    try {
+        const contact = Object.assign({ contactId: uuid() }, req.body);
+        const added = await ContactRequests.create(contact);
+    
+        res.status(200).json({
+            title: 'FindAHarp.com | Create Contact',
+            status: 'success',
+            data: {
+                added
+            }
+        });
+    } catch (e) {
+        res.status(500).json({
+            title: 'FindAHarp.com | Create Contact',
+            status: 'fail',
+            data: {
+                message: `Something went wrong while contacting seller: ${e.message}`
+            }
+        });
+    }
 });
-
 
 // Run get product ads
 app.get('/api/v1/productads', catchAsync(async (req, res) => {
@@ -168,6 +174,32 @@ app.get('/assets/img/stock:name', function (req, res, next) {
         }
     });
 });
+/***************
+ * User Routes
+ ***************/
+app.post('/api/v1/users/createuser', async (req, res) => {
+    try {
+        const user = Object.assign({ contactId: uuid() }, req.body);
+        const added = await Users.create(user);
+    
+        res.status(200).json({
+            title: 'FindAHarp.com | Create User',
+            status: 'success',
+            data: {
+                added
+            }
+        });
+    } catch (e) {
+        res.status(500).json({
+            title: 'FindAHarp.com | Create Contact',
+            status: 'fail',
+            data: {
+                message: `Something went wrong while creating user: ${e.message}`
+            }
+        });
+    }
+});
+
 
 // Catch invalid routes
 app.all('*', (req,res,next) => {

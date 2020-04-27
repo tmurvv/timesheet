@@ -2,6 +2,10 @@
 
 - refactor get best color out of harpscraper
 
+- make sure only "admin" can create a new "admin"
+
+- make user email unique after testing
+
 - check that we are not getting duplicate listings
 
 - check console.logs and change to AppErrors
