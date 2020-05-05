@@ -50,7 +50,8 @@ const contactRequestsSchema = new mongoose.Schema({
 const ContactRequests = mongoose.model('ContactRequests', contactRequestsSchema);
 // Users
 const usersSchema = new mongoose.Schema({
-    name: {type: String},
+    firstname: {type: String},
+    lastname: {type: String},
     email: {
         type: String,
         trim: true,

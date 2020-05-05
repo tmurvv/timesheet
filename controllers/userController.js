@@ -4,7 +4,7 @@ const { Users } = require('../assets/data/Schemas');
 exports.getMe = async (req, res) => {
     try {
         const user = await Users.findById(req.params.userid);
-       
+        if (!user) throw new Error();
         res.status(200).json({
             title: 'FindAHarp.com | Get User',
             status: 'success',
@@ -17,15 +17,16 @@ exports.getMe = async (req, res) => {
             title: 'FindAHarp.com | Get User',
             status: 'fail',
             data: {
-                message: `Something went wrong with your account: ${e.message}`
+                message: `Something went wrong finding your account: ${e.message}`
             }
         });
     }
 }
 
 exports.createUser = async (req, res) => {
+    console.log(req.body);
     try {
-        const user = Object.assign({ contactId: uuid() }, req.body);
+        const user = Object.assign({ contactId: uuid(), usertype: 'user' }, req.body);
         const added = await Users.create(user);
         if (!added) throw new Error();
 
