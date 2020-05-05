@@ -1,4 +1,10 @@
+- check that productads is working
+
 - on Tuesday, look at findaharp.com to see if CRON job worked. Aries changed to Dusty Strings
+
+- get email functionality working
+
+- add date to contact requests
 
 - refactor get best color out of harpscraper
 
