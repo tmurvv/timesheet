@@ -45,6 +45,30 @@ exports.createUser = async (req, res) => {
         });
     }
 }
+exports.loginUser = async (req, res) => {
+    try {
+        console.log(req.body)
+        const userInfo = await Users.findOne({email: req.body.email});
+        if (!userInfo) throw new Error('Email not found.');
+        if (userInfo.password!==req.body.password) throw new Error('Password incorrect.');
+        
+        res.status(200).json({
+            title: 'FindAHarp.com | Login User',
+            status: 'success',
+            data: {
+                userInfo
+            }
+        });
+    } catch (e) {
+        res.status(500).json({
+            title: 'FindAHarp.com | Login User',
+            status: 'fail',
+            data: {
+                message: `Something went wrong while logging in user: ${e.message}`
+            }
+        });
+    }
+}
 exports.getAll = async (req, res) => {
     try {
         const allUsers = await Users.find();

@@ -1,4 +1,6 @@
-- check that productads is working
+- deploy to testing and test login
+
+- protect password and redeploy
 
 - on Tuesday, look at findaharp.com to see if CRON job worked. Aries changed to Dusty Strings
 
