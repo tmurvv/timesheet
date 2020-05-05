@@ -27,7 +27,8 @@ exports.createUser = async (req, res) => {
     try {
         const user = Object.assign({ contactId: uuid() }, req.body);
         const added = await Users.create(user);
-    
+        if (!added) throw new Error();
+
         res.status(200).json({
             title: 'FindAHarp.com | Create User',
             status: 'success',
@@ -47,7 +48,6 @@ exports.createUser = async (req, res) => {
 }
 exports.loginUser = async (req, res) => {
     try {
-        console.log(req.body)
         const userInfo = await Users.findOne({email: req.body.email});
         if (!userInfo) throw new Error('Email not found.');
         if (userInfo.password!==req.body.password) throw new Error('Password incorrect.');
@@ -60,7 +60,7 @@ exports.loginUser = async (req, res) => {
             }
         });
     } catch (e) {
-        res.status(500).json({
+        res.status(400).json({
             title: 'FindAHarp.com | Login User',
             status: 'fail',
             data: {
@@ -72,7 +72,8 @@ exports.loginUser = async (req, res) => {
 exports.getAll = async (req, res) => {
     try {
         const allUsers = await Users.find();
-       
+        if (!allUsers) throw new Error();
+
         res.status(200).json({
             title: 'FindAHarp.com | Get All Users',
             status: 'success',
@@ -94,7 +95,7 @@ exports.updateUser = async (req, res) => {
     try {
         await Users.findByIdAndUpdate(req.params.userid, req.body);
         const updatedUser = await Users.findById(req.params.userid);
-       
+        if (!updatedUser) throw new Error();
         res.status(200).json({
             title: 'FindAHarp.com | Update User',
             status: 'success',
@@ -116,7 +117,7 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
     try {
         const user = await Users.findByIdAndDelete(req.params.userid);
-       
+        if (!user) throw new Error();
         res.status(200).json({
             title: 'FindAHarp.com | Delete User',
             status: 'success',
