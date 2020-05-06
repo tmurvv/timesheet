@@ -4,6 +4,8 @@ const helper = require('sendgrid').mail;
 var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 dotenv.config({ path: './config.env' });
 const app = require('./app');
+const email = require('./email.js');
+email();
 
 /************ 
 *Connect DB
@@ -40,24 +42,24 @@ const server = app.listen(port, () => {
 });
 
 //#region TEST SENDGRID
-var from_email = new helper.Email('tech@take2tech.ca');
-var to_email = new helper.Email('tmurv@shaw.ca');
-var subject = 'Hello World from the SendGrid Node.js Library!';
-var content = new helper.Content('text/plain', 'Hello, Email!');
-var mail = new helper.Mail(from_email, subject, to_email, content);
+// var from_email = new helper.Email('tech@take2tech.ca');
+// var to_email = new helper.Email('tmurv@shaw.ca');
+// var subject = 'Hello World from the SendGrid Node.js Library!';
+// var content = new helper.Content('text/plain', 'Hello, Email!');
+// var mail = new helper.Mail(from_email, subject, to_email, content);
 
-var request = sg.emptyRequest({
-  method: 'POST',
-  path: '/v3/mail/send',
-  body: mail.toJSON(),
-});
+// var request = sg.emptyRequest({
+//   method: 'POST',
+//   path: '/v3/mail/send',
+//   body: mail.toJSON(),
+// });
 
-sg.API(request, function(error, response) {
-    console.log('imin0000000000000000000000000000000')
-    console.log(response.statusCode);
-    console.log(response.body);
-    console.log(response.headers);
-});
+// sg.API(request, function(error, response) {
+//     console.log('imin0000000000000000000000000000000')
+//     console.log(response.statusCode);
+//     console.log(response.body);
+//     console.log(response.headers);
+// });
 //#endregion
 
 
