@@ -1,4 +1,5 @@
 const uuid = require('uuid');
+const bcrypt = require('bcrypt');
 const { Users } = require('../assets/data/Schemas');
 
 exports.getMe = async (req, res) => {
@@ -24,11 +25,23 @@ exports.getMe = async (req, res) => {
 }
 
 exports.createUser = async (req, res) => {
-    console.log(req.body);
-    try {
-        const user = Object.assign({ contactId: uuid(), usertype: 'user' }, req.body);
+   try {
+        const saltRounds=10;
+        const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
+        const user = Object.assign({ 
+            contactId: uuid(), 
+            usertype: 'user', 
+            password: hashPassword, 
+            firstname: req.body.firstname, 
+            lastname: req.body.lastname, 
+            email: req.body.email
+        });
         const added = await Users.create(user);
-        if (!added) throw new Error();
+        if (!added) {
+            throw new Error();
+        } else {
+            // send email verification
+        }
 
         res.status(200).json({
             title: 'FindAHarp.com | Create User',
@@ -49,15 +62,21 @@ exports.createUser = async (req, res) => {
 }
 exports.loginUser = async (req, res) => {
     try {
+        // find User
         const userInfo = await Users.findOne({email: req.body.email});
+        // check user exists
         if (!userInfo) throw new Error('Email not found.');
-        if (userInfo.password!==req.body.password) throw new Error('Password incorrect.');
-        
+        // check password
+        if(!await bcrypt.compare(req.body.password, userInfo.password)) throw new Error('Password incorrect.');
+        // remove password from result
+        let userCopy = {...userInfo._doc};
+        delete userCopy.password;
+        // send result to client
         res.status(200).json({
             title: 'FindAHarp.com | Login User',
             status: 'success',
             data: {
-                userInfo
+                userCopy
             }
         });
     } catch (e) {
