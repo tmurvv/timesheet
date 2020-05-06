@@ -9,11 +9,12 @@ const email = () => {
 
 const msg = {
   to: 'tmurv@shaw.ca',
-  from: 'test@example.com',
+  from: 'app167126049@heroku.com',
   subject: 'Sending with SendGrid is Fun findaharpapi',
   text: 'and easy to do anywhere, even with Node.js',
   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
 };
+console.log('email.js00000000000000000000000000000')
 sgMail.send(msg);
     
     // sg.API(request, function(error, response) {
