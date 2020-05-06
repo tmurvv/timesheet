@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const helper = require('sendgrid').mail;
-var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 dotenv.config({ path: './config.env' });
 const app = require('./app');
-const email = require('./email.js');
-email();
 
 /************ 
 *Connect DB
