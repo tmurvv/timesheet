@@ -53,9 +53,10 @@ var request = sg.emptyRequest({
 });
 
 sg.API(request, function(error, response) {
-  console.log(response.statusCode);
-  console.log(response.body);
-  console.log(response.headers);
+    console.log('imin0000000000000000000000000000000')
+    console.log(response.statusCode);
+    console.log(response.body);
+    console.log(response.headers);
 });
 //#endregion
 
