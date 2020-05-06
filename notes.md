@@ -29,3 +29,7 @@ exports.sellerSort = () => sellerArray.sort(function(a, b) {
     // names must be equal
     return 0;
 });
+
+OLD SENDGRID DATA:
+SENDGRID_USERNAME=apikey
+SENDGRID_PASSWORD=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
