@@ -1,6 +1,7 @@
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 const { Users } = require('../assets/data/Schemas');
+const {emailVerifySend} = require('./email');
 
 exports.getMe = async (req, res) => {
     try {
@@ -39,7 +40,11 @@ exports.createUser = async (req, res) => {
         });
         const added = await Users.create(user);
         if (added) {
-            emailVerifySend();
+            try{
+                emailVerifySend();
+            } catch(e) {
+                throw new Error('problem sending verify');
+            }
             
         } else {
             throw new Error();

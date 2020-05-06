@@ -2,13 +2,13 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey('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');
 
-exports.emailSend = () => {
+exports.emailVerifySend = () => {
     console.log('in')
         const msg = {
         to: 'tmurv@shaw.ca',
-        from: 'app167126049@heroku.com',
+        from: 'tech@take2tech.ca',
         subject: 'Sending with heroku api/v1/email Twilio SendGrid is Fun',
         text: 'and easy to do anywhere, even with Node.js',
         html: '<strong>and easy to do anywhere, even with Node.js</strong>',
