@@ -20,7 +20,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const viewRouter = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
 const { scrapeAds } = require('./utils/harpAdScraper');
-const { emailSend } = require('./email');
+const { emailVerifySend } = require('./email');
 const { catchAsync } = require('./utils/helpers/helpers');
 const { ContactRequests } = require('./assets/data/Schemas');
 
@@ -96,7 +96,7 @@ app.post('/api/v1/contactform', async (req, res) => {
 
 // Run send email
 app.get('/api/v1/email', catchAsync(async (req, res) => {
-    const emailProgRes = await emailSend();
+    const emailProgRes = await emailVerifySend();
 
     res.status(200).json({
         title: 'FindAHarp.com | Get Harp Ads',

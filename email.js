@@ -4,7 +4,7 @@ dotenv.config({ path: './config.env' });
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey('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');
 
-exports.emailVerifySend = () => {
+exports.emailVerifySend = (user) => {
     console.log('in')
         const msg = {
         to: 'tmurv@shaw.ca',
