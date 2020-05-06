@@ -8,8 +8,8 @@ exports.emailSend = () => {
     console.log('in')
         const msg = {
         to: 'tmurv@shaw.ca',
-        from: 'tech@take2tech.ca',
-        subject: 'Sending with api/v1/email Twilio SendGrid is Fun',
+        from: 'app167126049@heroku.com',
+        subject: 'Sending with heroku api/v1/email Twilio SendGrid is Fun',
         text: 'and easy to do anywhere, even with Node.js',
         html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   };

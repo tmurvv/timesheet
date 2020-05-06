@@ -30,17 +30,19 @@ exports.createUser = async (req, res) => {
         const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
         const user = Object.assign({ 
             contactId: uuid(), 
-            usertype: 'user', 
-            password: hashPassword, 
+            usertype: 'user',
             firstname: req.body.firstname, 
             lastname: req.body.lastname, 
-            email: req.body.email
+            email: req.body.email,
+            password: hashPassword,
+            emailverified: false,
         });
         const added = await Users.create(user);
-        if (!added) {
-            throw new Error();
+        if (added) {
+            emailVerifySend();
+            
         } else {
-            // send email verification
+            throw new Error();
         }
 
         res.status(200).json({
