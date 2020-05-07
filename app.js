@@ -1,6 +1,6 @@
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // to allow scraping of webstores with invalid ssl
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
-
+const { Users } = require('./assets/data/Schemas');
 // packages
 const path = require('path');
 const uuid = require('uuid');
@@ -95,14 +95,24 @@ app.post('/api/v1/contactform', async (req, res) => {
 });
 
 // Run send email
-app.get('/api/v1/email', catchAsync(async (req, res) => {
-    const emailProgRes = await emailVerifySend();
-
-    res.status(200).json({
-        title: 'FindAHarp.com | Get Harp Ads',
-        status: 'success',
-        harpData: emailProgRes  
-    });
+app.post('/api/v1/emailverify', catchAsync(async (req, res) => {
+    const user = await Users.findOne({email: req.body.email});
+    if (user) {
+        await Users.findOneAndUpdate({email: user.email}, {verifyEmail: true});
+    
+        res.status(200).json({
+            title: 'FindAHarp.com | Get Email',
+            status: 'success'
+        });
+    } else {
+        res.status(500).json({
+            title: 'FindAHarp.com | Verify Email',
+            status: 'fail',
+            data: {
+                message: `Something went wrong while verifying email: ${e.message}`
+            }
+        });
+    }
 }));
 // Run get product ads
 app.get('/api/v1/productads', catchAsync(async (req, res) => {
