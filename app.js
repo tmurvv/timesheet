@@ -1,5 +1,6 @@
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // to allow scraping of webstores with invalid ssl
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
+const atob = require('atob');
 const { Users } = require('./assets/data/Schemas');
 // packages
 const path = require('path');
@@ -96,15 +97,27 @@ app.post('/api/v1/contactform', async (req, res) => {
 
 // Run send email
 app.post('/api/v1/emailverify', catchAsync(async (req, res) => {
-    const user = await Users.findOne({email: req.body.email});
-    if (user) {
-        await Users.findOneAndUpdate({email: user.email}, {verifyEmail: true});
+    const decodeEmail = atob(req.body.email);
     
-        res.status(200).json({
-            title: 'FindAHarp.com | Get Email',
-            status: 'success'
-        });
-    } else {
+    try {
+        const user = await Users.findOne({email: decodeEmail});
+        if (user) {
+            if (!user.emailverified) await Users.findOneAndUpdate({email: user.email}, {emailverified: true});
+        
+            res.status(200).json({
+                title: 'FindAHarp.com | Get Email',
+                status: 'success'
+            });
+        } else {
+            res.status(400).json({
+                title: 'FindAHarp.com | Verify Email',
+                status: 'fail',
+                data: {
+                    message: `Email ${decodeEmail} not found.`
+                }
+            });
+        }
+    } catch (e) {
         res.status(500).json({
             title: 'FindAHarp.com | Verify Email',
             status: 'fail',
@@ -113,6 +126,7 @@ app.post('/api/v1/emailverify', catchAsync(async (req, res) => {
             }
         });
     }
+    
 }));
 // Run get product ads
 app.get('/api/v1/productads', catchAsync(async (req, res) => {

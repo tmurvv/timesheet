@@ -26,7 +26,7 @@ exports.getMe = async (req, res) => {
 }
 
 exports.createUser = async (req, res) => {
-   try {
+    try {
         const saltRounds=10;
         const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
         const user = Object.assign({ 
@@ -37,6 +37,7 @@ exports.createUser = async (req, res) => {
             email: req.body.email,
             password: hashPassword,
             emailverified: false,
+            _date_created: Date.now()
         });
         const added = await Users.create(user);
         if (added) {
@@ -73,6 +74,8 @@ exports.loginUser = async (req, res) => {
         const userInfo = await Users.findOne({email: req.body.email});
         // check user exists
         if (!userInfo) throw new Error('Email not found.');
+        // check if email is verified:
+        if (!userInfo.emailverified) throw new Error(`The email ${userInfo.email} is not yet verified. Please check your inbox for a verification email from Findaharp.com.`);
         // check password
         if(!await bcrypt.compare(req.body.password, userInfo.password)) throw new Error('Password incorrect.');
         // remove password from result
@@ -82,9 +85,8 @@ exports.loginUser = async (req, res) => {
         res.status(200).json({
             title: 'FindAHarp.com | Login User',
             status: 'success',
-            data: {
-                userCopy
-            }
+            user: userCopy
+            
         });
     } catch (e) {
         res.status(400).json({

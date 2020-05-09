@@ -44,7 +44,8 @@ const contactRequestsSchema = new mongoose.Schema({
     productmaker: {type: String},
     productmodel: {type: String},
     sellername: {type: String},
-    comments: {type: String}
+    comments: {type: String},
+    _date_created: {type: Date}
 },{ versionKey: false });
 
 const ContactRequests = mongoose.model('ContactRequests', contactRequestsSchema);
@@ -58,6 +59,10 @@ const usersSchema = new mongoose.Schema({
         lowercase: true,
         required: 'Email address is required',
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email address not valid. Please try again.']
+    },
+    emailverified: {
+        type: Boolean, 
+        default: false
     },
     password: {
         type: String,

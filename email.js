@@ -1,3 +1,4 @@
+const btoa = require('btoa');
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 
@@ -7,7 +8,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const { Users } = require('./assets/data/Schemas');
 
 exports.emailVerifySend = (user) => {
-    console.log('in')
+    const emailEncode = btoa(user.email);
     const msg = {
     to: 'tmurv@shaw.ca',
     from: process.env.SENDGRID_FROM,
@@ -19,7 +20,7 @@ exports.emailVerifySend = (user) => {
                     <h2>Message from findaharp.com</h2>
                     <p>Dear Frecency List user,<br><br>Thank you for registering, please click on the link below to
                         confirm your email address</p>
-                    <p style="text-decoration: underline; font-size: 24px;"><a style="color:#CC5500;" href='http://localhost:3006/ActivateEmail?email=tmurv@shaw.ca'"> Confirm Email</a></p>
+                    <p style="text-decoration: underline; font-size: 24px;"><a style="color:#CC5500;" href=http://localhost:3006/ActivateEmail?email=${emailEncode}'"> Confirm Email</a></p>
                     <p><strong>&copy;2018 <a href="https://findaharp.com" style="color:#CC5500;text-decoration: underline;">findaharp.com</strong></p>
                 </body>
             </html>`                      
