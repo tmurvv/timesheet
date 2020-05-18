@@ -126,7 +126,6 @@ app.post('/api/v1/emailverify', catchAsync(async (req, res) => {
             }
         });
     }
-    
 }));
 // Run get product ads
 app.get('/api/v1/productads', catchAsync(async (req, res) => {
@@ -138,7 +137,6 @@ app.get('/api/v1/productads', catchAsync(async (req, res) => {
         harpData: usedHarps  
     });
 }));
-
 //Image Router code based on expressjs.com API reference
 app.get('/assets/img/:name', function (req, res, next) {
     const options = {
