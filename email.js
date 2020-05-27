@@ -10,9 +10,9 @@ const { Users } = require('./assets/data/Schemas');
 exports.emailVerifySend = (user) => {
     const emailEncode = btoa(user.email);
     const msg = {
-        to: 'tmurv@shaw.ca',
+        to: user.email,
         from: process.env.SENDGRID_FROM,
-        subject: `findaharp.com, please verify your email.`,
+        subject: `Findaharp.com, please verify your email.`,
         text: `Welcome ${user.firstname} ${user.lastname}, please click the button below to verify your email address with us.`,
         html: `<html>
                     <body style="color:#083a08; font-family: Lato, Arial, Helvetica, sans-serif;
