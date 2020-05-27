@@ -1,17 +1,22 @@
 # High priority
-- backend is down everywhere
 
 ### internal/cleanup
 - expand model list
 - refactor get best color out of harpscraper
-- check console.logs and change to AppErrors
+- check console.lok and change to AppErrors
 - move routing out of app.js
 - make user email unique after testing
 - refactor parseStoreInfo into parseStoreInfoHelpers.js and add testing
 - function to delete unused harp photos from server (once the harps sell)
+- on Tuesday, look at findaharp.com to see if CRON job worked. Aries changed to Dusty Strings
 
 ### functionality
-- on Tuesday, look at findaharp.com to see if CRON job worked. Aries changed to Dusty Strings
+
+- private Ads
+    - set up Schema
+    - set up Routes
+    - set up Controllers
+    - test with postman
 - add date to contact requests
 - check that we are not getting duplicate listings
 

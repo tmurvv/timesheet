@@ -44,7 +44,7 @@ exports.createUser = async (req, res) => {
             try{
                 emailVerifySend(user);
             } catch(e) {
-                throw new Error('problem sending verify');
+                throw new Error('There was a problem sending verification email. Please try again.');
             }
             
         } else {
@@ -63,7 +63,7 @@ exports.createUser = async (req, res) => {
             title: 'FindAHarp.com | Create User',
             status: 'fail',
             data: {
-                message: `Something went wrong while creating user: ${e.message}`
+                message: e.message
             }
         });
     }
@@ -92,9 +92,7 @@ exports.loginUser = async (req, res) => {
         res.status(400).json({
             title: 'FindAHarp.com | Login User',
             status: 'fail',
-            data: {
-                message: `Something went wrong while logging in user: ${e.message}`
-            }
+            message: e.message
         });
     }
 }

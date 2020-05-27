@@ -10,32 +10,32 @@ const { Users } = require('./assets/data/Schemas');
 exports.emailVerifySend = (user) => {
     const emailEncode = btoa(user.email);
     const msg = {
-    to: 'tmurv@shaw.ca',
-    from: process.env.SENDGRID_FROM,
-    subject: `findaharp.com, please verify your email.`,
-    text: `Welcome ${user.firstname} ${user.lastname}, please click the button below to verify your email address with us.`,
-    html: `<html>
-                <body style="color:#083a08; font-family: Lato, Arial, Helvetica, sans-serif;
-                                            line-height:1.8em;">
-                    <h2>Message from findaharp.com</h2>
-                    <p>Dear Frecency List user,<br><br>Thank you for registering, please click on the link below to
-                        confirm your email address</p>
-                    <p style="text-decoration: underline; font-size: 24px;"><a style="color:#CC5500;" href=http://localhost:3006/ActivateEmail?email=${emailEncode}'"> Confirm Email</a></p>
-                    <p><strong>&copy;2018 <a href="https://findaharp.com" style="color:#CC5500;text-decoration: underline;">findaharp.com</strong></p>
-                </body>
-            </html>`                      
-  };
-  //ES6
-  // sgMail
-  //   .send(msg)
-  //   .then(() => {}, error => {
-  //     console.error(error);
+        to: 'tmurv@shaw.ca',
+        from: process.env.SENDGRID_FROM,
+        subject: `findaharp.com, please verify your email.`,
+        text: `Welcome ${user.firstname} ${user.lastname}, please click the button below to verify your email address with us.`,
+        html: `<html>
+                    <body style="color:#083a08; font-family: Lato, Arial, Helvetica, sans-serif;
+                                                line-height:1.8em;">
+                        <h2>Message from findaharp.com</h2>
+                        <p>Dear Frecency List user,<br><br>Thank you for registering, please click on the link below to
+                            confirm your email address</p>
+                        <p style="text-decoration: underline; font-size: 24px;"><a style="color:#CC5500;" href=http://localhost:3006/ActivateEmail?email=${emailEncode}'"> Confirm Email</a></p>
+                        <p><strong>&copy;2018 <a href="https://findaharp.com" style="color:#CC5500;text-decoration: underline;">findaharp.com</strong></p>
+                    </body>
+                </html>`                      
+    };
+    //ES6
+    // sgMail
+    //   .send(msg)
+    //   .then(() => {}, error => {
+    //     console.error(error);
 
-  //     if (error.response) {
-  //       console.error(error.response.body)
-  //     }
-  //   });
-  //ES8
+    //     if (error.response) {
+    //       console.error(error.response.body)
+    //     }
+    //   });
+    //ES8
     (async () => {
         try {
             await sgMail.send(msg);

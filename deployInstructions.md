@@ -1,10 +1,10 @@
 ### Last Deployment To: 
-# TESTING 5/18/2020
+# PRODUCTION 5/26/2020
 
 #### Prepare code
 - check that all stores uncommented in constants/sellers.js
 - make sure download images is enabled
-- search for console.logs
+- search for console.lok
 - Search for "BREAKINk"
 
 #### Run tests
