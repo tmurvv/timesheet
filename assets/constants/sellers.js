@@ -104,8 +104,8 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     );
     WestCoastHarps.priceCustom = (product) => {
         const price=product.productPrice;
-        console.log('custom', product.productPrice)
-        console.log(price.substr(price.indexOf('$')-3,9));
+        
+        return {...product, productPrice: price.substr(price.indexOf('$')-3,9)};
     };
     //#endregion
     //#endregion
