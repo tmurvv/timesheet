@@ -51,7 +51,8 @@ exports.linkFn = async (seller, url) => {
  * @returns {string} - clean text
  */
 exports.cleanText = (text) => {
-    if (!text) throw new AppError('from cleanText: missing text parameter');
+    if (!text) return;
+    // if (!text) throw new AppError('from cleanText: missing text parameter');
         
     return text.replace(/\/n/g, '').replace(/\/t/g, '').replace(/Add To Cart/gi, '').replace(/AddToCart/gi, '').replace(/\s/g, ' ').replace(/  +/g, ' ');
 }

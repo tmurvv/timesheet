@@ -104,7 +104,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     );
     WestCoastHarps.priceCustom = (product) => {
         const price=product.productPrice;
-        
+        console.log({...product, productPrice: price.substr(price.indexOf('$')-3,9)})
         return {...product, productPrice: price.substr(price.indexOf('$')-3,9)};
     };
     //#endregion
@@ -258,5 +258,5 @@ exports.sellerArray = [
     // AtlantaHarpCenter_e,
     MurvihillHarpServices,
     // // PhoenixHarps, // crashes program, not sure why
-    HarpsEtc, //removed for SSL violations
+    HarpsEtc //removed for SSL violations
 ];
