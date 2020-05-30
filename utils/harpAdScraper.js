@@ -28,6 +28,7 @@ const parseStoreInfo = async (seller, data) => {
     const productTable = $(seller.mainPathId);
     console.log('Seller', seller.name)
     console.log('# of Products:', productTable.length);
+    // console.log(productTable[11])
     productTable.each(async function (item) {
         const id=uuid();
         // five main product data points
@@ -53,7 +54,7 @@ const parseStoreInfo = async (seller, data) => {
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
         
         // handle image specifics
-        if (!productImageUrl) productImageUrl = 'harp-genericSTOCK.jpg';
+        if (!productImageUrl) productImageUrl = 'genericHarp.png';
         let shortProductImageUrl;
         // grab stock photo url if bad image
         if (seller.hasOwnProperty('badImages') && makeModelTypeSize[1]) {
@@ -100,7 +101,8 @@ const parseStoreInfo = async (seller, data) => {
             productImageUrl,
             productImageBestColor,
             divider: '00000000000000000000000'
-        }       
+        } 
+        // console.log('0000000000000000000000000', product)      
         // check for vendor custom functions
         if (seller.hasOwnProperty('customFns') && seller.customFns) {
             seller.customFns.map(customFuncString => {
@@ -113,6 +115,7 @@ const parseStoreInfo = async (seller, data) => {
             });
         }
         //write to product file
+        // console.log('116', mainProductList)
         if (product) mainProductList.push(product);
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) console.log('Error writing used-harp list function:', err.message);

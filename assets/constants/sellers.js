@@ -88,7 +88,27 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
-//#endregion
+    //#region West Coast Harps
+    const WestCoastHarps = new SellerPaths(
+        'West Coast Harps', //name
+        'Canada', //country
+        'Western', //region
+        'https://www.westcoastharps.com/used-harps.html', //productsUrl
+        'ul', //mainPathId
+        ['priceCustom'], //customFns 
+        ($, item) => $(item).closest('.wsite-multicol').parent().prev().text(), // titleFn
+        ($, item) => $(item).closest('.wsite-multicol').parent().next().find('span').text(), // priceFn,
+        ($, item) => "ShortDescFn", // shortDescFn
+        ($, item) => $(item).text(), // longDescFn
+        ($, item) => $(item).find('.wslide-slide-inner2').find('img').attr('src') // productImageUrlFn
+    );
+    WestCoastHarps.priceCustom = (product) => {
+        const price=product.productPrice;
+        console.log('custom', product.productPrice)
+        console.log(price.substr(price.indexOf('$')-3,9));
+    };
+    //#endregion
+    //#endregion
 //#region VENDORS LINKING TO PRODUCTS
     //#region Vanderbilt-even
 const VanderbiltMusic_e = new SellerPathsLink(
@@ -219,14 +239,24 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
     //#endregion
 //#endregion
 
+//#region for working on West Coarst harps
+// ($, item) => $(item).closest('wsite-multicol').parent().prevElementSibling().text().trim(), // titleFn
+// ($, item) => "THis is it", // titleFn
+// ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+// ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+// ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
+// ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+// ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+//#endregion
 exports.sellerArray = [
-    VanderbiltMusic_e, 
-    VanderbiltMusic_o,
-    VirginiaHarpCenter,
-    HarpConnection, 
-    AtlantaHarpCenter_o, 
-    AtlantaHarpCenter_e,
+    WestCoastHarps,
+    // VanderbiltMusic_e, 
+    // VanderbiltMusic_o,
+    // VirginiaHarpCenter,
+    // HarpConnection, 
+    // AtlantaHarpCenter_o, 
+    // AtlantaHarpCenter_e,
     MurvihillHarpServices,
-    // PhoenixHarps, // crashes program, not sure why
+    // // PhoenixHarps, // crashes program, not sure why
     HarpsEtc, //removed for SSL violations
 ];

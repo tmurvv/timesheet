@@ -86,7 +86,6 @@ exports.loginUser = async (req, res) => {
             title: 'FindAHarp.com | Login User',
             status: 'success',
             user: userCopy
-            
         });
     } catch (e) {
         res.status(400).json({

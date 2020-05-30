@@ -1,3 +1,5 @@
+const uuid = require('uuid');
+
 exports.globalMakesModels = [
     {
         "sellerAliases": [],
@@ -34,6 +36,20 @@ exports.globalMakesModels = [
                 "productMaker": "Blevins",
                 "productType": "lever",
                 "productSize": 34
+            }
+        ]
+    },
+    {
+        "sellerAliases": [],
+        "sellerName": "Louis-Laurent Bourget",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Feather",
+                "productMaker": "Louis-Laurent Bourget",
+                "productType": "lever",
+                "productSize": 29
             }
         ]
     },
@@ -400,6 +416,20 @@ exports.globalMakesModels = [
         ]
     },
     {
+        "sellerAliases": [],
+        "sellerName": "Alex Neish",
+        "sellerProducts": [
+            {
+                "productAliases": ['folk harp', 'folk-harp'],
+                "_id": uuid(),
+                "productTitle": "Folk Harp",
+                "productMaker": "Neish",
+                "productType": "lever",
+                "productSize": 34
+            }
+        ]
+    },
+    {
         "sellerAliases": [
             "Newsome"
         ],
@@ -468,6 +498,20 @@ exports.globalMakesModels = [
                 "productMaker": "Rees",
                 "productType": "lever",
                 "productSize": 34
+            }
+        ]
+    },
+    {
+        "sellerAliases": [],
+        "sellerName": "Rojas",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Paraguayan Harp",
+                "productMaker": "Rojas",
+                "productType": "lever-free",
+                "productSize": 38
             }
         ]
     },
@@ -580,6 +624,22 @@ exports.globalMakesModels = [
                 "productMaker": "Salvi",
                 "productType": "lever",
                 "productSize": null
+            }
+        ]
+    },
+    {
+        "sellerAliases": [
+            "Stoneyend"
+        ],
+        "sellerName": "Stoney End",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Lorraine",
+                "productMaker": "Stoney End",
+                "productType": "lever",
+                "productSize": 29
             }
         ]
     },
