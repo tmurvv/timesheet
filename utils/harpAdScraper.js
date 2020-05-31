@@ -33,7 +33,6 @@ const parseStoreInfo = async (seller, data) => {
         const id=uuid();
         // five main product data points
         let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? cleanText(seller.titleFn($, this)) : '';
-        console.log('pt', productTitle)
         let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? cleanText(seller.priceFn($, this)) : '';
         let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
@@ -116,7 +115,6 @@ const parseStoreInfo = async (seller, data) => {
                 }              
             });
         }
-        if (product) console.log('photoaft', product.productImageUrl)
         //write to product file
         // console.log('116', mainProductList)
         if (product) mainProductList.push(product);

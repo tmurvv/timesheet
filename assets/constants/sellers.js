@@ -107,7 +107,6 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         return {...product, productPrice: product.productPrice.substr(product.productPrice.indexOf('$')-3,9)};
     };
     WestCoastHarps.imageCustom = (product) => {
-        console.log(product.productModel)
         if (product.productModel === 'Neish') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Neish_Folk_Harp.jpg'};
         if (product.productModel === 'Lorraine') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Lorraine.jpg'};
         if (product.productModel === 'Feather') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Feather.jpg'};
