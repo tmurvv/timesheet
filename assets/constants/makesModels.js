@@ -179,6 +179,20 @@ exports.globalMakesModels = [
         ]
     },
     {
+        "sellerAliases": [],
+        "sellerName": "Lindemann",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Lindemann",
+                "productMaker": "Lindemann",
+                "productType": "pedal",
+                "productSize": 46
+            }
+        ]
+    },
+    {
         "sellerAliases": [
             "Dusty"
         ],
