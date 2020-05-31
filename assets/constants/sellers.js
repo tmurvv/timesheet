@@ -333,8 +333,8 @@ exports.sellerArray = [
     // AtlantaHarpCenter_e,
     MurvihillHarpServices,
     // // PhoenixHarps, // crashes program, not sure why
-    // HarpsEtcLever, //removed for SSL violations
-    // HarpsEtcPedal, //removed for SSL violations
-    // HarpsEtcWire, //removed for SSL violations
-    // HarpsEtcHistorical //removed for SSL violations
+    HarpsEtcLever, //removed for SSL violations
+    HarpsEtcPedal, //removed for SSL violations
+    HarpsEtcWire, //removed for SSL violations
+    HarpsEtcHistorical //removed for SSL violations
 ];

@@ -161,6 +161,24 @@ exports.globalMakesModels = [
         ]
     },
     {
+        "sellerAliases": [],
+        "sellerName": "Erard",
+        "sellerProducts": [
+            {
+                "productAliases": [
+                    "Erard Semi-grand", 
+                    "Erard semi-grand", 
+                    "Erard Gold Semi-Grand"
+                ],
+                "_id": uuid(),
+                "productTitle": "Erard Semi-Grand",
+                "productMaker": "Erard",
+                "productType": "pedal",
+                "productSize": 46
+            }
+        ]
+    },
+    {
         "sellerAliases": [
             "Dusty"
         ],
@@ -307,6 +325,20 @@ exports.globalMakesModels = [
         ]
     },
     {
+        "sellerAliases": [],
+        "sellerName": "Lunacharsky",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Cecilia",
+                "productMaker": "Lunacharsky",
+                "productType": "pedal",
+                "productSize": 46
+            }
+        ]
+    },
+    {
         "sellerAliases": [
             "Lyon Healy",
             "L & H",
@@ -328,9 +360,39 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [
+                    " 15 "
+                ],
+                "_id": uuid(),
+                "productTitle": "Style 15",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 46
+            },
+            {
+                "productAliases": [
+                    " 21 "
+                ],
+                "_id": uuid(),
+                "productTitle": "Style 21",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 47
+            },
+            {
+                "productAliases": [
+                    " 22 "
+                ],
+                "_id": uuid(),
+                "productTitle": "Style 22",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 46
+            },
+            {
+                "productAliases": [
                     " 23 "
                 ],
-                "_id": "5e8b7deea03397444c706235",
+                "_id": uuid(),
                 "productTitle": "Style 23",
                 "productMaker": "Lyon & Healy",
                 "productType": "pedal",
@@ -340,7 +402,7 @@ exports.globalMakesModels = [
                 "productAliases": [
                     " 30 "
                 ],
-                "_id": "5e8b7deea03397444c706236",
+                "_id": uuid(),
                 "productTitle": "Style 30",
                 "productMaker": "Lyon & Healy",
                 "productType": "pedal",
@@ -350,11 +412,19 @@ exports.globalMakesModels = [
                 "productAliases": [
                     " 100 "
                 ],
-                "_id": "5e8b7deea03397444c706237",
+                "_id": uuid(),
                 "productTitle": "Style 100",
                 "productMaker": "Lyon & Healy",
                 "productType": "pedal",
                 "productSize": 47
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Chicago 40",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 40
             },
             {
                 "productAliases": [
@@ -440,6 +510,20 @@ exports.globalMakesModels = [
                 "productMaker": "Markwood",
                 "productType": "lever-free",
                 "productSize": 29
+            }
+        ]
+    },
+    {
+        "sellerAliases": ["Magical Strings"],
+        "sellerName": "Magical",
+        "sellerProducts": [
+            {
+                "productAliases": ['Oladian'],
+                "_id": uuid(),
+                "productTitle": "Oladion",
+                "productMaker": "Magical",
+                "productType": "lever-free",
+                "productSize": 24
             }
         ]
     },
@@ -594,11 +678,23 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [
-                    "Daphne 47",
-                    "Daphne",
-                    "Daphne 47EX"
+                    "Daphne 40",
+                    "Daphne40",
+                    "Daphne 40EX"
                 ],
-                "_id": "5e8b7deea03397444c70622c",
+                "_id": uuid(),
+                "productTitle": "Daphne 40 EX",
+                "productMaker": "Salvi",
+                "productType": "pedal",
+                "productSize": 40
+            },
+            {
+                "productAliases": [
+                    "Daphne 47",
+                    "Daphne 47EX",
+                    "Daphne47"
+                ],
+                "_id": uuid(),
                 "productTitle": "Daphne 47 EX",
                 "productMaker": "Salvi",
                 "productType": "pedal",
@@ -606,7 +702,7 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [],
-                "_id": "5e8b7deea03397444c70622d",
+                "_id": uuid(),
                 "productTitle": "Titan",
                 "productMaker": "Salvi",
                 "productType": "lever",
@@ -614,7 +710,7 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [],
-                "_id": "5e8b7deea03397444c70622e",
+                "_id": uuid(),
                 "productTitle": "Mia",
                 "productMaker": "Salvi",
                 "productType": "lever",
