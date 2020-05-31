@@ -53,6 +53,7 @@ const parseStoreInfo = async (seller, data) => {
         // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
         
+        console.log('photo', productImageUrl)
         // handle image specifics
         if (!productImageUrl) productImageUrl = 'genericHarp.png';
         let shortProductImageUrl;
@@ -81,7 +82,6 @@ const parseStoreInfo = async (seller, data) => {
             //else {console.log('else', colorArray[1], bestColor[1]); bestColor = colorArray};
         });
         const productImageBestColor = bestColor[0];
-
         //create product
         let product;
         if (makeModelTypeSize[1]) product = {
@@ -110,7 +110,7 @@ const parseStoreInfo = async (seller, data) => {
                     customFunc = leaf(seller, customFuncString);
                     product = customFunc(product);
                 } catch (err) {
-                    throw new AppError('Error executing custom functions:', err.message)
+                    new AppError('Error executing custom functions:', err.message)
                 }              
             });
         }

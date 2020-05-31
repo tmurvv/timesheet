@@ -240,7 +240,7 @@ function findProductSize(maker, model, makesModels) {
 }
 
 const getMakeModelTypeSize = async (title) => {
-    if (!title) throw new AppError('from getMakeModelTypeSize: title parameter is empty');
+    if (!title) return new AppError('from getMakeModelTypeSize: title parameter is empty');
     const model = await findModel(title, globalMakesModels);
     if (!model) return [];
     const maker = await findMaker(title, model, globalMakesModels);

@@ -94,18 +94,24 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Canada', //country
         'Western', //region
         'https://www.westcoastharps.com/used-harps.html', //productsUrl
-        'ul', //mainPathId
+        '.wsite-multicol', //mainPathId
         ['priceCustom'], //customFns 
-        ($, item) => $(item).closest('.wsite-multicol').parent().prev().text(), // titleFn
-        ($, item) => $(item).closest('.wsite-multicol').parent().next().find('span').text(), // priceFn,
+        ($, item) => $(item).parent().prev().text(), // titleFn
+        ($, item) => $(item).parent().next().find('span').text(), // priceFn,
         ($, item) => "ShortDescFn", // shortDescFn
         ($, item) => $(item).text(), // longDescFn
-        ($, item) => $(item).find('.wslide-slide-inner2').find('img').attr('src') // productImageUrlFn
+        ($, item) => null // productImageUrlFn
     );
     WestCoastHarps.priceCustom = (product) => {
-        const price=product.productPrice;
-        console.log({...product, productPrice: price.substr(price.indexOf('$')-3,9)})
-        return {...product, productPrice: price.substr(price.indexOf('$')-3,9)};
+        if (!product.productPrice || product.productPrice.indexOf('$')===-1) return product;
+        return {...product, productPrice: product.productPrice.substr(product.productPrice.indexOf('$')-3,9)};
+    };
+    WestCoastHarps.priceCustom = (product) => {
+        if (product.productModel === 'Folk Harp') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Neish_Folk_Harp.jpg'};
+        if (product.productModel === 'Lorraine') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Lorraine.jpg'};
+        if (product.productModel === 'Feather') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Feather.jpg'};
+        if (product.productModel === 'Paraguayan') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Paraguayan.jpg'};
+        
     };
     //#endregion
     //#endregion
@@ -173,7 +179,7 @@ VanderbiltMusic_o.longDescLinkCustom = (product) => {
 VanderbiltMusic_o.imageFromWebCustom = (product) => product;
 //#endregion
     //#region Harps Etc.
-    const HarpsEtc = new SellerPathsLink(
+    const HarpsEtcLever = new SellerPathsLink(
         'HarpsEtc', //name
         'USA', //country
         'Pacific', //region
@@ -193,7 +199,76 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
         ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
         ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
     );
-    HarpsEtc.sellerAxiosResponsePath = '';
+    HarpsEtcLever.sellerAxiosResponsePath = '';
+    //#endregion
+    //#region Harps Etc. Pedal
+    const HarpsEtcPedal = new SellerPathsLink(
+        'HarpsEtc', //name
+        'USA', //country
+        'Pacific', //region
+        'https://www.harpsetc.com/harps-en/certified-used-harps/certified-used-pedal-harps/', //productsurl
+        '.ty-product-list__info', //mainPathId
+        null, //customFns
+        ($, item) => $(item).find('.ty-product-list__item-name').text().trim(), //titleFn
+        ($, item) => $(item).find('.ty-product-list__price').text().trim(), //priceFn 
+        ($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
+        null, //longDescFn
+        null, //imageUrl
+        ($, item) => $(item).parent().prev().find('a').attr('href'), //findLinkUrlFn
+        '.ty-product-block', //mainPathIdLink
+        null, //titleLinkFn
+        null, //priceLinkFn
+        null, //shortDescLinkFn
+        ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
+        ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
+    );
+    HarpsEtcPedal.sellerAxiosResponsePath = '';
+    //#endregion
+    //#region Harps Etc. Wire
+    const HarpsEtcWire = new SellerPathsLink(
+        'HarpsEtc', //name
+        'USA', //country
+        'Pacific', //region
+        'https://www.harpsetc.com/harps-en/certified-used-harps/certified-used-wire-harps/', //productsurl
+        '.ty-product-list__info', //mainPathId
+        null, //customFns
+        ($, item) => $(item).find('.ty-product-list__item-name').text().trim(), //titleFn
+        ($, item) => $(item).find('.ty-product-list__price').text().trim(), //priceFn 
+        ($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
+        null, //longDescFn
+        null, //imageUrl
+        ($, item) => $(item).parent().prev().find('a').attr('href'), //findLinkUrlFn
+        '.ty-product-block', //mainPathIdLink
+        null, //titleLinkFn
+        null, //priceLinkFn
+        null, //shortDescLinkFn
+        ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
+        ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
+    );
+    HarpsEtcWire.sellerAxiosResponsePath = '';
+    //#endregion
+    //#region Harps Etc. Historical
+    const HarpsEtcHistorical = new SellerPathsLink(
+        'HarpsEtc', //name
+        'USA', //country
+        'Pacific', //region
+        'https://www.harpsetc.com/harps-en/certified-used-harps/certified-used-historical-harps/', //productsurl
+        '.ty-product-list__info', //mainPathId
+        null, //customFns
+        ($, item) => $(item).find('.ty-product-list__item-name').text().trim(), //titleFn
+        ($, item) => $(item).find('.ty-product-list__price').text().trim(), //priceFn 
+        ($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
+        null, //longDescFn
+        null, //imageUrl
+        ($, item) => $(item).parent().prev().find('a').attr('href'), //findLinkUrlFn
+        '.ty-product-block', //mainPathIdLink
+        null, //titleLinkFn
+        null, //priceLinkFn
+        null, //shortDescLinkFn
+        ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
+        ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
+    );
+    HarpsEtcHistorical.sellerAxiosResponsePath = '';
     //#endregion
     //#region Virginia Harp Center
     const VirginiaHarpCenter = new SellerPathsLink(
@@ -258,5 +333,8 @@ exports.sellerArray = [
     // AtlantaHarpCenter_e,
     MurvihillHarpServices,
     // // PhoenixHarps, // crashes program, not sure why
-    HarpsEtc //removed for SSL violations
+    // HarpsEtcLever, //removed for SSL violations
+    // HarpsEtcPedal, //removed for SSL violations
+    // HarpsEtcWire, //removed for SSL violations
+    // HarpsEtcHistorical //removed for SSL violations
 ];
