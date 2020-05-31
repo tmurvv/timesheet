@@ -95,7 +95,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Western', //region
         'https://www.westcoastharps.com/used-harps.html', //productsUrl
         '.wsite-multicol', //mainPathId
-        ['priceCustom'], //customFns 
+        ['priceCustom', 'imageCustom'], //customFns 
         ($, item) => $(item).parent().prev().text(), // titleFn
         ($, item) => $(item).parent().next().find('span').text(), // priceFn,
         ($, item) => "ShortDescFn", // shortDescFn
@@ -106,12 +106,12 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         if (!product.productPrice || product.productPrice.indexOf('$')===-1) return product;
         return {...product, productPrice: product.productPrice.substr(product.productPrice.indexOf('$')-3,9)};
     };
-    WestCoastHarps.priceCustom = (product) => {
-        if (product.productModel === 'Folk Harp') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Neish_Folk_Harp.jpg'};
+    WestCoastHarps.imageCustom = (product) => {
+        console.log(product.productModel)
+        if (product.productModel === 'Neish') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Neish_Folk_Harp.jpg'};
         if (product.productModel === 'Lorraine') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Lorraine.jpg'};
         if (product.productModel === 'Feather') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Feather.jpg'};
-        if (product.productModel === 'Paraguayan') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Paraguayan.jpg'};
-        
+        if (product.productModel === 'Paraguayan Harp') return {...product, productImageUrl: 'https://findaharp-api-testing.herokuapp.com/assets/img/Paraguayan.jpg'};   
     };
     //#endregion
     //#endregion

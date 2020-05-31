@@ -44,7 +44,7 @@ exports.globalMakesModels = [
         "sellerName": "Louis-Laurent Bourget",
         "sellerProducts": [
             {
-                "productAliases": [],
+                "productAliases": ['\"Feather\"'],
                 "_id": uuid(),
                 "productTitle": "Feather",
                 "productMaker": "Louis-Laurent Bourget",
@@ -416,16 +416,30 @@ exports.globalMakesModels = [
         ]
     },
     {
-        "sellerAliases": [],
+        "sellerAliases": ["Neish"],
         "sellerName": "Alex Neish",
         "sellerProducts": [
             {
-                "productAliases": ['folk harp', 'folk-harp'],
+                "productAliases": [],
                 "_id": uuid(),
-                "productTitle": "Folk Harp",
+                "productTitle": "Neish",
                 "productMaker": "Neish",
                 "productType": "lever",
                 "productSize": 34
+            }
+        ]
+    },
+    {
+        "sellerAliases": [],
+        "sellerName": "Markwood",
+        "sellerProducts": [
+            {
+                "productAliases": ['Markwood29 Bronze', 'Markwood 29'],
+                "_id": uuid(),
+                "productTitle": "Markwood 29 Bronze",
+                "productMaker": "Markwood",
+                "productType": "lever-free",
+                "productSize": 29
             }
         ]
     },
@@ -449,6 +463,23 @@ exports.globalMakesModels = [
                 "productMaker": "Noteworthy",
                 "productType": "lever",
                 "productSize": 24
+            }
+        ]
+    },
+    {
+        "sellerAliases": [],
+        "sellerName": "Craig Pierpont",
+        "sellerProducts": [
+            {
+                "productAliases": [
+                    "irish style",
+                    "Irish Style"
+                ],
+                "_id": "5e8b7deea03397444c70626f",
+                "productTitle": "Irish Style 29",
+                "productMaker": "Craig Pierpont",
+                "productType": "lever",
+                "productSize": 29
             }
         ]
     },

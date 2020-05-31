@@ -33,6 +33,7 @@ const parseStoreInfo = async (seller, data) => {
         const id=uuid();
         // five main product data points
         let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? cleanText(seller.titleFn($, this)) : '';
+        console.log('pt', productTitle)
         let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? cleanText(seller.priceFn($, this)) : '';
         let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
@@ -53,7 +54,7 @@ const parseStoreInfo = async (seller, data) => {
         // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
         
-        console.log('photo', productImageUrl)
+        console.log('mmts', makeModelTypeSize)
         // handle image specifics
         if (!productImageUrl) productImageUrl = 'genericHarp.png';
         let shortProductImageUrl;
@@ -102,6 +103,7 @@ const parseStoreInfo = async (seller, data) => {
             productImageBestColor,
             divider: '00000000000000000000000'
         } 
+        
         // console.log('0000000000000000000000000', product)      
         // check for vendor custom functions
         if (seller.hasOwnProperty('customFns') && seller.customFns) {
@@ -114,6 +116,7 @@ const parseStoreInfo = async (seller, data) => {
                 }              
             });
         }
+        if (product) console.log('photoaft', product.productImageUrl)
         //write to product file
         // console.log('116', mainProductList)
         if (product) mainProductList.push(product);
