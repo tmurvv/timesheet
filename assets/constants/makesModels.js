@@ -376,7 +376,7 @@ exports.globalMakesModels = [
                 "productTitle": "Style 21",
                 "productMaker": "Lyon & Healy",
                 "productType": "pedal",
-                "productSize": 47
+                "productSize": 45
             },
             {
                 "productAliases": [
@@ -508,7 +508,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Markwood 29 Bronze",
                 "productMaker": "Markwood",
-                "productType": "lever-free",
+                "productType": "Lever-Free",
                 "productSize": 29
             }
         ]
@@ -625,7 +625,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Paraguayan Harp",
                 "productMaker": "Rojas",
-                "productType": "lever-free",
+                "productType": "Lever-Free",
                 "productSize": 38
             }
         ]

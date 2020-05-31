@@ -76,7 +76,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const MurvihillHarpServices = new SellerPaths(
         'Tisha Murvihill, harp services', //name
         'Canada', //country
-        'Western', //region
+        'Canada', //region
         'https://harptisha.com/harpSalesRent.php', //productsUrl
         '.productContainer', //mainPathId
         null, //customFns 
@@ -92,7 +92,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const WestCoastHarps = new SellerPaths(
         'West Coast Harps', //name
         'Canada', //country
-        'Western', //region
+        'Canada', //region
         'https://www.westcoastharps.com/used-harps.html', //productsUrl
         '.wsite-multicol', //mainPathId
         ['priceCustom', 'imageCustom'], //customFns 
