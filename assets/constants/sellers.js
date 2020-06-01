@@ -77,7 +77,8 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Tisha Murvihill, harp services', //name
         'Canada', //country
         'Canada', //region
-        ['51.214380', '-114.466894'], //latLong
+        '51.214380', // lat
+        '-114.466894', //long
         'https://harptisha.com/harpSalesRent.php', //productsUrl
         '.productContainer', //mainPathId
         null, //customFns 
@@ -94,7 +95,8 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'West Coast Harps', //name
         'Canada', //country
         'Canada', //region
-        ['49.106772', '-123.851779'], //latLong
+        '49.106772', //lat 
+        '-123.851779', //long
         'https://www.westcoastharps.com/used-harps.html', //productsUrl
         '.wsite-multicol', //mainPathId
         ['priceCustom', 'imageCustom'], //customFns 
@@ -184,7 +186,8 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
         'HarpsEtc', //name
         'USA', //country
         'Pacific', //region
-        ['37.900690', '-122.061810'], //latLong
+        '37.900690', // lat 
+        '-122.061810', //long
         'https://www.harpsetc.com/harps-en/certified-used-harps/certified-used-lever-harps/', //productsurl
         '.ty-product-list__info', //mainPathId
         null, //customFns
@@ -208,7 +211,8 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
         'HarpsEtc', //name
         'USA', //country
         'Pacific', //region
-        ['37.900690', '-122.061810'], //latLong
+        '37.900690', // lat 
+        '-122.061810', //long
         'https://www.harpsetc.com/harps-en/certified-used-harps/certified-used-pedal-harps/', //productsurl
         '.ty-product-list__info', //mainPathId
         null, //customFns
@@ -232,7 +236,8 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
         'HarpsEtc', //name
         'USA', //country
         'Pacific', //region
-        ['37.900690', '-122.061810'], //latLong
+        '37.900690', // lat 
+        '-122.061810', //long
         'https://www.harpsetc.com/harps-en/certified-used-harps/certified-used-wire-harps/', //productsurl
         '.ty-product-list__info', //mainPathId
         null, //customFns
@@ -256,7 +261,8 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
         'HarpsEtc', //name
         'USA', //country
         'Pacific', //region
-        ['37.900690', '-122.061810'], //latLong
+        '37.900690', // lat 
+        '-122.061810', //long
         'https://www.harpsetc.com/harps-en/certified-used-harps/certified-used-historical-harps/', //productsurl
         '.ty-product-list__info', //mainPathId
         null, //customFns
