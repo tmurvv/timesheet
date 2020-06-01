@@ -180,13 +180,13 @@ exports.globalMakesModels = [
     },
     {
         "sellerAliases": [],
-        "sellerName": "Lindemann",
+        "sellerName": "Lindeman",
         "sellerProducts": [
             {
                 "productAliases": [],
                 "_id": uuid(),
-                "productTitle": "Lindemann",
-                "productMaker": "Lindemann",
+                "productTitle": "Lindeman",
+                "productMaker": "Lindeman",
                 "productType": "pedal",
                 "productSize": 46
             }

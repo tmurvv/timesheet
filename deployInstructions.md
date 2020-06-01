@@ -3,6 +3,7 @@
 
 #### Prepare code
 - check that all stores uncommented in constants/sellers.js
+- check West Coast Harps photo addresses in sellers.js
 - make sure download images is enabled
 - search for console.lok
 - Search for "BREAKINk"

@@ -53,7 +53,6 @@ const parseStoreInfo = async (seller, data) => {
         // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
         
-        console.log('mmts', makeModelTypeSize)
         // handle image specifics
         if (!productImageUrl) productImageUrl = 'genericHarp.png';
         let shortProductImageUrl;
@@ -89,6 +88,7 @@ const parseStoreInfo = async (seller, data) => {
             sellerName: seller.name,
             sellerCountry: seller.country,
             sellerRegion: seller.region,
+            sellerLatLong: seller.latLong,
             productTitle,
             productPrice,
             productShortDesc,               
