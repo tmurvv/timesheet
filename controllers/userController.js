@@ -36,6 +36,7 @@ exports.createUser = async (req, res) => {
             lastname: req.body.lastname, 
             email: req.body.email,
             password: hashPassword,
+            distanceunit: req.body.distanceunit,
             emailverified: false,
             _date_created: Date.now()
         });

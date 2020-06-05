@@ -68,6 +68,14 @@ const usersSchema = new mongoose.Schema({
         type: String,
         minlength: 8
     },
+    distanceunit: {
+        type: String,
+        enum: {
+            values: ['miles', 'kms'],
+            message: 'Preferred distance unit must be "miles" or "kms".'
+        },
+        default: 'miles'
+    },
     usertype: {
         type: String, 
         enum: {
@@ -75,6 +83,10 @@ const usersSchema = new mongoose.Schema({
             message: 'User Type must be user, seller, admin or other.'
         },
         default: 'user'
+    },
+    _date_created: {
+        type: Date,
+        default: Date.now()
     }
 },{ versionKey: false });
 

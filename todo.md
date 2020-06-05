@@ -1,4 +1,5 @@
 # High priority
+- trouble-shoot images from West Coast Harps
 
 ### internal/cleanup
 - expand model list
@@ -8,7 +9,7 @@
 - make user email unique after testing
 - refactor parseStoreInfo into parseStoreInfoHelpers.js and add testing
 - function to delete unused harp photos from server (once the harps sell)
-- on Tuesday, look at findaharp.com to see if CRON job worked. Aries changed to Dusty Strings
+- test CRON job on findaharp.com
 
 ### functionality
 
@@ -19,7 +20,6 @@
     - test with postman
 - add date to contact requests
 - check that we are not getting duplicate listings
-
 
 ### future
 - BFG git repo cleaner
@@ -49,8 +49,5 @@
         ctime: '2009-06-29T11:11:40Z' 
     }
     As you can see, the mtime is the last modified time.
-
-
-
 
 - HarpsEtc, certificate issue, worked on it. you have to create a CA certificate maybe using forge, then try this Medium to implement. https://medium.com/@jamomani/adding-trusted-ca-to-node-client-with-axios-2792024bca4 -- last resort, add this to top of app file: "process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';"  //NOT YET IMPLEMENTED dangerous code -- IDEA MAKE API JUST FOR STORES WITH BROKEN CERTIFICATES SO IT IS ISOLATED
