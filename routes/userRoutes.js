@@ -7,6 +7,7 @@ router.post('/loginuser', userController.loginUser);
 router.get('/', userController.getAll);
 router.get('/me/:userid', userController.getMe);
 router.patch('/updateuser/:userid', userController.updateUser);
+router.get('/resetpassword/:useremail', userController.resetPassword);
 router.delete('/deleteuser/:userid', userController.deleteUser);
 
 module.exports = router;

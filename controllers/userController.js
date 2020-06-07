@@ -1,7 +1,7 @@
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 const { Users } = require('../assets/data/Schemas');
-const {emailVerifySend} = require('../email');
+const {emailVerifySend, emailResetPassword} = require('../email');
 
 exports.getMe = async (req, res) => {
     try {
@@ -129,15 +129,18 @@ exports.updateUser = async (req, res) => {
     }
     // check if email is verified:
     // if (!userInfo.emailverified) throw new Error(`The email ${userInfo.email} is not yet verified. Please check your inbox for a verification email from Findaharp.com.`);
-    // check password
-    const checkPassword = req.body.oldpassword?req.body.oldpassword:req.body.password;
-    if(!await bcrypt.compare(checkPassword, userInfo.password)) {
-        return res.status(500).json({
-            title: 'FindAHarp.com | Update User',
-            status: 'fail',
-            message: `Password incorrect.`
-        });
+    // check password if not from Reset Password page
+    if (!req.body.resetpassword) {
+        const checkPassword = req.body.oldpassword?req.body.oldpassword:req.body.password;
+        if(!await bcrypt.compare(checkPassword, userInfo.password)) {
+            return res.status(500).json({
+                title: 'FindAHarp.com | Update User',
+                status: 'fail',
+                message: `Password incorrect.`
+            });
+        }
     }
+    
     // remove password from result
     const updateUser = {
         firstname: req.body.firstname,
@@ -150,6 +153,11 @@ exports.updateUser = async (req, res) => {
         if (req.body.oldpassword) {
             const saltRounds=10;
             const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
+            
+            await Users.findByIdAndUpdate(req.body.userid, {password: hashPassword});
+        } else if (req.body.resetpassword) {
+            const saltRounds=10;
+            const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
             
             await Users.findByIdAndUpdate(req.body.userid, {password: hashPassword});
         } else {
@@ -171,6 +179,36 @@ exports.updateUser = async (req, res) => {
             status: 'fail',
             data: {
                 message: `Something went wrong while updating user: ${e.message}`
+            }
+        });
+    }
+}
+exports.resetPassword = async (req, res) => {
+    console.log('imin', req.params.useremail)
+    try {
+        const user = await Users.find({email: req.params.useremail});
+        if (!user) throw new Error();
+        console.log(user)
+        try{
+            emailResetPassword(user[0]);
+        } catch(e) {
+            throw new Error('There was a problem sending reset email. Please try again.');
+        }
+        console.log('below')
+        res.status(200).json({
+            title: 'FindAHarp.com | Reset Password',
+            status: 'success',
+            data: {
+                message: 'Reset Email Sent',
+                useremail: user.email
+            }
+        });
+    } catch (e) {
+        res.status(500).json({
+            title: 'FindAHarp.com | Delete User',
+            status: 'fail',
+            data: {
+                message: `Something went wrong while deleting user: ${e.message}`
             }
         });
     }
