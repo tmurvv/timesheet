@@ -1,5 +1,6 @@
 # High priority
 - trouble-shoot images from West Coast Harps
+- add password check on update profile
 
 ### internal/cleanup
 - expand model list

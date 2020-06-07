@@ -40,8 +40,8 @@ exports.createUser = async (req, res) => {
             emailverified: false,
             _date_created: Date.now()
         });
-        const added = await Users.create(user);
-        if (added) {
+        const addeduser = await Users.create(user);
+        if (addeduser) {
             try{
                 emailVerifySend(user);
             } catch(e) {
@@ -55,9 +55,7 @@ exports.createUser = async (req, res) => {
         res.status(200).json({
             title: 'FindAHarp.com | Create User',
             status: 'success',
-            data: {
-                added
-            }
+            addeduser
         });
     } catch (e) {
         res.status(500).json({
@@ -119,17 +117,53 @@ exports.getAll = async (req, res) => {
     }
 }
 exports.updateUser = async (req, res) => {
+    // find User
+    const userInfo = await Users.findById(req.params.userid);
+    // check user exists
+    if (!userInfo) {
+        return res.status(500).json({
+            title: 'FindAHarp.com | Update User',
+            status: 'fail',
+            message: `User not found.`
+        });
+    }
+    // check if email is verified:
+    // if (!userInfo.emailverified) throw new Error(`The email ${userInfo.email} is not yet verified. Please check your inbox for a verification email from Findaharp.com.`);
+    // check password
+    const checkPassword = req.body.oldpassword?req.body.oldpassword:req.body.password;
+    if(!await bcrypt.compare(checkPassword, userInfo.password)) {
+        return res.status(500).json({
+            title: 'FindAHarp.com | Update User',
+            status: 'fail',
+            message: `Password incorrect.`
+        });
+    }
+    // remove password from result
+    const updateUser = {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        distanceunit: req.body.distanceunit,
+    }
+    
     try {
-        await Users.findByIdAndUpdate(req.params.userid, req.body);
-        const updatedUser = await Users.findById(req.params.userid);
+        if (req.body.oldpassword) {
+            const saltRounds=10;
+            const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
+            
+            await Users.findByIdAndUpdate(req.body.userid, {password: hashPassword});
+        } else {
+            await Users.findByIdAndUpdate(req.body.userid, updateUser);
+        }
+        const updatedUser = await Users.findById(req.body.userid);
         if (!updatedUser) throw new Error();
+        let userCopy = {...updatedUser._doc};
+        delete userCopy.password;
         res.status(200).json({
             title: 'FindAHarp.com | Update User',
             status: 'success',
-            data: {
-                message: 'User updated',
-                data: updatedUser
-            }
+            message: 'User updated',
+            userCopy
         });
     } catch (e) {
         res.status(500).json({
