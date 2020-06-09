@@ -14,6 +14,7 @@
 
 ### functionality
 
+- in controllers, if exception, return fail status message
 - private Ads
     - set up Schema
     - set up Routes

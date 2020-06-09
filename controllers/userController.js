@@ -117,6 +117,7 @@ exports.getAll = async (req, res) => {
     }
 }
 exports.updateUser = async (req, res) => {
+    console.log(req.body)
     // find User
     const userInfo = await Users.findById(req.params.userid);
     // check user exists
@@ -214,6 +215,7 @@ exports.resetPassword = async (req, res) => {
     }
 }
 exports.deleteUser = async (req, res) => {
+    console.log('imin', req.params)
     try {
         const user = await Users.findByIdAndDelete(req.params.userid);
         if (!user) throw new Error();
