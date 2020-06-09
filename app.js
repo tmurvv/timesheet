@@ -1,3 +1,5 @@
+// this is the Nodemailser Branch
+
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // to allow scraping of webstores with invalid ssl
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
 const atob = require('atob');
