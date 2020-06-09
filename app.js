@@ -1,10 +1,10 @@
-// this is the Nodemailser Branch
-
+// this is the Nodemailer Branch
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // to allow scraping of webstores with invalid ssl
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
-const atob = require('atob');
-const { Users } = require('./assets/data/Schemas');
+const nodemailer = require('nodemailer');
 // packages
+const { Users } = require('./assets/data/Schemas');
+const atob = require('atob');
 const path = require('path');
 const uuid = require('uuid');
 
@@ -56,6 +56,55 @@ app.use(express.static('img'));
 
 //utilities ** see commented code below
 app.use(express.json({limit: '10kb'}))
+
+/****************
+ * NODEMAILER TRIAL
+ ****************/
+
+emailVerifySend('user var');
+
+// // async..await is not allowed in global scope, must use a wrapper
+// async function main() {
+//   // Generate test SMTP service account from ethereal.email
+//   // Only needed if you don't have a real mail account for testing
+//   const testAccount = await nodemailer.createTestAccount();
+
+//   // create reusable transporter object using the default SMTP transport
+//   const transporter = nodemailer.createTransport({
+//     host: "mail.findaharp.com",
+//     port: 465,
+//     secure: true, // true for 465, false for other ports
+//     auth: {
+//       user: 'tmurvvvv', // main 'cwh' user
+//       pass: 'weSS#4ling', // main user password for 'cwh'
+//     },
+//   });
+
+//   // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
+//   const info = await transporter.sendMail({
+//     from: '<harps@findaharp.com>', // sender address
+//     to: "tech@take2tech.ca, tmurv@shaw.ca", // list of receivers
+//     subject: "Hello ✔", // Subject line
+//     text: "tech, shaw", // plain text body
+//     html: "<b>Hello world?</b>", // html body
+//   });
+
+//   console.log("Message sent: %s", info.messageId);
+//   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+//   // Preview only available when sending through an Ethereal account
+// //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+//   console.log('Nodemailer return object:', nodemailer)
+//   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+// }
+
+// main().catch(console.error);
+
+
+
+
+
+
 
 //Router
 app.use('/', viewRouter); 
