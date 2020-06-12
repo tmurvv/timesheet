@@ -117,10 +117,9 @@ exports.getAll = async (req, res) => {
     }
 }
 exports.updateUser = async (req, res) => {
-    console.log(req.body)
-    // find User
+    // get user  
     const userInfo = await Users.findById(req.params.userid);
-    // check user exists
+    // error if no user
     if (!userInfo) {
         return res.status(500).json({
             title: 'FindAHarp.com | Update User',
@@ -128,43 +127,25 @@ exports.updateUser = async (req, res) => {
             message: `User not found.`
         });
     }
-    // check if email is verified:
-    // if (!userInfo.emailverified) throw new Error(`The email ${userInfo.email} is not yet verified. Please check your inbox for a verification email from Findaharp.com.`);
-    // check password if not from Reset Password page
-    if (!req.body.resetpassword) {
-        const checkPassword = req.body.oldpassword?req.body.oldpassword:req.body.password;
-        if(!await bcrypt.compare(checkPassword, userInfo.password)) {
-            return res.status(500).json({
-                title: 'FindAHarp.com | Update User',
-                status: 'fail',
-                message: `Password incorrect.`
-            });
-        }
+    // check password
+    if(!await bcrypt.compare(req.body.password, userInfo.password)) {
+        return res.status(500).json({
+            title: 'FindAHarp.com | Update User',
+            status: 'fail',
+            message: `Password incorrect.`
+        });
     }
-    
-    // remove password from result
+    // create new updateUser object
     const updateUser = {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
         distanceunit: req.body.distanceunit,
     }
-    
+    // update the user
     try {
-        if (req.body.oldpassword) {
-            const saltRounds=10;
-            const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
-            
-            await Users.findByIdAndUpdate(req.body.userid, {password: hashPassword});
-        } else if (req.body.resetpassword) {
-            const saltRounds=10;
-            const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
-            
-            await Users.findByIdAndUpdate(req.body.userid, {password: hashPassword});
-        } else {
-            await Users.findByIdAndUpdate(req.body.userid, updateUser);
-        }
-        const updatedUser = await Users.findById(req.body.userid);
+        await Users.findByIdAndUpdate(userInfo._id, updateUser);
+        const updatedUser = await Users.findById(userInfo._id);
         if (!updatedUser) throw new Error();
         let userCopy = {...updatedUser._doc};
         delete userCopy.password;
@@ -184,7 +165,76 @@ exports.updateUser = async (req, res) => {
         });
     }
 }
-exports.resetPassword = async (req, res) => {
+exports.updatePassword = async (req, res) => {
+    console.log('imin', req.params.userid)
+    console.log('imin', req.body)
+    
+    if (req.body.resetpassword) {
+        console.log('imin reset', req.params.userid)
+        try {
+            const saltRounds=10;
+            const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
+            console.log('password', hashPassword)
+            console.log('above', req.params.userid)
+            const changedUser = await Users.findOneAndUpdate({email: req.params.userid}, {password: hashPassword});
+            console.log('changeduser', changedUser)
+            // if (!changedUser) throw new Error;
+            
+            console.log('below')
+            res.status(200).json({
+                title: 'FindAHarp.com | Update Password',
+                status: 'success',
+                data: {
+                    message: 'Password Updated'
+                }
+            });
+        } catch (e) {
+            res.status(500).json({
+                title: 'FindAHarp.com | Update Password',
+                status: 'fail',
+                data: {
+                    message: `Something went wrong while updating password: ${e.message}`
+                }
+            });
+        }
+    } else {
+        try {
+            console.log('imin try update', req.params, req.body)
+            const userInfo = await Users.findById(req.params.userid);
+            // check password
+            if(!await bcrypt.compare(req.body.oldpassword, userInfo.password)) {
+                return res.status(500).json({
+                    title: 'FindAHarp.com | Update Password',
+                    status: 'fail',
+                    message: `Old Password incorrect.`
+                });
+            }
+            // hash password
+            const saltRounds=10;
+            const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
+            // update password
+            const changedUser = await Users.findByIdAndUpdate(req.params.userid, {password: hashPassword});
+            if (!changedUser) throw new Error;
+            // return result
+            res.status(200).json({
+                title: 'FindAHarp.com | Update Password',
+                status: 'success',
+                data: {
+                    message: 'Password updated'
+                }
+            });
+        } catch(e) {
+            res.status(500).json({
+                title: 'FindAHarp.com | Update Password',
+                status: 'fail',
+                data: {
+                    message: `Something went wrong while updating password: ${e.message}`
+                }
+            });
+        }
+    }   
+}
+exports.sendResetEmail = async (req, res) => {
     console.log('imin', req.params.useremail)
     try {
         const user = await Users.find({email: req.params.useremail});
@@ -206,10 +256,10 @@ exports.resetPassword = async (req, res) => {
         });
     } catch (e) {
         res.status(500).json({
-            title: 'FindAHarp.com | Delete User',
+            title: 'FindAHarp.com | Send Reset Email',
             status: 'fail',
             data: {
-                message: `Something went wrong while deleting user: ${e.message}`
+                message: `Something went wrong while sending reset email: ${e.message}`
             }
         });
     }

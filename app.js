@@ -23,7 +23,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const viewRouter = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
 const { scrapeAds } = require('./utils/harpAdScraper');
-const { emailVerifySend } = require('./email');
+const { emailVerifySend, emailResetPassword } = require('./email');
 const { catchAsync } = require('./utils/helpers/helpers');
 const { ContactRequests } = require('./assets/data/Schemas');
 
@@ -61,7 +61,8 @@ app.use(express.json({limit: '10kb'}))
  * NODEMAILER TRIAL
  ****************/
 
-emailVerifySend('user var');
+// emailVerifySend('user var');
+// emailResetPassword('user var');
 
 // // async..await is not allowed in global scope, must use a wrapper
 // async function main() {

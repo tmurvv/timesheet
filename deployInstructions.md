@@ -42,3 +42,15 @@
 - then once logged into Heroku execute command: git push heroku master or git push development master
 - app located at https://findaharp-api.herokuapp.com/ or https://findaharp-api-staging.herokuapp.com or https://findaharp-api-testing.herokuapp.com
 - test signup, login
+
+## FULL TESTING
+
+Authentication
+
+- loginSignup login 
+- loginSignup signup
+- userProfile edit user
+- userProfile delete user
+- userProfile change password
+- loginSignup forgot password
+
