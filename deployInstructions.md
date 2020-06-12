@@ -14,6 +14,7 @@
 - run tests "npm test"
 - make sure server runs with npm start
 - test api/v1/productads
+- perhaps go to front end and make sure it looks good
 
 #### Config, Commit and push
 - did you update config.env? Don't forget CRUD operations in config.env have to be entered manually in Heroku
