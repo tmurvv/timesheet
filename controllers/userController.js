@@ -166,21 +166,15 @@ exports.updateUser = async (req, res) => {
     }
 }
 exports.updatePassword = async (req, res) => {
-    console.log('imin', req.params.userid)
-    console.log('imin', req.body)
-    
+    // if call is from password reset email
     if (req.body.resetpassword) {
-        console.log('imin reset', req.params.userid)
         try {
+            // hash password
             const saltRounds=10;
             const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
-            console.log('password', hashPassword)
-            console.log('above', req.params.userid)
-            const changedUser = await Users.findOneAndUpdate({email: req.params.userid}, {password: hashPassword});
-            console.log('changeduser', changedUser)
-            // if (!changedUser) throw new Error;
-            
-            console.log('below')
+            // update user
+            await Users.findOneAndUpdate({email: req.params.userid}, {password: hashPassword});
+            // return result
             res.status(200).json({
                 title: 'FindAHarp.com | Update Password',
                 status: 'success',
@@ -197,11 +191,12 @@ exports.updatePassword = async (req, res) => {
                 }
             });
         }
+    // else call is from user profile change password
     } else {
         try {
-            console.log('imin try update', req.params, req.body)
+            // find user
             const userInfo = await Users.findById(req.params.userid);
-            // check password
+            // check old password
             if(!await bcrypt.compare(req.body.oldpassword, userInfo.password)) {
                 return res.status(500).json({
                     title: 'FindAHarp.com | Update Password',
@@ -209,10 +204,10 @@ exports.updatePassword = async (req, res) => {
                     message: `Old Password incorrect.`
                 });
             }
-            // hash password
+            // hash new password
             const saltRounds=10;
             const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
-            // update password
+            // update user password
             const changedUser = await Users.findByIdAndUpdate(req.params.userid, {password: hashPassword});
             if (!changedUser) throw new Error;
             // return result
@@ -235,17 +230,17 @@ exports.updatePassword = async (req, res) => {
     }   
 }
 exports.sendResetEmail = async (req, res) => {
-    console.log('imin', req.params.useremail)
     try {
+        // find user
         const user = await Users.find({email: req.params.useremail});
         if (!user) throw new Error();
-        console.log(user)
+        // send reset email
         try{
             emailResetPassword(user[0]);
         } catch(e) {
             throw new Error('There was a problem sending reset email. Please try again.');
         }
-        console.log('below')
+        // return result
         res.status(200).json({
             title: 'FindAHarp.com | Reset Password',
             status: 'success',
@@ -265,10 +260,12 @@ exports.sendResetEmail = async (req, res) => {
     }
 }
 exports.deleteUser = async (req, res) => {
-    console.log('imin', req.params)
     try {
+        // find and delete user
         const user = await Users.findByIdAndDelete(req.params.userid);
+        // throw error if not successful
         if (!user) throw new Error();
+        // return result
         res.status(200).json({
             title: 'FindAHarp.com | Delete User',
             status: 'success',
