@@ -28,7 +28,6 @@ const parseStoreInfo = async (seller, data) => {
     const productTable = $(seller.mainPathId);
     console.log('Seller', seller.name)
     console.log('# of Products:', productTable.length);
-    // console.log(productTable[11])
     productTable.each(async function (item) {
         const id=uuid();
         // five main product data points
@@ -66,26 +65,12 @@ const parseStoreInfo = async (seller, data) => {
         if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
         productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://${process.env.DEPLOY_SITE_PARTIAL}.herokuapp.com/assets/img/${shortProductImageUrl}`;
         
-        // get thin image border color
-        const productImageBestColors = await getColors(path.join(__dirname, `../assets/img/${shortProductImageUrl}`));
-        
-        let bestColor = ['#eeeeee', 0]
-        productImageBestColors.map((color, idx) => {
-            const colorArray = [color.hex(), color.luminance()];
-            if (colorArray && colorArray.length > 0 && colorArray[1] < .80 && colorArray[1] > .40) {     
-                bestColor = colorArray
-            }
-            else if (colorArray && colorArray.length > 0 && colorArray[1] > bestColor[1] && colorArray[1] < .80 && colorArray[1] > .40) {  
-                bestColor = colorArray
-            }
-            //else {console.log('else', colorArray[1], bestColor[1]); bestColor = colorArray};
-        });
-        const productImageBestColor = bestColor[0];
         //create product
         let product;
         if (makeModelTypeSize[1]) product = {
             id,
             sellerName: seller.name,
+            sellerEmail: seller.email,
             sellerCountry: seller.country,
             sellerRegion: seller.region,
             sellerLat: seller.lat,
@@ -100,11 +85,10 @@ const parseStoreInfo = async (seller, data) => {
             productSize: makeModelTypeSize[3],
             productFinish: makeModelTypeSize[4],
             productImageUrl,
-            productImageBestColor,
             divider: '00000000000000000000000'
         } 
         
-        // console.log('0000000000000000000000000', product)      
+        // console.log('product', product)      
         // check for vendor custom functions
         if (seller.hasOwnProperty('customFns') && seller.customFns) {
             seller.customFns.map(customFuncString => {
@@ -117,7 +101,7 @@ const parseStoreInfo = async (seller, data) => {
             });
         }
         //write to product file
-        // console.log('116', mainProductList)
+        // console.log('mainproductlist', mainProductList)
         if (product) mainProductList.push(product);
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) console.log('Error writing used-harp list function:', err.message);

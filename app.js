@@ -1,9 +1,6 @@
-// this is the Nodemailer Branch
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // to allow scraping of webstores with invalid ssl
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
-const nodemailer = require('nodemailer');
 // packages
-const { Users } = require('./assets/data/Schemas');
 const atob = require('atob');
 const path = require('path');
 const uuid = require('uuid');
@@ -23,9 +20,10 @@ const globalErrorHandler = require('./controllers/errorController');
 const viewRouter = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
 const { scrapeAds } = require('./utils/harpAdScraper');
-const { emailVerifySend, emailResetPassword } = require('./email');
 const { catchAsync } = require('./utils/helpers/helpers');
+const { Users } = require('./assets/data/Schemas');
 const { ContactRequests } = require('./assets/data/Schemas');
+const { sendMailUserToSeller } = require('./email');
 
 // program setup
 const app = express();
@@ -57,56 +55,6 @@ app.use(express.static('img'));
 //utilities ** see commented code below
 app.use(express.json({limit: '10kb'}))
 
-/****************
- * NODEMAILER TRIAL
- ****************/
-
-// emailVerifySend('user var');
-// emailResetPassword('user var');
-
-// // async..await is not allowed in global scope, must use a wrapper
-// async function main() {
-//   // Generate test SMTP service account from ethereal.email
-//   // Only needed if you don't have a real mail account for testing
-//   const testAccount = await nodemailer.createTestAccount();
-
-//   // create reusable transporter object using the default SMTP transport
-//   const transporter = nodemailer.createTransport({
-//     host: "mail.findaharp.com",
-//     port: 465,
-//     secure: true, // true for 465, false for other ports
-//     auth: {
-//       user: 'tmurvvvv', // main 'cwh' user
-//       pass: 'weSS#4ling', // main user password for 'cwh'
-//     },
-//   });
-
-//   // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
-//   const info = await transporter.sendMail({
-//     from: '<harps@findaharp.com>', // sender address
-//     to: "tech@take2tech.ca, tmurv@shaw.ca", // list of receivers
-//     subject: "Hello ✔", // Subject line
-//     text: "tech, shaw", // plain text body
-//     html: "<b>Hello world?</b>", // html body
-//   });
-
-//   console.log("Message sent: %s", info.messageId);
-//   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-//   // Preview only available when sending through an Ethereal account
-// //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-//   console.log('Nodemailer return object:', nodemailer)
-//   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-// }
-
-// main().catch(console.error);
-
-
-
-
-
-
-
 //Router
 app.use('/', viewRouter); 
 app.use('/api/v1/users', userRouter); 
@@ -127,10 +75,34 @@ app.post('/api/v1/privateads', async (req, res) => {
 app.post('/api/v1/contactform', async (req, res) => {
     try {
         const contact = Object.assign({ contactId: uuid() }, req.body);
+        console.log(contact)
         const added = await ContactRequests.create(contact);
     
         res.status(200).json({
             title: 'FindAHarp.com | Create Contact',
+            status: 'success',
+            data: {
+                added
+            }
+        });
+    } catch (e) {
+        res.status(500).json({
+            title: 'FindAHarp.com | Create Contact',
+            status: 'fail',
+            data: {
+                message: `Something went wrong while contacting seller: ${e.message}`
+            }
+        });
+    }
+});
+app.post('/api/v1/contactsellerform', async (req, res) => {
+    try {
+        const contact = Object.assign({ contactId: uuid() }, req.body);
+        console.log('contact seller form', contact);
+        const added = await ContactRequests.create(contact);
+        sendMailUserToSeller(contact);
+        res.status(200).json({
+            title: 'FindAHarp.com | Contact Seller',
             status: 'success',
             data: {
                 added

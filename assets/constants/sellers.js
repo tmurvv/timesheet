@@ -5,6 +5,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Harp Connection
     const HarpConnection = new SellerPaths(
         'Harp Connection', //name
+        'harp@harptisha.com', //email
         'USA', //country
         'North-East', //region
         'https://www.harpconnection.com/harpstore/harp-UsedHarps.html', //productsUrl
@@ -20,6 +21,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Atlanta-odd
     const AtlantaHarpCenter_o = new SellerPaths(
         'Atlanta Harp Center-o', //name
+        'harp@harptisha.com', //email
         'USA', //country
         'South', //region
         'https://atlantaharpcenter.com/pre-owned-lever-harps/', //productsUrl
@@ -35,6 +37,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Atlanta-even
     const AtlantaHarpCenter_e = new SellerPaths(
         'Atlanta Harp Center-e', //name
+        'harp@harptisha.com', //email
         'USA', //country
         'South', //region
         'https://atlantaharpcenter.com/pre-owned-lever-harps/', //productsUrl
@@ -50,6 +53,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Phoenix Harps
     const PhoenixHarps = new SellerPaths(
         'PhoenixHarps', //name
+        'harp@harptisha.com', //email
         'USA', //country
         'West', //region
         'https://phoenixharpcenter.com/harp-sales', //productsUrl
@@ -75,6 +79,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Tisha Murvihill, harp services
     const MurvihillHarpServices = new SellerPaths(
         'Tisha Murvihill, harp services', //name
+        'harp@harptisha.com', //email
         'Canada-West', //country
         'Canada-West', //region
         '51.214380', // lat
@@ -93,6 +98,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region West Coast Harps
     const WestCoastHarps = new SellerPaths(
         'West Coast Harps', //name
+        'harp@harptisha.com', //email
         'Canada-West', //country
         'Canada-West', //region
         '49.106772', //lat 
@@ -119,71 +125,10 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#endregion
     //#endregion
 //#region VENDORS LINKING TO PRODUCTS
-    //#region Vanderbilt-even
-const VanderbiltMusic_e = new SellerPathsLink(
-    'Vanderbilt Music-e', //name
-    'USA', //country
-    'Mid-West', //region
-    'https://vanderbiltmusic.com/harp-sales/used-harps/', //productsurl
-    '.Even', //mainPathId
-    ['longDescLinkCustom', 'imageFromWebCustom'], //customFns
-    ($, item) => $(item).find('a').text().trim(), //titleFn
-    ($, item) => $(item).find('em').text().trim(), //priceFn 
-    () => 'Short description not available', //shortDescFn
-    null, //longDescFn
-    ($, item) => $(item).find('.ProductImage').find('img').attr('src'), //imageUrl
-    ($, item) => $(item).find('.ProductDetails').find('a').attr('href'), //findLinkUrlFn
-    '.ProductMain', //mainPathIdLink
-    null, //titleLinkFn
-    null, //priceLinkFn
-    null, //shortDescLinkFn
-    ($, item) => $(item).find('.prodAccordionContent').text(), //longDescLinkFn,
-    null //imageUrlLinkFn
-);
-VanderbiltMusic_e.longDescLinkCustom = (product) => {
-    let productLongDesc = product.productLongDesc;
-    productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
-    if (productLongDesc.indexOf('HarpsNew') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsNew'));
-    if (productLongDesc.indexOf('HarpsUsed') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsUsed')).replace('  ', ' ');
-
-    return {...product, productLongDesc }
-}
-VanderbiltMusic_e.imageFromWebCustom = (product) => product; // simple returns true to leave the url untouched. It is already complete.
-//#endregion
-    //#region Vanderbilt-odd
-const VanderbiltMusic_o = new SellerPathsLink(
-    'Vanderbilt Music-o', //name
-    'USA', //country
-    'Mid-West', //region
-    'https://vanderbiltmusic.com/harp-sales/used-harps/', //productsurl
-    '.Odd', //mainPathId
-    ['longDescLinkCustom', 'imageFromWebCustom'], //customFns
-    ($, item) => $(item).find('a').text().trim(), //titleFn
-    ($, item) => $(item).find('em').text().trim(), //priceFn 
-    () => 'Short description not available', //shortDescFn
-    null, //longDescFn
-    ($, item) => $(item).find('.ProductImage').find('img').attr('src'), //imageUrl
-    ($, item) => $(item).find('.ProductDetails').find('a').attr('href'), //findLinkUrlFn
-    '.ProductMain', //mainPathIdLink
-    null, //titleLinkFn
-    null, //priceLinkFn
-    null, //shortDescLinkFn
-    ($, item) => $(item).find('.prodAccordionContent').text(), //longDescLinkFn,
-    null //imageUrlLinkFn
-);
-VanderbiltMusic_o.longDescLinkCustom = (product) => {
-    let productLongDesc = product.productLongDesc;
-    productLongDesc = productLongDesc.replace(/\n/g,'').replace(/\t/g,'');
-    if (productLongDesc.indexOf('HarpsNew') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsNew'));
-    if (productLongDesc.indexOf('HarpsUsed') > -1) productLongDesc = productLongDesc.substring(0,productLongDesc.indexOf('HarpsUsed')).replace('  ', ' ');
-
-    return {...product, productLongDesc }
-}
-VanderbiltMusic_o.imageFromWebCustom = (product) => product;
-//#endregion
     //#region Harps Etc. lever
     const HarpsEtcLever = new SellerPathsLink(
         'HarpsEtc', //name
+        'harp@harptisha.com', //email
         'USA', //country
         'Pacific', //region
         '37.900690', // lat 
@@ -209,6 +154,7 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
     //#region Harps Etc. Pedal
     const HarpsEtcPedal = new SellerPathsLink(
         'HarpsEtc', //name
+        'harp@harptisha.com', //email
         'USA', //country
         'Pacific', //region
         '37.900690', // lat 
@@ -234,6 +180,7 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
     //#region Harps Etc. Wire
     const HarpsEtcWire = new SellerPathsLink(
         'HarpsEtc', //name
+        'harp@harptisha.com', //email
         'USA', //country
         'Pacific', //region
         '37.900690', // lat 
@@ -259,6 +206,7 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
     //#region Harps Etc. Historical
     const HarpsEtcHistorical = new SellerPathsLink(
         'HarpsEtc', //name
+        'harp@harptisha.com', //email
         'USA', //country
         'Pacific', //region
         '37.900690', // lat 
@@ -284,6 +232,7 @@ VanderbiltMusic_o.imageFromWebCustom = (product) => product;
     //#region Virginia Harp Center
     const VirginiaHarpCenter = new SellerPathsLink(
         'Virginia Harp Center', //name
+        'harp@harptisha.com', //email
         'USA', //country
         'Eastern', //region
         'https://www.vaharpcenter.com/harps/used-harps/', //productsurl

@@ -1,3 +1,21 @@
+//#region get best color for image
+// get thin image border color
+// const productImageBestColors = await getColors(path.join(__dirname, `../assets/img/${shortProductImageUrl}`));
+        
+// let bestColor = ['#eeeeee', 0]
+// productImageBestColors.map((color, idx) => {
+//     const colorArray = [color.hex(), color.luminance()];
+//     if (colorArray && colorArray.length > 0 && colorArray[1] < .80 && colorArray[1] > .40) {     
+//         bestColor = colorArray
+//     }
+//     else if (colorArray && colorArray.length > 0 && colorArray[1] > bestColor[1] && colorArray[1] < .80 && colorArray[1] > .40) {  
+//         bestColor = colorArray
+//     }
+    //else {console.log('else', colorArray[1], bestColor[1]); bestColor = colorArray};
+// });
+// const productImageBestColor = bestColor[0];
+//#endregion
+
 // fs.writeFile(
     //   `${__dirname}/dev-data/data/tours-simple.json`,
     //   JSON.stringify(tours),
