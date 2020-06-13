@@ -149,10 +149,10 @@ app.post('/api/v1/contactform', async (req, res) => {
 
 // Run send email
 app.post('/api/v1/emailverify', catchAsync(async (req, res) => {
-    const decodeEmail = atob(req.body.email);
+    const decodeEmail = atob(req.body.email); // BREAKING, decode
     
     try {
-        const user = await Users.findOne({email: decodeEmail});
+        const user = await Users.findOne({email: req.body.email});
         if (user) {
             if (!user.emailverified) await Users.findOneAndUpdate({email: user.email}, {emailverified: true});
         
