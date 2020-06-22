@@ -404,7 +404,9 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [
-                    " 23 "
+                    " 23 ",
+                    "Lyon Healy 23",
+                    "Lyon & Healy 23"
                 ],
                 "_id": uuid(),
                 "productTitle": "Style 23",
@@ -443,7 +445,8 @@ exports.globalMakesModels = [
             {
                 "productAliases": [
                     "85 E",
-                    "85 Extended"
+                    "85 Extended",
+                    "Lyon & Healy 85"
                 ],
                 "_id": "5e8b7deea03397444c706238",
                 "productTitle": "85E",
@@ -604,6 +607,20 @@ exports.globalMakesModels = [
                 "_id": "5e8b7deea03397444c706274",
                 "productTitle": "Chamber",
                 "productMaker": "Pratt",
+                "productType": "lever",
+                "productSize": 36
+            }
+        ]
+    },
+    {
+        "sellerAliases": ["R-harps", "Rharps", "RHarps", "R-Harps"],
+        "sellerName": "R Harps",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Merlin",
+                "productMaker": "R Harps",
                 "productType": "lever",
                 "productSize": 36
             }
@@ -773,7 +790,7 @@ exports.globalMakesModels = [
                 "productTitle": "Juno",
                 "productMaker": "Salvi",
                 "productType": "lever",
-                "productSize": null
+                "productSize": 25
             }
         ]
     },
