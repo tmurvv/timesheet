@@ -179,11 +179,11 @@ exports.globalMakesModels = [
         ]
     },
     {
-        "sellerAliases": [],
+        "sellerAliases": ["Lindemann"],
         "sellerName": "Lindeman",
         "sellerProducts": [
             {
-                "productAliases": [],
+                "productAliases": ["Lindemann"],
                 "_id": uuid(),
                 "productTitle": "Lindeman",
                 "productMaker": "Lindeman",
@@ -584,7 +584,16 @@ exports.globalMakesModels = [
     {
         "sellerAliases": [],
         "sellerName": "Pilgrim",
-        "sellerProducts": []
+        "sellerProducts": [
+            {
+                "productAliases": ["Ashdowne"],
+                "_id": uuid(),
+                "productTitle": "Ashdown",
+                "productMaker": "Pilgrim",
+                "productType": "lever",
+                "productSize": 34
+            }
+        ]
     },
     {
         "sellerAliases": [],
@@ -934,6 +943,22 @@ exports.globalMakesModels = [
     },
     {
         "sellerAliases": [
+            "Unknow"
+        ],
+        "sellerName": "unknown",
+        "sellerProducts": [
+            {
+                "productAliases": ["Unknown"],
+                "_id": uuid(),
+                "productTitle": "unknown",
+                "productMaker": "unknown",
+                "productType": "lever",
+                "productSize": 25
+            }
+        ]
+    },
+    {
+        "sellerAliases": [
             "Jack Yule"
         ],
         "sellerName": "Yule",
@@ -946,7 +971,7 @@ exports.globalMakesModels = [
                 "productType": "lever",
                 "productSize": 34
             }
-        ],
+        ]
     },
     {
         "sellerAliases": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'other'],

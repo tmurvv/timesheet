@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-// const { productMakesModels } = require('../assets/constants/makerArray');
 const { globalMakesModels } = require('../assets/constants/makesModels');
 
 // //#region local testing of get harps function
@@ -28,7 +27,7 @@ exports.getUsedHarp = async (req, res) => {
         }
         
         // send results 
-        data = JSON.parse(data)
+        data = JSON.parse(data);
         res.status(200).json({
             title: 'OneStopHarpShop | Used Harps',
             status: 'success',

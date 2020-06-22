@@ -1,8 +1,9 @@
 {
-    "workbench.colorTheme": "Earthbound - Fire Spring",
+    "workbench.colorTheme": "Quiet Light",
     "prettier.proseWrap": "always",
     "eslint.run": "onSave",
     "editor.formatOnSave": true,
     "workbench.preferredHighContrastColorTheme": "Default Light+",
-    "terminal.ansiBlack": "#FFFFFF"
+    "terminal.ansiBlack": "#FFFFFF",
+    "workbench.preferredDarkColorTheme": "Noctis Azureus"
 }

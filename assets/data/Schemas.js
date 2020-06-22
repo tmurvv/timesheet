@@ -68,6 +68,10 @@ const usersSchema = new mongoose.Schema({
         type: String,
         minlength: 8
     },
+    newsletter: {
+        type: Boolean, 
+        default: false
+    },
     distanceunit: {
         type: String,
         enum: {

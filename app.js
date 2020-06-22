@@ -23,7 +23,7 @@ const { scrapeAds } = require('./utils/harpAdScraper');
 const { catchAsync } = require('./utils/helpers/helpers');
 const { Users } = require('./assets/data/Schemas');
 const { ContactRequests } = require('./assets/data/Schemas');
-const { sendMailUserToSeller } = require('./email');
+const { sendMailUserToSeller, contactUsForm, emailVerifySend } = require('./email');
 
 // program setup
 const app = express();
@@ -77,7 +77,7 @@ app.post('/api/v1/contactform', async (req, res) => {
         const contact = Object.assign({ contactId: uuid() }, req.body);
         console.log(contact)
         const added = await ContactRequests.create(contact);
-    
+        contactUsForm(contact);
         res.status(200).json({
             title: 'FindAHarp.com | Create Contact',
             status: 'success',
@@ -150,6 +150,14 @@ app.post('/api/v1/emailverify', catchAsync(async (req, res) => {
             }
         });
     }
+}));
+// Resend verify email
+app.post('/api/v1/resendverify', catchAsync(async (req, res) => {
+    
+    console.log('imin resend verify');
+    console.log(req.body);
+    
+    emailVerifySend(req.body);
 }));
 // Run get product ads
 app.get('/api/v1/productads', catchAsync(async (req, res) => {

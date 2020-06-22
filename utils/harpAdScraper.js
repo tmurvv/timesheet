@@ -48,10 +48,8 @@ const parseStoreInfo = async (seller, data) => {
                 if (!productImageUrl && secondaryUrlData.productImageUrl) productImageUrl = secondaryUrlData.productImageUrl;
             }          
         }
-
         // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
-        
         // handle image specifics
         if (!productImageUrl) productImageUrl = 'genericHarp.png';
         let shortProductImageUrl;

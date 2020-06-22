@@ -78,13 +78,32 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#endregion
     //#region Tisha Murvihill, harp services
     const MurvihillHarpServices = new SellerPaths(
-        'Tisha Murvihill, harp services', //name
-        'harp@harptisha.com', //email
+        'Find a Harp', //name
+        'tisha@findaharp.com', //email
         'Canada-West', //country
         'Canada-West', //region
         '51.214380', // lat
         '-114.466894', //long
         'https://harptisha.com/harpSalesRent.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+        // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    );
+    //#endregion
+    //#region Tisha Murvihill, harp services
+    const HarpAngel = new SellerPaths(
+        'Harp Angel', //name
+        'tisha@findaharp.com', //email
+        'Canada-West', //country
+        'Canada-West', //region
+        '51.0900', // lat
+        '-115.3442', //long
+        'https://harptisha.com/nyackSales.php', //productsUrl
         '.productContainer', //mainPathId
         null, //customFns 
         ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
@@ -285,14 +304,12 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
 //#endregion
 exports.sellerArray = [
     WestCoastHarps,
-    // VanderbiltMusic_e, 
-    // VanderbiltMusic_o,
     // VirginiaHarpCenter,
     // HarpConnection, 
     // AtlantaHarpCenter_o, 
     // AtlantaHarpCenter_e,
     MurvihillHarpServices,
-    // // PhoenixHarps, // crashes program, not sure why
+    HarpAngel,
     HarpsEtcLever, //removed for SSL violations
     HarpsEtcPedal, //removed for SSL violations
     HarpsEtcWire, //removed for SSL violations

@@ -36,6 +36,7 @@ exports.createUser = async (req, res) => {
             lastname: req.body.lastname, 
             email: req.body.email,
             password: hashPassword,
+            newsletter: req.body.newsletter,
             distanceunit: req.body.distanceunit,
             emailverified: false,
             _date_created: Date.now()
@@ -90,7 +91,8 @@ exports.loginUser = async (req, res) => {
         res.status(400).json({
             title: 'FindAHarp.com | Login User',
             status: 'fail',
-            message: e.message
+            message: e.message,
+            useremail: req.body.email
         });
     }
 }

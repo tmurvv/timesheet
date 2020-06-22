@@ -5,7 +5,7 @@ const { scrapeAds } = require('../utils/harpAdScraper');
 // const usedHarps = require('../assets/constants/usedHarpList.json');
 
 exports.getProductAds = async (req, res) => {
-    const usedHarps = scrapeAds();
+    const usedHarps = await scrapeAds();
     // send results 
     res.status(200).json({
         title: 'FindAHarp.com | Get Harp Ads',
