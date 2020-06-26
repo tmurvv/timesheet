@@ -168,6 +168,7 @@ exports.updateUser = async (req, res) => {
     }
 }
 exports.updatePassword = async (req, res) => {
+    const email = req.params.userid.substr(0,req.params.userid.length-1);
     // if call is from password reset email
     if (req.body.resetpassword) {
         try {
@@ -175,7 +176,7 @@ exports.updatePassword = async (req, res) => {
             const saltRounds=10;
             const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
             // update user
-            await Users.findOneAndUpdate({email: req.params.userid}, {password: hashPassword});
+            const result = await Users.findOneAndUpdate({email: email}, {password: hashPassword});
             // return result
             res.status(200).json({
                 title: 'FindAHarp.com | Update Password',

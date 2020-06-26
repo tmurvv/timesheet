@@ -175,6 +175,30 @@ exports.globalMakesModels = [
                 "productMaker": "Erard",
                 "productType": "pedal",
                 "productSize": 46
+            },
+            {
+                "productAliases": [
+                    "Erard single action", 
+                    "Erard single-action", 
+                    "Erard Gold Single Action"
+                ],
+                "_id": uuid(),
+                "productTitle": "Erard Single Action",
+                "productMaker": "Erard",
+                "productType": "pedal",
+                "productSize": ""
+            },
+            {
+                "productAliases": [
+                    "Erard Double action", 
+                    "Erard Double-action", 
+                    "Erard Gold Double Action"
+                ],
+                "_id": uuid(),
+                "productTitle": "Erard Double Action",
+                "productMaker": "Erard",
+                "productType": "pedal",
+                "productSize": ""
             }
         ]
     },
@@ -371,6 +395,17 @@ exports.globalMakesModels = [
                 "productMaker": "Lyon & Healy",
                 "productType": "pedal",
                 "productSize": 47
+            },
+            {
+                "productAliases": [
+                    " 14 ",
+                    " style 14 "
+                ],
+                "_id": uuid(),
+                "productTitle": "Style 14",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 43
             },
             {
                 "productAliases": [
@@ -720,7 +755,8 @@ exports.globalMakesModels = [
                 "productAliases": [
                     "Daphne 40",
                     "Daphne40",
-                    "Daphne 40EX"
+                    "Daphne 40EX",
+                    "40 string Daphne"
                 ],
                 "_id": uuid(),
                 "productTitle": "Daphne 40 EX",
@@ -956,19 +992,29 @@ exports.globalMakesModels = [
     {
         "sellerAliases": [],
         "sellerName": "Wurlitzer",
-        "sellerProducts": []
+        "sellerProducts": [
+            {
+                "productAliases": [
+                ],
+                "_id": uuid(),
+                "productTitle": "Wurlitzer",
+                "productMaker": "Wurlitzer",
+                "productType": "pedal",
+                "productSize": ''
+            }
+        ]
     },
     {
         "sellerAliases": [
-            "Unknow"
+            "Unknown"
         ],
         "sellerName": "unknown",
         "sellerProducts": [
             {
                 "productAliases": ["Unknown"],
                 "_id": uuid(),
-                "productTitle": "unknown",
-                "productMaker": "unknown",
+                "productTitle": "unknown maker",
+                "productMaker": "unknown model",
                 "productType": "lever",
                 "productSize": 25
             }
