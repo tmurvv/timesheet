@@ -23,6 +23,7 @@ const {
 
 let mainProductList;
 const parseStoreInfo = async (seller, data) => {
+    console.log('imin')
     const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;
     const $ = cheerio.load(html);
     const productTable = $(seller.mainPathId);
@@ -32,10 +33,12 @@ const parseStoreInfo = async (seller, data) => {
         const id=uuid();
         // five main product data points
         let productTitle = seller.hasOwnProperty('titleFn')&&seller.titleFn ? cleanText(seller.titleFn($, this)) : '';
+        console.log('pt', productTitle);
         let productPrice = seller.hasOwnProperty('priceFn')&&seller.priceFn ? cleanText(seller.priceFn($, this)) : '';
         let productShortDesc = seller.hasOwnProperty('shortDescFn')&&seller.shortDescFn ? cleanText(seller.shortDescFn($, this)) : '';
         let productLongDesc = seller.hasOwnProperty('longDescFn')&&seller.longDescFn ? cleanText(seller.longDescFn($, this)) : '';
         let productImageUrl = seller.hasOwnProperty('imageUrlFn')&&seller.imageUrlFn ? seller.imageUrlFn($, this) : '';
+        console.log(productImageUrl)
         //if website links to secondary product detail page
         if (seller.hasOwnProperty('findLinkUrlFn')&&seller.findLinkUrlFn) {  
             const secondaryUrl = seller.findLinkUrlFn($, this);
@@ -50,6 +53,7 @@ const parseStoreInfo = async (seller, data) => {
         }
         // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
+        console.log('mmts', makeModelTypeSize)
         // handle image specifics
         if (!productImageUrl) productImageUrl = 'genericHarp.png';
         let shortProductImageUrl;
@@ -110,6 +114,7 @@ const parseStoreInfo = async (seller, data) => {
 }
 
 exports.scrapeAds = async () => {
+    console.log('imintop')
     mainProductList = [];
     const sellerArray = sellerArrayObject.sellerArray;
     
