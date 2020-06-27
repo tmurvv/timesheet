@@ -26,6 +26,52 @@ exports.globalMakesModels = [
         ]
     },
     {
+        "sellerAliases": [ "Fox" ],
+        "sellerName": "Argent Fox",
+        "sellerProducts": [
+            {
+                "productAliases": [ "Lady Tiger" ],
+                "_id": uuid(),
+                "productTitle": "Lady Tyger",
+                "productMaker": "Argent Fox",
+                "productType": "lever",
+                "productSize": "triple-strung"
+            },
+            {
+                "productAliases": [ "David" ],
+                "_id": uuid(),
+                "productTitle": "Lord David",
+                "productMaker": "Argent Fox",
+                "productType": "lever-free",
+                "productSize": "cross-strung"
+            },
+            {
+                "productAliases": [ "Emily" ],
+                "_id": uuid(),
+                "productTitle": "Lady Emily",
+                "productMaker": "Argent Fox",
+                "productType": "lever",
+                "productSize": 38
+            },
+            {
+                "productAliases": [ "Benjamine" ],
+                "_id": uuid(),
+                "productTitle": "Brother Benjamine",
+                "productMaker": "Argent Fox",
+                "productType": "lever-free",
+                "productSize": ""
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Satchel",
+                "productMaker": "Argent Fox",
+                "productType": "lever-free",
+                "productSize": "19"
+            }
+        ]
+    },
+    {
         "sellerAliases": [],
         "sellerName": "Blevins",
         "sellerProducts": [
@@ -35,6 +81,20 @@ exports.globalMakesModels = [
                 "productTitle": "Encore 34",
                 "productMaker": "Blevins",
                 "productType": "lever",
+                "productSize": 34
+            }
+        ]
+    },
+    {
+        "sellerAliases": [],
+        "sellerName": "Clement",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Clement wire cross strung",
+                "productMaker": "Blevins",
+                "productType": "lever-free",
                 "productSize": 34
             }
         ]
@@ -138,13 +198,44 @@ exports.globalMakesModels = [
                 "productMaker": "Camac",
                 "productType": "lever",
                 "productSize": 36
+            },
+            {
+                "productAliases": [ "electric"],
+                "_id": uuid,
+                "productTitle": "Electric",
+                "productMaker": "Camac",
+                "productType": "lever",
+                "productSize": ""
+            }
+        ]
+    },
+    {
+        "sellerAliases": ["Catherine Campbell Harps", "Campbell"],
+        "sellerName": "Campbell Harps",
+        "sellerProducts": [
+            {
+                "productAliases": [ "bray" ],
+                "_id": uuid(),
+                "productTitle": "Bray",
+                "productMaker": "Campbell Harps",
+                "productType": "lever-free",
+                "productSize": "13"
             }
         ]
     },
     {
         "sellerAliases": [],
         "sellerName": "Clarke",
-        "sellerProducts": []
+        "sellerProducts": [
+            {
+                "productAliases": [ "Clarke harp"],
+                "_id": "5e8b7deea03397444c706267",
+                "productTitle": "Clarke Harp",
+                "productMaker": "Clarke",
+                "productType": "lever",
+                "productSize": ''
+            }
+        ]
     },
     {
         "sellerAliases": [],
@@ -180,7 +271,8 @@ exports.globalMakesModels = [
                 "productAliases": [
                     "Erard single action", 
                     "Erard single-action", 
-                    "Erard Gold Single Action"
+                    "Erard Gold Single Action",
+                    "Single Action Erard"
                 ],
                 "_id": uuid(),
                 "productTitle": "Erard Single Action",
@@ -192,7 +284,9 @@ exports.globalMakesModels = [
                 "productAliases": [
                     "Erard Double action", 
                     "Erard Double-action", 
-                    "Erard Gold Double Action"
+                    "Erard double action", 
+                    "Erard Gold Double Action",
+                    "Double Action Gothic Erard"
                 ],
                 "_id": uuid(),
                 "productTitle": "Erard Double Action",
@@ -380,7 +474,8 @@ exports.globalMakesModels = [
         "sellerAliases": [
             "Lyon Healy",
             "L & H",
-            "L&H"
+            "L&H",
+            "Lyon&Healy"
         ],
         "sellerName": "Lyon & Healy",
         "sellerProducts": [
@@ -399,7 +494,8 @@ exports.globalMakesModels = [
             {
                 "productAliases": [
                     " 14 ",
-                    " style 14 "
+                    " style 14",
+                    " Style 14"
                 ],
                 "_id": uuid(),
                 "productTitle": "Style 14",
@@ -409,7 +505,9 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [
-                    " 15 "
+                    " 15 ",
+                    "style 15",
+                    "Style 15"
                 ],
                 "_id": uuid(),
                 "productTitle": "Style 15",
@@ -419,7 +517,9 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [
-                    " 21 "
+                    " 21 ",                  
+                    "style 21",
+                    "Style 21"
                 ],
                 "_id": uuid(),
                 "productTitle": "Style 21",
@@ -534,6 +634,19 @@ exports.globalMakesModels = [
                 "productMaker": "Lyon & Healy",
                 "productType": "lever",
                 "productSize": 40
+            },
+            {
+                "productAliases": [
+                    "folk harp in blue",
+                    "Folk Harp in Blue",
+                    "Folk Harp Blue",
+                    "Folk Harp blue"
+                ],
+                "_id": uuid(),
+                "productTitle": "Folk Harp in blue",
+                "productMaker": "Lyon & Healy",
+                "productType": "lever",
+                "productSize": 34
             }
         ]
     },
@@ -556,12 +669,20 @@ exports.globalMakesModels = [
         "sellerName": "Markwood",
         "sellerProducts": [
             {
-                "productAliases": ['Markwood29 Bronze', 'Markwood 29'],
+                "productAliases": ["Markwood29 Bronze", "Markwood 29"],
                 "_id": uuid(),
                 "productTitle": "Markwood 29 Bronze",
                 "productMaker": "Markwood",
-                "productType": "Lever-Free",
+                "productType": "Lever",
                 "productSize": 29
+            },
+            {
+                "productAliases": ["Markwood harp", "Markwood lever"],
+                "_id": uuid(),
+                "productTitle": "Markwood Harp",
+                "productMaker": "Markwood",
+                "productType": "Lever",
+                "productSize": 33
             }
         ]
     },
@@ -897,6 +1018,14 @@ exports.globalMakesModels = [
         "sellerName": "Triplett",
         "sellerProducts": [
             {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Eclipse 38",
+                "productMaker": "Triplett",
+                "productType": "lever",
+                "productSize": 38
+            },
+            {
                 "productAliases": [
                     "Sierra",
                     "Siera"
@@ -951,6 +1080,22 @@ exports.globalMakesModels = [
                 "productMaker": "Triplett",
                 "productType": "lever",
                 "productSize": 30
+            },
+            {
+                "productAliases": [ "Christina", "Therapy" ],
+                "_id": uuid(),
+                "productTitle": "Christina Therapy",
+                "productMaker": "Triplett",
+                "productType": "lever",
+                "productSize": 26
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Zephyr",
+                "productMaker": "Triplett",
+                "productType": "lever",
+                "productSize": 22
             }
         ]
     },
@@ -1037,7 +1182,7 @@ exports.globalMakesModels = [
         ]
     },
     {
-        "sellerAliases": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'other'],
+        "sellerAliases": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'other', 'blue'],
         "sellerName": "findaharpFinishes",
         "sellerProducts": [
             {

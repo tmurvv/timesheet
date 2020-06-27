@@ -48,24 +48,61 @@ const getMichiganHarpImage = ($, item) => {
     );
     //#endregion 
     //#region Michigan Harp Center Pedal
-    const MichiganHarpCenterPedal = new SellerPaths(
-        'Michigan Harp Center', //name
-        'michiganharpcenter@gmail.com', //email
-        'USA', //country
-        'Mid-west', //region
-        '51.214380', // lat
-        '-114.466894', //long
-        'https://www.michiganharpcenter.com/pedal-harps-photo-album.html', //productsUrl
-        'td>p', //mainPathId
-        null, //customFns 
-        ($, item) => $(item).text().trim(), // titleFn
-        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
-        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
-        ($, item) => $(item).text().trim(), // longDescFn
-        ($, item) => getMichiganHarpImage($, item)
-        // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
-    );
-    
+    // const MichiganHarpCenterPedal = new SellerPaths(
+    //     'Michigan Harp Center', //name
+    //     'michiganharpcenter@gmail.com', //email
+    //     'USA', //country
+    //     'Mid-west', //region
+    //     '42.534718', // lat
+    //     '-83.110604', //long
+    //     'https://www.michiganharpcenter.com/pedal-harps-photo-album.html', //productsUrl
+    //     'td>p', //mainPathId
+    //     null, //customFns 
+    //     ($, item) => $(item).text().trim(), // titleFn
+    //     ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+    //     ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+    //     ($, item) => $(item).text().trim(), // longDescFn
+    //     ($, item) => getMichiganHarpImage($, item)
+    //     // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    // );   
+    //#endregion
+    // //#region Michigan Harp Center Floor Harp
+    // const MichiganHarpCenterFloorHarp = new SellerPaths(
+    //     'Michigan Harp Center', //name
+    //     'michiganharpcenter@gmail.com', //email
+    //     'USA', //country
+    //     'Mid-west', //region
+    //     '42.534718', // lat
+    //     '-83.110604', //long
+    //     'https://www.michiganharpcenter.com/floor-harps-photo-album-.html', //productsUrl
+    //     'td>p', //mainPathId
+    //     null, //customFns 
+    //     ($, item) => $(item).text().trim(), // titleFn
+    //     ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+    //     ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+    //     ($, item) => $(item).text().trim(), // longDescFn
+    //     ($, item) => getMichiganHarpImage($, item)
+    //     // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    // );
+    //#endregion
+    //#region Michigan Harp Center Lap Harp
+    // const MichiganHarpCenterLapHarp = new SellerPaths(
+    //     'Michigan Harp Center', //name
+    //     'michiganharpcenter@gmail.com', //email
+    //     'USA', //country
+    //     'Mid-west', //region
+    //     '42.534718', // lat
+    //     '-83.110604', //long
+    //     'https://www.michiganharpcenter.com/lap-harps-photo-album.html', //productsUrl
+    //     'td>p', //mainPathId
+    //     null, //customFns 
+    //     ($, item) => $(item).text().trim(), // titleFn
+    //     ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+    //     ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+    //     ($, item) => $(item).text().trim(), // longDescFn
+    //     ($, item) => getMichiganHarpImage($, item)
+    //     // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    // );
     //#endregion
     //#region Tisha Murvihill, harp services
     const MurvihillHarpServices = new SellerPaths(
@@ -237,19 +274,128 @@ const getMichiganHarpImage = ($, item) => {
     );
     HarpsEtcHistorical.sellerAxiosResponsePath = '';
     //#endregion
+    //#region Michigan Harp Center Pedal
+    // const MichiganHarpCenterPedalHarp = new SellerPathsLink(
+    //     'Michigan Harp Center', //name
+    //     'michiganharpcenter@gmail.com', //email
+    //     'USA', //country
+    //     'Mid-west', //region
+    //     '42.534718', // lat
+    //     '-83.110604', //long
+    //     'https://www.michiganharpcenter.com/pedal-harps-photo-album.html', //productsurl
+    //     '.photoList', //mainPathId
+    //     null, //customFns
+    //     null,//($, item) => $(item).find('.ty-product-list__item-name').text().trim(), //titleFn
+    //     null,//($, item) => $(item).find('.ty-product-list__price').text().trim(), //priceFn 
+    //     null,//($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
+    //     null, //longDescFn
+    //     null, //imageUrl
+    //     ($, item) => `https://www.michiganharpcenter.com${$(item).find('a').attr('href')}`, //findLinkUrlFn
+    //     'table', //mainPathIdLink
+    //     ($, item) => $(item).find('h3').text(), //titleLinkFn
+    //     null, //priceLinkFn
+    //     null, //shortDescLinkFn
+    //     ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
+    //     ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
+    // );
+    //#endregion
+    //#region Michigan Harp Center Pedal
+    const MichiganHarpCenterPedalHarp = new SellerPathsLink(
+        'Michigan Harp Center', //name
+        'michiganharpcenter@gmail.com', //email
+        'USA', //country
+        'Mid-west', //region
+        '42.534718', // lat
+        '-83.110604', //long
+        'https://www.michiganharpcenter.com/pedal-harps-photo-album.html', //productsurl
+        '.photoList', //mainPathId
+        [ 'getPrice' ], //customFns
+        null, //titleLinkFn      
+        null, //priceFn 
+        null,//($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
+        null, //longDescFn
+        null, //imageUrl
+        ($, item) => `https://www.michiganharpcenter.com${$(item).find('a').attr('href')}`, //findLinkUrlFn
+        'table', //mainPathIdLink
+        ($, item) => $(item).find('h3').text(), //titleLinkFn
+        ($, item) => {   //priceFn
+            const productInfo = $(item).find('.photoInfo').text();
+            let returnIt = productInfo.indexOf('$') > -1 ? productInfo.substring(productInfo.indexOf('$'), productInfo.indexOf('$') + 10) : '';
+            if(returnIt.indexOf(' ') !== -1) returnIt = returnIt.substr(0, returnIt.indexOf(' '));
+            return returnIt;
+        }, //priceLinkFn
+        null, //shortDescLinkFn
+        ($, item) => $(item).find('.photoInfo').text().trim(), //longDescLinkFn,
+        ($, item) => `https://michiganharpcenter.com${$(item).find('.photoContainer').find('img').attr('src')}` //imageUrlLinkFn
+    );
+    //#endregion
+    //#region Michigan Harp Center Floor
+    const MichiganHarpCenterFloorHarp = new SellerPathsLink(
+        'Michigan Harp Center', //name
+        'michiganharpcenter@gmail.com', //email
+        'USA', //country
+        'Mid-west', //region
+        '42.534718', // lat
+        '-83.110604', //long
+        'https://www.michiganharpcenter.com/floor-harps-photo-album-.html', //productsurl
+        '.photoList', //mainPathId
+        [ 'getPrice' ], //customFns
+        null, //titleLinkFn      
+        null, //priceFn 
+        null,//($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
+        null, //longDescFn
+        null, //imageUrl
+        ($, item) => `https://www.michiganharpcenter.com${$(item).find('a').attr('href')}`, //findLinkUrlFn
+        'table', //mainPathIdLink
+        ($, item) => $(item).find('h3').text(), //titleLinkFn
+        ($, item) => {   //priceFn
+            const productInfo = $(item).find('.photoInfo').text();
+            let returnIt = productInfo.indexOf('$') > -1 ? productInfo.substring(productInfo.indexOf('$'), productInfo.indexOf('$') + 10) : '';
+            if(returnIt.indexOf(' ') !== -1) returnIt = returnIt.substr(0, returnIt.indexOf(' '));
+            return returnIt;
+        }, //priceLinkFn
+        null, //shortDescLinkFn
+        ($, item) => $(item).find('.photoInfo').text().trim(), //longDescLinkFn,
+        ($, item) => `https://michiganharpcenter.com${$(item).find('.photoContainer').find('img').attr('src')}` //imageUrlLinkFn
+    );
+    //#endregion
+    //#region Michigan Harp Center Lap
+    const MichiganHarpCenterLapHarp = new SellerPathsLink(
+        'Michigan Harp Center', //name
+        'michiganharpcenter@gmail.com', //email
+        'USA', //country
+        'Mid-west', //region
+        '42.534718', // lat
+        '-83.110604', //long
+        'https://www.michiganharpcenter.com/lap-harps-photo-album.html', //productsurl
+        '.photoList', //mainPathId
+        [ 'getPrice' ], //customFns
+        null, //titleLinkFn      
+        null, //priceFn 
+        null,//($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
+        null, //longDescFn
+        null, //imageUrl
+        ($, item) => `https://www.michiganharpcenter.com${$(item).find('a').attr('href')}`, //findLinkUrlFn
+        'table', //mainPathIdLink
+        ($, item) => $(item).find('h3').text(), //titleLinkFn
+        ($, item) => {   //priceFn
+            const productInfo = $(item).find('.photoInfo').text();
+            let returnIt = productInfo.indexOf('$') > -1 ? productInfo.substring(productInfo.indexOf('$'), productInfo.indexOf('$') + 10) : '';
+            if(returnIt.indexOf(' ') !== -1) returnIt = returnIt.substr(0, returnIt.indexOf(' '));
+            return returnIt;
+        }, //priceLinkFn
+        null, //shortDescLinkFn
+        ($, item) => $(item).find('.photoInfo').text().trim(), //longDescLinkFn,
+        ($, item) => `https://michiganharpcenter.com${$(item).find('.photoContainer').find('img').attr('src')}` //imageUrlLinkFn
+    );
+    //#endregion
+    
 //#endregion
 
-//#region for working on West Coast harps
-// ($, item) => $(item).closest('wsite-multicol').parent().prevElementSibling().text().trim(), // titleFn
-// ($, item) => "THis is it", // titleFn
-// ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
-// ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
-// ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
-// ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
-// ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
-//#endregion
 exports.sellerArray = [
-    MichiganHarpCenterPedal,
+    MichiganHarpCenterPedalHarp,
+    // MichiganHarpCenterFloorHarp,
+    // MichiganHarpCenterLapHarp,
     // WestCoastHarps,
     // HarpConnection, 
     // MurvihillHarpServices,
@@ -272,10 +418,10 @@ exports.sellerArray = [
     //     '[data-field-id="contentCards.headline"]', //mainPathId
     //     ['specialFileNameFn'], //customFns 
     //     ($, item) => $(item).parent().find('h4').text().trim(), //titleFn
-    //     ($, item) => {   //priceFn
-    //         const productInfo = $(item).parent().find('[data-field-id="contentCards.description"]').text();
-    //         return productInfo.indexOf('$') > -1 ? productInfo.substring(productInfo.indexOf('$'), productInfo.indexOf('$') + 10) : '';
-    //     }, 
+        // ($, item) => {   //priceFn
+        //     const productInfo = $(item).parent().find('[data-field-id="contentCards.description"]').text();
+        //     return productInfo.indexOf('$') > -1 ? productInfo.substring(productInfo.indexOf('$'), productInfo.indexOf('$') + 10) : '';
+        // }, 
     //     ($, item) => {   //shortDescFn
     //         const productInfo = $(item).parent().find('[data-field-id="contentCards.description"]').text();
     //         return productInfo.substring(0, productInfo.indexOf('.') + 1);
