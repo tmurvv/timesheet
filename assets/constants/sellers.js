@@ -406,7 +406,6 @@ exports.sellerArray = [
     HarpsEtcHistorical //removed for SSL violations
 ];
 
-
 // EXAMPLE OF CUSTOM FUNCTION
     //#region Phoenix Harps
     // const PhoenixHarps = new SellerPaths(
