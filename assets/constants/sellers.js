@@ -47,63 +47,6 @@ const getMichiganHarpImage = ($, item) => {
         ($, item) => `https://www.harpconnection.com${$(item).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src')}` //productImageUrlFn              
     );
     //#endregion 
-    //#region Michigan Harp Center Pedal
-    // const MichiganHarpCenterPedal = new SellerPaths(
-    //     'Michigan Harp Center', //name
-    //     'michiganharpcenter@gmail.com', //email
-    //     'USA', //country
-    //     'Mid-west', //region
-    //     '42.534718', // lat
-    //     '-83.110604', //long
-    //     'https://www.michiganharpcenter.com/pedal-harps-photo-album.html', //productsUrl
-    //     'td>p', //mainPathId
-    //     null, //customFns 
-    //     ($, item) => $(item).text().trim(), // titleFn
-    //     ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
-    //     ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
-    //     ($, item) => $(item).text().trim(), // longDescFn
-    //     ($, item) => getMichiganHarpImage($, item)
-    //     // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
-    // );   
-    //#endregion
-    // //#region Michigan Harp Center Floor Harp
-    // const MichiganHarpCenterFloorHarp = new SellerPaths(
-    //     'Michigan Harp Center', //name
-    //     'michiganharpcenter@gmail.com', //email
-    //     'USA', //country
-    //     'Mid-west', //region
-    //     '42.534718', // lat
-    //     '-83.110604', //long
-    //     'https://www.michiganharpcenter.com/floor-harps-photo-album-.html', //productsUrl
-    //     'td>p', //mainPathId
-    //     null, //customFns 
-    //     ($, item) => $(item).text().trim(), // titleFn
-    //     ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
-    //     ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
-    //     ($, item) => $(item).text().trim(), // longDescFn
-    //     ($, item) => getMichiganHarpImage($, item)
-    //     // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
-    // );
-    //#endregion
-    //#region Michigan Harp Center Lap Harp
-    // const MichiganHarpCenterLapHarp = new SellerPaths(
-    //     'Michigan Harp Center', //name
-    //     'michiganharpcenter@gmail.com', //email
-    //     'USA', //country
-    //     'Mid-west', //region
-    //     '42.534718', // lat
-    //     '-83.110604', //long
-    //     'https://www.michiganharpcenter.com/lap-harps-photo-album.html', //productsUrl
-    //     'td>p', //mainPathId
-    //     null, //customFns 
-    //     ($, item) => $(item).text().trim(), // titleFn
-    //     ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
-    //     ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
-    //     ($, item) => $(item).text().trim(), // longDescFn
-    //     ($, item) => getMichiganHarpImage($, item)
-    //     // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
-    // );
-    //#endregion
     //#region Tisha Murvihill, harp services
     const MurvihillHarpServices = new SellerPaths(
         'Find a Harp', //name
@@ -274,31 +217,7 @@ const getMichiganHarpImage = ($, item) => {
     );
     HarpsEtcHistorical.sellerAxiosResponsePath = '';
     //#endregion
-    //#region Michigan Harp Center Pedal
-    // const MichiganHarpCenterPedalHarp = new SellerPathsLink(
-    //     'Michigan Harp Center', //name
-    //     'michiganharpcenter@gmail.com', //email
-    //     'USA', //country
-    //     'Mid-west', //region
-    //     '42.534718', // lat
-    //     '-83.110604', //long
-    //     'https://www.michiganharpcenter.com/pedal-harps-photo-album.html', //productsurl
-    //     '.photoList', //mainPathId
-    //     null, //customFns
-    //     null,//($, item) => $(item).find('.ty-product-list__item-name').text().trim(), //titleFn
-    //     null,//($, item) => $(item).find('.ty-product-list__price').text().trim(), //priceFn 
-    //     null,//($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
-    //     null, //longDescFn
-    //     null, //imageUrl
-    //     ($, item) => `https://www.michiganharpcenter.com${$(item).find('a').attr('href')}`, //findLinkUrlFn
-    //     'table', //mainPathIdLink
-    //     ($, item) => $(item).find('h3').text(), //titleLinkFn
-    //     null, //priceLinkFn
-    //     null, //shortDescLinkFn
-    //     ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
-    //     ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
-    // );
-    //#endregion
+    
     //#region Michigan Harp Center Pedal
     const MichiganHarpCenterPedalHarp = new SellerPathsLink(
         'Michigan Harp Center', //name
