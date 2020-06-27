@@ -394,16 +394,16 @@ const getMichiganHarpImage = ($, item) => {
 
 exports.sellerArray = [
     MichiganHarpCenterPedalHarp,
-    // MichiganHarpCenterFloorHarp,
-    // MichiganHarpCenterLapHarp,
-    // WestCoastHarps,
+    MichiganHarpCenterFloorHarp,
+    MichiganHarpCenterLapHarp,
+    WestCoastHarps,
     // HarpConnection, 
-    // MurvihillHarpServices,
-    // HarpAngel,
-    // HarpsEtcLever, //removed for SSL violations
-    // HarpsEtcPedal, //removed for SSL violations
-    // HarpsEtcWire, //removed for SSL violations
-    // HarpsEtcHistorical //removed for SSL violations
+    MurvihillHarpServices,
+    HarpAngel,
+    HarpsEtcLever, //removed for SSL violations
+    HarpsEtcPedal, //removed for SSL violations
+    HarpsEtcWire, //removed for SSL violations
+    HarpsEtcHistorical //removed for SSL violations
 ];
 
 
