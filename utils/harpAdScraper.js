@@ -62,7 +62,7 @@ const parseStoreInfo = async (seller, data) => {
         if (!shortProductImageUrl) shortProductImageUrl = shortFileNameFn(productImageUrl);       
         if (shortProductImageUrl && !shortProductImageUrl.includes("STOCK")) downloadImage(productImageUrl, shortProductImageUrl);
         productImageUrl = seller.hasOwnProperty('imageFromWebCustom')?productImageUrl:`https://${process.env.DEPLOY_SITE_PARTIAL}.herokuapp.com/assets/img/${shortProductImageUrl}`;
-        
+        console.log('mmts', makeModelTypeSize)
         //create product
         let product;
         if (makeModelTypeSize[1]) product = {
@@ -90,7 +90,7 @@ const parseStoreInfo = async (seller, data) => {
         // check for vendor custom functions
         if (seller.hasOwnProperty('customFns') && seller.customFns) {
             seller.customFns.map(customFuncString => {
-                try {
+               try {
                     customFunc = leaf(seller, customFuncString);
                     product = customFunc(product);
                 } catch (err) {

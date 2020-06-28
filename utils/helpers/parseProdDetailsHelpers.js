@@ -158,7 +158,7 @@ const findProductFinish = (title, makesModels) => {
     if (!title) throw new AppError('from findMaker: title parameter is empty');
     const upperTitle = title.toUpperCase();
     const finishes =makesModels[makesModels.length-1].sellerAliases;
-    
+    console.log(finishes)
     let productFinish;
     finishes.map(finish => {
         const upperFinish=finish.toUpperCase();
@@ -166,6 +166,7 @@ const findProductFinish = (title, makesModels) => {
         const regExPattern = new RegExp(modRegEx);
         if (upperTitle.match(regExPattern)) productFinish = finish;
     });
+    console.log(productFinish)
     return productFinish;
 }
 /**

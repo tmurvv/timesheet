@@ -1,35 +1,6 @@
 const { SellerPaths } = require('../classes/SellerPaths');
 const { SellerPathsLink } = require('../classes/SellerPathsLink');
 
-const getMichiganHarpImage = ($, item) => {
-    const prodTitle = $(item).text().trim();
-    console.log('inMHI', prodTitle)
-    const adjust = prodTitle.substr(0,1);
-    console.log(adjust)
-    switch(adjust) {
-        case '1':
-            return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').find('img').attr('src')}`
-        case '2':
-            return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').next().find('img').attr('src')}`
-        case '3':
-            return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').next().next().find('img').attr('src')}`
-        case '4':
-            return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').next().next().next().find('img').attr('src')}`
-        case '5':
-            return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').next().next().next().next().find('img').attr('src')}`
-        case '6':
-            return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').next().next().next().next().next().find('img').attr('src')}`
-        case '7':
-            return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').next().next().next().next().next().next().find('img').attr('src')}`
-        case '8':
-            return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').next().next().next().next().next().next().next().find('img').attr('src')}`
-        case '9':
-            return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').next().next().next().next().next().next().next().next().find('img').attr('src')}`
-        
-    }
-    return `https://www.michiganharpcenter.com${$(item).parent().find('.photoContainer').find('.photoList').find('img').attr('src')}`
-    return {...product, productImageUrl: product.productImageUrl.replace(/%20/g, '_').replace(/%25/g, '_').replace(/%/g, '_')}
-};
 //#region VENDORS NOT LINKING TO PRODUCTS
     //#region Harp Connection needs LAT/LONG
     const HarpConnection = new SellerPaths(
@@ -111,7 +82,7 @@ const getMichiganHarpImage = ($, item) => {
         if (product.productModel === 'Paraguayan Harp') return {...product, productImageUrl: 'https://findaharp-api-staging.herokuapp.com/assets/img/Paraguayan.jpg'};   
     };
     //#endregion
-    //#endregion
+//#endregion
 //#region VENDORS LINKING TO PRODUCTS
     //#region Harps Etc. lever
     const HarpsEtcLever = new SellerPathsLink(
@@ -216,8 +187,7 @@ const getMichiganHarpImage = ($, item) => {
         ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
     );
     HarpsEtcHistorical.sellerAxiosResponsePath = '';
-    //#endregion
-    
+    //#endregion   
     //#region Michigan Harp Center Pedal
     const MichiganHarpCenterPedalHarp = new SellerPathsLink(
         'Michigan Harp Center', //name
@@ -228,8 +198,8 @@ const getMichiganHarpImage = ($, item) => {
         '-83.110604', //long
         'https://www.michiganharpcenter.com/pedal-harps-photo-album.html', //productsurl
         '.photoList', //mainPathId
-        [ 'getPrice' ], //customFns
-        null, //titleLinkFn      
+        [ 'ownerException' ], //customFns
+        null, //titleFn      
         null, //priceFn 
         null,//($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
         null, //longDescFn
@@ -237,16 +207,20 @@ const getMichiganHarpImage = ($, item) => {
         ($, item) => `https://www.michiganharpcenter.com${$(item).find('a').attr('href')}`, //findLinkUrlFn
         'table', //mainPathIdLink
         ($, item) => $(item).find('h3').text(), //titleLinkFn
-        ($, item) => {   //priceFn
+        ($, item) => {   //priceLinkFn
             const productInfo = $(item).find('.photoInfo').text();
             let returnIt = productInfo.indexOf('$') > -1 ? productInfo.substring(productInfo.indexOf('$'), productInfo.indexOf('$') + 10) : '';
             if(returnIt.indexOf(' ') !== -1) returnIt = returnIt.substr(0, returnIt.indexOf(' '));
             return returnIt;
-        }, //priceLinkFn
+        },
         null, //shortDescLinkFn
         ($, item) => $(item).find('.photoInfo').text().trim(), //longDescLinkFn,
         ($, item) => `https://michiganharpcenter.com${$(item).find('.photoContainer').find('img').attr('src')}` //imageUrlLinkFn
     );
+    MichiganHarpCenterPedalHarp.ownerException = (product) => {
+        if (product.productLongDesc.indexOf("|")>-1) return null;
+        return product;
+    }
     //#endregion
     //#region Michigan Harp Center Floor
     const MichiganHarpCenterFloorHarp = new SellerPathsLink(
@@ -258,7 +232,7 @@ const getMichiganHarpImage = ($, item) => {
         '-83.110604', //long
         'https://www.michiganharpcenter.com/floor-harps-photo-album-.html', //productsurl
         '.photoList', //mainPathId
-        [ 'getPrice' ], //customFns
+        [ 'ownerException' ], //customFns
         null, //titleLinkFn      
         null, //priceFn 
         null,//($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
@@ -277,6 +251,10 @@ const getMichiganHarpImage = ($, item) => {
         ($, item) => $(item).find('.photoInfo').text().trim(), //longDescLinkFn,
         ($, item) => `https://michiganharpcenter.com${$(item).find('.photoContainer').find('img').attr('src')}` //imageUrlLinkFn
     );
+    MichiganHarpCenterFloorHarp.ownerException = (product) => {
+        if (product.productLongDesc.indexOf("|")>-1) return null;
+        return product;
+    }
     //#endregion
     //#region Michigan Harp Center Lap
     const MichiganHarpCenterLapHarp = new SellerPathsLink(
@@ -288,7 +266,7 @@ const getMichiganHarpImage = ($, item) => {
         '-83.110604', //long
         'https://www.michiganharpcenter.com/lap-harps-photo-album.html', //productsurl
         '.photoList', //mainPathId
-        [ 'getPrice' ], //customFns
+        [ 'ownerException' ], //customFns
         null, //titleLinkFn      
         null, //priceFn 
         null,//($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
@@ -307,8 +285,11 @@ const getMichiganHarpImage = ($, item) => {
         ($, item) => $(item).find('.photoInfo').text().trim(), //longDescLinkFn,
         ($, item) => `https://michiganharpcenter.com${$(item).find('.photoContainer').find('img').attr('src')}` //imageUrlLinkFn
     );
+    MichiganHarpCenterLapHarp.ownerException = (product) => {
+        if (product.productLongDesc.indexOf("|")>-1) return null;
+        return product;
+    }
     //#endregion
-    
 //#endregion
 
 exports.sellerArray = [
@@ -316,7 +297,7 @@ exports.sellerArray = [
     MichiganHarpCenterFloorHarp,
     MichiganHarpCenterLapHarp,
     WestCoastHarps,
-    // HarpConnection, 
+    HarpConnection, 
     MurvihillHarpServices,
     HarpAngel,
     HarpsEtcLever, //removed for SSL violations
@@ -336,10 +317,10 @@ exports.sellerArray = [
     //     '[data-field-id="contentCards.headline"]', //mainPathId
     //     ['specialFileNameFn'], //customFns 
     //     ($, item) => $(item).parent().find('h4').text().trim(), //titleFn
-        // ($, item) => {   //priceFn
-        //     const productInfo = $(item).parent().find('[data-field-id="contentCards.description"]').text();
-        //     return productInfo.indexOf('$') > -1 ? productInfo.substring(productInfo.indexOf('$'), productInfo.indexOf('$') + 10) : '';
-        // }, 
+    //     ($, item) => {   //priceFn
+    //       const productInfo = $(item).parent().find('[data-field-id="contentCards.description"]').text();
+    //       return productInfo.indexOf('$') > -1 ? productInfo.substring(productInfo.indexOf('$'), productInfo.indexOf('$') + 10) : '';
+    //     }, 
     //     ($, item) => {   //shortDescFn
     //         const productInfo = $(item).parent().find('[data-field-id="contentCards.description"]').text();
     //         return productInfo.substring(0, productInfo.indexOf('.') + 1);

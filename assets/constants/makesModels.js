@@ -1182,7 +1182,7 @@ exports.globalMakesModels = [
         ]
     },
     {
-        "sellerAliases": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'other', 'blue'],
+        "sellerAliases": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'blue', 'zebrawood', 'other', ],
         "sellerName": "findaharpFinishes",
         "sellerProducts": [
             {
