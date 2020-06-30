@@ -75,7 +75,6 @@ app.post('/api/v1/privateads', async (req, res) => {
 app.post('/api/v1/contactform', async (req, res) => {
     try {
         const contact = Object.assign({ contactId: uuid() }, req.body);
-        console.log(contact)
         const added = await ContactRequests.create(contact);
         contactUsForm(contact);
         res.status(200).json({
@@ -98,7 +97,6 @@ app.post('/api/v1/contactform', async (req, res) => {
 app.post('/api/v1/contactsellerform', async (req, res) => {
     try {
         const contact = Object.assign({ contactId: uuid() }, req.body);
-        console.log('contact seller form', contact);
         const added = await ContactRequests.create(contact);
         sendMailUserToSeller(contact);
         res.status(200).json({
@@ -153,10 +151,6 @@ app.post('/api/v1/emailverify', catchAsync(async (req, res) => {
 }));
 // Resend verify email
 app.post('/api/v1/resendverify', catchAsync(async (req, res) => {
-    
-    console.log('imin resend verify');
-    console.log(req.body);
-    
     emailVerifySend(req.body);
 }));
 // Run get product ads

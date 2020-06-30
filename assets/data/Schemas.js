@@ -29,7 +29,6 @@ const makesModelsSchema = new mongoose.Schema({
 },{ versionKey: false });
 
 const MakesModels = mongoose.model('MakesModels', makesModelsSchema);
-//console.log(MakesModels.find())
 // Main Doc
 const contactRequestsSchema = new mongoose.Schema({
     firstname: {type: String},
