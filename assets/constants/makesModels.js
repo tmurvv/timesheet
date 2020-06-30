@@ -301,9 +301,9 @@ exports.globalMakesModels = [
         "sellerName": "Lindeman",
         "sellerProducts": [
             {
-                "productAliases": ["Lindemann"],
+                "productAliases": ["Lindemann", "Lindeman"],
                 "_id": uuid(),
-                "productTitle": "Lindeman",
+                "productTitle": "Lindeman Concert Grand",
                 "productMaker": "Lindeman",
                 "productType": "pedal",
                 "productSize": 46

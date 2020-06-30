@@ -227,7 +227,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Michigan Harp Center', //name
         'michiganharpcenter@gmail.com', //email
         'USA', //country
-        'Mid-west', //region
+        'Mid-West', //region
         '42.534718', // lat
         '-83.110604', //long
         'https://www.michiganharpcenter.com/floor-harps-photo-album-.html', //productsurl
