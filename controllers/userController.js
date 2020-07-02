@@ -142,7 +142,9 @@ exports.updateUser = async (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
+        newsletter: req.body.newsletter,
         distanceunit: req.body.distanceunit,
+
     }
     // update the user
     try {
