@@ -2,22 +2,6 @@ const { SellerPaths } = require('../classes/SellerPaths');
 const { SellerPathsLink } = require('../classes/SellerPathsLink');
 
 //#region VENDORS NOT LINKING TO PRODUCTS
-    //#region Harp Connection needs LAT/LONG
-    const HarpConnection = new SellerPaths(
-        'Harp Connection', //name
-        'harp@harptisha.com', //email
-        'USA', //country
-        'North-East', //region
-        'https://www.harpconnection.com/harpstore/harp-UsedHarps.html', //productsUrl
-        '.plusplus', //mainPathId
-        null, //customFns 
-        ($, item) => $(item).find('h3').text().trim(), //titleFn
-        ($, item) => $(item).parent().parent().find('.THCsmall').text().trim(), //priceFn,
-        () => "Short Description not available.", //shortDescFn
-        () => "Long Description not available", //longDescFn
-        ($, item) => `https://www.harpconnection.com${$(item).parent().parent().parent().parent().parent().parent().parent().parent().parent().find('.THCHarpImage').attr('src')}` //productImageUrlFn              
-    );
-    //#endregion 
     //#region Tisha Murvihill, harp services
     const MurvihillHarpServices = new SellerPaths(
         'Find a Harp', //name
@@ -193,7 +177,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Michigan Harp Center', //name
         'michiganharpcenter@gmail.com', //email
         'USA', //country
-        'Mid-west', //region
+        'Mid-West', //region
         '42.534718', // lat
         '-83.110604', //long
         'https://www.michiganharpcenter.com/pedal-harps-photo-album.html', //productsurl
@@ -261,7 +245,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Michigan Harp Center', //name
         'michiganharpcenter@gmail.com', //email
         'USA', //country
-        'Mid-west', //region
+        'Mid-West', //region
         '42.534718', // lat
         '-83.110604', //long
         'https://www.michiganharpcenter.com/lap-harps-photo-album.html', //productsurl
@@ -296,8 +280,7 @@ exports.sellerArray = [
     MichiganHarpCenterPedalHarp,
     MichiganHarpCenterFloorHarp,
     MichiganHarpCenterLapHarp,
-    WestCoastHarps,
-    HarpConnection, 
+    WestCoastHarps, 
     MurvihillHarpServices,
     HarpAngel,
     HarpsEtcLever, //removed for SSL violations
