@@ -178,7 +178,7 @@ exports.emailVerifySend = (user) => {
                                                         line-height:1.8em;">
                                 <h2>Message from findaharp.com</h2>
                                 <p>Dear Findaharp user,<br><br>Thank you for registering, please click on the link below to confirm your email address</p>
-                                <p style="text-decoration: underline; font-size: 24px;"><a style="color:#6A75AA;font-weight: 600;" href="https://findaharp-staging.take2tech.ca?activateemail=${user.email}"> Confirm Email</a></p>
+                                <p style="text-decoration: underline; font-size: 24px;"><a style="color:#6A75AA;font-weight: 600;" href="https://findaharp-staging.take2tech.com/?activateemail=${user.email}"> Confirm Email</a></p>
                                 <p><strong>&copy;2020 <a href="https://findaharp.com" style="color:#6A75AA;font-weight: 600; text-decoration: underline;">findaharp.com</a></strong></p>
                             </body>
                         </html>`
@@ -213,7 +213,7 @@ exports.emailResetPassword = (user) => {
                                 <h2>Message from findaharp.com</h2>
                                 <p>Dear Findaharp user,<br><br>Please click on the link below to
                                     reset your password.</p>
-                                <p style="text-decoration: underline; font-size: 24px;"><a style="color:#6A75AA;font-weight: 600; " href=https://findaharp-staging.take2tech.ca/?resetpasswordemail=${user.email}'"> Reset Password</a></p>
+                                <p style="text-decoration: underline; font-size: 24px;"><a style="color:#6A75AA;font-weight: 600; " href=https://findaharp-staging.take2tech.com/?resetpasswordemail=${user.email}'"> Reset Password</a></p>
                                 <p><strong>&copy;2020 <a href="https://findaharp.com" style="color:#6A75AA;font-weight: 600; text-decoration: underline;">findaharp.com</strong></p>
                             </body>
                         </html>` 
