@@ -21,6 +21,25 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
+    //#region Tisha Murvihill, harp services
+    const FourHarpMusic = new SellerPaths(
+        '4HarpMusic', //name
+        'tisha@findaharp.com', //email
+        'South', //country
+        'South', //region
+        '33.2148', // lat
+        '-97.1331', //long
+        'https://harptisha.com/FourHarpMusicSales.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+        // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    );
+    //#endregion
     //#region HarpAngel
     const HarpAngel = new SellerPaths(
         'Harp Angel', //name
@@ -283,6 +302,7 @@ exports.sellerArray = [
     WestCoastHarps, 
     MurvihillHarpServices,
     HarpAngel,
+    FourHarpMusic,
     HarpsEtcLever, //removed for SSL violations
     HarpsEtcPedal, //removed for SSL violations
     HarpsEtcWire, //removed for SSL violations

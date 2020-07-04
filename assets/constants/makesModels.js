@@ -394,6 +394,14 @@ exports.globalMakesModels = [
                 "productMaker": "Dusty Strings",
                 "productType": "lever",
                 "productSize": 26
+            },
+            {
+                "productAliases": [ "Crescendo"],
+                "_id": "5e8b7deea03397444c70625b",
+                "productTitle": "Crescendo 32",
+                "productMaker": "Dusty Strings",
+                "productType": "lever",
+                "productSize": 32
             }
         ]
     },
@@ -600,9 +608,7 @@ exports.globalMakesModels = [
                 "productSize": 47
             },
             {
-                "productAliases": [
-                    "Troubadour"
-                ],
+                "productAliases": [],
                 "_id": "5e8b7deea03397444c70623a",
                 "productTitle": "Troubadour VI",
                 "productMaker": "Lyon & Healy",
@@ -616,6 +622,14 @@ exports.globalMakesModels = [
                 "productMaker": "Lyon & Healy",
                 "productType": "lever",
                 "productSize": 36
+            },
+            {
+                "productAliases": [],
+                "_id": "5e8b7deea03397444c70623b",
+                "productTitle": "Troubadour II",
+                "productMaker": "Lyon & Healy",
+                "productType": "lever",
+                "productSize": 33
             },
             {
                 "productAliases": [],
@@ -644,6 +658,14 @@ exports.globalMakesModels = [
                 ],
                 "_id": uuid(),
                 "productTitle": "Folk Harp in blue",
+                "productMaker": "Lyon & Healy",
+                "productType": "lever",
+                "productSize": 34
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Folk Harp",
                 "productMaker": "Lyon & Healy",
                 "productType": "lever",
                 "productSize": 34
@@ -765,6 +787,22 @@ exports.globalMakesModels = [
                 "productMaker": "Pratt",
                 "productType": "lever",
                 "productSize": 36
+            },
+            {
+                "productAliases": [ "Princess", "princessa"],
+                "_id": "5e8b7deea03397444c706274",
+                "productTitle": "Princessa",
+                "productMaker": "Pratt",
+                "productType": "lever",
+                "productSize": 36
+            },
+            {
+                "productAliases": [],
+                "_id": "5e8b7deea03397444c706274",
+                "productTitle": "Empress",
+                "productMaker": "Pratt",
+                "productType": "lever",
+                "productSize": 38
             }
         ]
     },

@@ -9,6 +9,7 @@ router.get('/me/:userid', userController.getMe);
 router.patch('/updateuser/:userid', userController.updateUser);
 router.patch('/updatepassword/:userid', userController.updatePassword);
 router.get('/sendresetemail/:useremail', userController.sendResetEmail);
+router.get('/verifyuser/:useremail', userController.verifyUser);
 router.delete('/deleteuser/:userid', userController.deleteUser);
 
 module.exports = router;

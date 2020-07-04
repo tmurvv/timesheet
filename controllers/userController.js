@@ -118,6 +118,49 @@ exports.getAll = async (req, res) => {
         });
     }
 }
+exports.verifyUser = async (req, res) => {
+    console.log(req.params)
+    // get user  
+    const userInfo = await Users.find({email: req.params.useremail});
+    console.log(userInfo)
+    // error if no user
+    if (!userInfo) {
+        return res.status(500).json({
+            title: 'FindAHarp.com | Update User',
+            status: 'fail',
+            message: `User not found.`
+        });
+    }
+    // create new updateUser object
+    const updateUser = {...userInfo, emailverified: true}
+    // update the user
+    try {
+        await Users.findOneAndUpdate({email: req.params.useremail}, {emailverified: true});
+        const updatedUser = await Users.find({email: req.params.useremail});
+        if (!updatedUser) throw new Error();
+       
+        let userCopy = {...updatedUser._doc};
+        delete userCopy.password;
+        
+            res.redirect('http://localhost:3006?activateemail=yes')
+        
+        // res.status(200).json({
+        //     title: 'FindAHarp.com | Update User',
+        //     status: 'success',
+        //     message: 'User updated',
+        //     userCopy
+        // });
+        
+    } catch (e) {
+        res.status(500).json({
+            title: 'FindAHarp.com | Update User',
+            status: 'fail',
+            data: {
+                message: `hereSomething went wrong while updating user: ${e.message}`
+            }
+        });
+    }
+};
 exports.updateUser = async (req, res) => {
     // get user  
     const userInfo = await Users.findById(req.params.userid);
