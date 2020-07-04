@@ -194,8 +194,11 @@ exports.emailVerifySend = (user) => {
     })();
 };
 exports.emailResetPassword = (user) => {
+    console.log('reset top', user)
     // encode email
-    // const emailEncode = btoa(user.email);
+    const emailEncode = btoa(user.email);
+    console.log(emailEncode)
+
     // create transporter
     const transporter = TRANSPORTER;
     
@@ -214,7 +217,7 @@ exports.emailResetPassword = (user) => {
                                 <h2>Message from findaharp.com</h2>
                                 <p>Dear Findaharp user,<br><br>Please click on the link below to
                                     reset your password.</p>
-                                <p style="text-decoration: underline; font-size: 24px;"><a style="color:#6A75AA;font-weight: 600; " href=https://findaharp-staging.take2tech.ca/?resetpasswordemail=${user.email}'"> Reset Password</a></p>
+                                <p style="text-decoration: underline; font-size: 24px;"><a style="color:#6A75AA;font-weight: 600; " href=https://findaharp-staging.take2tech.ca/?reset=${emailEncode}"> Reset Password</a></p>
                                 <p><strong>&copy;2020 <a href="https://findaharp.com" style="color:#6A75AA;font-weight: 600; text-decoration: underline;">findaharp.com</strong></p>
                             </body>
                         </html>` 

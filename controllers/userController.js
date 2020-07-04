@@ -1,4 +1,5 @@
 const uuid = require('uuid');
+const atob = require('atob');
 const bcrypt = require('bcrypt');
 const { Users } = require('../assets/data/Schemas');
 const {emailVerifySend, emailResetPassword} = require('../email');
@@ -189,15 +190,18 @@ exports.updateUser = async (req, res) => {
     }
 }
 exports.updatePassword = async (req, res) => {
-    const userid = req.params.userid;
+    console.log('uys')
+    console.log(req.params.userid)
+    
     // if call is from password reset email
     if (req.body.resetpassword) {
+        const useremail = req.params.userid;
         try {
             // hash password
             const saltRounds=10;
             const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
             // update user
-            const result = await Users.findOneByIdAndUpdate(userid, {password: hashPassword});
+            const result = await Users.findOneAndUpdate({email: useremail}, {password: hashPassword});
             // return result
             res.status(200).json({
                 title: 'FindAHarp.com | Update Password',
