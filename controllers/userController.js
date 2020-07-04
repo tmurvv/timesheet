@@ -38,6 +38,7 @@ exports.createUser = async (req, res) => {
             password: hashPassword,
             newsletter: req.body.newsletter,
             distanceunit: req.body.distanceunit,
+            currency: req.body.currency,
             emailverified: false,
             _date_created: Date.now()
         });
@@ -119,46 +120,21 @@ exports.getAll = async (req, res) => {
     }
 }
 exports.verifyUser = async (req, res) => {
-    console.log(req.params)
     // get user  
     const userInfo = await Users.find({email: req.params.useremail});
-    console.log(userInfo)
     // error if no user
-    if (!userInfo) {
-        return res.status(500).json({
-            title: 'FindAHarp.com | Update User',
-            status: 'fail',
-            message: `User not found.`
-        });
+    if (!userInfo || userInfo.length === 0) {
+        res.redirect('http://localhost:3006?activateemail=notfound')
     }
-    // create new updateUser object
-    const updateUser = {...userInfo, emailverified: true}
     // update the user
     try {
-        await Users.findOneAndUpdate({email: req.params.useremail}, {emailverified: true});
-        const updatedUser = await Users.find({email: req.params.useremail});
+        const updatedUser = await Users.findOneAndUpdate({email: req.params.useremail}, {emailverified: true}, {new: true});
         if (!updatedUser) throw new Error();
-       
-        let userCopy = {...updatedUser._doc};
-        delete userCopy.password;
         
-            res.redirect('http://localhost:3006?activateemail=yes')
-        
-        // res.status(200).json({
-        //     title: 'FindAHarp.com | Update User',
-        //     status: 'success',
-        //     message: 'User updated',
-        //     userCopy
-        // });
-        
+        res.redirect('http://localhost:3006?activateemail=yes')
+
     } catch (e) {
-        res.status(500).json({
-            title: 'FindAHarp.com | Update User',
-            status: 'fail',
-            data: {
-                message: `hereSomething went wrong while updating user: ${e.message}`
-            }
-        });
+        res.redirect('http://localhost:3006?activateemail=no')
     }
 };
 exports.updateUser = async (req, res) => {
@@ -187,7 +163,7 @@ exports.updateUser = async (req, res) => {
         email: req.body.email,
         newsletter: req.body.newsletter,
         distanceunit: req.body.distanceunit,
-
+        currency: req.body.currency
     }
     // update the user
     try {
@@ -213,7 +189,7 @@ exports.updateUser = async (req, res) => {
     }
 }
 exports.updatePassword = async (req, res) => {
-    const email = req.params.userid.substr(0,req.params.userid.length-1);
+    const userid = req.params.userid;
     // if call is from password reset email
     if (req.body.resetpassword) {
         try {
@@ -221,7 +197,7 @@ exports.updatePassword = async (req, res) => {
             const saltRounds=10;
             const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
             // update user
-            const result = await Users.findOneAndUpdate({email: email}, {password: hashPassword});
+            const result = await Users.findOneByIdAndUpdate(userid, {password: hashPassword});
             // return result
             res.status(200).json({
                 title: 'FindAHarp.com | Update Password',
@@ -243,7 +219,8 @@ exports.updatePassword = async (req, res) => {
     } else {
         try {
             // find user
-            const userInfo = await Users.findById(req.params.userid);
+            const userInfo = await Users.findById(userid);
+            
             // check old password
             if(!await bcrypt.compare(req.body.oldpassword, userInfo.password)) {
                 return res.status(500).json({

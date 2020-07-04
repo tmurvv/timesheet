@@ -80,6 +80,14 @@ const usersSchema = new mongoose.Schema({
         },
         default: 'miles'
     },
+    currency: {
+        type: String,
+        enum: {
+            values: ['USD', 'CAD'],
+            message: 'Currency must be "USD" or "CAD".'
+        },
+        default: 'USD'
+    },
     usertype: {
         type: String, 
         enum: {
