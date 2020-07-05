@@ -190,9 +190,11 @@ exports.updateUser = async (req, res) => {
     }
 }
 exports.updatePassword = async (req, res) => {
-    const useremail = req.params.userid;
+    
+    console.log('in', req.params, req.body)
     // if call is from password reset email
     if (req.body.resetpassword) {
+        const useremail = req.params.userid;
         try {
             // hash password
             const saltRounds=10;
@@ -218,6 +220,7 @@ exports.updatePassword = async (req, res) => {
         }
     // else call is from user profile change password
     } else {
+        const userid = req.params.userid;
         try {
             // find user
             const userInfo = await Users.findById(userid);
