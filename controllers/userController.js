@@ -190,9 +190,9 @@ exports.updateUser = async (req, res) => {
     }
 }
 exports.updatePassword = async (req, res) => {
+    const useremail = req.params.userid;
     // if call is from password reset email
     if (req.body.resetpassword) {
-        const useremail = req.params.userid;
         try {
             // hash password
             const saltRounds=10;
