@@ -8,8 +8,6 @@ const { Users } = require('./assets/data/Schemas');
 const { TRANSPORTER } = require('./assets/constants/emailTransport');
 
 exports.sendMailUserToSeller = (contactform) => {
-    // encode email for transport
-    // const emailEncode = btoa(user.email); // BREAKING, email not encoded below
     // create reusable transporter object using the default SMTP transport
     const transporter = TRANSPORTER;
     // Send Email
@@ -109,8 +107,6 @@ exports.sendMailUserToSeller = (contactform) => {
     })();
 };
 exports.contactUsForm = (contactform) => {
-    // encode email for transport
-    // const emailEncode = btoa(user.email); // BREAKING, email not encoded below
     // create reusable transporter object using the default SMTP transport
     const transporter = TRANSPORTER;
     // Send Email
@@ -160,8 +156,6 @@ exports.contactUsForm = (contactform) => {
     })();
 };
 exports.emailVerifySend = (user) => {
-    // encode email for transport
-    // const emailEncode = btoa(user.email); // BREAKING, email not encoded below
     // create reusable transporter object using the default SMTP transport
     const transporter = TRANSPORTER;
     // Send Email
@@ -178,7 +172,7 @@ exports.emailVerifySend = (user) => {
                                                         line-height:1.8em;">
                                 <h2>Message from findaharp.com</h2>
                                 <p>Dear Findaharp user,<br><br>Thank you for registering, please click on the link below to confirm your email address</p>
-                                <p style="text-decoration: underline; font-size: 24px;"><a style="color:#6A75AA;font-weight: 600;" href="https:findaharp-api-staging.herokuapp.com/api/v1/users/verifyuser/tmurv@shaw.ca"> Confirm Email</a></p> 
+                                <p style="text-decoration: underline; font-size: 24px;"><a style="color:#6A75AA;font-weight: 600;" href="https://findaharp-api-staging.herokuapp.com/api/v1/users/verifyuser/tmurv@shaw.ca"> Confirm Email</a></p> 
                                 <p><strong>&copy;2020 <a href="https://findaharp.com" style="color:#6A75AA;font-weight: 600; text-decoration: underline;">findaharp.com</a></strong></p>
                             </body>
                         </html>`
@@ -193,10 +187,8 @@ exports.emailVerifySend = (user) => {
     })();
 };
 exports.emailResetPassword = (user) => {
-    console.log('reset top', user)
     // encode email
     const emailEncode = btoa(user.email);
-    console.log(emailEncode)
 
     // create transporter
     const transporter = TRANSPORTER;
@@ -209,7 +201,7 @@ exports.emailResetPassword = (user) => {
                 from: '<harps@findaharp.com>', // sender address
                 to: `${user.email}`, // list of receivers
                 subject: `Findaharp.com, Password Reset`,
-                text: `Welcome ${user.firstname} ${user.lastname}, please click the button below to reset your password.`, //BREAKING no encode
+                text: `Welcome ${user.firstname} ${user.lastname}, please click the button below to reset your password.`,
                 html: `<html>
                             <body style="color:#083a08; font-family: Lato, Arial, Helvetica, sans-serif;
                                                         line-height:1.8em;">

@@ -190,9 +190,6 @@ exports.updateUser = async (req, res) => {
     }
 }
 exports.updatePassword = async (req, res) => {
-    console.log('uys')
-    console.log(req.params.userid)
-    
     // if call is from password reset email
     if (req.body.resetpassword) {
         const useremail = req.params.userid;
@@ -289,13 +286,42 @@ exports.sendResetEmail = async (req, res) => {
     }
 }
 exports.deleteUser = async (req, res) => {
+    // get user  
+    const userInfo = await Users.findById(req.params.userid);
+    // error if no user
+    if (!userInfo) {
+        return res.status(500).json({
+            title: 'FindAHarp.com | Update User',
+            status: 'fail',
+            message: `User not found.`
+        });
+    }
+    // check password
+    try {
+        if(!await bcrypt.compare(req.query.editpassword, userInfo.password)) {
+            return res.status(500).json({
+                title: 'FindAHarp.com | Update User',
+                status: 'fail',
+                message: `Password incorrect.`
+            });
+        }
+    } catch(e) {
+        return res.status(500).json({
+            title: 'FindAHarp.com | Delete User',
+            status: 'fail',
+            data: {
+                message: `Something went wrong while deleting user: ${e.message}`
+            }
+        });
+    }
+    
     try {
         // find and delete user
         const user = await Users.findByIdAndDelete(req.params.userid);
         // throw error if not successful
         if (!user) throw new Error();
         // return result
-        res.status(200).json({
+        return res.status(200).json({
             title: 'FindAHarp.com | Delete User',
             status: 'success',
             data: {
@@ -304,7 +330,7 @@ exports.deleteUser = async (req, res) => {
             }
         });
     } catch (e) {
-        res.status(500).json({
+        return res.status(500).json({
             title: 'FindAHarp.com | Delete User',
             status: 'fail',
             data: {

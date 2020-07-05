@@ -119,7 +119,7 @@ app.post('/api/v1/contactsellerform', async (req, res) => {
 
 // Run send email
 app.post('/api/v1/emailverify/', catchAsync(async (req, res) => {
-    const decodeEmail = atob(req.body.email); // BREAKING, decode
+    const decodeEmail = atob(req.body.email);
     
     try {
         const user = await Users.findOne({email: req.params.email});
