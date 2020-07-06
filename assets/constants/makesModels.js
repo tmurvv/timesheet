@@ -695,7 +695,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Markwood 29 Bronze",
                 "productMaker": "Markwood",
-                "productType": "Lever",
+                "productType": "lever",
                 "productSize": 29
             }
         ]
@@ -851,7 +851,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Paraguayan Harp",
                 "productMaker": "Rojas",
-                "productType": "Lever-Free",
+                "productType": "lever-free",
                 "productSize": 38
             }
         ]
