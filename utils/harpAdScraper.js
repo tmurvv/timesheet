@@ -85,7 +85,7 @@ const parseStoreInfo = async (seller, data) => {
             divider: '00000000000000000000000'
         } 
         
-        // console.log('product', product)      
+           
         // check for vendor custom functions
         if (seller.hasOwnProperty('customFns') && seller.customFns) {
             seller.customFns.map(customFuncString => {
@@ -97,9 +97,11 @@ const parseStoreInfo = async (seller, data) => {
                 }              
             });
         }
+        // console.log('product', product)   
         //write to product file
-        // console.log('mainproductlist', mainProductList)
+        
         if (product) mainProductList.push(product);
+        // console.log('mainproductlist', mainProductList)
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) console.log('Error writing used-harp list function:', err.message);
         });

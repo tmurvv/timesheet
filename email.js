@@ -16,7 +16,7 @@ exports.sendMailUserToSeller = (contactform) => {
             // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
             const info = await transporter.sendMail({
                 from: '<harps@findaharp.com>', // sender address
-                to: contactform.selleremail, // list of receivers BREAKING
+                to: contactform.selleremail,
                 subject: `Findaharp.com, contact from potential harp buyer`,
                 text: `This customer inquiry email from findaharp.com is intended for html viewing. Here is the raw data in case html is unavailable. ${contactform}`,
                 html: `<html>
@@ -62,7 +62,7 @@ exports.sendMailUserToSeller = (contactform) => {
             // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
             const info = await transporter.sendMail({
                 from: '<harps@findaharp.com>', // sender address
-                to: 'tisha@findaharp.com', // list of receivers BREAKING
+                to: 'tisha@findaharp.com', 
                 subject: `Findaharp.com, contact from potential harp buyer`,
                 text: `This customer inquiry email from findaharp.com is intended for html viewing. Here is the raw data in case html is unavailable. ${contactform}`,
                 html: `<html>
@@ -115,7 +115,7 @@ exports.contactUsForm = (contactform) => {
             // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
             const info = await transporter.sendMail({
                 from: 'harps@findaharp.com', // sender address
-                to: contactform.selleremail, // list of receivers BREAKING
+                to: contactform.selleremail,
                 subject: `Contact Us form from findaharp.com`,
                 text: `This contact us form from findaharp.com is intended for html viewing. Here is the raw data in case html is unavailable. ${contactform}`,
                 html: `<html>

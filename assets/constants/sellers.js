@@ -81,8 +81,9 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         return {...product, productPrice: product.productPrice.substr(product.productPrice.indexOf('$')-3,9)};
     };
     WestCoastHarps.imageCustom = (product) => {
-        if (product.productModel === 'Feather') return {...product, productImageUrl: 'https://findaharp-api-staging.herokuapp.com/assets/img/Feather.jpg'};
-        if (product.productModel === 'Paraguayan Harp') return {...product, productImageUrl: 'https://findaharp-api-staging.herokuapp.com/assets/img/Paraguayan.jpg'};   
+        if (product.productModel === 'Feather') return {...product, productImageUrl: 'https://findaharp-api.herokuapp.com/assets/img/Feather.jpg'};
+        if (product.productModel === 'Paraguayan Harp') return {...product, productImageUrl: 'https://findaharp-api.herokuapp.com/assets/img/Paraguayan.jpg'};   
+        return product
     };
     //#endregion
 //#endregion
