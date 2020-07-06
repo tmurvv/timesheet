@@ -310,14 +310,14 @@ exports.sellerArray = [
     MichiganHarpCenterPedalHarp,
     MichiganHarpCenterFloorHarp,
     MichiganHarpCenterLapHarp,
-    // WestCoastHarps, 
-    // MurvihillHarpServices,
-    // HarpAngel,
-    // FourHarpMusic,
-    // HarpsEtcLever, //removed for SSL violations
-    // HarpsEtcPedal, //removed for SSL violations
-    // HarpsEtcWire, //removed for SSL violations
-    // HarpsEtcHistorical //removed for SSL violations
+    WestCoastHarps, 
+    MurvihillHarpServices,
+    HarpAngel,
+    FourHarpMusic,
+    HarpsEtcLever, //removed for SSL violations
+    HarpsEtcPedal, //removed for SSL violations
+    HarpsEtcWire, //removed for SSL violations
+    HarpsEtcHistorical //removed for SSL violations
 ];
 
 // EXAMPLE OF CUSTOM FUNCTION
