@@ -5,7 +5,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Tisha Murvihill, harp services
     const MurvihillHarpServices = new SellerPaths(
         'Find a Harp', //name
-        'tisha@findaharp.com', //email
+        'harp@harptisha.com', //email
         'Canada-West', //country
         'Canada-West', //region
         '51.214380', // lat
@@ -24,7 +24,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region 4harpmusic.com
     const FourHarpMusic = new SellerPaths(
         '4HarpMusic', //name
-        'tisha@findaharp.com', //email
+        'txabby@gmail.com', //email
         'South', //country
         'South', //region
         '33.2148', // lat
@@ -43,7 +43,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region HarpAngel
     const HarpAngel = new SellerPaths(
         'Harp Angel', //name
-        'tisha@findaharp.com', //email
+        'harpangelharpist@gmail.com', //email
         'Canada-West', //country
         'Canada-West', //region
         '51.0900', // lat
@@ -62,7 +62,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region West Coast Harps
     const WestCoastHarps = new SellerPaths(
         'West Coast Harps', //name
-        'harp@harptisha.com', //email
+        'alison@westcoastharps.com', //email
         'Canada-West', //country
         'Canada-West', //region
         '49.106772', //lat 
@@ -90,7 +90,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Harps Etc. lever
     const HarpsEtcLever = new SellerPathsLink(
         'HarpsEtc', //name
-        'harp@harptisha.com', //email
+        'info@harpsetc.com', //email
         'USA', //country
         'Pacific', //region
         '37.900690', // lat 
@@ -116,7 +116,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Harps Etc. Pedal
     const HarpsEtcPedal = new SellerPathsLink(
         'HarpsEtc', //name
-        'harp@harptisha.com', //email
+        'info@harpsetc.com', //email
         'USA', //country
         'Pacific', //region
         '37.900690', // lat 
@@ -142,7 +142,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Harps Etc. Wire
     const HarpsEtcWire = new SellerPathsLink(
         'HarpsEtc', //name
-        'harp@harptisha.com', //email
+        'info@harpsetc.com', //email
         'USA', //country
         'Pacific', //region
         '37.900690', // lat 
@@ -168,7 +168,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Harps Etc. Historical
     const HarpsEtcHistorical = new SellerPathsLink(
         'HarpsEtc', //name
-        'harp@harptisha.com', //email
+        'info@harpsetc.com', //email
         'USA', //country
         'Pacific', //region
         '37.900690', // lat 
