@@ -190,8 +190,6 @@ exports.updateUser = async (req, res) => {
     }
 }
 exports.updatePassword = async (req, res) => {
-    
-    console.log('in', req.params, req.body)
     // if call is from password reset email
     if (req.body.resetpassword) {
         const useremail = req.params.userid;

@@ -217,7 +217,10 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
             return returnIt;
         },
         null, //shortDescLinkFn
-        ($, item) => $(item).find('.photoInfo').text().trim(), //longDescLinkFn,
+        ($, item) => {
+            const h3Length = $(item).find('.photoInfo').find('h3').text().length;
+            return $(item).find('.photoInfo').text().trim().substring(h3Length+1);
+        }, //longDescLinkFn,
         ($, item) => `https://michiganharpcenter.com${$(item).find('.photoContainer').find('img').attr('src')}` //imageUrlLinkFn
     );
     MichiganHarpCenterPedalHarp.ownerException = (product) => {
@@ -251,7 +254,11 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
             return returnIt;
         }, //priceLinkFn
         null, //shortDescLinkFn
-        ($, item) => $(item).find('.photoInfo').text().trim(), //longDescLinkFn,
+        ($, item) => {
+            // long desc formatted '<div class='photoInfo><h3>LH15</h3>LH15 long desc</div>' have to take out h3 or LH15 is repeated twice in a row in result
+            const h3Length = $(item).find('.photoInfo').find('h3').text().length;
+            return $(item).find('.photoInfo').text().trim().substring(h3Length+1);
+        }, //longDescLinkFn,
         ($, item) => `https://michiganharpcenter.com${$(item).find('.photoContainer').find('img').attr('src')}` //imageUrlLinkFn
     );
     MichiganHarpCenterFloorHarp.ownerException = (product) => {
@@ -285,7 +292,11 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
             return returnIt;
         }, //priceLinkFn
         null, //shortDescLinkFn
-        ($, item) => $(item).find('.photoInfo').text().trim(), //longDescLinkFn,
+        ($, item) => {
+            // long desc formatted '<div class='photoInfo><h3>LH15</h3>LH15 long desc</div>' have to take out h3 or LH15 is repeated twice in a row in result
+            const h3Length = $(item).find('.photoInfo').find('h3').text().length;
+            return $(item).find('.photoInfo').text().trim().substring(h3Length+1);
+        }, //longDescLinkFn,
         ($, item) => `https://michiganharpcenter.com${$(item).find('.photoContainer').find('img').attr('src')}` //imageUrlLinkFn
     );
     MichiganHarpCenterLapHarp.ownerException = (product) => {
@@ -299,14 +310,14 @@ exports.sellerArray = [
     MichiganHarpCenterPedalHarp,
     MichiganHarpCenterFloorHarp,
     MichiganHarpCenterLapHarp,
-    WestCoastHarps, 
-    MurvihillHarpServices,
-    HarpAngel,
-    FourHarpMusic,
-    HarpsEtcLever, //removed for SSL violations
-    HarpsEtcPedal, //removed for SSL violations
-    HarpsEtcWire, //removed for SSL violations
-    HarpsEtcHistorical //removed for SSL violations
+    // WestCoastHarps, 
+    // MurvihillHarpServices,
+    // HarpAngel,
+    // FourHarpMusic,
+    // HarpsEtcLever, //removed for SSL violations
+    // HarpsEtcPedal, //removed for SSL violations
+    // HarpsEtcWire, //removed for SSL violations
+    // HarpsEtcHistorical //removed for SSL violations
 ];
 
 // EXAMPLE OF CUSTOM FUNCTION
