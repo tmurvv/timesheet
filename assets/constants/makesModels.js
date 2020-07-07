@@ -228,7 +228,7 @@ exports.globalMakesModels = [
         "sellerName": "Clarke",
         "sellerProducts": [
             {
-                "productAliases": [ "Clarke harp"],
+                "productAliases": [ "Clarke harp", "Clarke Irish Harp"],
                 "_id": "5e8b7deea03397444c706267",
                 "productTitle": "Clarke Harp",
                 "productMaker": "Clarke",
@@ -617,6 +617,14 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "The Troubadour",
+                "productMaker": "Lyon & Healy",
+                "productType": "lever",
+                "productSize": 33
+            },
+            {
+                "productAliases": [],
                 "_id": "5e8b7deea03397444c70623b",
                 "productTitle": "Troubadour V",
                 "productMaker": "Lyon & Healy",
@@ -855,7 +863,7 @@ exports.globalMakesModels = [
         "sellerName": "Rojas",
         "sellerProducts": [
             {
-                "productAliases": [],
+                "productAliases": ["Paraguayan harp"],
                 "_id": uuid(),
                 "productTitle": "Paraguayan Harp",
                 "productMaker": "Rojas",

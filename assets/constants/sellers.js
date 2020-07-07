@@ -6,7 +6,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const MurvihillHarpServices = new SellerPaths(
         'Find a Harp', //name
         'harp@harptisha.com', //email
-        'Canada-West', //country
+        'Calgary, Canada', //short location
         'Canada-West', //region
         '51.214380', // lat
         '-114.466894', //long
@@ -25,7 +25,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const FourHarpMusic = new SellerPaths(
         '4HarpMusic', //name
         'txabby@gmail.com', //email
-        'South', //country
+        'Dallas area', //country
         'South', //region
         '33.2148', // lat
         '-97.1331', //long
@@ -44,7 +44,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const HarpAngel = new SellerPaths(
         'Harp Angel', //name
         'harpangelharpist@gmail.com', //email
-        'Canada-West', //country
+        'AB, Canada', //country
         'Canada-West', //region
         '51.0900', // lat
         '-115.3442', //long
@@ -63,7 +63,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const WestCoastHarps = new SellerPaths(
         'West Coast Harps', //name
         'alison@westcoastharps.com', //email
-        'Canada-West', //country
+        'Vancouver area', //short location
         'Canada-West', //region
         '49.106772', //lat 
         '-123.851779', //long
@@ -92,7 +92,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const HarpsEtcLever = new SellerPathsLink(
         'HarpsEtc', //name
         'info@harpsetc.com', //email
-        'USA', //country
+        'San Francisco area', //short location
         'Pacific', //region
         '37.900690', // lat 
         '-122.061810', //long
@@ -118,7 +118,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const HarpsEtcPedal = new SellerPathsLink(
         'HarpsEtc', //name
         'info@harpsetc.com', //email
-        'USA', //country
+        'San Francisco area', //short location
         'Pacific', //region
         '37.900690', // lat 
         '-122.061810', //long
@@ -144,7 +144,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const HarpsEtcWire = new SellerPathsLink(
         'HarpsEtc', //name
         'info@harpsetc.com', //email
-        'USA', //country
+        'San Francisco area', //short location
         'Pacific', //region
         '37.900690', // lat 
         '-122.061810', //long
@@ -170,7 +170,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const HarpsEtcHistorical = new SellerPathsLink(
         'HarpsEtc', //name
         'info@harpsetc.com', //email
-        'USA', //country
+        'San Francisco area', //short location
         'Pacific', //region
         '37.900690', // lat 
         '-122.061810', //long
@@ -196,7 +196,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const MichiganHarpCenterPedalHarp = new SellerPathsLink(
         'Michigan Harp Center', //name
         'michiganharpcenter@gmail.com', //email
-        'USA', //country
+        'Detroit area', //country
         'Mid-West', //region
         '42.534718', // lat
         '-83.110604', //long
@@ -233,7 +233,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const MichiganHarpCenterFloorHarp = new SellerPathsLink(
         'Michigan Harp Center', //name
         'michiganharpcenter@gmail.com', //email
-        'USA', //country
+        'Detroit area', //country
         'Mid-West', //region
         '42.534718', // lat
         '-83.110604', //long
@@ -271,7 +271,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     const MichiganHarpCenterLapHarp = new SellerPathsLink(
         'Michigan Harp Center', //name
         'michiganharpcenter@gmail.com', //email
-        'USA', //country
+        'Detroit area', //country
         'Mid-West', //region
         '42.534718', // lat
         '-83.110604', //long
