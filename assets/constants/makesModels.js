@@ -697,6 +697,14 @@ exports.globalMakesModels = [
                 "productMaker": "Markwood",
                 "productType": "lever",
                 "productSize": 29
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Markwood lever harp",
+                "productMaker": "Markwood",
+                "productType": "lever",
+                "productSize": 33
             }
         ]
     },
