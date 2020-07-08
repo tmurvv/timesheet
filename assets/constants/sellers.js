@@ -82,7 +82,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     };
     WestCoastHarps.imageCustom = (product) => {
         if (product.productModel === 'Feather') return {...product, productImageUrl: 'https://findaharp-api.herokuapp.com/assets/img/Feather.jpg'};
-        if (product.productModel === 'Paraguayan Harp') return {...product, productImageUrl: 'https://findaharp-api.herokuapp.com/assets/img/Paraguayan.jpg'};   
+        if (product.productModel === 'Athena EX') return {...product, productImageUrl: 'https://findaharp-api.herokuapp.com/assets/img/camac1.jpg'};   
         return product
     };
     //#endregion
