@@ -126,6 +126,14 @@ exports.globalMakesModels = [
                 "productSize": 47
             },
             {
+                "productAliases": [ "Athena"],
+                "_id": "5e8b7deea03397444c70623f",
+                "productTitle": "Athena EX",
+                "productMaker": "Camac",
+                "productType": "pedal",
+                "productSize": 47
+            },
+            {
                 "productAliases": [
                     "Corrigan"
                 ],
