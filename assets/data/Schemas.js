@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
     productMaker: String,
     productType: {
         type: String,
-        enum: ['lever', 'pedal', 'lever-free', 'not sure', 'other']
+        enum: ['lever', 'pedal', 'lever-free', 'wire', 'cross-strung', 'triple-strung', 'not sure', 'other']
     },
     productSize: Number,
     productAliases: Array
@@ -29,6 +29,23 @@ const makesModelsSchema = new mongoose.Schema({
 },{ versionKey: false });
 
 const MakesModels = mongoose.model('MakesModels', makesModelsSchema);
+
+// *********Main Doc
+const makesModelsTestSchema = new mongoose.Schema({
+    makerName: {
+        type: String,
+        required: [true, 'A product maker (manufacturer) name is required.']
+    },
+    makerAliases: Array,
+    
+    // Array of subdocuments
+    makerProducts: [productSchema],
+    
+},{ versionKey: false });
+
+const MakesModelsTest = mongoose.model('MakesModelsTest', makesModelsTestSchema);
+
+
 // Main Doc
 const contactRequestsSchema = new mongoose.Schema({
     firstname: {type: String},
@@ -105,6 +122,7 @@ const usersSchema = new mongoose.Schema({
 const Users = mongoose.model('Users', usersSchema);
 
 module.exports.MakesModels = MakesModels;
+module.exports.MakesModelsTest = MakesModelsTest;
 module.exports.ContactRequests = ContactRequests;
 module.exports.Users = Users;
 

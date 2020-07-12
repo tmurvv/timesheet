@@ -6,7 +6,7 @@
 - check West Coast Harps photo addresses in sellers.js
 - make sure download images is enabled
 - check email.js for localhost:3006, needs to be findaharp.com for production
-- check DEPLOYSITEPARTIAL in config
+- check DEPLOYSITEPARTIAL in config, for images, not updated on heroku
 - search for console.lok
 - Search for "BREAKINk"
 
