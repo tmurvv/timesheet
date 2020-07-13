@@ -54,7 +54,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
         ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
         ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
-        ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
         ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
@@ -73,7 +73,12 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => $(item).parent().prev().text(), // titleFn
         ($, item) => $(item).parent().next().find('span').text(), // priceFn,
         ($, item) => "ShortDescFn", // shortDescFn
-        ($, item) => $(item).text(), // longDescFn
+        ($, item) => 
+        {
+            console.log($(item).find('.wsite-multicol-table-wrap').html().replace(/class="wsite-multicol-col" style="width:50%; padding:0 15px;"/g,'class="wsite-multicol-col" style="width:100%; padding: 0"')) // longDescFn
+            return $(item).find('.wsite-multicol-table-wrap').html().replace(/class="wsite-multicol-col" style="width:50%; padding:0 15px;"/g,'class="wsite-multicol-col" style="width:100%; padding: 0"') // longDescFn
+            
+        },
         ($, item) => null // productImageUrlFn
     );
     WestCoastHarps.priceCustom = (product) => {
@@ -109,7 +114,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         null, //titleLinkFn
         null, //priceLinkFn
         null, //shortDescLinkFn
-        ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
+        ($, item) => {if($(item).find('.content-description').html()) return $(item).find('.content-description').html()}, //longDescLinkFn,
         ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
     );
     HarpsEtcLever.sellerAxiosResponsePath = '';
@@ -308,17 +313,17 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
 //#endregion
 
 exports.sellerArray = [
-    MichiganHarpCenterPedalHarp,
-    MichiganHarpCenterFloorHarp,
-    MichiganHarpCenterLapHarp,
-    WestCoastHarps, 
-    MurvihillHarpServices,
-    HarpAngel,
-    FourHarpMusic,
+    // MichiganHarpCenterPedalHarp, //BREAKING
+    // MichiganHarpCenterFloorHarp,
+    // MichiganHarpCenterLapHarp,
+    // WestCoastHarps, 
+    // MurvihillHarpServices,
+    // HarpAngel,
+    // FourHarpMusic,
     HarpsEtcLever, //removed for SSL violations
-    HarpsEtcPedal, //removed for SSL violations
-    HarpsEtcWire, //removed for SSL violations
-    HarpsEtcHistorical //removed for SSL violations
+    // HarpsEtcPedal, //removed for SSL violations
+    // HarpsEtcWire, //removed for SSL violations
+    // HarpsEtcHistorical //removed for SSL violations
 ];
 
 // EXAMPLE OF CUSTOM FUNCTION
