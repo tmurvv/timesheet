@@ -52,7 +52,6 @@ const parseStoreInfo = async (seller, data) => {
         
         // Parse out search fields from product details
         const makeModelTypeSize = await getMakeModelTypeSize(productTitle); //product details array, order as name implies
-        if (!makeModelTypeSize[1]) console.log(makeModelTypeSize[1], '|', productTitle)
         // handle image specifics
         if (!productImageUrl) productImageUrl = 'genericHarp.png';
         let shortProductImageUrl;
@@ -107,7 +106,6 @@ const parseStoreInfo = async (seller, data) => {
         fs.writeFile('assets/constants/usedHarpList.json', JSON.stringify(mainProductList), function (err) {
             if (err) console.log('Error writing used-harp list function:', err.message);
         });
-        // console.log(mainProductList)
         return mainProductList;
     });         
 }

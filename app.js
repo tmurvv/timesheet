@@ -31,64 +31,6 @@ const app = express();
 const emitter = new EventEmitter;
 emitter.setMaxListeners(50);
 
-
-
-
-//#region Test new MakesModels
-// refreshMakesModels(); //BREAKING
-
-// const makerObj = {
-//     "findaharpFinishes": {
-//         "": {
-//             'harptype': "",
-//             'strings': null,
-//             'othernames': []
-//         },
-//         "othernames": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'blue', 'zebrawood', 'other']
-//     }
-// };
-// //Sub Docs
-//     // var Product = mongoose.model('Product', productSchema);
-//     // const makerObj = productMakesModels
-//     async function addModel(newMaker) {
-//         const back = await MakesModels.create(newMaker)
-//         console.log(back)
-//     }
-//     const makers = Object.keys(makerObj);
-//         makers.map(maker => {
-//             // maker product info
-//             const makerProducts = [];
-//             const products = (leaf(makerObj, maker));
-//             const productDeets = Object.keys(products);
-            
-//             productDeets.map((deet, idx) => {
-//                 const productDetails = leaf(products, deet);
-//                 if (productDetails.harptype) {
-//                     const newProduct = {
-//                         productTitle: Object.keys(products)[idx],
-//                         productMaker: maker,
-//                         productType: productDetails.harptype,
-//                         productSize: productDetails.strings,
-//                         productAliases: productDetails.othernames
-//                     }
-//                     makerProducts.push(newProduct);
-//                 }        
-//             })
-    
-//             // main maker info
-//             const makerObject = (leaf(makerObj, maker));
-//             const newMaker = {
-//                 makerName: maker,
-//                 makerAliases: makerObject.othernames,
-//                 makerProducts
-//             }
-//             addModel(newMaker);
-//         });
-//#endregion
-
-
-
-
 //security setup ** see commented code below
 app.use(helmet());
 app.use(xss());
