@@ -135,7 +135,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         null, //titleLinkFn
         null, //priceLinkFn
         null, //shortDescLinkFn
-        ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
+        ($, item) => {if($(item).find('.content-description').html()) return $(item).find('.content-description').html()}, //longDescLinkFn,
         ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
     );
     HarpsEtcPedal.sellerAxiosResponsePath = '';
@@ -161,7 +161,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         null, //titleLinkFn
         null, //priceLinkFn
         null, //shortDescLinkFn
-        ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
+        ($, item) => {if($(item).find('.content-description').html()) return $(item).find('.content-description').html()}, //longDescLinkFn,
         ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
     );
     HarpsEtcWire.sellerAxiosResponsePath = '';
@@ -187,7 +187,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         null, //titleLinkFn
         null, //priceLinkFn
         null, //shortDescLinkFn
-        ($, item) => {if($(item).find('.content-description').find('p').text().trim()) return $(item).find('p').text().trim()}, //longDescLinkFn,
+        ($, item) => {if($(item).find('.content-description').html()) return $(item).find('.content-description').html()}, //longDescLinkFn,
         ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
     );
     HarpsEtcHistorical.sellerAxiosResponsePath = '';
