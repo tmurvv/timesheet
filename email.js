@@ -129,8 +129,9 @@ exports.contactUsForm = (contactform) => {
                                 <span style="color:#6A75AA;font-size:20px;">Details of inquiry:</span><br />
                                 Customer First Name: ${contactform.firstname}<br />
                                 Customer Last Name: ${contactform.lastname}<br />
-                                Customer Email: ${contactform.email}
-                                <br><br/>
+                                Customer Email: ${contactform.email}<br />
+                                Newsletter Signup: ${contactform.newsletter?'true':'unchanged'}
+                                <br />
                                 Customer Comments/Questions: ${contactform.comments}
                                 <br />
                                 <span style="text-decoration: underline; font-size: 20px;"><a style="color:#6A75AA;font-weight: 600;" href="mailto: ${contactform.email}">Reply to Customer</a></span>

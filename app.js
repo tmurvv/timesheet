@@ -77,6 +77,13 @@ app.post('/api/v1/contactform', async (req, res) => {
     try {
         const contact = Object.assign({ contactId: uuid() }, req.body);
         const added = await ContactRequests.create(contact);
+        if (contact.newsletter===true) {
+            try {
+                
+            } catch(e) {
+
+            }
+        }
         contactUsForm(contact);
         res.status(200).json({
             title: 'FindAHarp.com | Create Contact',

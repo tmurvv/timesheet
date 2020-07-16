@@ -125,17 +125,17 @@ exports.verifyUser = async (req, res) => {
     const userInfo = await Users.find({email: req.params.useremail});
     // error if no user
     if (!userInfo || userInfo.length === 0) {
-        res.redirect('https://findaharp-staging.take2tech.ca?activateemail=notfound')
+        res.redirect('https://findaharp.com?activateemail=notfound')
     }
     // update the user
     try {
         const updatedUser = await Users.findOneAndUpdate({email: req.params.useremail}, {emailverified: true}, {new: true});
         if (!updatedUser) throw new Error();
         
-        res.redirect('https://findaharp-staging.take2tech.ca?activateemail=yes')
+        res.redirect('https://findaharp.com?activateemail=yes')
 
     } catch (e) {
-        res.redirect('https://findaharp-staging.take2tech.ca?activateemail=no')
+        res.redirect('https://findaharp.com?activateemail=no')
     }
 };
 exports.updateUser = async (req, res) => {

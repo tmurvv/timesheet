@@ -9,6 +9,7 @@
 - check DEPLOYSITEPARTIAL in config, for images, not updated on heroku
 - search for console.lok
 - Search for "BREAKINk"
+- search for staging, testing, 3006
 
 #### Run tests
 - in package.json make sure testing set to all tests
