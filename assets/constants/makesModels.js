@@ -233,13 +233,13 @@ exports.globalMakesModels = [
     },
     {
         "sellerAliases": [],
-        "sellerName": "Clarke",
+        "sellerName": "Clark",
         "sellerProducts": [
             {
-                "productAliases": [ "Clarke harp", "Clarke Irish Harp"],
+                "productAliases": [ "Clarke harp", "Clarke Harp", "Clarke Irish Harp", "Clark Harp"],
                 "_id": "5e8b7deea03397444c706267",
-                "productTitle": "Clarke Harp",
-                "productMaker": "Clarke",
+                "productTitle": "Clark Irish Harp",
+                "productMaker": "Clark",
                 "productType": "lever",
                 "productSize": ''
             }
