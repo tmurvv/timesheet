@@ -596,7 +596,7 @@ exports.globalMakesModels = [
             {
                 "productAliases": [],
                 "_id": uuid(),
-                "productTitle": "Lyon & Healy Pedal Harp |",
+                "productTitle": "Style unknown",
                 "productMaker": "Lyon & Healy",
                 "productType": "pedal",
                 "productSize": null
