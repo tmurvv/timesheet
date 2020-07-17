@@ -16,7 +16,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
         ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
         ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
-        ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
         ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
@@ -308,17 +308,17 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
 //#endregion
 
 exports.sellerArray = [
-    MichiganHarpCenterPedalHarp,
-    MichiganHarpCenterFloorHarp,
-    MichiganHarpCenterLapHarp,
-    WestCoastHarps, 
+    // MichiganHarpCenterPedalHarp,
+    // MichiganHarpCenterFloorHarp,
+    // MichiganHarpCenterLapHarp,
+    // WestCoastHarps, 
     MurvihillHarpServices,
     HarpAngel,
     FourHarpMusic,
-    HarpsEtcLever, //removed for SSL violations
-    HarpsEtcPedal, //removed for SSL violations
-    HarpsEtcWire, //removed for SSL violations
-    HarpsEtcHistorical //removed for SSL violations
+    // HarpsEtcLever, //removed for SSL violations
+    // HarpsEtcPedal, //removed for SSL violations
+    // HarpsEtcWire, //removed for SSL violations
+    // HarpsEtcHistorical //removed for SSL violations
 ];
 
 // EXAMPLE OF CUSTOM FUNCTION

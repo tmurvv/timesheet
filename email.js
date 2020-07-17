@@ -214,7 +214,6 @@ exports.emailResetPassword = (user) => {
                             </body>
                         </html>` 
             });
-
         } catch (error) {
             console.error(error);
 
