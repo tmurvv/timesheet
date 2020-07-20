@@ -34,16 +34,16 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Lady Tyger",
                 "productMaker": "Argent Fox",
-                "productType": "Wire/Cross/Double/Triple",
-                "productSize": "triple-strung"
+                "productType": "triple-strung",
+                "productSize": "Wire/Cross/Double/Triple"
             },
             {
                 "productAliases": [ "David" ],
                 "_id": uuid(),
                 "productTitle": "Lord David",
                 "productMaker": "Argent Fox",
-                "productType": "Wire/Cross/Double/Triple",
-                "productSize": "cross-strung"
+                "productType": "cross-strung",
+                "productSize": "Wire/Cross/Double/Triple"
             },
             {
                 "productAliases": [ "Emily" ],
@@ -58,8 +58,8 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Brother Benjamine",
                 "productMaker": "Argent Fox",
-                "productType": "lever-free",
-                "productSize": ""
+                "productType": "cross-string",
+                "productSize": "Wire/Cross/Double/Triple"
             },
             {
                 "productAliases": [],
@@ -94,8 +94,8 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Clement wire cross strung",
                 "productMaker": "Clement",
-                "productType": "Wire/Cross/Double/Triple",
-                "productSize": null
+                "productType": "cross-strung",
+                "productSize": "Wire/Cross/Double/Triple"
             }
         ]
     },
@@ -728,7 +728,7 @@ exports.globalMakesModels = [
                 "productTitle": "Markwood 29 Bronze",
                 "productMaker": "Markwood",
                 "productType": "lever",
-                "productSize": 29
+                "productSize": "Wire/Cross/Double/Triple"
             },
             {
                 "productAliases": [],

@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
     productMaker: String,
     productType: {
         type: String,
-        enum: ['lever', 'pedal', 'lever-free', 'wire', 'cross-strung', 'triple-strung', 'not sure', 'other']
+        enum: ['lever', 'pedal', 'lever-free', 'Wire/Cross/Double/Triple', 'not sure', 'other']
     },
     productSize: Number,
     productAliases: Array
