@@ -34,7 +34,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Lady Tyger",
                 "productMaker": "Argent Fox",
-                "productType": "lever",
+                "productType": "Wire/Cross/Double/Triple",
                 "productSize": "triple-strung"
             },
             {
@@ -42,7 +42,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Lord David",
                 "productMaker": "Argent Fox",
-                "productType": "lever-free",
+                "productType": "Wire/Cross/Double/Triple",
                 "productSize": "cross-strung"
             },
             {
@@ -94,7 +94,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Clement wire cross strung",
                 "productMaker": "Clement",
-                "productType": "lever-free",
+                "productType": "Wire/Cross/Double/Triple",
                 "productSize": null
             }
         ]
