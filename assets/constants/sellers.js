@@ -59,6 +59,25 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
+    //#region Vavra Harp
+    const VavraHarp = new SellerPaths(
+        'Vavra Harp', //name
+        'tisha@harptisha.com', //email BREAKING vavra@vavra.com
+        'Upstate South Carolina', // short location
+        'Eastern', //region
+        '34.5034', // lat
+        '-82.6501', //long
+        'https://harptisha.com/vavraSales.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+        // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    );
+    //#endregion
     //#region West Coast Harps
     const WestCoastHarps = new SellerPaths(
         'West Coast Harps', //name
@@ -313,6 +332,7 @@ exports.sellerArray = [
     MichiganHarpCenterLapHarp,
     WestCoastHarps, 
     MurvihillHarpServices,
+    VavraHarp,
     HarpAngel,
     FourHarpMusic,
     HarpsEtcLever, //removed for SSL violations

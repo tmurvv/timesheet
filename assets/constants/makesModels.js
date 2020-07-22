@@ -1206,6 +1206,20 @@ exports.globalMakesModels = [
     },
     {
         "sellerAliases": [],
+        "sellerName": "Vavra",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Celtic Honey",
+                "productMaker": "Vavra",
+                "productType": "lever",
+                "productSize": 22
+            }
+        ]
+    },
+    {
+        "sellerAliases": [],
         "sellerName": "Wurlitzer",
         "sellerProducts": [
             {

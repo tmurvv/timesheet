@@ -1203,6 +1203,20 @@
     },
     {
         "makerAliases": [],
+        "makerName": "Vavra",
+        "makerProducts": [
+            {
+                "productAliases": [],
+                "_id": "2b01da28-cc59-11ea-87d0-0242ac130003",
+                "productTitle": "Celtic Honey",
+                "productMaker": "Vavra",
+                "productType": "lever",
+                "productSize": 22
+            }
+        ]
+    },
+    {
+        "makerAliases": [],
         "makerName": "Wurlitzer",
         "makerProducts": [
             {
