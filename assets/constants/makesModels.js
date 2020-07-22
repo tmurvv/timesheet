@@ -602,7 +602,7 @@ exports.globalMakesModels = [
                 "productSize": null
             },
             {
-                "productAliases": [],
+                "productAliases": ["Chicago Petite 40", "Chicago petite 40"],
                 "_id": uuid(),
                 "productTitle": "Chicago 40",
                 "productMaker": "Lyon & Healy",
