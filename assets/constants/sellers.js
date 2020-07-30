@@ -62,7 +62,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Vavra Harp
     const VavraHarp = new SellerPaths(
         'Vavra Harp', //name
-        'vavra@vavraharp.com', //email BREAKING vavra@vavra.com
+        'vavra@vavraharp.com', //email
         'Upstate South Carolina', // short location
         'Eastern', //region
         '34.5034', // lat

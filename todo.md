@@ -1,6 +1,5 @@
 # High priority
 - trouble-shoot images from West Coast Harps
-- add password check on update profile
 - add security to _partner_prospects and _site_quality
 
 ### internal/cleanup
@@ -25,6 +24,7 @@
 - check that we are not getting duplicate listings
 
 ### future
+- change auth to passport (https://auth0.com/blog/next-js-authentication-tutorial/)
 - BFG git repo cleaner
 - add crud endpoints for private listings
 - add date listing created
