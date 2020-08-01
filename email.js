@@ -80,6 +80,7 @@ exports.sendMailUserToSeller = (contactform) => {
                                 Customer First Name: ${contactform.firstname}<br />
                                 Customer Last Name: ${contactform.lastname}<br />
                                 Customer Email: ${contactform.email}<br />
+                                Newsletter Signup: ${contactform.newsletter?'true':'unchanged'}<br />
                                 <br />
                                 Customer Comments/Questions: ${contactform.comments}<br />
                                 <br />

@@ -83,7 +83,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'West Coast Harps', //name
         'alison@westcoastharps.com', //email
         'Vancouver area', //short location
-        'Canada-West', //region
+        'Canada-Pacific', //region
         '49.106772', //lat 
         '-123.851779', //long
         'https://www.westcoastharps.com/used-harps.html', //productsUrl
