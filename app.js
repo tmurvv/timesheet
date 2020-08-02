@@ -206,14 +206,14 @@ app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
 
     const { items } = req.body; // if using item list
     // Create a PaymentIntent with the order amount and currency
-    const paymentIntent = await stripe.paymentIntents.create({
-        // amount: calculateOrderAmount(items), // if using item list w/calculateOrderAmount
-        amount: req.body.total,
-        currency: "cad"
-    });
-    res.send({
-        clientSecret: paymentIntent.client_secret
-    });
+    // const paymentIntent = await stripe.paymentIntents.create({
+    //     // amount: calculateOrderAmount(items), // if using item list w/calculateOrderAmount
+    //     amount: req.body.total,
+    //     currency: "cad"
+    // });
+    // res.send({
+    //     clientSecret: paymentIntent.client_secret
+    // });
 });
  
 // Catch invalid routes
