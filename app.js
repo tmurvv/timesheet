@@ -15,7 +15,8 @@ const helmet = require('helmet');
 const express = require('express');
 
 // internal
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const Stripe = require('stripe');
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const AppError = require('./utils/AppError');
 const globalErrorHandler = require('./controllers/errorController');
 const viewRouter = require('./routes/viewRoutes');
@@ -206,14 +207,14 @@ app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
 
     const { items } = req.body; // if using item list
     // Create a PaymentIntent with the order amount and currency
-    // const paymentIntent = await stripe.paymentIntents.create({
-    //     // amount: calculateOrderAmount(items), // if using item list w/calculateOrderAmount
-    //     amount: req.body.total,
-    //     currency: "cad"
-    // });
-    // res.send({
-    //     clientSecret: paymentIntent.client_secret
-    // });
+    const paymentIntent = await stripe.paymentIntents.create({
+        // amount: calculateOrderAmount(items), // if using item list w/calculateOrderAmount
+        amount: "9750",
+        currency: "usd"
+    });
+    res.send({
+        clientSecret: paymentIntent.client_secret
+    });
 });
  
 // Catch invalid routes
