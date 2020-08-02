@@ -15,6 +15,7 @@ const helmet = require('helmet');
 const express = require('express');
 
 // internal
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const AppError = require('./utils/AppError');
 const globalErrorHandler = require('./controllers/errorController');
 const viewRouter = require('./routes/viewRoutes');
@@ -52,6 +53,7 @@ app.all('/', function(req, res, next) {
 //Serve static image files
 express.static('assets');
 app.use(express.static('img'));
+app.use(express.static(".")); // put in for Stripe test
 
 //utilities ** see commented code below
 app.use(express.json({limit: '10kb'}))
@@ -189,6 +191,28 @@ app.get('/assets/img/:name', function (req, res, next) {
         } else {
             console.log('Sent:', fileName)
         } 
+    });
+});
+
+// This is your real test secret API key.
+
+app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
+    const calculateOrderAmount = items => {
+        // Replace this constant with a calculation of the order's amount
+        // Calculate the order total on the server to prevent
+        // people from directly manipulating the amount on the client
+        return 1400;
+      };
+
+    const { items } = req.body; // if using item list
+    // Create a PaymentIntent with the order amount and currency
+    const paymentIntent = await stripe.paymentIntents.create({
+        // amount: calculateOrderAmount(items), // if using item list w/calculateOrderAmount
+        amount: req.body.total,
+        currency: "cad"
+    });
+    res.send({
+        clientSecret: paymentIntent.client_secret
     });
 });
  
