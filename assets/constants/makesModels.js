@@ -38,6 +38,14 @@ exports.globalMakesModels = [
                 "productSize": "Wire/Cross/Double/Triple"
             },
             {
+                "productAliases": [ "Lady Laurie" ],
+                "_id": uuid(),
+                "productTitle": "Lady Laurie",
+                "productMaker": "Argent Fox",
+                "productType": "lever",
+                "productSize": "36"
+            },
+            {
                 "productAliases": [ "David" ],
                 "_id": uuid(),
                 "productTitle": "Lord David",
