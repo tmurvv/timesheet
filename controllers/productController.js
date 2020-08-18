@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { scrapeAds } = require('../utils/harpAdScraper');
 /*************************
  * NOT YET IMPLEMENTED--routing is busted, try __dir__

@@ -1,9 +1,12 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // to allow scraping of webstores with invalid ssl
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
 // packages
+const fs = require('fs');
 const atob = require('atob');
 const path = require('path');
 const uuid = require('uuid');
+const multer = require('multer');
+const upload = multer({dest: __dirname + '/assets/img'});
 
 // security
 const EventEmitter = require('events');
@@ -21,9 +24,12 @@ const AppError = require('./utils/AppError');
 const globalErrorHandler = require('./controllers/errorController');
 const viewRouter = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
+const productRouter = require('./routes/productRoutes');
+const authController = require('./controllers/authController');
 const { scrapeAds } = require('./utils/harpAdScraper');
 const { catchAsync, leaf } = require('./utils/helpers/helpers');
 const { Users } = require('./assets/data/Schemas');
+const { ProductUploads } = require('./assets/data/Schemas');
 const { ContactRequests, MakesModels, Products } = require('./assets/data/Schemas');
 const { sendMailUserToSeller, contactUsForm, emailVerifySend } = require('./email');
 const { refreshMakesModels } = require('./utils/codeStorage/rarelyUsedUtils');
@@ -59,9 +65,65 @@ app.use(express.static(".")); // put in for Stripe test
 //utilities ** see commented code below
 app.use(express.json({limit: '10kb'}))
 
+
 //Router
 app.use('/', viewRouter); 
 app.use('/api/v1/users', userRouter); 
+app.use('/api/v1/products', productRouter); 
+
+// app.post('/api/v1/uploadlisting', upload.single('photo'), (req, res) => {
+//     console.log(req.file)
+//     console.log(req.body)
+//     if(req.file) {
+//         fs.rename(`${__dirname}/assets/img/${req.file.filename}`, `${__dirname}/assets/img/${req.file.originalname}`, function (err) {
+//             if (err) throw err;
+//             console.log('File Renamed!');
+//         });
+//         res.json(req.file);
+//     }
+//     else throw 'error';
+    
+// });
+
+// not in router due to fs directory issue
+app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
+    if(req.file) {
+        fs.rename(`${__dirname}/assets/img/${req.file.filename}`, `${__dirname}/assets/img/${req.file.originalname}`, function (err) {
+            if (err) throw err;
+            console.log('File Renamed!');
+        });
+    }
+    else throw 'error';
+    
+    try {
+        const uploadlisting = Object.assign({ 
+            productTitle: req.body.title,
+            productMaker: req.body.make,
+            productModel: req.body.model,
+            productPrice: Number(req.body.price),
+            productSeller: req.body.sellerName,
+            productDescription: req.body.description,
+            productImageUrl: '/assets/img/' + req.file.originalname
+        });
+        // console.log('top', uploadlisting)
+        const addeduploadlisting = await ProductUploads.create(uploadlisting);
+        // console.log('bottom', addeduploadlisting)
+        res.redirect('https://findaharp.com');
+        // res.status(200).json({
+        //     title: 'FindAHarp.com | Upload Listing',
+        //     status: 'success',
+        //     addeduploadlisting
+        // });
+    } catch (e) {
+        res.status(500).json({
+            title: 'FindAHarp.com | Upload Listing',
+            status: 'fail',
+            data: {
+                message: e.message
+            }
+        });
+    }
+});
 
 app.post('/api/v1/privateads', async (req, res) => {
     const productId = uuid();

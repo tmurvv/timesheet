@@ -105,11 +105,11 @@ const usersSchema = new mongoose.Schema({
         },
         default: 'USD'
     },
-    usertype: {
+    role: {
         type: String, 
         enum: {
-            values: ['user', 'seller', 'admin', 'other'],
-            message: 'User Type must be user, seller, admin or other.'
+            values: ['user', 'seller', 'admin', 'other', 'not set'],
+            message: 'User Type must be user, seller, admin, not set, or other.'
         },
         default: 'user'
     },
@@ -121,10 +121,36 @@ const usersSchema = new mongoose.Schema({
 
 const Users = mongoose.model('Users', usersSchema);
 
+const productUploadSchema = new mongoose.Schema({
+    productTitle: {
+        type: String,
+        required: [true, 'A title is required, example: "Beautiful Mahogany Salvi Aurora now Available."']
+    },
+    productMaker: {
+        type: String,
+        required: [true, 'A maker is required, if maker unknown, enter "unknown".']
+    },
+    productModel: {
+        type: String,
+        required: [true, 'A model is required, if model unknown, enter "unknown".']
+    },
+    productPrice: Number,
+    productSeller: String,
+    productDescription: String,
+    productImageUrl: String,
+    _date_created: {
+        type: Date,
+        default: Date.now()
+    }
+},{ versionKey: false });
+
+const ProductUploads = mongoose.model('ProductUpload', productUploadSchema);
+
 module.exports.MakesModels = MakesModels;
 module.exports.MakesModelsTest = MakesModelsTest;
 module.exports.ContactRequests = ContactRequests;
 module.exports.Users = Users;
+module.exports.ProductUploads = ProductUploads;
 
 // const vendorDeets = {
 //     vendorName: 'Murvihill Harps',

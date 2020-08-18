@@ -10,7 +10,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Canada-West', //region
         '51.214380', // lat
         '-114.466894', //long
-        'https://harptisha.com/harpSalesRent.php', //productsUrl
+        'https://harptisha.com/TestArea/harpSalesRent.php', //productsUrl
         '.productContainer', //mainPathId
         null, //customFns 
         ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
@@ -29,7 +29,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'South', //region
         '33.2148', // lat
         '-97.1331', //long
-        'https://harptisha.com/FourHarpMusicSales.php', //productsUrl
+        'https://harptisha.com/TestArea/FourHarpMusicSales.php', //productsUrl
         '.productContainer', //mainPathId
         null, //customFns 
         ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
@@ -48,7 +48,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Canada-West', //region
         '51.0900', // lat
         '-115.3442', //long
-        'https://harptisha.com/nyackSales.php', //productsUrl
+        'https://harptisha.com/TestArea/nyackSales.php', //productsUrl
         '.productContainer', //mainPathId
         null, //customFns 
         ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
@@ -67,7 +67,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Eastern', //region
         '34.5034', // lat
         '-82.6501', //long
-        'https://harptisha.com/vavraSales.php', //productsUrl
+        'https://harptisha.com/TestArea/vavraSales.php', //productsUrl
         '.productContainer', //mainPathId
         null, //customFns 
         ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn

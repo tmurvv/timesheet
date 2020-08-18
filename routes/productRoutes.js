@@ -1,4 +1,5 @@
 const express = require('express');
+
 const productController = require('./../controllers/productController');
 const viewController = require('./../controllers/viewController');
 
@@ -8,6 +9,8 @@ const router = express.Router();
 
 //router.use(authController.isLoggedIn);
 router.get('/productads', productController.getProductAds);
+// router.post('/uploadlisting', productController.uploadlisting);
+
 
 // router.get('/productads', (req, res) => {
 //     // send results 

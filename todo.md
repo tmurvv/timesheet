@@ -1,6 +1,6 @@
 # High priority
 - trouble-shoot images from West Coast Harps
-- add security to _partner_prospects and _site_quality
+- add security to _partner_prospects and _site_quality and _uploadlisting
 
 ### internal/cleanup
 - expand model list
