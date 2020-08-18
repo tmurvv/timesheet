@@ -100,7 +100,6 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         return {...product, productPrice: product.productPrice.substr(product.productPrice.indexOf('$')-3,9)};
     };
     WestCoastHarps.imageCustom = (product) => {
-        if (product.productModel === 'Feather') return {...product, productImageUrl: 'https://findaharp-api.herokuapp.com/assets/img/Feather.jpg'};
         if (product.productModel === 'Athena EX') return {...product, productImageUrl: 'https://findaharp-api.herokuapp.com/assets/img/camac1.jpg'};   
         return product
     };
