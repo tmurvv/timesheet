@@ -33,7 +33,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         '.productContainer', //mainPathId
         null, //customFns 
         ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
-        () => 'contact seller', // priceFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
         ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
         ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
         ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
@@ -78,7 +78,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
-    //#region Vavra Harp
+    //#region Vixen Harps
     const VixenHarps = new SellerPaths(
         'Vixen Harps', //name
         'info@vixenharps.com', //email
