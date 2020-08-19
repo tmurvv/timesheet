@@ -426,6 +426,14 @@ exports.globalMakesModels = [
                 "productMaker": "Dusty Strings",
                 "productType": "lever",
                 "productSize": 32
+            },
+            {
+                "productAliases": [ "Sapale", "Sapele is actually the wood, not sure of model"],
+                "_id": uuid(),
+                "productTitle": "Dusty Strings with Sapele",
+                "productMaker": "Dusty Strings",
+                "productType": "lever",
+                "productSize": null
             }
         ]
     },
@@ -673,6 +681,14 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Troubadour III",
+                "productMaker": "Lyon & Healy",
+                "productType": "lever",
+                "productSize": 36
+            },
+            {
+                "productAliases": [],
                 "_id": "5e8b7deea03397444c70623c",
                 "productTitle": "Ogden",
                 "productMaker": "Lyon & Healy",
@@ -759,6 +775,20 @@ exports.globalMakesModels = [
                 "productMaker": "Magical",
                 "productType": "lever-free",
                 "productSize": 24
+            }
+        ]
+    },
+    {
+        "sellerAliases": ["Muma"],
+        "sellerName": "Roger Muma",
+        "sellerProducts": [
+            {
+                "productAliases": ["High Headed", "High-headed", "High-Headed"],
+                "_id": uuid(),
+                "productTitle": "High Headed Harp",
+                "productMaker": "Roger Muma",
+                "productType": "lever",
+                "productSize": null
             }
         ]
     },
@@ -905,6 +935,20 @@ exports.globalMakesModels = [
         ]
     },
     {
+        "sellerAliases": ["Edouard Rusnak", "Rusnak"],
+        "sellerName": "Edward Rusnak",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Valhalla 40",
+                "productMaker": "Edward Rusnak",
+                "productType": "lever",
+                "productSize": 40
+            }
+        ]
+    },
+    {
         "sellerAliases": [],
         "sellerName": "Salvi",
         "sellerProducts": [
@@ -1026,6 +1070,20 @@ exports.globalMakesModels = [
                 "productMaker": "Salvi",
                 "productType": "lever",
                 "productSize": 25
+            }
+        ]
+    },
+    {
+        "sellerAliases": ["Sligo"],
+        "sellerName": "Sligo Harps",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Sligo Harp",
+                "productMaker": "Sligo Harps",
+                "productType": "lever",
+                "productSize": null
             }
         ]
     },
@@ -1227,6 +1285,20 @@ exports.globalMakesModels = [
         ]
     },
     {
+        "sellerAliases": ["William Webster"],
+        "sellerName": "Webster Harps",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "McFall",
+                "productMaker": "Webster",
+                "productType": "lever",
+                "productSize": 36
+            }
+        ]
+    },
+    {
         "sellerAliases": [],
         "sellerName": "Wurlitzer",
         "sellerProducts": [
@@ -1274,7 +1346,7 @@ exports.globalMakesModels = [
         ]
     },
     {
-        "sellerAliases": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'blue', 'zebrawood', 'other', ],
+        "sellerAliases": ['walnut', 'mahogany', 'ebony', 'cherry', 'bubinga', 'natural', 'gold', 'maple', 'blue', 'zebrawood', 'sapele', 'other', ],
         "sellerName": "findaharpFinishes",
         "sellerProducts": [
             {

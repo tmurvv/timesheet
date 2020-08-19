@@ -78,6 +78,25 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
+    //#region Vavra Harp
+    const VixenHarps = new SellerPaths(
+        'Vixen Harps', //name
+        'info@vixenharps.com', //email
+        'Ottawa, ON, Canada', // short location
+        'Canada-East', //region
+        '45.4277', // lat
+        '-75.6847', //long
+        'https://harptisha.com/TestArea/vixenSales.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+        // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    );
+    //#endregion
     //#region West Coast Harps
     const WestCoastHarps = new SellerPaths(
         'West Coast Harps', //name
@@ -332,6 +351,7 @@ exports.sellerArray = [
     WestCoastHarps, 
     MurvihillHarpServices,
     VavraHarp,
+    VixenHarps,
     HarpAngel,
     FourHarpMusic,
     HarpsEtcLever, //removed for SSL violations
