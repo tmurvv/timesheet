@@ -1,5 +1,5 @@
 # High priority
-- trouble-shoot images from West Coast Harps
+- trouble-shoot images not copying correctly
 - add security to _partner_prospects and _site_quality and _uploadlisting
 
 ### internal/cleanup

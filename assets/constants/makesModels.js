@@ -378,9 +378,7 @@ exports.globalMakesModels = [
                 "productSize": 34
             },
             {
-                "productAliases": [
-                    "FH36"
-                ],
+                "productAliases": [],
                 "_id": "5e8b7deea03397444c706258",
                 "productTitle": "FH36H",
                 "productMaker": "Dusty Strings",
@@ -410,6 +408,14 @@ exports.globalMakesModels = [
                 "productMaker": "Dusty Strings",
                 "productType": "lever",
                 "productSize": 26
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "FH36",
+                "productMaker": "Dusty Strings",
+                "productType": "lever",
+                "productSize": 36
             },
             {
                 "productAliases": [],
