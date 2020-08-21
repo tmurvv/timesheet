@@ -108,7 +108,7 @@ app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
         // console.log('top', uploadlisting)
         const addeduploadlisting = await ProductUploads.create(uploadlisting);
         // console.log('bottom', addeduploadlisting)
-        res.redirect('http://localhost:3006?uploadlisting=yes');
+        res.redirect('https://findaharp.com?uploadlisting=yes');
         // res.status(200).json({
         //     title: 'FindAHarp.com | Upload Listing',
         //     status: 'success',
