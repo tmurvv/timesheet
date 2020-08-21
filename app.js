@@ -115,13 +115,7 @@ app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
         //     addeduploadlisting
         // });
     } catch (e) {
-        res.status(500).json({
-            title: 'FindAHarp.com | Upload Listing',
-            status: 'fail',
-            data: {
-                message: e.message
-            }
-        });
+        res.redirect('https://findaharp.com?uploadlisting=no');
     }
 });
 
