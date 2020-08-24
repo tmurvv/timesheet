@@ -263,6 +263,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     );
     MichiganHarpCenterPedalHarp.ownerException = (product) => {
         if (product.productLongDesc.indexOf("|")>-1) return null;
+        if (product.productImageUrl.indexOf('orchid')>-1) product.productImageUrl='https://findaharp-api.herokuapp.com/assets/img/genericHarp.png';
         return product;
     }
     //#endregion
