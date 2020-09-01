@@ -27,7 +27,7 @@ mongoose
         useFindAndModify: false,
         useUnifiedTopology: true
     })
-    .then(() => console.log('DB connection successful')); BREAKING
+    .then(() => console.log('DB connection successful'));
 
 /**************
  * Start Server
