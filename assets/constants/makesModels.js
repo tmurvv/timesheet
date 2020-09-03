@@ -768,6 +768,15 @@ exports.globalMakesModels = [
                 "productType": "lever",
                 "productSize": 33
             }
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Markwood 36",
+                "productMaker": "Markwood",
+                "productType": "lever",
+                "productSize": 36
+            }
         ]
     },
     {
