@@ -767,7 +767,6 @@ exports.globalMakesModels = [
                 "productMaker": "Markwood",
                 "productType": "lever",
                 "productSize": 33
-            }
             },
             {
                 "productAliases": [],
