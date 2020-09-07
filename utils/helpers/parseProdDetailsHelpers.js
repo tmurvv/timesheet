@@ -9,13 +9,24 @@ const { globalMakesModels } = require('../../assets/constants/makesModels'); // 
  */
 const getModelList = makesModels => {
     if (!makesModels || makesModels.length === 0) throw new AppError('from getModelList: makes/models variable is empty'); 
-    const productKeys = [];
+    const productFields = [];
 
     makesModels.map(maker => {
-        productKeys.push(...maker.sellerProducts.map(product => product.productTitle));
+        productFields.push(...maker.sellerProducts.map(product => [product.productTitle, product.productAliases, product.productDoNotSelect]));
     });
 
-    return productKeys.sort();
+    // console.log(productFields);
+    return productFields;
+
+    // copy Sept 6, 2020
+    // if (!makesModels || makesModels.length === 0) throw new AppError('from getModelList: makes/models variable is empty'); 
+    // const productKeys = [];
+
+    // makesModels.map(maker => {
+    //     productKeys.push(...maker.sellerProducts.map(product => product.productTitle));
+    // });
+
+    // return productKeys.sort();
 }
 /**
  * Searches list of other names
@@ -28,15 +39,31 @@ const searchAliasArray = (title, aliasArray) => {
     if (!title) throw new AppError('from searchOtherNamesArrray: title parameter is empty');
     if (!aliasArray) throw new AppError('from searchAliasArray: otherNamesArray parameter is empty');
     let foundName;
-    aliasArray.map(name => {
-        name[1].map(otherName => {
-            const modRegEx = String.raw`\b${otherName}\b`;
-            const regExPattern = new RegExp(modRegEx);
-            if (title.match(regExPattern)) foundName = name[0];
-        });                     
+    aliasArray.map(modelFields => {
+        if (modelFields[1]) {
+            modelFields[1].map(otherName => {
+                // console.log(otherName)
+                const modRegEx = String.raw`\b${otherName.toUpperCase()}\b`;
+                const regExPattern = new RegExp(modRegEx);
+                if (otherName&&title.toUpperCase().match(regExPattern)) foundName = modelFields[0];
+            });
+        }                     
     });
 
     return foundName;
+    // copy sept 6
+    // if (!title) throw new AppError('from searchOtherNamesArrray: title parameter is empty');
+    // if (!aliasArray) throw new AppError('from searchAliasArray: otherNamesArray parameter is empty');
+    // let foundName;
+    // aliasArray.map(name => {
+    //     name[1].map(otherName => {
+    //         const modRegEx = String.raw`\b${otherName}\b`;
+    //         const regExPattern = new RegExp(modRegEx);
+    //         if (title.match(regExPattern)) foundName = name[0];
+    //     });                     
+    // });
+
+    // return foundName;
 }
 /**
  * Gets a list of all misspellings and colloquialisms of maker names from maker/model JSON-style object
@@ -98,6 +125,25 @@ const findMakerFromModel = (model, makesModels) => {
     return foundName;
 }
 /**
+ * Checks if badName is in title
+ * @function checkBadModelName
+ * @param {String} title the title of the product ad 
+ * @param {Array} modelFields [modelName, aliasArray, badNameArray]
+ * @returns {String} - Maker name or undefined
+ */
+const checkModelBadNames = (title, badNames) => {
+    if (!title) throw new AppError('from checkModelBadNames: title parameter is empty');
+    if (!badNames) throw new AppError('from checkModelBadNames: badNames parameter is empty');
+    
+    badNames.map(name => {
+        const modRegEx = String.raw`\b${name.toUpperCase()}\b`;
+        const regExPattern = new RegExp(modRegEx);
+        if (name&&title.toUpperCase().match(regExPattern)) return false
+    });
+    
+    return true;
+}
+/**
  * Finds the maker of a certain Model from makers/models JSON-style object
  * @function checkMakerAliases
  * @param {String} title the title of the product ad 
@@ -113,18 +159,6 @@ const checkMakerAliases = (title, model, makesModels) => {
     if (!foundName && model) foundName = findMakerFromModel(model, makesModels);
     
     return foundName;
-}
-/**
- * Checks other model names if initial model search fails from makers/models JSON-style object
- * @function checkModelAliases
- * @param {String} title the title of the product ad
- * @returns {String} - Model name or undefined
- */
-const checkModelAliases = (title, makesModels) => {
-    if (!title) throw new AppError('from checkModelAliases: title parameter is empty');
-    
-    const modelAliases = getModelAliasArray(makesModels);
-    return searchAliasArray(title, modelAliases)
 }
 /**
  * Parses maker from Product ad title using makers/models JSON-style object
@@ -176,15 +210,21 @@ const findProductFinish = (title, makesModels) => {
 const findModel = (title, makesModels) => {
     if (!title) throw new AppError('from findMaker: title parameter is empty');
     let productModel;
-    getModelList(makesModels).map((model) => {
-        const modRegEx = String.raw`\b${model}\b`;
+    const modelList = getModelList(makesModels)
+    modelList.map(model => {
+        const modRegEx = String.raw`\b${model[0].toUpperCase()}\b`;
         const regExPattern = new RegExp(modRegEx);
-        if (title.match(regExPattern)) productModel = model;
+        // if found
+        if (model[0]&&title.toUpperCase().match(regExPattern)) {
+            // check for badName
+            if (!model[2] || model[2] && !checkModelBadNames(title, model[2])) productModel = model[0];
+        }
     });
-    if (!productModel) productModel = checkModelAliases(title, makesModels);
+    if (!productModel) productModel = searchAliasArray(title, modelList);
     
     return productModel;
 }
+
 /**
  * Finds product type ('lever', 'pedal') with make and model using makers/models JSON-style object
  * @function findProductType
@@ -239,7 +279,6 @@ function findProductSize(maker, model, makesModels) {
 
 const getMakeModelTypeSize = async (title) => {
     if (!title) return [];
-    // if (!title) return new AppError('from getMakeModelTypeSize: title parameter is empty');
     const model = await findModel(title, globalMakesModels);
     if (!model) return [];
     const maker = await findMaker(title, model, globalMakesModels);
@@ -256,7 +295,6 @@ module.exports = {
     getMakerAliasArray,
     searchAliasArray,
     checkMakerAliases,
-    checkModelAliases,
     findMaker,
     findModel,
     findProductType,

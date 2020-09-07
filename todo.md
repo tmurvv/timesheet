@@ -13,15 +13,15 @@
 - test CRON job on findaharp.com
 
 ### functionality
-
 - in controllers, if exception, return fail status message
 - private Ads
     - set up Schema
     - set up Routes
     - set up Controllers
-    - test with postman
+    - test with Postman
 - add date to contact requests
 - check that we are not getting duplicate listings
+- thoroughly test how well badNames programming works
 
 ### future
 - change auth to passport (https://auth0.com/blog/next-js-authentication-tutorial/)

@@ -1010,6 +1010,17 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [
+                    "Daphne 40Ex",
+                    "Daphne 40 Ex"               
+                ],
+                "_id": uuid(),
+                "productTitle": "Daphne 40 ex",
+                "productMaker": "Salvi",
+                "productType": "pedal",
+                "productSize": 40
+            },
+            {
+                "productAliases": [
                     "Daphne 40",
                     "Daphne40",
                     "40 string Daphne"
@@ -1017,6 +1028,7 @@ exports.globalMakesModels = [
                 "productDoNotSelect": [
                     "Daphne 40Ex",
                     "Daphne 40 Ex",
+                    "Daphne 40 ex",
                     "Daphne Ex",
                     "DaphneEx"
                 ],

@@ -1,3 +1,108 @@
+/**
+ * Parses maker from Product ad title using makers/models JSON-style object
+ * @function findModel
+ * @param {String} title the title of the product ad
+ * @returns {String} - Model name or undefined
+ */
+// Copy Sept 5 2020
+// const findModel = (title, makesModels) => {
+//     if (!title) throw new AppError('from findMaker: title parameter is empty');
+//     let productModel;
+//     getModelList(makesModels).map((model) => {
+//         const modRegEx = String.raw`\b${model}\b`;
+//         const regExPattern = new RegExp(modRegEx);
+//         if (title.match(regExPattern)) productModel = model;
+//     });
+//     if (!productModel) productModel = checkModelAliases(title, makesModels);
+    
+//     return productModel;
+// }
+
+
+
+/**
+ * Checks other model names if initial model search fails from makers/models JSON-style object
+ * @function checkModelAliases
+ * @param {String} title the title of the product ad
+ * @returns {String} - Model name or undefined
+ */
+// copy from Sept 6th, 2020
+// const checkModelAliases = (title, makesModels) => {
+//     if (!title) throw new AppError('from checkModelAliases: title parameter is empty');
+    
+//     const modelAliases = getModelAliasArray(makesModels);
+//     return searchAliasArray(title, modelAliases)
+// }
+
+
+// const findModel = (title, makesModels) => {
+//     // check for title parameter
+//     if (!title) throw new AppError('from findMaker: title parameter is empty');
+//     // find model inside title
+//     let productModel;
+//     let prodmodorig;
+//     console.log('top', title)
+//     // look for model match
+//     makesModels.map(maker => {      
+//         maker.sellerProducts.forEach(product => {
+//             // console.log('outside', product.productTitle, 'title', title);
+//             const modRegEx = String.raw`\b${product.productTitle}\b`;
+//             const regExPattern = new RegExp(modRegEx);
+//             if (product.productTitle && !(product.productTitle==="") && !(title===" ") && title.match(regExPattern)) {
+//                 console.log('found', modRegEx, 'hwewew', title);
+//                 const remember = `${product.productTitle} `; 
+//                 prodmodorig = `${productModel}x`;
+//                 // check for forbidden
+//                 let badName = false;
+//                 if (product.productDoNotSelect) {     
+//                     product.productDoNotSelect.map(selection => {
+//                         const doNotRegEx = String.raw`\b${selection}\b`;
+//                         const regExPattern = new RegExp(doNotRegEx);
+//                         // console.log('above', productModel, doNotRegEx, title);
+//                         if (selection && !(selection===" ") && title.match(regExPattern)) {
+//                             // console.log('busted', doNotRegEx, selection); 
+//                             badName=true;
+//                         }
+//                     });
+//                 }
+//                 console.log('206 bad', badName, 'remember', remember.trim())
+//                 if (!badName) return remember.trim();
+//                 console.log('here')
+//             }
+//             // console.log('blah before check alias', 'prodmod', productModel);
+//             let remember;
+//             let badName = false;
+//             badName=false;
+//             remember = checkModelAliases(title, makesModels);
+//             if (remember && product.productDoNotSelect) {     
+//                 product.productDoNotSelect.forEach(selection => {
+//                     const doNotRegEx = String.raw`\b${selection}\b`;
+//                     const regExPattern = new RegExp(doNotRegEx);
+//                     // console.log('above', productModel, doNotRegEx, title);
+//                     if (doNotRegEx&&!(doNotRegEx===' ')&&!(title===' ')&&title.match(regExPattern)) {
+//                         console.log('busted'); 
+//                         badName=true;
+//                     }
+//                 });
+//             }
+//             if (badName && !(prodmodorig === 'x')) {
+                
+//             } else {
+//                 return remember;
+//             }
+             
+            
+//             // if (productModel && productModel !== ' ') return productModel;
+//         });
+//     });
+//     // if not found check aliases
+    
+//     // if found check for forbidden list in title
+    
+//     // return productModel;
+// }
+
+
 //#region get best color for image
 // get thin image border color
 // const productImageBestColors = await getColors(path.join(__dirname, `../assets/img/${shortProductImageUrl}`));
