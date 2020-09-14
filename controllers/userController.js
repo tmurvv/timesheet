@@ -89,6 +89,7 @@ exports.createUser = async (req, res) => {
     }
 }
 exports.loginUser = async (req, res) => {
+    console.log('imin')
     try {
         // find User
         let userInfo;
