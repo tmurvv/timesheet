@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 //Sub Docs
 
 const productSchema = new mongoose.Schema({
@@ -116,9 +117,31 @@ const usersSchema = new mongoose.Schema({
     _date_created: {
         type: Date,
         default: Date.now()
+    },
+    passwordChangedAt: {
+        type: Date,
+        default: Date.now()
     }
 },{ versionKey: false });
-
+usersSchema.pre('save', async function(next) {
+    if(!this.isModified('password')) return next;
+    const saltRounds=10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+    next();
+});
+usersSchema.pre('save', async function(next) {
+    if(!this.isModified('password') || this.isNew) return next;
+    const saltRounds=10;
+    this.passwordChangedAt = Date.now()-1000; // one sec earlier so it for sure happens before JWT cookie is set
+    next();
+});
+usersSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
+    if (this.passwordChangedAt) {
+        const changeTimeStamp = parseInt(this.passwordChangedAt.getTime()/1000, 10);
+        return JWTTimestamp < changeTimeStamp;
+    }
+    return false;
+}
 const Users = mongoose.model('Users', usersSchema);
 
 const productUploadSchema = new mongoose.Schema({

@@ -3,6 +3,7 @@
 - add security to _partner_prospects and _site_quality and _uploadlisting
 
 ### internal/cleanup
+- separate schemas into their own files
 - expand model list
 - refactor get best color out of harpscraper
 - check console.lok and change to AppErrors

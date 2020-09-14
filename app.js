@@ -1,5 +1,6 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // to allow scraping of webstores with invalid ssl
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
+
 // packages
 const fs = require('fs');
 const atob = require('atob');
@@ -65,6 +66,11 @@ app.use(express.static(".")); // put in for Stripe test
 //utilities ** see commented code below
 app.use(express.json({limit: '10kb'}))
 
+// // misc
+// app.use((req, res, next) => {
+//     console.log(req.headers);
+//     next();
+// })
 
 //Router
 app.use('/', viewRouter); 
@@ -86,13 +92,13 @@ app.use('/api/v1/products', productRouter);
 // });
 
 // not in router due to fs directory issue
-app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
+app.post('/api/v1/uploadlisting', authController.protect, authController.restrictTo('admin', 'seller'), upload.single('photo'), async (req, res) => {
     if(req.file) {
         fs.rename(`${__dirname}/assets/img/${req.file.filename}`, `${__dirname}/assets/img/${req.file.originalname}`, function (err) {
             if (err) throw err;
             console.log('File Renamed!');
         });
-    }
+    } 
     else throw 'error';
     
     try {

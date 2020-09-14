@@ -1,9 +1,29 @@
+const jwt = require('jsonwebtoken');
 const uuid = require('uuid');
 const atob = require('atob');
 const bcrypt = require('bcrypt');
 const { Users } = require('../assets/data/Schemas');
 const {emailVerifySend, emailResetPassword} = require('../email');
 
+const signToken = userId => jwt.sign({ id: userId }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN
+});
+
+const createSendToken = (user, statusCode, res) => {
+    const token = signToken(user._id);
+    const cookieOptions = {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN*24*60*60*1000),
+        httpOnly: true
+    }
+    if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+    res.cookie('jwt', token, cookieOptions);
+
+    res.status(statusCode).json({
+        status: 'success',
+        token,
+        user
+    });
+}
 exports.getMe = async (req, res) => {
     try {
         const user = await Users.findById(req.params.userid);
@@ -27,22 +47,23 @@ exports.getMe = async (req, res) => {
 }
 
 exports.createUser = async (req, res) => {
+    // const saltRounds=10;
+    // const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
+    const user = Object.assign({ 
+        contactId: uuid(), 
+        usertype: 'user',
+        firstname: req.body.firstname, 
+        lastname: req.body.lastname, 
+        email: req.body.email,
+        password: req.body.password,
+        newsletter: req.body.newsletter,
+        distanceunit: req.body.distanceunit,
+        currency: req.body.currency,
+        emailverified: false,
+        _date_created: Date.now(),
+        passwordChangedAt: req.body.passwordChangedAt
+    });
     try {
-        const saltRounds=10;
-        const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
-        const user = Object.assign({ 
-            contactId: uuid(), 
-            usertype: 'user',
-            firstname: req.body.firstname, 
-            lastname: req.body.lastname, 
-            email: req.body.email,
-            password: hashPassword,
-            newsletter: req.body.newsletter,
-            distanceunit: req.body.distanceunit,
-            currency: req.body.currency,
-            emailverified: false,
-            _date_created: Date.now()
-        });
         const addeduser = await Users.create(user);
         if (addeduser) {
             try{
@@ -55,11 +76,8 @@ exports.createUser = async (req, res) => {
             throw new Error();
         }
 
-        res.status(200).json({
-            title: 'FindAHarp.com | Create User',
-            status: 'success',
-            addeduser
-        });
+        createSendToken(addeduser, 201, res);
+        
     } catch (e) {
         res.status(500).json({
             title: 'FindAHarp.com | Create User',
@@ -73,24 +91,26 @@ exports.createUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
     try {
         // find User
-        const userInfo = await Users.findOne({email: req.body.email});
-        // check user exists
-        if (!userInfo) throw new Error('Email not found.');
-        // check if email is verified:
-        if (!userInfo.emailverified) throw new Error(`The email ${userInfo.email} is not yet verified. Please check your inbox for a verification email from Findaharp.com.`);
-        // check password
-        if(!await bcrypt.compare(req.body.password, userInfo.password)) throw new Error('Password incorrect.');
+        let userInfo;
+        // if not cookie check
+        if (req.body.email) {
+            userInfo = await Users.findOne({email: req.body.email});
+            // check if email is verified:
+            if (!userInfo.emailverified) throw new Error(`The email ${userInfo.email} is not yet verified. Please check your inbox for a verification email from Findaharp.com.`);
+            // check password
+            if(!await bcrypt.compare(req.body.password, userInfo.password)) throw new Error('Password incorrect.');
+        }
+        // if cookie check
+        if (req.body.cookieId) userInfo = await Users.findById(req.body.cookieId);
+        // check user found
+        if (!userInfo) throw new Error('User not found.');
         // remove password from result
         let userCopy = {...userInfo._doc};
         delete userCopy.password;
-        // send result to client
-        res.status(200).json({
-            title: 'FindAHarp.com | Login User',
-            status: 'success',
-            user: userCopy
-        });
+        // add JWT and send
+        createSendToken(userCopy, 200, res);    
     } catch (e) {
-        res.status(400).json({
+        if (!req.body.cookieId) res.status(400).json({
             title: 'FindAHarp.com | Login User',
             status: 'fail',
             message: e.message,
@@ -195,10 +215,13 @@ exports.updatePassword = async (req, res) => {
         const useremail = req.params.userid;
         try {
             // hash password
-            const saltRounds=10;
-            const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
+            // const saltRounds=10;
+            // const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
             // update user
-            const result = await Users.findOneAndUpdate({email: useremail}, {password: hashPassword});
+            // const result = await Users.findOneAndUpdate({email: useremail}, {password: req.body.resetpassword});
+            const user = await Users.findOne({email: useremail});
+            user.password = req.body.resetpassword;
+            await user.save();
             // return result
             res.status(200).json({
                 title: 'FindAHarp.com | Update Password',
@@ -219,10 +242,18 @@ exports.updatePassword = async (req, res) => {
     // else call is from user profile change password
     } else {
         const userid = req.params.userid;
+        let userInfo;
         try {
             // find user
-            const userInfo = await Users.findById(userid);
-            
+            try {
+                userInfo = await Users.findById(userid);
+            } catch {
+                return res.status(500).json({
+                    title: 'FindAHarp.com | Update Password',
+                    status: 'fail',
+                    message: `Something went wrong. Please check your connection and try again.`
+                });
+            }
             // check old password
             if(!await bcrypt.compare(req.body.oldpassword, userInfo.password)) {
                 return res.status(500).json({
@@ -231,12 +262,18 @@ exports.updatePassword = async (req, res) => {
                     message: `Old Password incorrect.`
                 });
             }
-            // hash new password
-            const saltRounds=10;
-            const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
             // update user password
-            const changedUser = await Users.findByIdAndUpdate(req.params.userid, {password: hashPassword});
-            if (!changedUser) throw new Error;
+            userInfo.password = req.body.password;
+            try {
+                await userInfo.save();
+            } catch {
+                return res.status(500).json({
+                    title: 'FindAHarp.com | Update Password',
+                    status: 'fail',
+                    message: `Something went wrong. Please check your connection and try again.`
+                });
+            }
+            
             // return result
             res.status(200).json({
                 title: 'FindAHarp.com | Update Password',
