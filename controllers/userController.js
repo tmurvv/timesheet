@@ -19,6 +19,7 @@ const createSendToken = (user, statusCode, res) => {
     res.cookie('jwt', token, cookieOptions);
 
     res.status(statusCode).json({
+        "Access-Control-Allow-Origin": "*",
         status: 'success',
         token,
         user
@@ -89,7 +90,6 @@ exports.createUser = async (req, res) => {
     }
 }
 exports.loginUser = async (req, res) => {
-    console.log('imin')
     try {
         // find User
         let userInfo;

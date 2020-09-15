@@ -3,12 +3,12 @@
 - add security to _partner_prospects and _site_quality and _uploadlisting
 
 ### internal/cleanup
+- fix current testing
 - separate schemas into their own files
 - expand model list
 - refactor get best color out of harpscraper
 - check console.lok and change to AppErrors
 - move routing out of app.js
-- make user email unique after testing
 - refactor parseStoreInfo into parseStoreInfoHelpers.js and add testing
 - function to delete unused harp photos from server (once the harps sell)
 - test CRON job on findaharp.com
