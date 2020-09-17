@@ -621,7 +621,7 @@ exports.globalMakesModels = [
                 "productTitle": "LH-1930s Pedal Harp",
                 "productMaker": "Lyon & Healy",
                 "productType": "pedal",
-                "productSize": null
+                "productSize": 46
             },
             {
                 "productAliases": ["Chicago Petite 40", "Chicago petite 40"],
