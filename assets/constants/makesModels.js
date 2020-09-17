@@ -839,10 +839,10 @@ exports.globalMakesModels = [
                     "Irish Style"
                 ],
                 "_id": "5e8b7deea03397444c70626f",
-                "productTitle": "Irish Style 29",
+                "productTitle": "Irish Style",
                 "productMaker": "Craig Pierpont",
                 "productType": "lever",
-                "productSize": 29
+                "productSize": 32
             }
         ]
     },
