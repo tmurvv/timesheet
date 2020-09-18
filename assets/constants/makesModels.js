@@ -810,8 +810,15 @@ exports.globalMakesModels = [
         "sellerAliases": [
             "Newsome"
         ],
-        "sellerName": "Newsom",
-        "sellerProducts": []
+        "sellerName": "Newsom Harps",
+        "sellerProducts": [{
+            "productAliases": [],
+            "_id": uuid(),
+            "productTitle": "Emilie",
+            "productMaker": "Newsom Harps",
+            "productType": "lever",
+            "productSize": 36
+        }]
     },
     {
         "sellerAliases": [],

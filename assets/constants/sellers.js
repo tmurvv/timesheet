@@ -2,8 +2,8 @@ const { SellerPaths } = require('../classes/SellerPaths');
 const { SellerPathsLink } = require('../classes/SellerPathsLink');
 
 //#region VENDORS NOT LINKING TO PRODUCTS
-    //#region Tisha Murvihill, harp services
-    const MurvihillHarpServices = new SellerPaths(
+    //#region Find a Harp
+    const Findaharp = new SellerPaths(
         'Find a Harp', //name
         'harp@harptisha.com', //email
         'Calgary, Canada', //short location
@@ -40,6 +40,25 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
+    //#region The Harp Place
+    const TheHarpPlace = new SellerPaths(
+        'The Harp Place', //name
+        'harpgal1@gmail.com', //email
+        'Albany, New York area', //country
+        'Northeast', //region
+        '42.5715', // lat
+        '-73.6206', //long
+        'https://harptisha.com/TestArea/TheHarpPlace.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+        // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    );
+    //#endregion
     //#region HarpAngel
     const HarpAngel = new SellerPaths(
         'Harp Angel', //name
@@ -64,7 +83,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Vavra Harp', //name
         'vavra@vavraharp.com', //email
         'Upstate South Carolina', // short location
-        'Eastern', //region
+        'South', //region
         '34.5034', // lat
         '-82.6501', //long
         'https://harptisha.com/TestArea/vavraSales.php', //productsUrl
@@ -350,11 +369,12 @@ exports.sellerArray = [
     MichiganHarpCenterFloorHarp,
     MichiganHarpCenterLapHarp,
     WestCoastHarps, 
-    MurvihillHarpServices,
+    Findaharp,
     VavraHarp,
     VixenHarps,
     HarpAngel,
     FourHarpMusic,
+    TheHarpPlace,
     HarpsEtcLever, //removed for SSL violations
     HarpsEtcPedal, //removed for SSL violations
     HarpsEtcWire, //removed for SSL violations
