@@ -93,7 +93,10 @@ app.use('/api/v1/products', productRouter);
 // });
 
 // not in router due to fs directory issue
-app.post('/api/v1/uploadlisting', authController.protect, authController.restrictTo('admin', 'seller'), upload.single('photo'), async (req, res) => {
+// app.post('/api/v1/uploadlisting', authController.protect, authController.restrictTo('admin', 'seller'), upload.single('photo'), async (req, res) => { // BREAKING security
+app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
+    
+    console.log('imin')
     if(req.file) {
         fs.rename(`${__dirname}/assets/img/${req.file.filename}`, `${__dirname}/assets/img/${req.file.originalname}`, function (err) {
             if (err) throw err;
@@ -115,14 +118,18 @@ app.post('/api/v1/uploadlisting', authController.protect, authController.restric
         // console.log('top', uploadlisting)
         const addeduploadlisting = await ProductUploads.create(uploadlisting);
         // console.log('bottom', addeduploadlisting)
-        res.redirect('https://findaharp.com?uploadlisting=yes');
+        // res.redirect('https://findaharp.com?uploadlisting=yes'); // BREAKING
+        res.redirect('https://findaharp-testing.take2tech.ca?uploadlisting=yes');
+        // res.redirect('http://localhost:3006?uploadlisting=yes');
         // res.status(200).json({
         //     title: 'FindAHarp.com | Upload Listing',
         //     status: 'success',
         //     addeduploadlisting
         // });
     } catch (e) {
-        res.redirect('https://findaharp.com?uploadlisting=no');
+        // res.redirect('http://localhost:3006?uploadlisting=no');
+        // res.redirect('https://findaharp.com?uploadlisting=no'); // BREAKING
+        res.redirect('https://findaharp-testing.take2tech.ca?uploadlisting=no'); // BREAKING
     }
 });
 
