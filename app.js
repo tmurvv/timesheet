@@ -33,7 +33,7 @@ const { catchAsync, leaf } = require('./utils/helpers/helpers');
 const { Users } = require('./assets/data/Schemas');
 const { ProductUploads } = require('./assets/data/Schemas');
 const { ContactRequests, MakesModels, Products } = require('./assets/data/Schemas');
-const { sendMailUserToSeller, contactUsForm, emailVerifySend } = require('./email');
+const { sendMailUserToSeller, contactUsForm, emailVerifySend, sendReceipt } = require('./email');
 const { refreshMakesModels } = require('./utils/codeStorage/rarelyUsedUtils');
 
 // program setup
@@ -143,7 +143,7 @@ app.post('/api/v1/contactform', async (req, res) => {
     try {
         const contact = Object.assign({ contactId: uuid() }, req.body);
         const added = await ContactRequests.create(contact);
-        if (contact.newsletter===true) {
+        if (contact.newsletter===true) { // BREAKING needs to be wired up
             try {
                 
             } catch(e) {
@@ -226,6 +226,26 @@ app.post('/api/v1/emailverify/', catchAsync(async (req, res) => {
 // Resend verify email
 app.post('/api/v1/resendverify', catchAsync(async (req, res) => {
     emailVerifySend(req.body);
+}));
+// Send Receipt
+app.post('/api/v1/sendreceipt', catchAsync(async (req, res) => {
+    try {
+        sendReceipt(req.body, '', '');
+        console.log('success')
+        res.status(200).json({
+            title: 'FindAHarp.com | Send Receipt',
+            status: 'success'  
+        });
+    } catch (e) {
+        console.log('error', e.message)
+        res.status(500).json({
+            title: 'FindAHarp.com | Send Receipt',
+            status: 'fail',
+            data: {
+                message: `Something went wrong while sending email receipt: ${e.message}`
+            }
+        });
+    }
 }));
 // Run get product ads
 app.get('/api/v1/productads', catchAsync(async (req, res) => {
