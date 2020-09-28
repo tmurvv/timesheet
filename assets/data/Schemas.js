@@ -157,7 +157,7 @@ const productUploadSchema = new mongoose.Schema({
         type: String,
         required: [true, 'A model is required, if model unknown, enter "unknown".']
     },
-    productPrice: Number,
+    productPrice: String,
     productSeller: String,
     productDescription: String,
     productImageUrl: String,

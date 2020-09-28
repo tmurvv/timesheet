@@ -111,7 +111,7 @@ app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
             productMaker: req.body.make,
             productModel: req.body.model,
             productPrice: Number(req.body.price),
-            productSeller: req.body.sellerName,
+            productSeller: req.body.sellername,
             productDescription: req.body.description,
             productImageUrl: '/assets/img/' + req.file.originalname
         });
