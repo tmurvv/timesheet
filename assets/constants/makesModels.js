@@ -1325,7 +1325,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "CW26",
                 "productMaker": "Vavra",
-                "productType": "wire",
+                "productType": "Wire/Cross/Double/Triple",
                 "productSize": 26
             }
         ]
