@@ -1319,6 +1319,14 @@ exports.globalMakesModels = [
                 "productMaker": "Vavra",
                 "productType": "lever",
                 "productSize": 22
+            },
+            {
+                "productAliases": ["Celtic Lap Harp - 26 wire strings"],
+                "_id": uuid(),
+                "productTitle": "CW26",
+                "productMaker": "Vavra",
+                "productType": "wire",
+                "productSize": 26
             }
         ]
     },
