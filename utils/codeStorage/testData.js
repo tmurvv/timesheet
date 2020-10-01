@@ -1000,5 +1000,3 @@ const testData = [
         "divider": "00000000000000000000000"
     }
 ];
-
-export default testData;

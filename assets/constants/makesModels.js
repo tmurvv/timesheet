@@ -1325,8 +1325,8 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "CW26",
                 "productMaker": "Vavra",
-                "productType": "Wire/Cross/Double/Triple",
-                "productSize": 26
+                "productType": "lever-free",
+                "productSize": "Wire/Cross/Double/Triple"
             }
         ]
     },
