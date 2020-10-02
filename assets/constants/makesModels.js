@@ -66,7 +66,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Brother Benjamine",
                 "productMaker": "Argent Fox",
-                "productType": "cross-string",
+                "productType": "cross-strung",
                 "productSize": "Wire/Cross/Double/Triple"
             },
             {
