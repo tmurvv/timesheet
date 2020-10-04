@@ -234,9 +234,7 @@ exports.verifyEmail = async(req,res) => {
 exports.sendReceipt = async (body) => {
      // encode email
     //  const emailEncode = btoa(body.user.shippingemail);
-    console.log('email', body.email)
-    console.log('html', body.html.substr(0,30))
-     // create transporter
+    // create transporter
      const transporter = TRANSPORTER;
      
     //  send email
