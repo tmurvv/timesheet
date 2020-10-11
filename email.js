@@ -260,7 +260,7 @@ exports.sendReceipt = async (body) => {
                  to: 'orders@findaharp.com', // list of receivers
                  subject: `Findaharp.com, Order Receipt`,
                  text: `This receipt designed for html viewing. ${body}`,
-                 html: `<h2>From: ${body.email}:</h2>${body.html}`
+                 html: `<h2>From: ${body.email}</h2>${body.html}`
              });
          } catch (e) {
              console.log('here', e.message);
