@@ -427,6 +427,14 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "FH34",
+                "productMaker": "Dusty Strings",
+                "productType": "lever",
+                "productSize": 34
+            },
+            {
+                "productAliases": [],
                 "_id": "5e8b7deea03397444c70625b",
                 "productTitle": "Allegro 26",
                 "productMaker": "Dusty Strings",
@@ -619,6 +627,14 @@ exports.globalMakesModels = [
                 ],
                 "_id": uuid(),
                 "productTitle": "Style 100",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 47
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Salzedo",
                 "productMaker": "Lyon & Healy",
                 "productType": "pedal",
                 "productSize": 47
