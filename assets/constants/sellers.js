@@ -142,6 +142,24 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         return product
     };
     //#endregion
+    //#region Blevins Harps
+    const BlevinsHarps = new SellerPaths(
+        'Blevins Harps', //name
+        'blevinsharps@gmail.com', //email
+        'Western Colorado', //short location
+        'US-West', //region
+        '39.082610', //lat 
+        '-108.593220', //long
+        'https://harptisha.com/TestArea/blevinsSales.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
+    );
+    //#endregion
 //#endregion
 //#region VENDORS LINKING TO PRODUCTS
     //#region Harps Etc. lever
@@ -375,6 +393,7 @@ exports.sellerArray = [
     HarpAngel,
     FourHarpMusic,
     TheHarpPlace,
+    BlevinsHarps,
     HarpsEtcLever, //removed for SSL violations
     HarpsEtcPedal, //removed for SSL violations
     HarpsEtcWire, //removed for SSL violations

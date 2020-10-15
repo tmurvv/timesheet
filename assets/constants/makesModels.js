@@ -90,6 +90,14 @@ exports.globalMakesModels = [
                 "productMaker": "Blevins",
                 "productType": "lever",
                 "productSize": 34
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Consort 36",
+                "productMaker": "Blevins",
+                "productType": "lever",
+                "productSize": 36
             }
         ]
     },
