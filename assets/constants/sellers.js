@@ -83,7 +83,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Vavra Harp', //name
         'vavra@vavraharp.com', //email
         'Upstate South Carolina', // short location
-        'South', //region
+        'Eastern', //region
         '34.5034', // lat
         '-82.6501', //long
         'https://harptisha.com/TestArea/vavraSales.php', //productsUrl
@@ -147,7 +147,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Blevins Harps', //name
         'blevinsharps@gmail.com', //email
         'Western Colorado', //short location
-        'US-West', //region
+        'West', //region
         '39.082610', //lat 
         '-108.593220', //long
         'https://harptisha.com/TestArea/blevinsSales.php', //productsUrl
@@ -339,6 +339,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     );
     MichiganHarpCenterFloorHarp.ownerException = (product) => {
         if (product.productLongDesc.indexOf("|")>-1) return null;
+        if (product.title.toUpperCase.startsWith('NEW')) return null;
         return product;
     }
     //#endregion

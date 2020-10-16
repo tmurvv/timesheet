@@ -228,7 +228,7 @@ exports.globalMakesModels = [
                 "_id": uuid,
                 "productTitle": "Electric",
                 "productMaker": "Camac",
-                "productType": "lever",
+                "productType": "electric",
                 "productSize": ""
             }
         ]
@@ -494,6 +494,20 @@ exports.globalMakesModels = [
                 "productMaker": "Heartland",
                 "productType": "lever",
                 "productSize": 38
+            }
+        ]
+    },
+    {
+        "sellerAliases": [],
+        "sellerName": "Kortier",
+        "sellerProducts": [
+            {
+                "productAliases": [],
+                "_id": "5e8b7deea03397444c70626c",
+                "productTitle": "Midi Harp",
+                "productMaker": "Kortier",
+                "productType": "electric",
+                "productSize": null
             }
         ]
     },
