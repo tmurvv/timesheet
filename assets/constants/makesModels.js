@@ -1379,6 +1379,14 @@ exports.globalMakesModels = [
                 "productMaker": "Webster",
                 "productType": "lever",
                 "productSize": 36
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Thistle",
+                "productMaker": "Webster",
+                "productType": "lever",
+                "productSize": 37
             }
         ]
     },
