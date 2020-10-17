@@ -238,20 +238,22 @@ exports.sendReceipt = async (body) => {
      const transporter = TRANSPORTER;
      
     //  send email
-     (async () => {
-         try {
-             // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
-             const info = await transporter.sendMail({
-                 from: '<orders@findaharp.com>', // sender address
-                 to: body.email, // list of receivers
-                 subject: `Findaharp.com, Order Receipt`,
-                 text: `This receipt designed for html viewing. ${body}`,
-                 html: body.html
-             });
-         } catch (e) {
-             console.log('here', e.message);
-         }
-     })();
+     if (!body.shipping || (body.shipping && body.shipping!==-1)) {
+        (async () => {
+            try {
+                // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
+                const info = await transporter.sendMail({
+                    from: '<orders@findaharp.com>', // sender address
+                    to: body.email, // list of receivers
+                    subject: `Findaharp.com, Order Receipt`,
+                    text: `This receipt designed for html viewing. ${body}`,
+                    html: body.html
+                });
+            } catch (e) {
+                console.log('here', e.message);
+            }
+        })();
+    }
      (async () => {
          try {
              // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
