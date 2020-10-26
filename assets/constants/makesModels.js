@@ -693,14 +693,6 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [],
-                "_id": "5e8b7deea03397444c70623a",
-                "productTitle": "Troubadour VI",
-                "productMaker": "Lyon & Healy",
-                "productType": "lever",
-                "productSize": 36
-            },
-            {
-                "productAliases": [],
                 "_id": uuid(),
                 "productTitle": "The Troubadour",
                 "productMaker": "Lyon & Healy",
@@ -710,6 +702,15 @@ exports.globalMakesModels = [
             {
                 "productAliases": [],
                 "_id": "5e8b7deea03397444c70623b",
+                // "productDoNotSelect": [
+                //     "The Troubadour",
+                //     "Troubadour II",
+                //     "Troubadour III",
+                //     "Troubadour IV",
+                //     "Troubadour VI",
+                //     "Troubadour VII",
+                //     "Troubadour VIII",
+                // ],
                 "productTitle": "Troubadour V",
                 "productMaker": "Lyon & Healy",
                 "productType": "lever",
@@ -717,6 +718,15 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [],
+                // "productDoNotSelect": [
+                //     // "Troubadour III",
+                //     // "Troubadour IV",
+                //     // "Troubadour V",
+                //     // "Troubadour VI",
+                //     // "Troubadour VII",
+                //     // "Troubadour VIII",
+                    
+                // ],
                 "_id": "5e8b7deea03397444c70623b",
                 "productTitle": "Troubadour II",
                 "productMaker": "Lyon & Healy",
@@ -725,8 +735,50 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [],
+                // "productDoNotSelect": [
+                //     "The Troubadour",
+                //     "Troubadour II",
+                //     "Troubadour IV",
+                //     "Troubadour V",
+                //     "Troubadour VI",
+                //     "Troubadour VII",
+                //     "Troubadour VIII",
+                // ],
                 "_id": uuid(),
                 "productTitle": "Troubadour III",
+                "productMaker": "Lyon & Healy",
+                "productType": "lever",
+                "productSize": 36
+            },
+            {
+                "productAliases": [],
+                // "productDoNotSelect": [
+                //     "The Troubadour",
+                //     "Troubadour II",
+                //     "Troubadour III",
+                //     "Troubadour V",
+                //     "Troubadour VI",
+                //     "Troubadour VII",
+                //     "Troubadour VIII",
+                // ],
+                "_id": uuid(),
+                "productTitle": "Troubadour IV",
+                "productMaker": "Lyon & Healy",
+                "productType": "lever",
+                "productSize": 36
+            },
+            {
+                "productAliases": [],
+                // "productDoNotSelect": [
+                //     // "Troubadour II",
+                //     // "Troubadour III",
+                //     // "Troubadour IV",
+                //     // "Troubadour V",
+                //     // "Troubadour VII",
+                //     // "Troubadour VIII",
+                // ],
+                "_id": uuid(),
+                "productTitle": "Troubadour VI",
                 "productMaker": "Lyon & Healy",
                 "productType": "lever",
                 "productSize": 36
@@ -1171,11 +1223,22 @@ exports.globalMakesModels = [
         "sellerProducts": [
             {
                 "productAliases": [],
+                "productDoNotSelect": [
+                    "Double Lorraine"
+                ],
                 "_id": uuid(),
                 "productTitle": "Lorraine",
                 "productMaker": "Stoney End",
                 "productType": "lever",
                 "productSize": 29
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Double Lorraine",
+                "productMaker": "Stoney End",
+                "productType": "lever",
+                "productSize": "Wire/Cross/Double/Triple"
             }
         ]
     },

@@ -14,6 +14,7 @@
 - test CRON job on findaharp.com
 
 ### functionality
+- makesmodelssizefinish, 'do not select' not working, see troubs
 - in controllers, if exception, return fail status message
 - private Ads
     - set up Schema
