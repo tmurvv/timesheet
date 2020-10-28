@@ -32,6 +32,7 @@ const { scrapeAds } = require('./utils/harpAdScraper');
 const { catchAsync, leaf } = require('./utils/helpers/helpers');
 const { Users } = require('./assets/data/Schemas');
 const { ProductUploads } = require('./assets/data/Schemas');
+const { StoreItemUpload } = require('./assets/data/Schemas');
 const { ContactRequests, MakesModels, Products } = require('./assets/data/Schemas');
 const { sendMailUserToSeller, contactUsForm, emailVerifySend, sendReceipt } = require('./email');
 const { refreshMakesModels } = require('./utils/codeStorage/rarelyUsedUtils');
@@ -132,6 +133,78 @@ app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
         // res.redirect('https://findaharp-testing.take2tech.ca?uploadlisting=no');
     }
 });
+// not in router due to fs directory issue
+// app.post('/api/v1/uploadlisting', authController.protect, authController.restrictTo('admin', 'seller'), upload.single('photo'), async (req, res) => { // BREAKING security
+app.post('/api/v1/uploadstoreitem', upload.single('photo'), async (req, res) => {
+    const photoSuccess='true';
+    const subcategories = []
+    console.log(req.body);
+    //prepare subcategory list
+    if (req.body.harpsolo) subcategories.push('Harp Solo');
+    if (req.body.harpensemble) subcategories.push('Harp Ensemble');
+    if (req.body.pop) subcategories.push('Pop');
+    if (req.body.classical) subcategories.push('Classical');
+    if (req.body.fluteharp) subcategories.push('Flute/Harp');
+    if (req.body.violinharp) subcategories.push('Violin/Harp');
+    if (req.body.voiceharp) subcategories.push('Voice/Harp');
+    if (req.body.otherensemble) subcategories.push('Other Ensemble');
+    if(req.file&&req.file!==undefined) {
+        try {
+            fs.rename(`${__dirname}/assets/img/${req.file.filename}`, `${__dirname}/assets/img/store/${req.file.originalname}`, function (err) {
+                if (err) throw err;
+                console.log('File Renamed!');
+            });
+        } catch(e) {
+            console.log('photo rename catch', e.message);
+            photoSuccess = false;
+        }
+    }
+    try {
+        const uploaditem = Object.assign({ 
+            category: req.body.category,
+            subcategories, 
+            title: req.body.title,
+            artist_first: req.body.artist_first,
+            artist_last: req.body.artist_last,
+            seller: req.body.seller,
+            price: req.body.price,
+            description: req.body.description,
+            image: `/assets/img/store${req.file?req.file.originalname:'genericHarp.png'}`,
+            condition: req.body.condition,
+            level: req.body.level,
+            harptype: req.body.harptype,
+            notes: req.body.notes,
+            newused: req.body.newused,
+            newprice: req.body.newprice,
+
+        });
+        // console.log('top', uploaditem)
+        const addeduploadstoreitem = await StoreItemUpload.create(uploaditem);
+        // console.log('bottom', addeduploadstoreitem)
+        // res.redirect('https://findaharp.com?uploadstoreitem=yes');
+        
+        // res.redirect('https://findaharp-testing.take2tech.ca?uploadstoreitem=yes');
+        photoSuccess
+            ?res.redirect('https://findaharp-staging.take2tech.ca/uploadstoreitem?success=yes')
+            :res.redirect('https://findaharp-staging.take2tech.ca/uploadstoreitem?success=yes&photoSuccess=no');
+        // res.status(200).json({
+        //     title: 'FindAHarp.com | Upload Listing',
+        //     status: 'success',
+        //     addeduploadstoreitem
+        // });
+    } catch (e) {
+        console.log('error', e.message)
+        res.redirect(`https://findaharp-staging.take2tech.ca/uploadstoreitem?success=no&message=${e.message}`);
+        // res.redirect('https://findaharp.com?uploadstoreitem=no');
+        
+        // res.redirect('https://findaharp-testing.take2tech.ca?uploadstoreitem=no');
+        // res.status(400).json({
+        //     title: 'FindAHarp.com | Upload Listing',
+        //     status: 'fail',
+        //     message: e.message
+        // });
+    }
+});
 
 app.post('/api/v1/privateads', async (req, res) => {
     const productId = uuid();
@@ -144,7 +217,6 @@ app.post('/api/v1/privateads', async (req, res) => {
             product
         }
     });
-    
 });
 app.post('/api/v1/contactform', async (req, res) => {
     try {
