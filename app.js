@@ -185,8 +185,8 @@ app.post('/api/v1/uploadstoreitem', upload.single('photo'), async (req, res) => 
         
         // res.redirect('https://findaharp-testing.take2tech.ca?uploadstoreitem=yes');
         photoSuccess
-            ?res.redirect('https://findaharp-staging.take2tech.ca/uploadstoreitem?success=yes')
-            :res.redirect('https://findaharp-staging.take2tech.ca/uploadstoreitem?success=yes&photoSuccess=no');
+            ?res.redirect('https://findaharp-staging.take2tech.ca?upload=yes&success=yes')
+            :res.redirect('https://findaharp-staging.take2tech.ca?upload=yes&success=yes&photoSuccess=no');
         // res.status(200).json({
         //     title: 'FindAHarp.com | Upload Listing',
         //     status: 'success',
@@ -194,7 +194,7 @@ app.post('/api/v1/uploadstoreitem', upload.single('photo'), async (req, res) => 
         // });
     } catch (e) {
         console.log('error', e.message)
-        res.redirect(`https://findaharp-staging.take2tech.ca/uploadstoreitem?success=no&message=${e.message}`);
+        res.redirect(`https://findaharp-staging.take2tech.ca?upload=yes&success=no&message=${e.message}`);
         // res.redirect('https://findaharp.com?uploadstoreitem=no');
         
         // res.redirect('https://findaharp-testing.take2tech.ca?uploadstoreitem=no');
