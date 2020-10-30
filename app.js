@@ -125,7 +125,7 @@ app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
         // res.status(200).json({
         //     title: 'FindAHarp.com | Upload Listing',
         //     status: 'success',
-        //     addeduploadlisting
+        //     addeduploadlisting 
         // });
     } catch (e) {
         // res.redirect('http://localhost:3006?uploadlisting=no');
@@ -169,7 +169,7 @@ app.post('/api/v1/uploadstoreitem', upload.single('photo'), async (req, res) => 
             seller: req.body.seller,
             price: req.body.price,
             description: req.body.description,
-            image: `/assets/img/store${req.file?req.file.originalname:'genericHarp.png'}`,
+            image: `/assets/img/store/${req.file?req.file.originalname:'genericHarp.png'}`,
             condition: req.body.condition,
             level: req.body.level,
             harptype: req.body.harptype,
