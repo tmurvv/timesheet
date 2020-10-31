@@ -114,7 +114,7 @@ const usersSchema = new mongoose.Schema({
         },
         default: 'user'
     },
-    agreementStatus: String,
+    agreements: Array,
     _date_created: {
         type: Date,
         default: Date.now()

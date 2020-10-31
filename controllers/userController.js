@@ -195,7 +195,7 @@ exports.updateUser = async (req, res) => {
         newsletter: req.body.newsletter,
         distanceunit: req.body.distanceunit,
         currency: req.body.currency,
-        agreementStatus: req.body.agreementStatus
+        agreements: req.body.agreements
     }
     // update the user
     try {
@@ -225,11 +225,7 @@ exports.updatePassword = async (req, res) => {
     if (req.body.resetpassword) {
         const useremail = req.params.userid;
         try {
-            // hash password
-            // const saltRounds=10;
-            // const hashPassword = await bcrypt.hash(req.body.resetpassword, saltRounds);
-            // update user
-            // const result = await Users.findOneAndUpdate({email: useremail}, {password: req.body.resetpassword});
+            // update password
             const user = await Users.findOne({email: useremail});
             user.password = req.body.resetpassword;
             await user.save();
