@@ -29,6 +29,7 @@ const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const authController = require('./controllers/authController');
 const { scrapeAds } = require('./utils/harpAdScraper');
+const { scrapeStoreItems } = require('./assets/store/utils/scrapeStoreItems');
 const { catchAsync, leaf } = require('./utils/helpers/helpers');
 const { Users } = require('./assets/data/Schemas');
 const { ProductUploads } = require('./assets/data/Schemas');
@@ -378,6 +379,20 @@ app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
         clientSecret: paymentIntent.client_secret
     });
 });
+
+// Run get store items
+app.get('/api/v1/scrapestoreitems', catchAsync(async (req, res) => {
+    const storeItems = await scrapeStoreItems();
+    console.log('app', storeItems)
+
+    res.status(200).json({
+        title: 'FindAHarp.com | Get Store Items',
+        status: 'success',
+        storeItems  
+    });
+}));
+
+
  
 // Catch invalid routes
 app.all('*', (req,res,next) => {

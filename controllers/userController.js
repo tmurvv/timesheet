@@ -166,12 +166,12 @@ exports.verifyUser = async (req, res) => {
     }
 };
 exports.updateUser = async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     // get user  
     const userInfo = await Users.findById(req.params.userid);
     // error if no user
     if (!userInfo) {
-        console.log('nouser')
+        // console.log('nouser')
         return res.status(500).json({
             title: 'FindAHarp.com | Update User',
             status: 'fail',
@@ -180,7 +180,7 @@ exports.updateUser = async (req, res) => {
     }
     // check password
     if(!await bcrypt.compare(req.body.password, userInfo.password)) {
-        console.log('passwordfail')
+        // console.log('passwordfail')
         return res.status(500).json({
             title: 'FindAHarp.com | Update User',
             status: 'fail',
