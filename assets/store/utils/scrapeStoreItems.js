@@ -18,13 +18,15 @@ async function getLinkInfo(url) {
     return product;
 }
 
-exports.scrapeStoreItems = async (seller, data) => {
-    const response = await axios({url: `https://www.harpsetc.com/strings/bow-brand/bow-brand-natural-gut/`, 'strictSSL': false});
+exports.scrapeStoreItems = async (answerArray, url) => {
+    console.log(answerArray.length)
+    const response = await axios({url, 'strictSSL': false});
     const html = response.data.text;
     const $ = cheerio.load(html);
+
     let productTable = $('.ty-product-list').toArray();
     
-    const answer = await Promise.all(productTable.map(async item => {
+    await Promise.all(productTable.map(async item => {
         const product = {};
         const secondaryUrl = $(item).find('.ty-product-list__image').find('a').attr('href');
         try {
@@ -39,12 +41,17 @@ exports.scrapeStoreItems = async (seller, data) => {
             product.description = $S('.content-description').text().trim();
             product.image = $S('.ty-pict   ').first().attr('src');
             
+            answerArray.push(product);
         } catch(e) {
             console.log('error', e.message)
         }         
-        return product;
     }));
-    return answer;
+    // get next button href
+    if (!$('.ty-pagination').find('a').last().attr('href')) return answerArray
+
+    const nextUrl = $('.ty-pagination').find('a').last().attr('href');
+    // return answerArray;
+    return this.scrapeStoreItems(answerArray, nextUrl)
 }
 
 

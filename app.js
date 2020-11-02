@@ -382,8 +382,40 @@ app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
 
 // Run get store items
 app.get('/api/v1/scrapestoreitems', catchAsync(async (req, res) => {
-    const storeItems = await scrapeStoreItems();
-    console.log('app', storeItems)
+    let storeItems = [];
+    let bb = [];
+    let ny = [];
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-natural-gut/?sef_rewrite=1`);
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-gut/`);
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-concedo/`);
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-burgundy-gut/`);
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-nylon/`);
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bass-wire-silver-plated/`);
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-bass-wire-tarnish-resistant/`);
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-bass-wire/`);
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-professional-lever-wire/`);
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-nylon/`);
+    console.log('storeItems', storeItems.length);
+    
+    // storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/artist-nylon-strings/`);
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bronze-wire-monofilament/`);
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/dusty-strings/`);
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/savarez-kf/`);
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/nylon-monofilament/`);
+    // console.log('storeItems.length', storeItems.length)
 
     res.status(200).json({
         title: 'FindAHarp.com | Get Store Items',
