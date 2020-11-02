@@ -37,6 +37,11 @@ exports.getUsedHarp = async (req, res) => {
     });
 };
 //#endregion
+//#region Main program
+exports.getStoreItems = async (req, res) => {
+    
+};
+//#endregion
 
 
 //** Reference Code ****/   
