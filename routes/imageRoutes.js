@@ -19,7 +19,7 @@ router.get('/:name', (req, res, next) => {
         if (err) {
             next(new AppError(`No image found with the file name '${fileName}'.`, 404))
         } else {
-            console.log('Sent:', fileName)
+            // console.log('Sent:', fileName)
         } 
     });
 });

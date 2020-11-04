@@ -171,7 +171,7 @@ exports.updateUser = async (req, res) => {
     const userInfo = await Users.findById(req.params.userid);
     // error if no user
     if (!userInfo) {
-        // console.log('nouser')
+        console.log('nouser')
         return res.status(500).json({
             title: 'FindAHarp.com | Update User',
             status: 'fail',
@@ -180,7 +180,7 @@ exports.updateUser = async (req, res) => {
     }
     // check password
     if(!await bcrypt.compare(req.body.password, userInfo.password)) {
-        // console.log('passwordfail')
+        console.log('passwordfail')
         return res.status(500).json({
             title: 'FindAHarp.com | Update User',
             status: 'fail',
@@ -211,6 +211,7 @@ exports.updateUser = async (req, res) => {
             userCopy
         });
     } catch (e) {
+        console.log(e.message)
         res.status(500).json({
             title: 'FindAHarp.com | Update User',
             status: 'fail',
