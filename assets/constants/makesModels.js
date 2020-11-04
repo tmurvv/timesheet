@@ -1257,6 +1257,14 @@ exports.globalMakesModels = [
                 "productMaker": "Swanson",
                 "productType": "pedal",
                 "productSize": 47
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Swanson 40",
+                "productMaker": "Swanson",
+                "productType": "lever",
+                "productSize": 40
             }
         ]
     },
