@@ -670,6 +670,14 @@ exports.globalMakesModels = [
                 "productSize": 40
             },
             {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Chicago 47",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 47
+            },
+            {
                 "productAliases": [
                     "85 E",
                     "85 Extended",

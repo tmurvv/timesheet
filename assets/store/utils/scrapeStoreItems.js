@@ -48,6 +48,10 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-nylon/`);
     console.log('storeItems', storeItems.length);
     
+    // gifts
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/gifts/`);
+    console.log('storeItems', storeItems.length);
+    
     // storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/artist-nylon-strings/`);
     // console.log('storeItems.length', storeItems.length)
     // storeItems = await scrapeStoreItems(storeItems,`https://www.harpsetc.com/strings/bronze-wire-monofilament/`);
@@ -87,7 +91,7 @@ const scrapeStoreItemsSub = async (answerArray, url) => {
 
             const product = {};
             product.id = $S('.ty-product-block__left').find('form').attr('name').substring(13);
-            product.category = 'strings';
+            product.category = url.includes('gifts')?'gifts':'strings';
             product.store = 'harpsetc';
             product.title = $S('.ty-product-block-title').text().trim();
             product.price = $S('.ty-price-num').text().trim();
