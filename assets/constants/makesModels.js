@@ -94,6 +94,14 @@ exports.globalMakesModels = [
             {
                 "productAliases": [],
                 "_id": uuid(),
+                "productTitle": "Marie XP",
+                "productMaker": "Blevins",
+                "productType": "lever",
+                "productSize": 23
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
                 "productTitle": "Consort 36",
                 "productMaker": "Blevins",
                 "productType": "lever",

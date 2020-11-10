@@ -160,6 +160,24 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
     );
     //#endregion
+    //#region Harp and Heart
+    const HarpandHeart = new SellerPaths(
+        'Harp and Heart', //name
+        'harpandheart@yahoo.com', //email
+        'Philadelphia area', //short location
+        'Norteast', //region
+        '40.4108', //lat 
+        '-75.2479', //long
+        'https://harptisha.com/TestArea/harpHeartSales.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
+    );
+    //#endregion
 //#endregion
 //#region VENDORS LINKING TO PRODUCTS
     //#region Harps Etc. lever
@@ -394,6 +412,7 @@ exports.sellerArray = [
     HarpAngel,
     FourHarpMusic,
     TheHarpPlace,
+    HarpandHeart,
     BlevinsHarps,
     HarpsEtcLever, //removed for SSL violations
     HarpsEtcPedal, //removed for SSL violations
