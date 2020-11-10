@@ -165,7 +165,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         'Harp and Heart', //name
         'harpandheart@yahoo.com', //email
         'Philadelphia area', //short location
-        'Norteast', //region
+        'Northeast', //region
         '40.4108', //lat 
         '-75.2479', //long
         'https://harptisha.com/TestArea/harpHeartSales.php', //productsUrl
