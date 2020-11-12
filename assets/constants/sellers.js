@@ -59,7 +59,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
-    //#region HarpAngel
+    //#region Harp Angel
     const HarpAngel = new SellerPaths(
         'Harp Angel', //name
         'harpangelharpist@gmail.com', //email
