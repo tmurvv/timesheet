@@ -217,7 +217,7 @@ exports.FINDAHARP_PRODUCTS = [
         level: "beg-int",
         harptype: "lever harp",
         notes: "A couple of markings.",
-        image: "../../../img/store/findaharp/sheetmusic/50Christmas.jpg", 
+        image: "../../../img/store/findaharp/sheetmusic/50Christmas.png", 
         description: "A must have for a gigging harpist. A fun book for a hobbyist. Each carol is arranged in an easy version and an intermediate version.",
         newused: 'used'
     },
