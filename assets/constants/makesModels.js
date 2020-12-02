@@ -1074,6 +1074,20 @@ exports.globalMakesModels = [
         ]
     },
     {
+        "sellerAliases": [],
+        "sellerName": "Mid-East",
+        "sellerProducts": [
+            {
+                "productAliases": ["Megan"],
+                "_id": uuid(),
+                "productTitle": "Roosebeck Meghan 36",
+                "productMaker": "Mid-East",
+                "productType": "lever",
+                "productSize": 36
+            }
+        ]
+    },
+    {
         "sellerAliases": ["Edouard Rusnak", "Rusnak"],
         "sellerName": "Edward Rusnak",
         "sellerProducts": [

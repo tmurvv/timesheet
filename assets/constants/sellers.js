@@ -178,6 +178,24 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
     );
     //#endregion
+    //#region Harp and Heart
+    const ChiaraArpa = new SellerPaths(
+        'Chiara Capobianco', //name
+        'chiara_arpa@yahoo.it', //email
+        'San Diego area', //short location
+        'Pacific', //region
+        '32.7157', //lat 
+        '-117.1611', //long
+        'https://harptisha.com/TestArea/chiaraSales.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
+    );
+    //#endregion
 //#endregion
 //#region VENDORS LINKING TO PRODUCTS
     //#region Harps Etc. lever
@@ -414,6 +432,7 @@ exports.sellerArray = [
     TheHarpPlace,
     HarpandHeart,
     BlevinsHarps,
+    ChiaraArpa,
     HarpsEtcLever, //removed for SSL violations
     HarpsEtcPedal, //removed for SSL violations
     HarpsEtcWire, //removed for SSL violations
