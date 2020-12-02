@@ -180,7 +180,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#endregion
     //#region Harp and Heart
     const ChiaraArpa = new SellerPaths(
-        'Chiara Capobianco', //name
+        'Chiara Arpa', //name
         'chiara_arpa@yahoo.it', //email
         'San Diego area', //short location
         'Pacific', //region
