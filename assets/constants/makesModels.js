@@ -601,6 +601,18 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [
+                    " 20 ",                  
+                    "style 20",
+                    "Style 20"
+                ],
+                "_id": uuid(),
+                "productTitle": "Style 20",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 45
+            },
+            {
+                "productAliases": [
                     " 21 ",                  
                     "style 21",
                     "Style 21"
