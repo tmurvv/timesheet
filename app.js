@@ -407,8 +407,6 @@ app.get('/api/v1/scrapestoreitems', catchAsync(async (req, res) => {
         storeItems  
     });
 }));
-
-
  
 // Catch invalid routes
 app.all('*', (req,res,next) => {
