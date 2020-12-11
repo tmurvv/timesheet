@@ -254,15 +254,16 @@ exports.sendReceipt = async (body) => {
             }
         })();
     }
+    // send order to orders@findaharp.com
      (async () => {
          try {
              // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
              const info = await transporter.sendMail({
                  from: '<orders@findaharp.com>', // sender address
                  to: 'orders@findaharp.com', // list of receivers
-                 subject: `Findaharp.com, Order Receipt`,
+                 subject: `Customer order notification`,
                  text: `This receipt designed for html viewing. ${body}`,
-                 html: `<h2>From: ${body.email}</h2>${body.html}`
+                 html: `<h2>A customer has ordered:</h2><h4>From: ${body.email}</h4>${body.html}`
              });
          } catch (e) {
              console.log('here', e.message);
