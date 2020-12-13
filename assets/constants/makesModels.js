@@ -1259,7 +1259,8 @@ exports.globalMakesModels = [
     },
     {
         "sellerAliases": [
-            "Stoneyend"
+            "Stoneyend",
+            "StoneyEnd"
         ],
         "sellerName": "Stoney End",
         "sellerProducts": [
@@ -1281,6 +1282,14 @@ exports.globalMakesModels = [
                 "productMaker": "Stoney End",
                 "productType": "lever",
                 "productSize": "Wire/Cross/Double/Triple"
+            },
+            {
+                "productAliases": [""],
+                "_id": uuid(),
+                "productTitle": "Eve",
+                "productMaker": "Stoney End",
+                "productType": "lever",
+                "productSize": "22"
             }
         ]
     },

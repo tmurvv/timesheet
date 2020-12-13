@@ -10,10 +10,10 @@ const { TRANSPORTER } = require('./assets/constants/emailTransport');
 exports.sendMailUserToSeller = (contactform) => {
     // create reusable transporter object using the default SMTP transport
     const transporter = TRANSPORTER;
-    // Send Email
+    // Send emails to seller, customer, Find a Harp
     (async () => {
         try {
-            // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
+            // To Seller
             const info = await transporter.sendMail({
                 from: '<harps@findaharp.com>', // sender address
                 to: contactform.selleremail,
@@ -57,7 +57,55 @@ exports.sendMailUserToSeller = (contactform) => {
             if (error.response) {
               console.error(error.response.body)
             }
-        }
+        }       
+    // To Customer
+        try {
+            // contactform.sellername = 'For Testing'; //BREAKINk
+            const sellerText = contactform.sellername === "Find a Harp"?'': `If you do not hear back from ${contactform.sellername} within two business days, please reply to this e-mail and let us know.`;           
+            const info = await transporter.sendMail({
+                from: '<harps@findaharp.com>',
+                to: `${contactform.email}`,
+                // to: '<tmurv@shaw.ca>', //test email, should be to customer
+                subject: `Thank you for your inquiry`,
+                text: `This email intended for html viewing. Thank you for your inquiry to our harp seller. They will contact you by email. If you do not hear from them within 2 business days, please reply to this email.`,
+                html: `<html>
+                            <body style="color:#083a08; font-family: Lato, Arial, Helvetica, sans-serif;
+                                                        line-height:1.8em;">
+                                <h2 style="color:#6A75AA;font-weight: 600;">Message from findaharp.com</h2>
+                                <p>Hello ${contactform.firstname} ${contactform.lastname},<br />
+                                <br />
+                                Thank you for your inquiry to ${contactform.sellername} for the ${contactform.productmaker}, ${contactform.productmodel} listed on the Find a Harp website. ${sellerText}
+                                <br />
+                                <br />
+                                <span style="color:#6A75AA;font-size:20px;">Details of inquiry:<br /></span>
+                                Make: ${contactform.productmaker}<br />
+                                Model: ${contactform.productmodel}<br />
+                                Price listed on website: ${contactform.productprice}<br />
+                                Seller: ${contactform.sellername}<br />
+                                <br />
+                                Your Comments/Questions: ${contactform.comments}<br />
+                                <br />
+                                
+                                Thank you again,<br />
+                                findaharp.com<br />
+                                <br />
+                                <br />
+                                 ---------------
+                                <p>Findaharp internal use: <br />
+                                Date of customer inquiry: ${new Date(contactform.date).toLocaleDateString()}<br />
+                                Communication #id: ${contactform.contactid}</p><br />
+                                <p><strong>&copy;2020 <a href="https://findaharp.com" style="color:#6A75AA;font-weight: 600; text-decoration: underline;">findaharp.com</a></strong></p>
+                            </body>
+                        </html>`
+            });
+        } catch (error) {
+            console.error(error);
+
+            if (error.response) {
+              console.error(error.response.body)
+            }
+        }       
+        // Copy To Find a Harp
         try {
             // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
             const info = await transporter.sendMail({

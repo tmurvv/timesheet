@@ -178,7 +178,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
     );
     //#endregion
-    //#region Harp and Heart
+    //#region Chiara Arpa
     const ChiaraArpa = new SellerPaths(
         'Chiara Arpa', //name
         'chiara_arpa@yahoo.it', //email
