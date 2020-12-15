@@ -40,25 +40,6 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
     );
     //#endregion
-    //#region The Harp Place
-    const TheHarpPlace = new SellerPaths(
-        'The Harp Place', //name
-        'harpgal1@gmail.com', //email
-        'Albany, New York area', //country
-        'Northeast', //region
-        '42.5715', // lat
-        '-73.6206', //long
-        'https://harptisha.com/TestArea/TheHarpPlace.php', //productsUrl
-        '.productContainer', //mainPathId
-        null, //customFns 
-        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
-        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
-        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
-        ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
-        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
-        // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
-    );
-    //#endregion
     //#region Harp Angel
     const HarpAngel = new SellerPaths(
         'Harp Angel', //name
@@ -151,24 +132,6 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         '39.082610', //lat 
         '-108.593220', //long
         'https://harptisha.com/TestArea/blevinsSales.php', //productsUrl
-        '.productContainer', //mainPathId
-        null, //customFns 
-        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
-        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
-        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
-        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
-        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
-    );
-    //#endregion
-    //#region Harp and Heart
-    const HarpandHeart = new SellerPaths(
-        'Harp and Heart', //name
-        'harpandheart@yahoo.com', //email
-        'Philadelphia area', //short location
-        'Northeast', //region
-        '40.4108', //lat 
-        '-75.2479', //long
-        'https://harptisha.com/TestArea/harpHeartSales.php', //productsUrl
         '.productContainer', //mainPathId
         null, //customFns 
         ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
@@ -429,8 +392,6 @@ exports.sellerArray = [
     VixenHarps,
     HarpAngel,
     FourHarpMusic,
-    TheHarpPlace,
-    HarpandHeart,
     BlevinsHarps,
     ChiaraArpa,
     HarpsEtcLever, //removed for SSL violations
@@ -466,3 +427,23 @@ exports.sellerArray = [
     // };
     // PhoenixHarps.badImages = ['Arianna','85CG', 'Clarsach', 'Celtic II', 'Count Kerry', 'FH36S', 'Ogden', 'Ravenna 34'];
     // //#endregion
+
+    //#region The Harp Place
+    // const TheHarpPlace = new SellerPaths(
+    //     'The Harp Place', //name
+    //     'harpgal1@gmail.com', //email
+    //     'Albany, New York area', //country
+    //     'Northeast', //region
+    //     '42.5715', // lat
+    //     '-73.6206', //long
+    //     'https://harptisha.com/TestArea/TheHarpPlace.php', //productsUrl
+    //     '.productContainer', //mainPathId
+    //     null, //customFns 
+    //     ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+    //     ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+    //     ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+    //     ($, item) => $(item).find('.findaharp-longDesc').text().trim(), // longDescFn
+    //     ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    //     // ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn            
+    // );
+    //#endregion

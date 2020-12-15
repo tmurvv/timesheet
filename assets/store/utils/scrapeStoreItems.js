@@ -4,6 +4,7 @@ const cheerio = require('cheerio');
 const uuid = require('uuid');
 
 const { FINDAHARP_PRODUCTS } = require('../../constants/FindaHarpProducts');
+const { title } = require('process');
 
 async function getLinkInfo(url) {
     const response = await axios({url: `https://www.harpsetc.com/bow-brand-natural-gut-1st-octave-set-00g-f.html`, 'strictSSL': false});
@@ -92,9 +93,64 @@ function getOrder(title) {
     return 1000;
 }
 exports.scrapeStoreItems = async (answerArray, url) => {
-    // let storeItems = [];
-    let storeItems = [...FINDAHARP_PRODUCTS];
+    let storeItems = [];
     console.log(storeItems.length);
+    // Music
+    // Harps Etc - Music - lever
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/music`,'music', 'lever harp', 'harp solo');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/ensemble`,'music', 'lever harp', 'harp ensemble');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/misc-instruments`,'music', 'lever harp', 'other ensembles');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/methods-and-studies`,'music', 'lever harp', 'Method Books');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/pop-and-collections`,'music', 'lever harp', 'Pop');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/solo-collections`,'music', 'lever harp', 'Collections');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/voice`,'music', 'lever harp', 'voice/harp');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/xmas-and-holiday-music`,'music', 'lever harp', 'Holiday');
+    console.log('storeItems', storeItems.length);
+
+    // pedal
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-music`,'music', 'pedal harp', 'harp solo');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-collections-en`,'music', 'pedal harp', 'Collections');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/popular`,'music', 'pedal harp', 'pop');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-with-orchestra`,'music', 'pedal harp', 'Concertos');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/methods-and-studies-en`,'music', 'pedal harp', 'Method Books');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/ensemble-en`,'music', 'pedal harp', 'harp ensemble');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/voice-en`,'music', 'pedal harp', 'voice/harp');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/with-flute`,'music', 'pedal harp', 'flute/harp');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/with-flute-and-strings`,'music', 'pedal harp', 'flute/harp');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/orchestral-parts`,'music', 'pedal harp', 'Orchestra Parts');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/ensemble-en`,'music', 'pedal harp', 'harp ensemble');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/with-keyboard`,'music', 'pedal harp', 'other ensembles');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/misc.-instruments`,'music', 'pedal harp', 'other ensembles');
+    console.log('storeItems', storeItems.length);
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/holiday-music`,'music', 'pedal harp', 'Holiday');
+    console.log('storeItems', storeItems.length);
+    
+    //Books and Videos
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/books`,'music', '', 'Books');
+    console.log('storeItems', storeItems.length);
+    
+    // CDs
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/music-cds`,'cds', '', '');
+    console.log('storeItems', storeItems.length);
 
     // gifts
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/gifts/`,'gifts');
@@ -164,8 +220,12 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/stoney-end/`,'strings', 'z','19stoney end');
     console.log('storeItems.length', storeItems.length)
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/delta/`,'strings', 'z', '20delta');
-    console.log('storeItems.length-END', storeItems.length)
-    // console.log(storeItems[0])
+    console.log('storeItems.length-END HarpsE', storeItems.length)
+
+    // Find a Harp - music
+    storeItems = [...storeItems, ...FINDAHARP_PRODUCTS];
+    console.log('storeItems-END FAH', storeItems.length);
+    
     //write to product file
         
     fs.writeFile('assets/constants/storeItemsList.json', JSON.stringify(storeItems), function (err) {
@@ -190,25 +250,42 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             const html = response.data.text;
             // console.log(response.data.text)
             const $S = cheerio.load(html);
+            // get description
+            const description = $S('.content-description').html();
+            const title = $S('.ty-product-block-title').text().trim();
 
             const product = {};
             product.id = $S('.ty-product-block__left').find('form').attr('name').substring(13);
             product.category = category;
-            product.subcategory = subcategory;
-            product.subsubcategory = subsubcategory;
+            if (subcategory) product.subcategory = subcategory;
+            if (subsubcategory) product.subsubcategory = subsubcategory;
             product.store = 'harpsetc';
-            product.title = $S('.ty-product-block-title').text().trim();
-            
+            product.title = title;
+            if (title.toUpperCase().includes('PDF')) category = 'Digital Downloads';
             // Merchant does not include Dusty Strings or Triplett in title
             if (subsubcategory&&subsubcategory.toLowerCase()==='dusty') product.title = `Dusty Strings ${product.title}`
             if (subsubcategory&&subsubcategory.toLowerCase()==='triplett') product.title = `Triplett ${product.title}`
             if (subsubcategory&&subsubcategory.toLowerCase()==='rees') product.title = `Rees ${product.title}`
             if (subsubcategory&&subsubcategory.toLowerCase()==='stoney') product.title = `Stoney End ${product.title}`
             product.price = $S('.ty-price-num').text().trim();
-            product.description = $S('.content-description').text().trim();
+            product.description = description&&description;
             product.image = $S('.ty-pict   ').first().attr('src');
             product.newused = 'new';
-            product.order = getOrder(product.title);
+            //To order strings 'EDCBAGF'
+            if (category==='strings') product.order = getOrder(product.title);
+            //To get level & categories
+            if (category==='music') {
+                if (subcategory) product.harptype=subcategory;
+                if (subsubcategory) product.subcategories = [subsubcategory];
+                if (title.toUpperCase().includes('PDF')) product.title=`PDF downloads coming soon. ${title}`;
+                if (description&&description.toUpperCase().includes('BEGINNER')) product.level = 'beginner';
+                if (description&&description.toUpperCase().includes('EASY')) product.level = 'beginner';
+                if (description&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))) product.level = 'intermediate';
+                if (description&&description.toUpperCase().includes('ADVANCED')) product.level = 'advanced';
+                if (description&&description.toUpperCase().includes('BEGINNER')&&description.toUpperCase().includes('INTERMEDIATE')) product.level = 'beg-int';
+                if (description&&description.toUpperCase().includes('EASY')&&description.toUpperCase().includes('INTERMEDIATE')) product.level = 'beg-int';
+                if (description&&description.toUpperCase().includes('INTERMEDIATE')&&description.toUpperCase().includes('ADVANCED')) product.level = 'int-adv';
+            }
             answerArray.push(product);
         } catch(e) {
             console.log('error', e.message)

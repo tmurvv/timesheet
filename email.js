@@ -61,7 +61,7 @@ exports.sendMailUserToSeller = (contactform) => {
     // To Customer
         try {
             // contactform.sellername = 'For Testing'; //BREAKINk
-            const sellerText = contactform.sellername === "Find a Harp"?'': `If you do not hear back from ${contactform.sellername} within two business days, please reply to this e-mail and let us know.`;           
+            const sellerText = contactform.sellername === "Find a Harp"?'You can expect to hear back within one business day.': `If you do not hear back from ${contactform.sellername} within two business days, please reply to this e-mail and let us know.`;           
             const info = await transporter.sendMail({
                 from: '<harps@findaharp.com>',
                 to: `${contactform.email}`,

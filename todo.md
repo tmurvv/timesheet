@@ -24,6 +24,7 @@
 - add date to contact requests
 - check that we are not getting duplicate listings
 - thoroughly test how well badNames programming works
+- create music db like harp db
 
 ### future
 - change auth to passport (https://auth0.com/blog/next-js-authentication-tutorial/)
