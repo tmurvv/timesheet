@@ -1,0 +1,10 @@
+body {
+    width: 400px;
+    text-align: center;
+}
+
+.head {
+    height: 250px;
+    background-color: #000;
+    color: #fff;
+}

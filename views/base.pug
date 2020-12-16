@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        title Find a Harp Partners
+        link(rel='stylesheet' href='views/css/style.css')
+        link(rel='shortcut icon' type='image/png' src='public/img/favicon.png')
+    body
+        h1 Find a Harp
+        h2= seller
+        h3 Partner Area
+
+        p Please agree to the following fee schedule:
+        br
+        p(style="border-bottom: 1px solid lightgrey; padding-bottom: 20px")
+            
+            h4(style="textAlign: center;") Findaharp.com On-line Fee Schedule for seller, harp sales only Effective October 22, 2020
+            p As a party listing a harp for sale, using the Services of Findaharp.com, if I sell a harp to a buyer introduced to me during the term of this agreement because of exposure on Findaharp.com, I will forthwith pay to Findaharp.com fees in an amount equivalent to 5% of the Gross sale price of the item, subject to a minimum of $25.00USD.
+            input(type='checkbox' id='agreeSchedule') I, a representative of seller, agree to the above Findaharp.com fee schedule.
+        
+        p Please agree to the folowing terms and conditions:
+            input(type='checkbox' id='agreeTerms') I, a representative of seller, agree to the Findaharp.com 
+                span(style="color: blue; text-decoration: underline; cursor: pointer" onClick="()=>setOpenTerms(true)") Terms and Conditions.

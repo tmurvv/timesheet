@@ -42,6 +42,8 @@ const { refreshMakesModels } = require('./utils/codeStorage/rarelyUsedUtils');
 const app = express();
 const emitter = new EventEmitter;
 emitter.setMaxListeners(50);
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 
 //security setup ** see commented code below
 app.use(helmet());
@@ -79,6 +81,12 @@ app.use(express.json({limit: '10kb'}))
 app.use('/', viewRouter); 
 app.use('/api/v1/users', userRouter); 
 app.use('/api/v1/products', productRouter); 
+
+app.get('/partners', (req,res) => {
+    res.status(200).render('base', {
+        seller: 'Harp Universe'
+    });
+});
 
 // app.post('/api/v1/uploadlisting', upload.single('photo'), (req, res) => {
 //     console.log(req.file)
