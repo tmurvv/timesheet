@@ -10,7 +10,7 @@ html
             h1 Find a Harp
         div(class='contentContainer')
             h2(class='mainTitle')= seller
-            h4(class='subTitle') Partner Area
+            h4(class='subTitle') Store/Business Partner Area
             if agreement === 'success'
                 .thanks Terms and fee schedule agreed to. Thank you.
                 button.submit-btn
@@ -21,7 +21,7 @@ html
                     a(href='/partners/harpsetc') Try Again
             else
                 form(class='content' id='termsForm' action=`/partners/harpsetcagree` method="post")
-                    
+                    p(style='text-align:center') Please review the <span style='font-style:italic;color:#868686'>Fee Schedule</span> and <span style='font-style:italic;color:#868686'>Terms and Conditions</span> and check both checkboxes before submitting.
                     input(type='submit' class='submit-btn')
                                                 
                     p(style="margin: 25px; border-bottom: 1px solid lightgrey;")   
@@ -29,14 +29,14 @@ html
                         h4(style="textAlign: center;") Findaharp.com On-line Fee Schedule for #{seller}, harp sales only Effective #{startDate}
                         div(class='left')
                             input(name='feecheck' id='feeCheck' type='checkbox') 
-                            p(class='inline') &nbsp; I, a representative of #{seller}, agree to the following Findaharp.com fee schedule.
+                            label(for='feecheck' class='inline') &nbsp; I, a representative of #{seller}, agree to the following Findaharp.com fee schedule.
                         p(class='left') As a party listing a harp for sale, using the Services of Findaharp.com, if I sell a harp to a buyer introduced to me during the term of this agreement because of exposure on Findaharp.com, I will forthwith pay to Findaharp.com fees in an amount equivalent to #{fee} of the Gross sale price of the item, subject to a minimum of $25.00USD.
                     
                     p(style="margin: 25px; border-bottom: 1px solid lightgrey;")   
                     h3 Terms and Conditions
                     div(class='left')
                         input(type='checkbox' name='termscheck' id='termsCheck') 
-                        p(class='inline') &nbsp; I, a representative of #{seller}, agree to the following Findaharp.com <span style='color:#6A75AA;'>Terms and Conditions</span>.
+                        label(for='termscheck') &nbsp; I, a representative of #{seller}, agree to the following Findaharp.com <span style='font-style:italic;color:#868686'>Terms and Conditions</span>.
                     p(style="width: 100%; text-align: center") (in this agreement Findaharp.com means “Find Stuff Ltd. Operating as Findaharp.com”)
                     p Our services include the use of our website including the listing for sale, selling and purchasing of certain items as approved by us (collectively the “Services”). To access and use our Services, you are required to register with us and set up an account with your email address and a password (your “Account”). The email address you provide will be your email address, and you are solely responsible for maintaining the confidentiality of your password. You are solely responsible for all activities that occur under your Account. Therefore, you should protect your password and make your password difficult for others to guess.
                     p You agree not to do any of the following: 
@@ -53,8 +53,8 @@ html
                     p If, as a party listing an item for sale using our Services, you sell the item to a buyer introduced to you because of exposure on Findaharp.com, you will pay to us the Findaharp.com fee. In the 180 days after this agreement ends, if you sell the item to a buyer introduced to you during the term of this agreement because of exposure on Findaharp.com,  you will pay to us the Findaharp.com fee.
                     p Taxes associated with our Services will be collected when applicable. You agree to provide accurate address information necessary for Findaharp.com to comply with its obligations under applicable law. To the extent that such information is not provided, Findaharp.com will in its discretion determine and collect appropriate taxes.
                     p You are solely responsible to collect and remit any applicable taxes resulting from the sale of your items listed on Findaharp.com.
+                    p You are solely responsible to return to Findaharp.com the amount of an order for a lost chargeback dispute. You are responsible to keep good shipping and inventory records to liaise with credit companies regarding chargeback disputes. Findaharp.com agrees not to charge extra fees for chargeback disputes as is the practice of many market facilitators.
                     p The Services contain items from us, you, and other users. You agree not to copy, modify, resell or distribute the Services, our copyrights or trademarks. When you post content, you are granting us a non-exclusive, worldwide, perpetual, irrevocable, royalty-free, sub-licensable right to exercise the copyright, publicity, and database rights to that content. We reserve the right to remove any content at our sole discretion.
-                    p You are responsible to remit to Findaharp.com the amount of an order for a lost chargeback dispute. Findaharp.com agrees not to charge the store extra fees for chargeback disputes as many market facilitators do. You are responsible to keep good shipping and inventory records to liaise with credit companies regarding chargeback disputes. 
                     p The Services are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;. You agree not to hold us responsible for things other users post or do. You agree not to hold us responsible for the payment processing of other service providers. As most of the items on the Services comes from other users, we do not guarantee the accuracy, completeness, efficacy or timeliness of any postings or user communications or the quality, safety, or legality of what is offered. We also cannot guarantee continuous or secure access to our Services. Notification functionality in our Services may not occur in real time. Such functionality is subject to delays beyond our control, including without limitation, delays or latency due to your physical location or your wireless data service provider&rsquo;s network. Accordingly, to the extent legally permitted we expressly disclaim all warranties, representations and conditions, express or implied, including those of quality, merchantability, merchantable quality, durability, fitness for a particular purpose and those arising by statute. We are not liable for any loss, whether of money (including profit), goodwill, or reputation, or any special, indirect, or consequential damages arising out of your use of Findaharp.com even if you advise us or we could reasonably foresee the possibility of any such damage occurring. Some jurisdictions do not allow the disclaimer of warranties or exclusion of damages, so such disclaimers and exclusions may not apply to you.
                     p Despite the previous paragraph, if we are found to be liable, our liability to you or any third party (whether in contract, tort, negligence, strict liability in tort, by statute or otherwise) is limited to the greater of (a) the total fees you pay to us in the 12 months prior to the action giving rise to liability, and (b) 25 Canadian Dollars.
                     p You will indemnify and hold harmless Findaharp.com and its affiliates and our and their respective officers, directors, agents and employees (each an &ldquo;Indemnified Party&rdquo;), from any claim made by any third party, together with any amounts payable to the third party whether in settlement or as may otherwise be awarded, and reasonable legal costs incurred by any of the Indemnified Parties, arising from or relating to your use of the Services, any alleged violation by you of the applicable terms, and any alleged violation by you of any applicable law or regulation. We reserve the right, at our own expense, to assume the exclusive defense and control of any matter subject to indemnification by you, but doing so will not excuse your indemnity obligations.
