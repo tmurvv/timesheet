@@ -149,7 +149,7 @@ app.get('/partners/findaharp', (req,res) => {
 
 app.post('/partners/findaharpagree', async (req,res) => {
     if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
-        return res.status(404).render('base', {
+        return res.status(400).render('base', {
             agreement: 'fail',
             seller: req.body.seller,
             startDate: 'January 7, 2021',
@@ -183,7 +183,6 @@ app.post('/partners/findaharpagree', async (req,res) => {
         // res.redirect('https://findaharp.com?uploadlisting=no');
         // res.redirect('https://findaharp-testing.take2tech.ca?uploadlisting=no');
         return res.status(500).json({
-            imin: 'error',
             message: e.message
         });
     }
