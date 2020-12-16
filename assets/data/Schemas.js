@@ -66,6 +66,17 @@ const contactRequestsSchema = new mongoose.Schema({
 },{ versionKey: false });
 
 const ContactRequests = mongoose.model('ContactRequests', contactRequestsSchema);
+// Agreements from harp and merch sellers
+const agreementsSchema = new mongoose.Schema({
+    seller: {type: String},
+    startdate: String,
+    fee: String,
+    scheduletext: String,
+    _date_created: {type: Date}
+},{ versionKey: false });
+
+const Agreements = mongoose.model('Agreements', agreementsSchema);
+
 // Users
 const usersSchema = new mongoose.Schema({
     firstname: {type: String},
@@ -219,6 +230,7 @@ module.exports.ContactRequests = ContactRequests;
 module.exports.Users = Users;
 module.exports.ProductUploads = ProductUploads;
 module.exports.StoreItemUpload = StoreItemUpload;
+module.exports.Agreements = Agreements;
 
 // const vendorDeets = {
 //     vendorName: 'Murvihill Harps',

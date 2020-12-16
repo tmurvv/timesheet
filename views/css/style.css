@@ -1,10 +1,98 @@
 body {
-    width: 400px;
     text-align: center;
+    margin:auto;
+    background-color: #fffedf;
+    @font-face {
+        font-family: avenir;
+        src: url(/fonts/avenir_ff/AvenirLTStd-Roman.otf);
+    }
+    @font-face {
+        font-family: 'Avenir Next Bold';
+        font-weight: bold;
+        font-style: normal;
+        font-variant:normal;
+        src: url('./fonts/Avenir_ff/Avenir_Next_Condensed_Bold.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Metropolis Extra Bold';
+        font-weight: bold;
+        font-style: normal;
+        font-variant:normal;
+        src: url('./fonts/metropolis_ff/Metropolis-ExtraBold.otf') format('opentype');
+    }
+    font-family: avenir;
 }
-
 .head {
-    height: 250px;
+    height: 110px;
     background-color: #000;
     color: #fff;
+    padding: 30px;
+}
+.contentContainer {
+    background-image: linear-gradient(to bottom, #fffedf, #ffffff 300px);
+    padding: 50px;
+    margin-top: 30px;
+    min-height: 80vh;
+}
+.content {
+    max-width: 800px;
+    margin: auto;
+}
+.logo_img {
+    height: 75px;
+    margin-bottom: -25px;
+}
+.inline {
+    display: inline;
+}
+.left {
+    text-align: left;
+}
+p,
+li {
+    text-align: left;
+}
+h1 {
+    letter-spacing: 1.5px;
+}
+.mainTitle {
+    text-align: center;
+    margin: auto;
+    letter-spacing: 1.5px;
+    font-size: 28px;
+}
+.subTitle {
+    width: 60%;
+    margin: 5px auto;
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+    color: #868686;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size:18px;       
+}
+.submit-btn {
+    width: fit-content;
+    border-radius: 3px;
+    background-color: #ffe58a;
+    color: #000;
+    border: none;
+    padding: 10px 25px;
+    outline-color: #fbd960;
+    font-family: avenir;
+    font-size: 18px;
+    margin: 40px 35px 0;
+    box-shadow: 3px 3px 5px;
+}
+
+.thanks {
+    margin: 40px auto 0;
+    border: 1px solid #6A75AA;
+    padding: 15px 30px;
+    width: fit-content;
+}
+a {
+    text-decoration: none;
+    color: #6A75AA;
 }
