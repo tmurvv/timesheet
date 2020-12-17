@@ -276,7 +276,50 @@ app.get('/api/v1/partners/westcoastharps', (req,res) => {
         sellerId: 'westcoastharps',
         startDate: 'January 7, 2021',
         fee: '3%',
-        minimum: '$40.00usd'
+        minimum: '$45.00cad'
+    });
+});
+app.post('/api/v1/partners/westcoastharpsagree', async (req,res) => {
+    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
+        return res.status(400).render('base', {
+            agreement: 'fail',
+            seller: 'West Coast Harps',
+            sellerId: 'westcoastharps',
+            startDate: 'January 7, 2021',
+            fee: '3%',
+            minimum: '$45.00cad'
+        });
+    }
+    try {
+        const uploadagreement = Object.assign({ 
+            seller: req.body.seller,
+            sellerId: req.body.sellerId,
+            startdate: req.body.startdate,
+            fee: req.body.fee,
+            minimum: req.body.minimum,
+            scheduletext: req.body.scheduletext
+        });
+        const addedagreement = await Agreements.create(uploadagreement);
+        agreementSigned();
+        return res.status(200).render('base', {
+            agreement: 'success',
+            seller: req.body.seller
+        });
+    } catch (e) {
+        return res.status(500).render('base', {
+            error: 'server error',
+            message: e.message
+        });
+    }
+});
+// Germaine
+app.get('/api/v1/partners/gl', (req,res) => {
+    res.status(200).render('base', {
+        seller: 'Germaine Luyben',
+        sellerId: 'germaine',
+        startDate: 'January 7, 2021',
+        fee: '25%',
+        minimum: '0'
     });
 });
 app.post('/api/v1/partners/westcoastharpsagree', async (req,res) => {
