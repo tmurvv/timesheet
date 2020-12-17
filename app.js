@@ -110,8 +110,8 @@ app.post('/api/v1/partners/harpsetcagree', async (req,res) => {
     if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
         return res.status(400).render('base', {
             agreement: 'fail',
-            seller: req.body.seller,
-            sellerId: req.body.sellerId,
+            seller: 'Harps Etc.',
+            sellerId: 'harpsetc',
             startDate: 'January 7, 2021',
             fee: '3%',
             minimum: '$40.00usd'
