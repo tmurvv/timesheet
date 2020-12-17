@@ -72,6 +72,7 @@ const agreementsSchema = new mongoose.Schema({
     sellerId: String,
     startdate: String,
     fee: String,
+    minimum: String,
     scheduletext: String
 },{ versionKey: false, timestamps: true });
 

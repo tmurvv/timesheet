@@ -22,7 +22,7 @@ html
                     //- a(href='http://localhost:3000/api/v1/partners/harpsetc') Try Again
             else                
                 //- form(class='content' id='termsForm' action=`http://localhost:3000/api/v1/partners/${sellerId}agree` method="post")
-                form(class='content' id='termsForm' action=`https://findaharp-api.herokuapp.com/api/v1/partners/harpsetcagree` method="post") 
+                form(class='content' id='termsForm' action=`https://findaharp-api.herokuapp.com/api/v1/partners/${sellerId}agree` method="post") 
                     p(style='text-align:center') Please review the <span style='font-style:italic;color:#868686'>Fee Schedule</span> and <span style='font-style:italic;color:#868686'>Terms and Conditions</span> and check both checkboxes before submitting.
                     input(type='submit' class='submit-btn')
                                                 
@@ -32,7 +32,7 @@ html
                         div(class='left')
                             input(name='feecheck' id='feeCheck' type='checkbox') 
                             label(for='feecheck' class='inline') &nbsp; I, a representative of #{seller}, agree to the following Findaharp.com fee schedule.
-                        p(class='left') As a party listing a harp for sale, using the Services of Findaharp.com, if I sell a harp to a buyer introduced to me during the term of this agreement because of exposure on Findaharp.com, I will forthwith pay to Findaharp.com fees in an amount equivalent to #{fee} of the Gross sale price of the item, subject to a minimum of $25.00USD.
+                        p(class='left') As a party listing a harp for sale, using the Services of Findaharp.com, if I sell a harp introduced to the buyer because of exposure on Findaharp.com during the term of this agreement, I will forthwith pay to Findaharp.com fees in an amount equivalent to #{fee} of the Gross sale price of the item, subject to a minimum of #{minimum}.
                     
                     p(style="margin: 25px; border-bottom: 1px solid lightgrey;")   
                     h3 Terms and Conditions
@@ -67,7 +67,7 @@ html
                     input(type='text' name='seller' value=seller style='display:none')
                     input(type='text' name='fee' value=fee style='display:none')
                     input(type='text' name='startdate' value=startDate style='display:none')
-                    input(type='text' name='scheduletext' value='As a party listing a harp for sale, using the Services of Findaharp.com, if I sell a harp to a buyer introduced to me during the term of this agreement because of exposure on Findaharp.com, I will forthwith pay to Findaharp.com fees in an amount equivalent to #{fee} of the Gross sale price of the item, subject to a minimum of $25.00USD.' style='display:none')
+                    input(type='text' name='scheduletext' value=`As a party listing a harp for sale, using the Services of Findaharp.com, if I sell a harp introduced to a buyer because of exposure on Findaharp.com during the term of this agreement, I will forthwith pay to Findaharp.com fees in an amount equivalent to ${fee} of the Gross sale price of the item, subject to a minimum of ${minimum}.`)
 
                 
         

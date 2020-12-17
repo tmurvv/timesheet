@@ -96,7 +96,8 @@ app.get('/api/v1/partners/harpsetc', (req,res) => {
         seller: 'Harps Etc.',
         sellerId: 'harpsetc',
         startDate: 'January 7, 2021',
-        fee: '3%'
+        fee: '3%',
+        minimum: '$50.00usd'
     });
 });
 app.post('/api/v1/partners/harpsetcagree', async (req,res) => {
@@ -106,7 +107,8 @@ app.post('/api/v1/partners/harpsetcagree', async (req,res) => {
             seller: req.body.seller,
             sellerId: req.body.sellerId,
             startDate: 'January 7, 2021',
-            fee: '3%'
+            fee: '3%',
+            minimum: '$40.00usd'
         });
     }
     try {
@@ -115,6 +117,7 @@ app.post('/api/v1/partners/harpsetcagree', async (req,res) => {
             sellerId: req.body.sellerId,
             startdate: req.body.startdate,
             fee: req.body.fee,
+            minimum: req.body.minimum,
             scheduletext: req.body.scheduletext
         });
         // console.log('top', uploadlisting)
@@ -146,7 +149,8 @@ app.get('/api/v1/partners/findaharp', (req,res) => {
         seller: 'Find a Harp',
         sellerId: 'findaharp',
         startDate: 'January 7, 2021',
-        fee: '3%'
+        fee: '3%',
+        minimum: '$50.00cad'
     });
 });
 
@@ -157,7 +161,8 @@ app.post('/api/v1/partners/findaharpagree', async (req,res) => {
             seller: req.body.seller,
             sellerId: 'findaharp',
             startDate: 'January 7, 2021',
-            fee: '3%'
+            fee: '3%',
+            minimum: '$40.00cad'
         });
     }
     try {
@@ -166,6 +171,7 @@ app.post('/api/v1/partners/findaharpagree', async (req,res) => {
             sellerId: req.body.sellerId,
             startdate: req.body.startdate,
             fee: req.body.fee,
+            minimum: req.body.minimum,
             scheduletext: req.body.scheduletext
         });
         // console.log('top', uploadlisting)
