@@ -37,7 +37,13 @@ const { Agreements } = require('./assets/data/Schemas');
 const { ProductUploads } = require('./assets/data/Schemas');
 const { StoreItemUpload } = require('./assets/data/Schemas');
 const { ContactRequests, MakesModels, Products } = require('./assets/data/Schemas');
-const { sendMailUserToSeller, contactUsForm, emailVerifySend, sendReceipt } = require('./email');
+const { 
+    sendMailUserToSeller, 
+    contactUsForm, 
+    emailVerifySend, 
+    sendReceipt, 
+    agreementSigned 
+} = require('./email');
 const { refreshMakesModels } = require('./utils/codeStorage/rarelyUsedUtils');
 
 // program setup
@@ -90,7 +96,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+//#region partner agreements
 app.get('/api/v1/partners/harpsetc', (req,res) => {
     res.status(200).render('base', {
         seller: 'Harps Etc.',
@@ -120,26 +126,15 @@ app.post('/api/v1/partners/harpsetcagree', async (req,res) => {
             minimum: req.body.minimum,
             scheduletext: req.body.scheduletext
         });
-        // console.log('top', uploadlisting)
         const addedagreement = await Agreements.create(uploadagreement);
-        // console.log('bottom', addeduploadlisting)
-        // res.redirect('https://findaharp.com?uploadlisting=yes');
-        // res.redirect('https://findaharp-testing.take2tech.ca?uploadlisting=yes');
-        // res.redirect('http://localhost:3006?uploadlisting=yes');
-        // res.status(200).json({
-        //     title: 'FindAHarp.com | Upload Listing',
-        //     status: 'success',
-        //     addeduploadlisting 
-        // });
+        agreementSigned();
         return res.status(200).render('base', {
             agreement: 'success',
             seller: req.body.seller
         });
     } catch (e) {
-        // res.redirect('http://localhost:3006?uploadlisting=no');
-        // res.redirect('https://findaharp.com?uploadlisting=no');
-        // res.redirect('https://findaharp-testing.take2tech.ca?uploadlisting=no');
-        return res.status(500).json({
+        return res.status(500).render('base', {
+            error: 'server error',
             message: e.message
         });
     }
@@ -174,30 +169,20 @@ app.post('/api/v1/partners/findaharpagree', async (req,res) => {
             minimum: req.body.minimum,
             scheduletext: req.body.scheduletext
         });
-        // console.log('top', uploadlisting)
         const addedagreement = await Agreements.create(uploadagreement);
-        // console.log('bottom', addeduploadlisting)
-        // res.redirect('https://findaharp.com?uploadlisting=yes');
-        // res.redirect('https://findaharp-testing.take2tech.ca?uploadlisting=yes');
-        // res.redirect('http://localhost:3006?uploadlisting=yes');
-        // res.status(200).json({
-        //     title: 'FindAHarp.com | Upload Listing',
-        //     status: 'success',
-        //     addeduploadlisting 
-        // });
+        agreementSigned();
         return res.status(200).render('base', {
             agreement: 'success',
             seller: req.body.seller
         });
     } catch (e) {
-        // res.redirect('http://localhost:3006?uploadlisting=no');
-        // res.redirect('https://findaharp.com?uploadlisting=no');
-        // res.redirect('https://findaharp-testing.take2tech.ca?uploadlisting=no');
-        return res.status(500).json({
+        return res.status(500).render('base', {
+            agreement: 'server error',
             message: e.message
         });
     }
 });
+//#endregion
 
 // app.post('/api/v1/uploadlisting', upload.single('photo'), (req, res) => {
 //     console.log(req.file)

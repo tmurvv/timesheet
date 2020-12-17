@@ -318,3 +318,27 @@ exports.sendReceipt = async (body) => {
          }
      })();
 }
+
+exports.agreementSigned = () => {
+    // create reusable transporter object using the default SMTP transport
+    const transporter = TRANSPORTER;
+    // Send Email
+    (async () => {
+        try {
+            // send mail with defined transport object -- for multiple recipient use an outer foreach and send one at a time
+            const info = await transporter.sendMail({
+                from: '<harps@findaharp.com>', // sender address
+                to: `tmurv@shaw.ca`, // list of receivers
+                subject: `An agreement has been signed`,
+                text: `An agreement has been signed.`,
+                html: `<p>An agreement has been signed.</p>`
+            });
+        } catch (error) {
+            console.error(error);
+
+            if (error.response) {
+              console.error(error.response.body)
+            }
+        }
+    })();
+};
