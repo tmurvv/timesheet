@@ -97,6 +97,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //#region partner agreements
+//harpsetc
 app.get('/api/v1/partners/harpsetc', (req,res) => {
     res.status(200).render('base', {
         seller: 'Harps Etc.',
@@ -139,13 +140,186 @@ app.post('/api/v1/partners/harpsetcagree', async (req,res) => {
         });
     }
 });
+// michigan harp center
+app.get('/api/v1/partners/michiganharpcenter', (req,res) => {
+    res.status(200).render('base', {
+        seller: 'Michigan Harp Center',
+        sellerId: 'michiganharpcenter',
+        startDate: 'January 7, 2021',
+        fee: '3%',
+        minimum: '$40.00usd'
+    });
+});
+app.post('/api/v1/partners/michiganharpcenteragree', async (req,res) => {
+    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
+        return res.status(400).render('base', {
+            agreement: 'fail',
+            seller: 'Michigan Harp Center',
+            sellerId: 'michiganharpcenter',
+            startDate: 'January 7, 2021',
+            fee: '3%',
+            minimum: '$40.00usd'
+        });
+    }
+    try {
+        const uploadagreement = Object.assign({ 
+            seller: req.body.seller,
+            sellerId: req.body.sellerId,
+            startdate: req.body.startdate,
+            fee: req.body.fee,
+            minimum: req.body.minimum,
+            scheduletext: req.body.scheduletext
+        });
+        const addedagreement = await Agreements.create(uploadagreement);
+        agreementSigned();
+        return res.status(200).render('base', {
+            agreement: 'success',
+            seller: req.body.seller
+        });
+    } catch (e) {
+        return res.status(500).render('base', {
+            error: 'server error',
+            message: e.message
+        });
+    }
+});
+// 4 harp music
+app.get('/api/v1/partners/4harpmusic', (req,res) => {
+    res.status(200).render('base', {
+        seller: 'Margaret Atkinson',
+        sellerId: '4harpmusic',
+        startDate: 'January 7, 2021',
+        fee: '3%',
+        minimum: '$40.00usd'
+    });
+});
+app.post('/api/v1/partners/4harpmusicagree', async (req,res) => {
+    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
+        return res.status(400).render('base', {
+            agreement: 'fail',
+            seller: 'Margaret Atkinson',
+            sellerId: '4harpmusic',
+            startDate: 'January 7, 2021',
+            fee: '3%',
+            minimum: '$40.00usd'
+        });
+    }
+    try {
+        const uploadagreement = Object.assign({ 
+            seller: req.body.seller,
+            sellerId: req.body.sellerId,
+            startdate: req.body.startdate,
+            fee: req.body.fee,
+            minimum: req.body.minimum,
+            scheduletext: req.body.scheduletext
+        });
+        const addedagreement = await Agreements.create(uploadagreement);
+        agreementSigned();
+        return res.status(200).render('base', {
+            agreement: 'success',
+            seller: req.body.seller
+        });
+    } catch (e) {
+        return res.status(500).render('base', {
+            error: 'server error',
+            message: e.message
+        });
+    }
+});
+// Harp Angel
+app.get('/api/v1/partners/harpangel', (req,res) => {
+    res.status(200).render('base', {
+        seller: 'Deborah Nyack',
+        sellerId: 'harpangel',
+        startDate: 'January 7, 2021',
+        fee: '3%',
+        minimum: '$45.00cad'
+    });
+});
+app.post('/api/v1/partners/harpangelagree', async (req,res) => {
+    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
+        return res.status(400).render('base', {
+            agreement: 'fail',
+            seller: 'Deborah Nyack',
+            sellerId: 'harpangel',
+            startDate: 'January 7, 2021',
+            fee: '3%',
+            minimum: '$45.00CAD'
+        });
+    }
+    try {
+        const uploadagreement = Object.assign({ 
+            seller: req.body.seller,
+            sellerId: req.body.sellerId,
+            startdate: req.body.startdate,
+            fee: req.body.fee,
+            minimum: req.body.minimum,
+            scheduletext: req.body.scheduletext
+        });
+        const addedagreement = await Agreements.create(uploadagreement);
+        agreementSigned();
+        return res.status(200).render('base', {
+            agreement: 'success',
+            seller: req.body.seller
+        });
+    } catch (e) {
+        return res.status(500).render('base', {
+            error: 'server error',
+            message: e.message
+        });
+    }
+});
+// West Coast Harps
+app.get('/api/v1/partners/westcoastharps', (req,res) => {
+    res.status(200).render('base', {
+        seller: 'West Coast Harps',
+        sellerId: 'westcoastharps',
+        startDate: 'January 7, 2021',
+        fee: '3%',
+        minimum: '$40.00usd'
+    });
+});
+app.post('/api/v1/partners/westcoastharpsagree', async (req,res) => {
+    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
+        return res.status(400).render('base', {
+            agreement: 'fail',
+            seller: 'West Coast Harps',
+            sellerId: 'westcoastharps',
+            startDate: 'January 7, 2021',
+            fee: '3%',
+            minimum: '$45.00cad'
+        });
+    }
+    try {
+        const uploadagreement = Object.assign({ 
+            seller: req.body.seller,
+            sellerId: req.body.sellerId,
+            startdate: req.body.startdate,
+            fee: req.body.fee,
+            minimum: req.body.minimum,
+            scheduletext: req.body.scheduletext
+        });
+        const addedagreement = await Agreements.create(uploadagreement);
+        agreementSigned();
+        return res.status(200).render('base', {
+            agreement: 'success',
+            seller: req.body.seller
+        });
+    } catch (e) {
+        return res.status(500).render('base', {
+            error: 'server error',
+            message: e.message
+        });
+    }
+});
+//findaharp
 app.get('/api/v1/partners/findaharp', (req,res) => {
     res.status(200).render('base', {
         seller: 'Find a Harp',
         sellerId: 'findaharp',
         startDate: 'January 7, 2021',
         fee: '3%',
-        minimum: '$50.00cad'
+        minimum: '$45.00cad'
     });
 });
 
@@ -157,7 +331,7 @@ app.post('/api/v1/partners/findaharpagree', async (req,res) => {
             sellerId: 'findaharp',
             startDate: 'January 7, 2021',
             fee: '3%',
-            minimum: '$40.00cad'
+            minimum: '$45.00cad'
         });
     }
     try {
