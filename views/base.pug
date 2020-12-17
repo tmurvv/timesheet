@@ -2,11 +2,11 @@ doctype html
 html
     head
         title Find a Harp Partners
-        link(rel='stylesheet' href='../views/css/style.css')
-        link(rel='shortcut icon' type='image/png' src='../public/img/favicon.png')
+        link(rel='stylesheet' href='../../../views/css/style.css')
+        link(rel='shortcut icon' type='image/png' src='../../../public/img/favicon.png')
     body
         div(class='head')
-            img(class='logo_img' src='../views/img/golden_harp_cropped.png' alt='find a harp logo')
+            img(class='logo_img' src='../../../views/img/golden_harp_cropped.png' alt='find a harp logo')
             h1 Find a Harp
         div(class='contentContainer')
             h2(class='mainTitle')= seller
@@ -18,9 +18,11 @@ html
             else if agreement === 'fail'
                 .thanks Please check both checkboxes.
                 button.submit-btn
-                    a(href='/partners/harpsetc') Try Again
-            else
-                form(class='content' id='termsForm' action=`/partners/harpsetcagree` method="post")
+                    a(href='http://localhost:3000/api/v1/partners/harpsetc') Try Again
+                    //- a(href='https://findaharp-api.herokuapp.com/api/v1/partners/harpsetc') Try Again
+            else               
+                //- form(class='content' id='termsForm' action=`https://findaharp-api.herokuapp.com/api/v1/partners/harpsetcagree` method="post")
+                form(class='content' id='termsForm' action=`http://localhost:3000/api/v1/partners/${sellerId}agree` method="post")
                     p(style='text-align:center') Please review the <span style='font-style:italic;color:#868686'>Fee Schedule</span> and <span style='font-style:italic;color:#868686'>Terms and Conditions</span> and check both checkboxes before submitting.
                     input(type='submit' class='submit-btn')
                                                 

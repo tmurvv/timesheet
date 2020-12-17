@@ -27,6 +27,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const viewRouter = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
+const partnerRouter = require('./routes/partnerRoutes');
 const authController = require('./controllers/authController');
 const { scrapeAds } = require('./utils/harpAdScraper');
 const { scrapeStoreItems } = require('./assets/store/utils/scrapeStoreItems');
@@ -82,6 +83,7 @@ app.use(express.json({limit: '10kb'}))
 app.use('/', viewRouter); 
 app.use('/api/v1/users', userRouter); 
 app.use('/api/v1/products', productRouter); 
+// app.use('/api/v1/partners', partnerRouter); 
 
 //parser for pug
 const bodyParser = require('body-parser');
@@ -89,19 +91,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.get('/partners/harpsetc', (req,res) => {
+app.get('/api/v1/partners/harpsetc', (req,res) => {
     res.status(200).render('base', {
         seller: 'Harps Etc.',
+        sellerId: 'harpsetc',
         startDate: 'January 7, 2021',
         fee: '3%'
     });
 });
-
-app.post('/partners/harpsetcagree', async (req,res) => {
+app.post('/api/v1/partners/harpsetcagree', async (req,res) => {
     if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
-        return res.status(404).render('base', {
+        return res.status(400).render('base', {
             agreement: 'fail',
             seller: req.body.seller,
+            sellerId: req.body.sellerId,
             startDate: 'January 7, 2021',
             fee: '3%'
         });
@@ -109,6 +112,7 @@ app.post('/partners/harpsetcagree', async (req,res) => {
     try {
         const uploadagreement = Object.assign({ 
             seller: req.body.seller,
+            sellerId: req.body.sellerId,
             startdate: req.body.startdate,
             fee: req.body.fee,
             scheduletext: req.body.scheduletext
@@ -133,25 +137,25 @@ app.post('/partners/harpsetcagree', async (req,res) => {
         // res.redirect('https://findaharp.com?uploadlisting=no');
         // res.redirect('https://findaharp-testing.take2tech.ca?uploadlisting=no');
         return res.status(500).json({
-            imin: 'error',
             message: e.message
         });
     }
-    
 });
-app.get('/partners/findaharp', (req,res) => {
+app.get('/api/v1/partners/findaharp', (req,res) => {
     res.status(200).render('base', {
         seller: 'Find a Harp',
+        sellerId: 'findaharp',
         startDate: 'January 7, 2021',
         fee: '3%'
     });
 });
 
-app.post('/partners/findaharpagree', async (req,res) => {
+app.post('/api/v1/partners/findaharpagree', async (req,res) => {
     if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
         return res.status(400).render('base', {
             agreement: 'fail',
             seller: req.body.seller,
+            sellerId: 'findaharp',
             startDate: 'January 7, 2021',
             fee: '3%'
         });
@@ -159,6 +163,7 @@ app.post('/partners/findaharpagree', async (req,res) => {
     try {
         const uploadagreement = Object.assign({ 
             seller: req.body.seller,
+            sellerId: req.body.sellerId,
             startdate: req.body.startdate,
             fee: req.body.fee,
             scheduletext: req.body.scheduletext
