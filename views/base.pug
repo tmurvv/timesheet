@@ -25,9 +25,9 @@ html
                 button.submit-btn
                     a(href=`https://findaharp-api.herokuapp.com/api/v1/partners/${sellerId}`) Try Again
                     //- a(href=`http://localhost:3000/api/v1/partners/${sellerId}`) Try Again
-            else 
-                //- form(class='content' id='termsForm' action=`http://localhost:3000/api/v1/partners/${sellerId}agree` method="post")               
-                form(class='content' id='termsForm' action=`https://findaharp-api.herokuapp.com/api/v1/partners/${sellerId}agree` method="post") 
+            else                
+                //- form(class='content' id='termsForm' action=`http://localhost:3000/api/v1/partners/${sellerId}agree` method="post")                
+                form(class='content' id='termsForm' action=`https://findaharp-api.herokuapp.com/api/v1/partners/${sellerId}agree` method="post")
                     p(style='text-align:center') Please review the <span style='font-style:italic;color:#868686'>Fee Schedule</span> and <span style='font-style:italic;color:#868686'>Terms and Conditions</span> and check both checkboxes before submitting.
                     input(type='submit' class='submit-btn')
                                                 

@@ -26,26 +26,28 @@ html
                     a(href=`https://findaharp-api.herokuapp.com/api/v1/partners/${sellerId}`) Try Again
                     //- a(href=`http://localhost:3000/api/v1/partners/${sellerId}`) Try Again
             else 
-                //- form(class='content' id='termsForm' action=`http://localhost:3000/api/v1/partners/${sellerId}agree` method="post")               
-                form(class='content' id='termsForm' action=`https://findaharp-api.herokuapp.com/api/v1/partners/${sellerId}agree` method="post") 
+                //- form(class='content' id='termsForm' action=`http://localhost:3000/api/v1/partners/${sellerId}agree` method="post")    
+                form(class='content' id='termsForm' action=`https://findaharp-api.herokuapp.com/api/v1/partners/${sellerId}agree` method="post")
                     p(style='text-align:center') Please review the <span style='font-style:italic;color:#868686'>Fee Schedule</span> and <span style='font-style:italic;color:#868686'>Terms and Conditions</span> and check both checkboxes before submitting.
                     input(type='submit' class='submit-btn')
                                                 
                     p(style="margin: 25px; border-bottom: 1px solid lightgrey;")   
                         h3 Fee Schedule        
-                        h4(style="textAlign: center;") Findaharp.com On-line Fee Schedule for #{seller}, harp sales only Effective #{startDate}
+                        h4(style="textAlign: center;") Findaharp.com On-line Fee Schedule and terms for #{seller}, Effective #{startDate}
+                        p(style="width: 100%; text-align: center") (in this agreement Findaharp.com means “Find Stuff Ltd. Operating as Findaharp.com”)
                         div(class='left')
                             input(name='feecheck' id='feeCheck' type='checkbox') 
-                            label(for='feecheck' class='inline') &nbsp; I, Germaine Luyben, agree to the following Findaharp.com fee schedule.
-                        p(class='left') As a party listing strings for sale, using the Services of Findaharp.com, I agree to receive 75% of gross sales from Findaharp.com.
-                        p I agree to ship the strings within 2 business days of receipt of the order.
-                        p I agree to monitor my e-mail to 
+                            label(for='feecheck' class='inline') &nbsp; I, Germaine Luyben, agree to the following Findaharp.com fee schedule and terms.
+                        p As a party listing merchandise for sale, using the Services of Findaharp.com, you agree to receive 75% of the gross sales plus shipping expenses from Findaharp.com.
+                        p You understand that payment from Findaharp.com will be delayed 18 days following the shipment of the merchandise or until the resolution of a dispute with a customer, whichever is later.
+                        p You agree to ship the merchandise within 6 business days of receipt of the order.
+                        p You agree to keep records of your shipping expenses and merchandise inventory in order to liaise with the credit card company and/or Findaharp.com regarding chargebacks or disputes. 
                     
                     p(style="margin: 25px; border-bottom: 1px solid lightgrey;")   
                     h3 Terms and Conditions
                     div(class='left')
                         input(type='checkbox' name='termscheck' id='termsCheck') 
-                        label(for='termscheck') &nbsp; I, Germaine Lyben, agree to the following Findaharp.com <span style='font-style:italic;color:#868686'>Terms and Conditions</span>.
+                        label(for='termscheck') &nbsp; I, Germaine Luyben, agree to the following Findaharp.com <span style='font-style:italic;color:#868686'>Terms and Conditions</span>.
                     p(style="width: 100%; text-align: center") (in this agreement Findaharp.com means “Find Stuff Ltd. Operating as Findaharp.com”)
                     p Our services include the use of our website including the listing for sale, selling and purchasing of certain items as approved by us (collectively the “Services”). To access and use our Services, you are required to register with us and set up an account with your email address and a password (your “Account”). The email address you provide will be your email address, and you are solely responsible for maintaining the confidentiality of your password. You are solely responsible for all activities that occur under your Account. Therefore, you should protect your password and make your password difficult for others to guess.
                     p You agree not to do any of the following: 
