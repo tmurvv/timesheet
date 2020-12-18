@@ -402,7 +402,7 @@ app.post('/api/v1/partners/blevinsharpsagree', async (req,res) => {
 app.get('/api/v1/partners/gl', (req,res) => {
     res.status(200).render('germaine', {
         seller: 'Germaine Luyben',
-        sellerId: 'germaine',
+        sellerId: 'gl',
         startDate: 'January 7, 2021',
         fee: '25%',
         minimum: '0'
