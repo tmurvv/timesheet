@@ -76,4 +76,14 @@ html
                     input(type='text' name='seller' value=seller style='display:none')
                     input(type='text' name='fee' value=fee style='display:none')
                     input(type='text' name='startdate' value=startDate style='display:none')
-                    input(type='text' name='scheduletext' value=`As a party listing a harp for sale, using the Services of Findaharp.com, if I sell a harp introduced to a buyer because of exposure on Findaharp.com during the term of this agreement, I will forthwith pay to Findaharp.com fees in an amount equivalent to ${fee} of the Gross sale price of the item, subject to a minimum of ${minimum}.` style='display:none')
+                    input(type='text' name='scheduletext' value=`h3 Fee Schedule        
+                        h4(style="textAlign: center;") Findaharp.com On-line Fee Schedule and terms for #{seller}, Effective #{startDate}
+                        p(style="width: 100%; text-align: center") (in this agreement Findaharp.com means “Find Stuff Ltd. Operating as Findaharp.com”)
+                        div(class='left')
+                            input(name='feecheck' id='feeCheck' type='checkbox') 
+                            label(for='feecheck' class='inline') &nbsp; I, Germaine Luyben, agree to the following Findaharp.com fee schedule and terms.
+                        p As a party listing merchandise for sale, using the Services of Findaharp.com, you agree to receive 75% of the gross sales plus shipping expenses from Findaharp.com.
+                        p You understand that payment from Findaharp.com will be delayed 18 days following the shipment of the merchandise or until the resolution of a dispute with a customer, whichever is later.
+                        p You agree to ship the merchandise within 6 business days of receipt of the order.
+                        p You agree to keep records of your shipping expenses and merchandise inventory in order to liaise with the credit card company and/or Findaharp.com regarding chargebacks or disputes.` style='display:none')
+
