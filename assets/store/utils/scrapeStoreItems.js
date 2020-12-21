@@ -4,7 +4,9 @@ const cheerio = require('cheerio');
 const uuid = require('uuid');
 
 const { FINDAHARP_PRODUCTS } = require('../../constants/FindaHarpProducts');
+const { HARPSETC_EXTRA } = require('../../constants/HarpsEtcExtra');
 const { title } = require('process');
+const { GERMAINE_STRINGS } = require('../../constants/GermaineStrings');
 
 async function getLinkInfo(url) {
     const response = await axios({url: `https://www.harpsetc.com/bow-brand-natural-gut-1st-octave-set-00g-f.html`, 'strictSSL': false});
@@ -19,7 +21,6 @@ async function getLinkInfo(url) {
     product.description = $('.content-description').text().trim();
     product.image = $('.ty-pict   ').first().attr('src');
     product.newused = 'new';
-    console.log(product);
     return product;
 }
 function getOrder(title) {
@@ -77,6 +78,7 @@ function getOrder(title) {
         if (title.includes(' F ')||title.toUpperCase().includes('OCTAVE F')) return 35;
     }
     if (title.includes('6th')){
+        if (title.toUpperCase().includes('SET')) return 35.5;
         if (title.includes(' E ')||title.toUpperCase().includes('OCTAVE E')) return 36;
         if (title.includes(' D ')||title.toUpperCase().includes('OCTAVE D')) return 37;
         if (title.includes(' C ')||title.toUpperCase().includes('OCTAVE C')) return 38;
@@ -144,7 +146,7 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/holiday-music`,'music', 'pedal harp', 'Holiday');
     console.log('storeItems', storeItems.length);
     
-    //Books and Videos
+    // Books and Videos
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/books`,'music', '', 'Books');
     console.log('storeItems', storeItems.length);
     
@@ -156,9 +158,9 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/gifts/`,'gifts');
     console.log('storeItems', storeItems.length);
 
-    //accessories
+    // #region accessories
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/covers`,'accessories', '06covers');
-    console.log('storeItems', storeItems.length);
+    console.log('storeItems-Accessories', storeItems.length);
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/electronics`,'accessories', '04electronics');
     console.log('storeItems', storeItems.length);
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/harp-care`,'accessories', '05harpcare');
@@ -175,10 +177,10 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     console.log('storeItems', storeItems.length);
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/for-students`,'accessories', '09forstudent');
     console.log('storeItems', storeItems.length);
-
-    // strings
+    //#endregion
+    //#region strings
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/string-sets/?sef_rewrite=1`,'strings', 'z', '21stringsets');
-    console.log('storeItems-BB', storeItems.length);
+    console.log('storeItems-strings-BB', storeItems.length);
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-natural-gut/?sef_rewrite=1`,'strings', 'Bow Brand', '01Natural Gut');
     console.log('storeItems', storeItems.length);
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-gut/`,'strings','Bow Brand', '04Lever Gut');
@@ -199,17 +201,15 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     console.log('storeItems', storeItems.length);
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-nylon/`,'strings','Bow Brand', '06Lever Nylon');
     console.log('storeItems', storeItems.length);
-    
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/artist-nylon-strings/`,'strings', 'z', '11artist nylon');
-    console.log('storeItems-other', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bronze-wire-monofilament/`,'strings', 'z','14bronze wire mono');
+    console.log('storeItems-Artist Nylon', storeItems.length)
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bronze-wire-monofilament/`,'strings', 'Bronze Wire Monofilament','14bronze wire mono');
     console.log('storeItems.length', storeItems.length)
-    
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/dusty-strings/`,'strings', 'z','16dusty');
     console.log('storeItems.length', storeItems.length)
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/savarez-kf/`,'strings', 'z','12savarez');
     console.log('storeItems.length', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/nylon-monofilament/`,'strings', 'z', '13nylon monofilament');
+    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/nylon-monofilament/`,'strings', 'Nylon Wire Monofilament', '13nylon monofilament');
     console.log('storeItems.length', storeItems.length)
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/silkgut/`,'strings', 'z','15silkgut');
     console.log('storeItems.length', storeItems.length)
@@ -220,14 +220,20 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/stoney-end/`,'strings', 'z','19stoney end');
     console.log('storeItems.length', storeItems.length)
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/delta/`,'strings', 'z', '20delta');
-    console.log('storeItems.length-END HarpsE', storeItems.length)
+    console.log('storeItems.length', storeItems.length)
 
-    // Find a Harp - music
+    // Wire Sets
+    storeItems = [...storeItems, ...HARPSETC_EXTRA];
+    console.log('storeItems-END HarpsE', storeItems.length)
+    //#endregion
+    // Find a Harp - music and strings
     storeItems = [...storeItems, ...FINDAHARP_PRODUCTS];
+    console.log('storeItems-END FAH', storeItems.length);
+    // Germaine Strings
+    storeItems = [...storeItems, ...GERMAINE_STRINGS];
     console.log('storeItems-END FAH', storeItems.length);
     
     //write to product file
-        
     fs.writeFile('assets/constants/storeItemsList.json', JSON.stringify(storeItems), function (err) {
         if (err) console.log('Error writing store-item list function:', err.message);
     });
@@ -253,30 +259,45 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             // get description
             const description = $S('.content-description').html();
             const title = $S('.ty-product-block-title').text().trim();
-
+            // NOT YET IMPLEMENTED -- skip item if Digital Download
+            if (title.toUpperCase().includes('PDF')) return;
             const product = {};
             product.id = $S('.ty-product-block__left').find('form').attr('name').substring(13);
             product.category = category;
-            if (subcategory) product.subcategory = subcategory;
+            product.subcategories = []
+            if (subcategory) {product.subcategory=subcategory; product.subcategories.push(subcategory);}
             if (subsubcategory) product.subsubcategory = subsubcategory;
             product.store = 'harpsetc';
             product.title = title;
-            if (title.toUpperCase().includes('PDF')) category = 'Digital Downloads';
+            if (title.toUpperCase().includes('PDF')) category = 'Digital Downloads'; // NOT YET IMPLEMENTED this line nullified by shortcut above
             // Merchant does not include Dusty Strings or Triplett in title
-            if (subsubcategory&&subsubcategory.toLowerCase()==='dusty') product.title = `Dusty Strings ${product.title}`
-            if (subsubcategory&&subsubcategory.toLowerCase()==='triplett') product.title = `Triplett ${product.title}`
-            if (subsubcategory&&subsubcategory.toLowerCase()==='rees') product.title = `Rees ${product.title}`
-            if (subsubcategory&&subsubcategory.toLowerCase()==='stoney') product.title = `Stoney End ${product.title}`
+            if (subsubcategory&&subsubcategory.toLowerCase()==='16dusty') {product.title = `Dusty Strings ${product.title}`;product.subcategories.push['Dusty Strings']}
+            if (subsubcategory&&subsubcategory.toLowerCase()==='17triplett') {product.title = `Triplett ${product.title}`;product.subcategories.push['Triplett'];}
+            if (subsubcategory&&subsubcategory.toLowerCase()==='18rees') {product.title = `Rees ${product.title}`;product.subcategories.push['Rees']}
+            if (subsubcategory&&subsubcategory.toLowerCase()==='19stoney') {product.title = `Stoney End ${product.title}`;product.subcategories.push['Stoney End']}
+            if (subsubcategory&&subsubcategory.toLowerCase()==='19stoney') {product.title = product.subcategories.push['Delta']}
             product.price = $S('.ty-price-num').text().trim();
             product.description = description&&description;
             product.image = $S('.ty-pict   ').first().attr('src');
             product.newused = 'new';
             //To order strings 'EDCBAGF'
             if (category==='strings') product.order = getOrder(product.title);
+            // To get gut, wire, etc... and pedal, lever, wire harp, etc...
+            if (category==='strings') {
+                if (title.toUpperCase().includes('GUT')) product.subcategories.push('Gut');
+                if (title.toUpperCase().includes('WIRE')) product.subcategories.push('Wire');
+                if (title.toUpperCase().includes('NYLON')) product.subcategories.push('Nylon');
+                if (title.toUpperCase().includes('PEDAL')) product.subcategories.push('Pedal');
+                if (title.toUpperCase().includes('LEVER')) product.subcategories.push('Lever');
+                if (title.toUpperCase().includes('SET')) product.subcategories.push('Set');
+                if (title.toUpperCase().includes('SET')&&title.toUpperCase().includes('WIRE')) product.subcategories.push('Wire Set');
+                if (title.toUpperCase().includes('BRONZE WIRE')) product.subcategories.push('Bronze Wire Monofilament');
+                if (title.toUpperCase().includes('NYLON')&&title.toUpperCase().includes('MONO')) product.subcategories.push('Nylon Monofilament');
+            }
             //To get level & categories
             if (category==='music') {
                 if (subcategory) product.harptype=subcategory;
-                if (subsubcategory) product.subcategories = [subsubcategory];
+                if (subsubcategory) product.subcategories.push(subsubcategory);
                 if (title.toUpperCase().includes('PDF')) product.title=`PDF downloads coming soon. ${title}`;
                 if (description&&description.toUpperCase().includes('BEGINNER')) product.level = 'beginner';
                 if (description&&description.toUpperCase().includes('EASY')) product.level = 'beginner';

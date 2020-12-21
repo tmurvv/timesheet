@@ -1,0 +1,80 @@
+exports.HARPSETC_EXTRA = [
+    {
+        id: "BSWR-DKEN",
+        store: 'harpsetc',
+        artist_first: '',
+        artist_last: '',
+        category: 'strings',
+        subcategories: ['Set','Wire','Pedal', 'Wire Set'],
+        title: "Set of 12 Wires (5th G - 7th C): Pedal Bass Wire (Tarnish-Resistant)", 
+        price: 161.50,
+        description: "Please note that these sets are not discounted, but are included for ease of ordering.",
+        image: "https://www.harpsetc.com/images/thumbnails/280/256/product/5/BB_bass_wire0141344881355502942cb7c014.jpg", 
+        newused: 'new'
+    },
+    {
+        id: "BSWR-QKVS",
+        store: 'harpsetc',
+        artist_first: '',
+        artist_last: '',
+        category: 'strings',
+        subcategories: ['Set','Wire','Pedal', 'Wire Set'],
+        title: "Set of 11 Wires (5th G - 7th D): Pedal Bass Wire (Tarnish-Resistant)", 
+        price: 147.50,
+        description: "Please note that these sets are not discounted, but are included for ease of ordering.",
+        image: "https://www.harpsetc.com/images/thumbnails/280/256/product/5/BB_bass_wire0141344881355502942cb7c014.jpg", 
+        newused: 'new'
+    },
+    {
+        id: "BSWR-QKVS",
+        store: 'harpsetc',
+        artist_first: '',
+        artist_last: '',
+        category: 'strings',
+        subcategories: ['Set','Wire','Lever', 'Wire Set'],
+        title: "Set of 5 Wires (5th G - 6th C): Pedal Bass Wire (Tarnish-Resistant)", 
+        price: 65.50,
+        description: "Please note that these sets are not discounted, but are included for ease of ordering.",
+        image: "https://www.harpsetc.com/images/thumbnails/280/256/product/5/BB_bass_wire0141344881355502942cb7c014.jpg", 
+        newused: 'new'
+    },
+    {
+        id: "BSWR-DKEN",
+        store: 'harpsetc',
+        artist_first: '',
+        artist_last: '',
+        category: 'strings',
+        subcategories: ['Set','Wire','Pedal', 'Wire Set'],
+        title: "Set of 12 Wires (5th G - 7th C): Bow Brand Pedal Bass Wire (Silver-Plated)", 
+        price: 205.00,
+        description: "Please note that these sets are not discounted, but are included for ease of ordering.",
+        image: "https://www.harpsetc.com/images/thumbnails/280/249/detailed/9/BWSD.jpg", 
+        newused: 'new'
+    },
+    {
+        id: "BSWR-DKEN",
+        store: 'harpsetc',
+        artist_first: '',
+        artist_last: '',
+        category: 'strings',
+        subcategories: ['Set','Wire','Pedal', 'Wire Set'],
+        title: "Set of 11 Wires (5th G - 7th D): Bow Brand Pedal Bass Wire (Silver-Plated)", 
+        price: 187.00,
+        description: "Please note that these sets are not discounted, but are included for ease of ordering.",
+        image: "https://www.harpsetc.com/images/thumbnails/280/249/detailed/9/BWSD.jpg", 
+        newused: 'new'
+    },
+    {
+        id: "BSWR-DKEN",
+        store: 'harpsetc',
+        artist_first: '',
+        artist_last: '',
+        category: 'strings',
+        subcategories: ['Set','Wire','Lever', 'Wire Set'],
+        title: "Set of 5 Wires (5th G - 6th C): Bow Brand Pedal Bass Wire (Silver-Plated)", 
+        price: 83.00,
+        description: "Please note that these sets are not discounted, but are included for ease of ordering.",
+        image: "https://www.harpsetc.com/images/thumbnails/280/249/detailed/9/BWSD.jpg", 
+        newused: 'new'
+    }
+]
