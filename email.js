@@ -284,7 +284,6 @@ exports.sendReceipt = async (body) => {
     //  const emailEncode = btoa(body.user.shippingemail);
     // create transporter
      const transporter = TRANSPORTER;
-     
     //  send email
      if (!body.shipping || (body.shipping && body.shipping!==-1)) {
         (async () => {
