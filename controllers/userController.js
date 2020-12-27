@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const uuid = require('uuid');
 const atob = require('atob');
 const bcrypt = require('bcrypt');
-const { Users } = require('../assets/data/Schemas');
+const { Users } = require('../assets/data/UserSchema');
 const {emailVerifySend, emailResetPassword} = require('../email');
 
 const signToken = userId => jwt.sign({ id: userId }, process.env.JWT_SECRET, {

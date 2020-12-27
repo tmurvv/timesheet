@@ -27,6 +27,7 @@
 - create music db like harp db
 
 ### future
+- private ads
 - change auth to passport (https://auth0.com/blog/next-js-authentication-tutorial/)
 - BFG git repo cleaner
 - add crud endpoints for private listings

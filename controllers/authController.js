@@ -2,7 +2,7 @@ const AppError = require("../utils/AppError");
 const jwt = require("jsonwebtoken");
 const { promisify } = require('util');
 const { fail } = require("assert");
-const { Users } = require("../assets/data/Schemas");
+const { Users } = require("../assets/data/UserSchema");
 
 exports.protect = async (req, res, next) => {
   let token;

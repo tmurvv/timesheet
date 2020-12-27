@@ -299,13 +299,13 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
                 if (subcategory) product.harptype=subcategory;
                 if (subsubcategory) product.subcategories.push(subsubcategory);
                 if (title.toUpperCase().includes('PDF')) product.title=`PDF downloads coming soon. ${title}`;
-                if (description&&description.toUpperCase().includes('BEGINNER')) product.level = 'beginner';
+                if (description&&(description.toUpperCase().includes('BEGINNER')||description.toUpperCase.includes('BEGINNING'))) product.level = 'beginner';
                 if (description&&description.toUpperCase().includes('EASY')) product.level = 'beginner';
                 if (description&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))) product.level = 'intermediate';
                 if (description&&description.toUpperCase().includes('ADVANCED')) product.level = 'advanced';
-                if (description&&description.toUpperCase().includes('BEGINNER')&&description.toUpperCase().includes('INTERMEDIATE')) product.level = 'beg-int';
-                if (description&&description.toUpperCase().includes('EASY')&&description.toUpperCase().includes('INTERMEDIATE')) product.level = 'beg-int';
-                if (description&&description.toUpperCase().includes('INTERMEDIATE')&&description.toUpperCase().includes('ADVANCED')) product.level = 'int-adv';
+                if (description&&(description.toUpperCase().includes('BEGINNER')||description.toUpperCase.includes('BEGINNING'))&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))) product.level = 'beg-int';
+                if (description&&description.toUpperCase().includes('EASY')&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))) product.level = 'beg-int';
+                if (description&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))&&description.toUpperCase().includes('ADVANCED')) product.level = 'int-adv';
             }
             answerArray.push(product);
         } catch(e) {

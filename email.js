@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 
 // internal
-const { Users } = require('./assets/data/Schemas');
+const { Users } = require('./assets/data/UserSchema');
 const { TRANSPORTER } = require('./assets/constants/emailTransport');
 
 exports.sendMailUserToSeller = (contactform) => {
