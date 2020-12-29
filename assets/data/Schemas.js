@@ -40,7 +40,7 @@ const makesModelsTestSchema = new mongoose.Schema({
     makerAliases: Array,
     
     // Array of subdocuments
-    makerProducts: [productSchema],
+    makerProducts: [productSchema], 
     
 },{ versionKey: false });
 
