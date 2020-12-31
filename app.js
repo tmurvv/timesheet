@@ -660,6 +660,7 @@ app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
         });
 
     } catch (e) {
+        console.log(e.message)
         res.status(500).json({
             title: 'FindAHarp.com | Stripe Connect',
             status: 'fail',
