@@ -651,7 +651,7 @@ app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
         // amount: calculateOrderAmount(items), // if using item list w/calculateOrderAmount
         amount: req.body.total,
-        currency: "usd"
+        currency: req.body.currency
     });
     res.send({
         clientSecret: paymentIntent.client_secret

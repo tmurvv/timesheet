@@ -14,6 +14,7 @@
 - test CRON job on findaharp.com
 
 ### functionality
+- fix downloading photos from harptisha.com
 - makesmodelssizefinish, 'do not select' not working, see troubs
 - in controllers, if exception, return fail status message
 - private Ads
