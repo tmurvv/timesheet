@@ -639,6 +639,7 @@ app.get('/assets/img/:name', function (req, res, next) {
 // This is your real test secret API key.
 
 app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
+    console.log(req.body)
     const calculateOrderAmount = items => {
         // Replace this constant with a calculation of the order's amount
         // Calculate the order total on the server to prevent
@@ -648,14 +649,26 @@ app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
 
     const { items } = req.body; // if using item list
     // Create a PaymentIntent with the order amount and currency
-    const paymentIntent = await stripe.paymentIntents.create({
-        // amount: calculateOrderAmount(items), // if using item list w/calculateOrderAmount
-        amount: req.body.total,
-        currency: req.body.currency
-    });
-    res.send({
-        clientSecret: paymentIntent.client_secret
-    });
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            // amount: calculateOrderAmount(items), // if using item list w/calculateOrderAmount
+            amount: req.body.total,
+            currency: req.body.currency
+        });
+        res.send({
+            clientSecret: paymentIntent.client_secret
+        });
+
+    } catch (e) {
+        res.status(500).json({
+            title: 'FindAHarp.com | Stripe Connect',
+            status: 'fail',
+            data: {
+                message: `Something went wrong while connecting with the Stripe payment gateway: ${e.message}`
+            }
+        });
+    }
+    
 });
 
 // Run get store items
