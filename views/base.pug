@@ -18,8 +18,8 @@ html
             else if agreement === 'fail'
                 .thanks Please check both checkboxes.
                 button.submit-btn
-                    //- a(href=`https://findaharp-api.herokuapp.com/api/v1/partners/${sellerId}`) Try Again
-                    a(href=`http://localhost:3000/api/v1/partners/${sellerId}`) Try Again
+                    a(href=`https://findaharp-api.herokuapp.com/api/v1/partners/${sellerId}`) Try Again
+                    //- a(href=`http://localhost:3000/api/v1/partners/${sellerId}`) Try Again
             else if agreement === 'server error'
                 .thanks Error saving agreements. Please check your network connection.
                 button.submit-btn
