@@ -258,6 +258,7 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             const $S = cheerio.load(html);
             // get description
             const description = $S('.content-description').html();
+            const descriptionText = $S('.content-description').text();
             const title = $S('.ty-product-block-title').text().trim();
             // NOT YET IMPLEMENTED -- skip item if Digital Download
             if (title.toUpperCase().includes('PDF')) return;
@@ -278,6 +279,7 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             if (subsubcategory&&subsubcategory.toLowerCase()==='19stoney') {product.title = product.subcategories.push['Delta']}
             product.price = $S('.ty-price-num').text().trim();
             product.description = description&&description;
+            product.descriptiontext = descriptionText&&descriptionText;
             product.image = $S('.ty-pict   ').first().attr('src');
             product.newused = 'new';
             //To order strings 'EDCBAGF'
@@ -299,11 +301,11 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
                 if (subcategory) product.harptype=subcategory;
                 if (subsubcategory) product.subcategories.push(subsubcategory);
                 if (title.toUpperCase().includes('PDF')) product.title=`PDF downloads coming soon. ${title}`;
-                if (description&&(description.toUpperCase().includes('BEGINNER')||description.toUpperCase.includes('BEGINNING'))) product.level = 'beginner';
+                if (description&&(description.toUpperCase().includes('BEGINNER')||description.toUpperCase().includes('BEGINNING'))) product.level = 'beginner';
                 if (description&&description.toUpperCase().includes('EASY')) product.level = 'beginner';
                 if (description&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))) product.level = 'intermediate';
                 if (description&&description.toUpperCase().includes('ADVANCED')) product.level = 'advanced';
-                if (description&&(description.toUpperCase().includes('BEGINNER')||description.toUpperCase.includes('BEGINNING'))&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))) product.level = 'beg-int';
+                if (description&&(description.toUpperCase().includes('BEGINNER')||description.toUpperCase().includes('BEGINNING'))&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))) product.level = 'beg-int';
                 if (description&&description.toUpperCase().includes('EASY')&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))) product.level = 'beg-int';
                 if (description&&(description.toUpperCase().includes('INTERMEDIATE')||description.toUpperCase().includes('MEDIUM'))&&description.toUpperCase().includes('ADVANCED')) product.level = 'int-adv';
             }

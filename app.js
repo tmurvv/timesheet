@@ -140,6 +140,49 @@ app.post('/api/v1/partners/michiganharpcenteragree', async (req,res) => {
         });
     }
 });
+// blevins harps
+app.get('/api/v1/partners/blevinsharps', (req,res) => {
+    res.status(200).render('base', {
+        seller: 'Blevins Harps',
+        sellerId: 'blevinsharps',
+        startDate: 'December 14, 2020',
+        fee: '5%',
+        minimum: '$40.00usd'
+    });
+});
+app.post('/api/v1/partners/blevinsharpsagree', async (req,res) => {
+    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
+        return res.status(400).render('base', {
+            agreement: 'fail',
+            seller: 'Blevins Harps',
+            sellerId: 'blevinsharps',
+            startDate: 'December 14, 2020',
+            fee: '5%',
+            minimum: '$40.00usd'
+        });
+    }
+    try {
+        const uploadagreement = Object.assign({ 
+            seller: req.body.seller,
+            sellerId: req.body.sellerId,
+            startdate: req.body.startdate,
+            fee: req.body.fee,
+            minimum: req.body.minimum,
+            scheduletext: req.body.scheduletext
+        });
+        const addedagreement = await Agreements.create(uploadagreement);
+        agreementSigned();
+        return res.status(200).render('base', {
+            agreement: 'success',
+            seller: req.body.seller
+        });
+    } catch (e) {
+        return res.status(500).render('base', {
+            error: 'server error',
+            message: e.message
+        });
+    }
+});
 // 4 harp music
 app.get('/api/v1/partners/4harpmusic', (req,res) => {
     res.status(200).render('base', {

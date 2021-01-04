@@ -14,7 +14,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Some yellowing around edges. No markings.',
         image: "../../../img/store/findaharp/sheetmusic/rossiniandante.jpg", 
-        description: "edited by Amedeo Cerasa.",
+        descriptiontext: "edited by Amedeo Cerasa.",
         newused: 'used'
     },
     {
@@ -33,7 +33,7 @@ exports.FINDAHARP_PRODUCTS = [
         newprice: '15.00',
         notes: 'Good shape. No markings. Small water mark in upper l.h. corner.',
         image: "../../../img/store/findaharp/sheetmusic/ravelgreek.jpg", 
-        description: "A hidden gem. Rarely played, stunning work by Ravel. 5 short melodies from the folk tradition.",
+        descriptiontext: "A hidden gem. Rarely played, stunning work by Ravel. 5 short melodies from the folk tradition.",
         newused: 'used'
     },
     {
@@ -52,7 +52,7 @@ exports.FINDAHARP_PRODUCTS = [
         newprice: '14.00',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/krumpholzsonata3.jpg", 
-        description: "Great for setting a classical, sophisticated atmosphere.",
+        descriptiontext: "Great for setting a classical, sophisticated atmosphere.",
         newused: 'used'
     },
     {
@@ -71,7 +71,7 @@ exports.FINDAHARP_PRODUCTS = [
         newprice: '25.00',
         notes: 'Like brand new inside. Slightly worn on cover (see photo).',
         image: "../../../img/store/findaharp/sheetmusic/weddingmarchesquintet.jpg", 
-        description: 'Mozart, March from "Marriage of Figaro"; Wagner, Bridal Chorus from "Lohengrin" (Here Comes the Bride); Mendelssohn, Wedding March from "A Mid-Summer Nights Dream". Arranged by Ryohel Nakagawa.',
+        descriptiontext: 'Mozart, March from "Marriage of Figaro"; Wagner, Bridal Chorus from "Lohengrin" (Here Comes the Bride); Mendelssohn, Wedding March from "A Mid-Summer Nights Dream". Arranged by Ryohel Nakagawa.',
         newused: 'used'
     },
     {
@@ -90,7 +90,7 @@ exports.FINDAHARP_PRODUCTS = [
         newprice: '25.00',
         notes: 'A few markings in harp part. Many markings in flute part. Otherwise excellent condition.',
         image: "../../../img/store/findaharp/sheetmusic/hovanessadonis.jpg", 
-        description: 'Beautiful, sweeping, sophisticated recital piece for flute and harp.',
+        descriptiontext: 'Beautiful, sweeping, sophisticated recital piece for flute and harp.',
         newused: 'used'
     },
     {
@@ -109,7 +109,7 @@ exports.FINDAHARP_PRODUCTS = [
         newprice: '12.95',
         notes: 'Some markings. Some yellowing from age.',
         image: "../../../img/store/findaharp/sheetmusic/christmasharpist.jpg", 
-        description: "Beautiful Christmas arrangements for pedal harp.",
+        descriptiontext: "Beautiful Christmas arrangements for pedal harp.",
         newused: 'used'
     },
     {
@@ -127,7 +127,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'Like new. No markings.',
         image: "../../../img/store/findaharp/sheetmusic/canonind.jpg", 
-        description: "Versatile arrangement of a classic. Can be played as a solo or with a 2nd harp or with flute or violin.",
+        descriptiontext: "Versatile arrangement of a classic. Can be played as a solo or with a 2nd harp or with flute or violin.",
         newused: 'used'
     },
     {
@@ -145,7 +145,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/Tea.jpg", 
-        description: "Imaginative and enjoyable arrangements. A staple for the gigging harpist.",
+        descriptiontext: "Imaginative and enjoyable arrangements. A staple for the gigging harpist.",
         newused: 'used'
     },
     {
@@ -163,7 +163,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'A couple of markings. Otherwise excellent.',
         image: "../../../img/store/findaharp/sheetmusic/IntoWest.jpg", 
-        description: "Easy and Intermediate versions. Beautiful melody.",
+        descriptiontext: "Easy and Intermediate versions. Beautiful melody.",
         newused: 'used'
     },
     {
@@ -181,7 +181,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'A few markings. Otherwise excellent.',
         image: "../../../img/store/findaharp/sheetmusic/Agility.jpg", 
-        description: "Excellent exercise book.",
+        descriptiontext: "Excellent exercise book.",
         newused: 'used',
         sold: 'sold'
     },
@@ -200,7 +200,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'A few markings. Otherwise excellent.',
         image: "../../../img/store/findaharp/sheetmusic/Disney.jpg", 
-        description: "What a great book! Part of Your World, Be Our Guest, A Whole New World, Winnie the Pooh and many, many more.",
+        descriptiontext: "What a great book! Part of Your World, Be Our Guest, A Whole New World, Winnie the Pooh and many, many more.",
         newused: 'used'
     },
     {
@@ -218,7 +218,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: "lever harp",
         notes: "A couple of markings.",
         image: "../../../img/store/findaharp/sheetmusic/50Christmas.png", 
-        description: "A must have for a gigging harpist. A fun book for a hobbyist. Each carol is arranged in an easy version and an intermediate version.",
+        descriptiontext: "A must have for a gigging harpist. A fun book for a hobbyist. Each carol is arranged in an easy version and an intermediate version.",
         newused: 'used'
     },
     {
@@ -235,7 +235,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Cover shows some age. Inside is like new.',
         image: "../../../img/store/findaharp/sheetmusic/Curcio3.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     {
@@ -253,7 +253,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Cover shows some age. Many markings inside. Some exercises completed.',
         image: "../../../img/store/findaharp/sheetmusic/Curcio2.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     {
@@ -270,7 +270,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/RaimondFH.jpg", 
-        description: "Simple tunes for the Folk Harp. Comes with CD.",
+        descriptiontext: "Simple tunes for the Folk Harp. Comes with CD.",
         newused: 'used'
     },
     {
@@ -288,7 +288,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/RileyBasicHarp.jpg", 
-        description: "Instructional Book starting from the very beginning.",
+        descriptiontext: "Instructional Book starting from the very beginning.",
         newused: 'used'
     },
     {
@@ -305,7 +305,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'all',
         notes: 'No markings. Like new.',
         image: "../../../img/store/findaharp/sheetmusic/Carols.jpg", 
-        description: "6 Carols arranged for all harps.",
+        descriptiontext: "6 Carols arranged for all harps.",
         newused: 'used'
     },
     {
@@ -323,7 +323,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new. Vanderbilt Editions has designed their pop music to put in gig Books, loose leaf on hard stock paper.',
         image: "../../../img/store/findaharp/sheetmusic/WhereLove.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     {
@@ -341,7 +341,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'all',
         notes: 'Some fading on the cover. Inside brand new.',
         image: "../../../img/store/findaharp/sheetmusic/Klein1.jpg", 
-        description: "Reinforces basic techniques of intervals and arpeggios.",
+        descriptiontext: "Reinforces basic techniques of intervals and arpeggios.",
         newused: 'used'
     },
     {
@@ -359,7 +359,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/ButNotForMe.jpg", 
-        description: "Jazzy, full chords, lots of pedals, but worth it!! Vanderbilt Editions has designed their pop music to put in gig Books, loose leaf on hard stock paper.",
+        descriptiontext: "Jazzy, full chords, lots of pedals, but worth it!! Vanderbilt Editions has designed their pop music to put in gig Books, loose leaf on hard stock paper.",
         newused: 'used'
     },
     {
@@ -377,7 +377,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Mistake in title on cover. Cover reads "Forever" instead of "Always". Inside like brand new. Vanderbilt Editions has designed their pop music to put in gig Books, loose leaf on hard stock paper.',
         image: "../../../img/store/findaharp/sheetmusic/Rainbows.jpg", 
-        description: "An excellent arrangement.",
+        descriptiontext: "An excellent arrangement.",
         newused: 'used'
     },
     {
@@ -395,7 +395,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Light smudges on cover. Inside like brand new. Vanderbilt Editions has designed their pop music to put in gig Books, loose leaf on hard stock paper.',
         image: "../../../img/store/findaharp/sheetmusic/Bewitched.jpg", 
-        description: "Paul Baker is an excellent arranger.",
+        descriptiontext: "Paul Baker is an excellent arranger.",
         newused: 'used'
     },
     {
@@ -413,7 +413,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/MoonRiver.jpg", 
-        description: "Paul Baker is an excellent arranger!",
+        descriptiontext: "Paul Baker is an excellent arranger!",
         newused: 'used'
     },
     {
@@ -431,7 +431,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Vanderbilt Editions has designed their pop music to put in gig Books, loose leaf on hard stock paper.',
         image: "../../../img/store/findaharp/sheetmusic/AnniversaryWaltz.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     {
@@ -449,7 +449,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/Gavotte.jpg", 
-        description: "Arranged by Ellis Schuman.",
+        descriptiontext: "Arranged by Ellis Schuman.",
         newused: 'used'
     },
     {
@@ -467,7 +467,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/ForestPathways.jpg", 
-        description: "A collection of Meditative Pieces arranged for pedal harp by Dewey Owens.",
+        descriptiontext: "A collection of Meditative Pieces arranged for pedal harp by Dewey Owens.",
         newused: 'used'
     },
     {
@@ -485,7 +485,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/WhereWalk.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     {
@@ -503,7 +503,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Where on cover. Only 2 pages long.',
         image: "../../../img/store/findaharp/sheetmusic/PraiseBe.jpg", 
-        description: "Free with purchase",
+        descriptiontext: "Free with purchase",
         newused: 'used'
     },
     {
@@ -521,7 +521,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/SaulSinfonias.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     {
@@ -539,7 +539,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Slight wear on cover. Inside brand new.',
         image: "../../../img/store/findaharp/sheetmusic/AncientAirs.jpg", 
-        description: "Arranged by John F. Larchet. Transcribed for concert harp by Sheila Larchet Cuthbert.",
+        descriptiontext: "Arranged by John F. Larchet. Transcribed for concert harp by Sheila Larchet Cuthbert.",
         newused: 'used'
     },
     {
@@ -557,7 +557,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/RotaSonata.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     {
@@ -575,7 +575,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Slight wear on cover. Like brand new inside. Amazon listed this new at $70.00, but might be a better new price elsewhere.',
         image: "../../../img/store/findaharp/sheetmusic/RodSeren.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     {
@@ -594,7 +594,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like Brand New',
         image: "../../../img/store/findaharp/sheetmusic/InglefieldPedal.jpg", 
-        description: "A Standardized Manual for Composers and Harpists",
+        descriptiontext: "A Standardized Manual for Composers and Harpists",
         newused: 'used'
     },
     {
@@ -612,7 +612,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Fading on the cover. No markings. Good inside.',
         image: "../../../img/store/findaharp/sheetmusic/SwansonGuide.jpg", 
-        description: "An excellent resource.",
+        descriptiontext: "An excellent resource.",
         newused: 'used'
     },
     {
@@ -630,7 +630,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/ByPopularStandards.jpg", 
-        description: "Misty, Night and Day, Star Dust, and more",
+        descriptiontext: "Misty, Night and Day, Star Dust, and more",
         newused: 'used'
     },
     {
@@ -648,7 +648,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/AmericanClassicPopBroadway.jpg", 
-        description: "Love Walked In, My Funny Valentine, People and more",
+        descriptiontext: "Love Walked In, My Funny Valentine, People and more",
         newused: 'used'
     },
     {
@@ -666,7 +666,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/AmericanClassicPop.jpg", 
-        description: "But Not For Me, Embraceable You, I Got Rhythm, and more",
+        descriptiontext: "But Not For Me, Embraceable You, I Got Rhythm, and more",
         newused: 'used'
     },
     {
@@ -684,7 +684,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/BurtonLove.jpg", 
-        description: "Wind Beneath My Wings, The Rose, Evergreen, Sunrise Sunset",
+        descriptiontext: "Wind Beneath My Wings, The Rose, Evergreen, Sunrise Sunset",
         newused: 'used'
     },
     {
@@ -702,7 +702,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/GershwinSampler.jpg", 
-        description: "A medley of Gershwin tunes from Rhapsody in Blue, American in Paris, But Not For Me, Embraceable You, and more",
+        descriptiontext: "A medley of Gershwin tunes from Rhapsody in Blue, American in Paris, But Not For Me, Embraceable You, and more",
         newused: 'used'
     },
     {
@@ -720,7 +720,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'lever harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/HarpofmyKing.jpg", 
-        description: "Celtic tunes old and new for Christian Worship",
+        descriptiontext: "Celtic tunes old and new for Christian Worship",
         newused: 'used'
     },
     {
@@ -738,7 +738,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Some water marks on cover and first page. No markings. The rest is good.',
         image: "../../../img/store/findaharp/sheetmusic/Haiku.jpg", 
-        description: "12 pieces that teach modern techniques such as pedal buzzes, fingernail glisses and changing meter.",
+        descriptiontext: "12 pieces that teach modern techniques such as pedal buzzes, fingernail glisses and changing meter.",
         newused: 'used'
     },
     {
@@ -756,7 +756,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Upper right corner is bent. No markings. Inside excellent.',
         image: "../../../img/store/findaharp/sheetmusic/MasriV1.jpg", 
-        description: "O Mio Bambino, The Swan, and more",
+        descriptiontext: "O Mio Bambino, The Swan, and more",
         newused: 'used'
     },
     {
@@ -774,7 +774,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/WatkinsV1.jpg", 
-        description: "Farnaby, Morley, Byrd, Bull, and more",
+        descriptiontext: "Farnaby, Morley, Byrd, Bull, and more",
         newused: 'used'
     },
     {
@@ -782,7 +782,7 @@ exports.FINDAHARP_PRODUCTS = [
         store: 'findaharp',
         category: 'music', 
         subcategories: ['Pop','harp solo'],
-        title: "Not for Harp, Tears in Heaven", 
+        title: "For Piano/Vocal, Tears in Heaven", 
         artist_first: "Eric",
         artist_last: "z-Clapton",
         price: '0.00', 
@@ -792,7 +792,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'not for harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/Tears.jpg", 
-        description: "NOT HARP MUSIC, piano/vocal/guitar. Free with purchase.",
+        descriptiontext: "For piano/vocal/guitar. Free with purchase.",
         newused: 'used'
     },
     {
@@ -810,7 +810,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Cover slightly worn. Inside like new.',
         image: "../../../img/store/findaharp/sheetmusic/theseus.jpg", 
-        description: "Score only. Juno award nominee. Commissioned by Judy Loman of the Toronto Symphony.",
+        descriptiontext: "Score only. Juno award nominee. Commissioned by Judy Loman of the Toronto Symphony.",
         newused: 'used'
     },
     {
@@ -818,7 +818,7 @@ exports.FINDAHARP_PRODUCTS = [
         store: 'findaharp',
         category: 'music', 
         subcategories: ['classical'],
-        title: "Not for Harp, Most Relaxing Classical Music Ever", 
+        title: "For Piano, Most Relaxing Classical Music Ever", 
         artist_first: "",
         artist_last: "z-various",
         price: '15.00', 
@@ -828,7 +828,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'not for harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/pianoclassics.jpg", 
-        description: "Not For Harp. This is a piano book. Beethoven, Bach, Handel, Debussy, Mozart, and More",
+        descriptiontext: "For Piano. This is a piano book. Beethoven, Bach, Handel, Debussy, Mozart, and More",
         newused: 'used'
     },
     {
@@ -846,7 +846,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Slight bend in upper right corner. Otherwise, like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/NatraSonatina.jpg", 
-        description: "A classic of the 20th century harp repertoire.",
+        descriptiontext: "A classic of the 20th century harp repertoire.",
         newused: 'used'
     },
     {
@@ -854,17 +854,17 @@ exports.FINDAHARP_PRODUCTS = [
         store: 'findaharp',
         category: 'music', 
         subcategories: ['Christmas'],
-        title: "Not for Harp, Ultimate Christmas Fake Book", 
+        title: "For any instrument, Ultimate Christmas Fake Book", 
         artist_first: "Hal",
         artist_last: "z-Leonard Publications",
         price: '20.00', 
         newprice: '30.00',
         condition: '7',
         level: 'advanced',
-        harptype: 'not for harp',
+        harptype: 'not specifically for harp',
         notes: 'Cover slightly worn. Slight yellowing on pages.',
         image: "../../../img/store/findaharp/sheetmusic/UltChristmas.jpg",
-        description: "Piano/Vocal/Guitar Over 140 Christmas Songs.",
+        descriptiontext: "Piano/Vocal/Guitar Over 140 Christmas Songs.",
         newused: 'used'
     },
     {
@@ -882,7 +882,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Cover weathered around the edges. Inside is fine.',
         image: "../../../img/store/findaharp/sheetmusic/OrregoSalas.jpg", 
-        description: "Commissioned by the World Harp Congress, Jerusalem 1986",
+        descriptiontext: "Commissioned by the World Harp Congress, Jerusalem 1986",
         newused: 'used'
     },
     {
@@ -900,7 +900,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'all',
         notes: 'Like new',
         image: "../../../img/store/findaharp/sheetmusic/BestDisney.jpg", 
-        description: "Part of Your World, When You Wish Upon a Star, Some Day My Prince Will Come and More!",
+        descriptiontext: "Part of Your World, When You Wish Upon a Star, Some Day My Prince Will Come and More!",
         newused: 'used'
     },
     {
@@ -908,7 +908,7 @@ exports.FINDAHARP_PRODUCTS = [
         store: 'findaharp',
         category: 'music', 
         subcategories: ['Pop'],
-        title: "Not For Harp, Zorro Movie", 
+        title: "For Piano/Vocal, Zorro Movie", 
         artist_first: "Zorro",
         artist_last: "z-Movie",
         price: 0.00, 
@@ -918,7 +918,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'not for harp',
         notes: 'Some wearing on cover. Inside clean',
         image: "../../../img/store/findaharp/sheetmusic/Zorro.jpg", 
-        description: "Not for Harp. Free with purchase. Pno/vocal/guitar",
+        descriptiontext: "For piano/vocal. Free with purchase. Pno/vocal/guitar",
         newused: 'used'
     },
     {
@@ -936,7 +936,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new.',
         image: "../../../img/store/findaharp/sheetmusic/Impromptu.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     {
@@ -944,7 +944,7 @@ exports.FINDAHARP_PRODUCTS = [
         store: 'findaharp',
         category: 'music', 
         subcategories: [],
-        title: "Not for Harp, Piano Basics", 
+        title: "For Piano, Piano Basics", 
         artist_first: "James",
         artist_last: "z-Bastien",
         price: '5.00', 
@@ -954,7 +954,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'not for harp',
         notes: 'Some markings first five pages.',
         image: "../../../img/store/findaharp/sheetmusic/BegPiano.jpg", 
-        description: "Primer Level",
+        descriptiontext: "Primer Level",
         newused: 'used'
     },
     {
@@ -962,7 +962,7 @@ exports.FINDAHARP_PRODUCTS = [
         store: 'findaharp',
         category: 'music', 
         subcategories: ['Pop'],
-        title: "Not for Harp Torch Songs", 
+        title: "For piano/vocal Harp Torch Songs", 
         artist_first: "Hal",
         artist_last: "z-Leonard Publications",
         price: '12.00', 
@@ -972,7 +972,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'Not for Harp',
         notes: 'Like new',
         image: "../../../img/store/findaharp/sheetmusic/TorchSongs.jpg", 
-        description: "244 pages! A big collection of Sultry Jazz and Big Band standards.",
+        descriptiontext: "244 pages! A big collection of Sultry Jazz and Big Band standards.",
         newused: 'used'
     },
     {
@@ -990,7 +990,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'all',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/Angel.jpg", 
-        description: "Paul Baker is an excellent arranger.",
+        descriptiontext: "Paul Baker is an excellent arranger.",
         newused: 'used'
     },
     {
@@ -1008,7 +1008,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like new',
         image: "../../../img/store/findaharp/sheetmusic/TwoBach.jpg", 
-        description: "Jesu, Joy of Man's DesiringGod's Time is Best",
+        descriptiontext: "Jesu, Joy of Man's DesiringGod's Time is Best",
         newused: 'used'
     },
     {
@@ -1026,7 +1026,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/DayLife.jpg", 
-        description: "Paul Baker is an excellent arranger.",
+        descriptiontext: "Paul Baker is an excellent arranger.",
         newused: 'used'
     },
     {
@@ -1044,7 +1044,7 @@ exports.FINDAHARP_PRODUCTS = [
         harptype: 'pedal harp',
         notes: 'Like brand new',
         image: "../../../img/store/findaharp/sheetmusic/OnlyTime.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used'
     },
     // {
@@ -1057,7 +1057,7 @@ exports.FINDAHARP_PRODUCTS = [
     //     price: '.50',
     //     newprice: '',
     //     image: "../../../img/factoryFloor.jpg", 
-    //     description: "This item is included for testing the strore functionality. Please choose credit card payment and use the following card: '4242 4242 4242 4242 exp. 04/24 CVC 242 zip 42424",
+    //     descriptiontext: "This item is included for testing the strore functionality. Please choose credit card payment and use the following card: '4242 4242 4242 4242 exp. 04/24 CVC 242 zip 42424",
     //     newused: 'new'
     // },
     {
@@ -1070,7 +1070,7 @@ exports.FINDAHARP_PRODUCTS = [
         artist_last: "Murvihill",
         price: '15.00',
         image: "../../../img/store/findaharp/cds/QuietAfternoon.jpg", 
-        description: "Winner, Instrumental Album of the Year, Gospel Music Association of Canada. Fourteen beautiful arrangements of some of our most beautiful worship melodies, including: I Exalt Thee; Oh, How He Loves You and Me; Fairest Lord Jesus; As the Deer; Jesus, Name Above All Names.",
+        descriptiontext: "Winner, Instrumental Album of the Year, Gospel Music Association of Canada. Fourteen beautiful arrangements of some of our most beautiful worship melodies, including: I Exalt Thee; Oh, How He Loves You and Me; Fairest Lord Jesus; As the Deer; Jesus, Name Above All Names.",
         newused: 'new'
     },
     {
@@ -1083,7 +1083,7 @@ exports.FINDAHARP_PRODUCTS = [
         artist_last: "Murvihill",
         price: 15.00,
         image: "../../../img/store/findaharp/cds/IfBrahmsWrote.jpg", 
-        description: "“Stunning Presentation of the music of Johannes Brahms” - The HarpColumn - Eleven Intermezzi and a Rhapsody Arranged and performed by Tisha Murvihill, Calgary Philharmonic Orchestra Principal Harp.",
+        descriptiontext: "“Stunning Presentation of the music of Johannes Brahms” - The HarpColumn - Eleven Intermezzi and a Rhapsody Arranged and performed by Tisha Murvihill, Calgary Philharmonic Orchestra Principal Harp.",
         newused: 'new'
     },
     {
@@ -1096,7 +1096,7 @@ exports.FINDAHARP_PRODUCTS = [
         artist_last: "Murvihill",
         price: 15.00,
         image: "../../../img/store/findaharp/cds/ComeJustAs.webp", 
-        description: "Come Just As You Are is a follow-up CD to Tisha’s award winning CD, A Quiet Afternoon. The CD features 14 inspirational praise and worship songs including Amazing Grace, Draw Me Close to You, Lord Be Glorified, and You Are My All in All.",
+        descriptiontext: "Come Just As You Are is a follow-up CD to Tisha’s award winning CD, A Quiet Afternoon. The CD features 14 inspirational praise and worship songs including Amazing Grace, Draw Me Close to You, Lord Be Glorified, and You Are My All in All.",
         newused: 'new'
     },
     // {
@@ -1113,7 +1113,7 @@ exports.FINDAHARP_PRODUCTS = [
     //     notes: '',
     //     price: 15.00,
     //     image: "../../../img/store/findaharp/sheetmusic/Zanarkand.PNG", 
-    //     description: "A test item for the digital download functionality.",
+    //     descriptiontext: "A test item for the digital download functionality.",
     //     newused: 'new'
     // },
     // {
@@ -1130,7 +1130,7 @@ exports.FINDAHARP_PRODUCTS = [
     //     notes: '',
     //     price: 15.00,
     //     image: "../../../img/store/findaharp/HarpNecklace.jpg", 
-    //     description: "A test item for the gift functionality. Beautiful necklace made of broken hearts.",
+    //     descriptiontext: "A test item for the gift functionality. Beautiful necklace made of broken hearts.",
     //     newused: 'new'
     // },
     // {
@@ -1147,7 +1147,7 @@ exports.FINDAHARP_PRODUCTS = [
     //     notes: '',
     //     price: 15.00,
     //     image: "../../../img/store/findaharp/bowbrand.webp", 
-    //     description: "A test item for the strings functionality. 3rd Oct E-F",
+    //     descriptiontext: "A test item for the strings functionality. 3rd Oct E-F",
     //     newused: 'new'
     // },
     {
@@ -1165,7 +1165,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '13.00', 
         newprice: '18.00',
         image: "../../../img/store/findaharp/sheetmusic/MidMod1.jpg", 
-        description: "Wonderful, interesting arrangements of music for the harp.",
+        descriptiontext: "Wonderful, interesting arrangements of music for the harp.",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1184,7 +1184,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '13.00', 
         newprice: '18.00',
         image: "../../../img/store/findaharp/sheetmusic/MidMod2.jpg", 
-        description: "Wonderful, interesting arrangements of music for the harp.",
+        descriptiontext: "Wonderful, interesting arrangements of music for the harp.",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1203,7 +1203,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '15.00', 
         newprice: '',
         image: "../../../img/store/findaharp/sheetmusic/Manx.jpg", 
-        description: "This book is most likely out-of-print, though digital copies can be downloaded at other harp retailers.",
+        descriptiontext: "This book is most likely out-of-print, though digital copies can be downloaded at other harp retailers.",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1222,7 +1222,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '13.00', 
         newprice: '15.00',
         image: "../../../img/store/findaharp/sheetmusic/Harpology1.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1241,7 +1241,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '13.00', 
         newprice: '15.00',
         image: "../../../img/store/findaharp/sheetmusic/Harpology2.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1260,7 +1260,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '13.50', 
         newprice: '19.00',
         image: "../../../img/store/findaharp/sheetmusic/Pathfinder.jpg", 
-        description: "Plus a supplement for Irish Harp. 2 used copies in stock. Both are like brand new.",
+        descriptiontext: "Plus a supplement for Irish Harp. 2 used copies in stock. Both are like brand new.",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1279,7 +1279,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '13.50', 
         newprice: '19.00',
         image: "../../../img/store/findaharp/sheetmusic/Pathfinder.jpg", 
-        description: "Plus a supplement for Irish Harp. 2 used copies in stock. Both are like brand new.",
+        descriptiontext: "Plus a supplement for Irish Harp. 2 used copies in stock. Both are like brand new.",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1298,7 +1298,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '10.50', 
         newprice: '14.00',
         image: "../../../img/store/findaharp/sheetmusic/Classiques2.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1317,7 +1317,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '10.50', 
         newprice: '14.00',
         image: "../../../img/store/findaharp/sheetmusic/Classiques3.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1336,7 +1336,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '10.50', 
         newprice: '14.00',
         image: "../../../img/store/findaharp/sheetmusic/Classiques4.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1355,7 +1355,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '10.00', 
         newprice: '8.00',
         image: "../../../img/store/findaharp/sheetmusic/LittleHarpBook.jpg", 
-        description: "Several lovely gems for the very beginning harpist.",
+        descriptiontext: "Several lovely gems for the very beginning harpist.",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1374,7 +1374,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '17.00', 
         newprice: '22.00',
         image: "../../../img/store/findaharp/sheetmusic/ClassicsRequest1.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1393,7 +1393,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '11.00', 
         newprice: '15.00',
         image: "../../../img/store/findaharp/sheetmusic/ThirtyLittleClassics.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1412,7 +1412,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '8.00', 
         newprice: '12.00',
         image: "../../../img/store/findaharp/sheetmusic/ShortStories1.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1431,7 +1431,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '8.00', 
         newprice: '12.00',
         image: "../../../img/store/findaharp/sheetmusic/ShortStories2.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Karen'
     },
@@ -1450,7 +1450,7 @@ exports.FINDAHARP_PRODUCTS = [
     //     price: '10.00', 
     //     newprice: '8.00',
     //     image: "../../../img/store/findaharp/sheetmusic/LittleHarpBook.jpg", 
-    //     description: "",
+    //     descriptiontext: "",
     //     newused: 'used',
     //     origincollection: 'Karen'
     // },
@@ -1469,7 +1469,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '13.00', 
         newprice: '18.00',
         image: "../../../img/store/findaharp/sheetmusic/GrowYourSkills.jpg", 
-        description: "Companion book to 'Interactive Harp",
+        descriptiontext: "Companion book to 'Interactive Harp",
         newused: 'used',
         origincollection: ''
     },
@@ -1488,7 +1488,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '9.50', 
         newprice: '13.00',
         image: "../../../img/store/findaharp/sheetmusic/RobertsonArranging.jpg", 
-        description: "Imaginative use of chords played with a melody is the key to creative harp arranging.",
+        descriptiontext: "Imaginative use of chords played with a melody is the key to creative harp arranging.",
         newused: 'used',
         origincollection: ''
     },
@@ -1507,7 +1507,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '7.50', 
         newprice: '10.00',
         image: "../../../img/store/findaharp/sheetmusic/McDonaldSolos3.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: ''
     },
@@ -1526,7 +1526,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '5.50', 
         newprice: '3.00',
         image: "../../../img/store/findaharp/sheetmusic/CanYouFeel.jpg", 
-        description: "Paul Baker is an excellent arranger.",
+        descriptiontext: "Paul Baker is an excellent arranger.",
         newused: 'used',
         origincollection: ''
     },
@@ -1545,7 +1545,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '4.00', 
         newprice: '6.00',
         image: "../../../img/store/findaharp/sheetmusic/DannyBoy.jpg", 
-        description: "Jazzy harmonies. Lots of pedal harps, but worth it !!",
+        descriptiontext: "Jazzy harmonies. Lots of pedal harps, but worth it !!",
         newused: 'used',
         origincollection: ''
     },
@@ -1564,7 +1564,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '4.50', 
         newprice: '7.00',
         image: "../../../img/store/findaharp/sheetmusic/Angel.jpg", 
-        description: "Paul Baker is an excellent arranger.",
+        descriptiontext: "Paul Baker is an excellent arranger.",
         newused: 'used',
         origincollection: ''
     },
@@ -1583,7 +1583,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '11.00', 
         newprice: '15.00',
         image: "../../../img/store/findaharp/sheetmusic/PreludeIntimes.jpg", 
-        description: "Contains 5 preludes",
+        descriptiontext: "Contains 5 preludes",
         newused: 'used',
         origincollection: ''
     },
@@ -1602,7 +1602,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '17.00', 
         newprice: '25.00',
         image: "../../../img/store/findaharp/sheetmusic/22RomanticSongs.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: ''
     },
@@ -1621,7 +1621,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '4.00',
         newprice: '12.00',
         image: "../../../img/store/findaharp/sheetmusic/FletcherPapers.jpg", 
-        description: "Not for harp. Book 3 General Music Theory for Piano Class or Individual Instructor",
+        descriptiontext: "For Piano Class. Book 3 General Music Theory for Piano Class or Individual Instructor",
         newused: 'used',
         origincollection: ''
     },
@@ -1640,7 +1640,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '27.00',
         newprice: '37.00',
         image: "../../../img/store/findaharp/sheetmusic/76Disney.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: ''
     },
@@ -1659,7 +1659,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '21.00', 
         newprice: '26.00',
         image: "../../../img/store/findaharp/sheetmusic/SacredHarpist.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: ''
     },
@@ -1678,7 +1678,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '8.00', 
         newprice: '10.00',
         image: "../../../img/store/findaharp/sheetmusic/LittleFountain.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: ''
     },
@@ -1697,7 +1697,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '13.00', 
         newprice: '17.00',
         image: "../../../img/store/findaharp/sheetmusic/Automates.jpg", 
-        description: "Interesting and melodious collection based on dance suite form.",
+        descriptiontext: "Interesting and melodious collection based on dance suite form.",
         newused: 'used',
         origincollection: ''
     },
@@ -1716,7 +1716,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '7.00', 
         newprice: '10.00',
         image: "../../../img/store/findaharp/sheetmusic/GlissGuide.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: ''
     },
@@ -1735,7 +1735,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '17.00', 
         newprice: '20.00',
         image: "../../../img/store/findaharp/sheetmusic/50Christmas.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: ''
     },
@@ -1754,7 +1754,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '9.00',
         newprice: '14.50',
         image: "../../../img/store/findaharp/sheetmusic/ElementsMusic.jpg", 
-        description: "Answers to Elementary Music Rudiments, Preliminary, Grade 1, Grade 2",
+        descriptiontext: "Answers to Elementary Music Rudiments, Preliminary, Grade 1, Grade 2",
         newused: 'used',
         origincollection: ''
     },
@@ -1773,7 +1773,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '10.00',
         newprice: '',
         image: "../../../img/store/findaharp/sheetmusic/InteractiveHarp.jpg", 
-        description: "Learn to play the lever harp in easy steps. CD included.",
+        descriptiontext: "Learn to play the lever harp in easy steps. CD included.",
         newused: 'used',
         origincollection: ''
     },
@@ -1781,7 +1781,7 @@ exports.FINDAHARP_PRODUCTS = [
         id: 'BrTt-JMOX',
         store: 'findaharp',
         category: 'music', 
-        title: "Not for Harp, Total Piano Tutor",
+        title: "For Piano, Total Piano Tutor",
         subcategories: ['Instructional Books', 'Method Books'], 
         artist_first: "Terry",
         artist_last: "z-Burrows",
@@ -1792,7 +1792,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '8.00',
         newprice: '',
         image: "../../../img/store/findaharp/sheetmusic/PianoTutor.jpg", 
-        description: "Not for harp. The Ultimate Guide to Playing, Recording, and Performing with all pianos. CD included.",
+        descriptiontext: "For Piano. The Ultimate Guide to Playing, Recording, and Performing with all pianos. CD included.",
         newused: 'used',
         origincollection: ''
     },
@@ -1811,7 +1811,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '15.00',
         newprice: '36.00',
         image: "../../../img/store/findaharp/sheetmusic/SarneckiRudiments.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: ''
     },
@@ -1830,7 +1830,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '15.00',
         newprice: '20.00',
         image: "../../../img/store/findaharp/sheetmusic/HymnsWedding.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Joan Gitzel'
     },
@@ -1849,7 +1849,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '15.00',
         newprice: '25.00',
         image: "../../../img/store/findaharp/sheetmusic/TrotterHymns2.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Joan Gitzel'
     },
@@ -1868,7 +1868,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '15.00',
         newprice: '25.00',
         image: "../../../img/store/findaharp/sheetmusic/TrotterHymns.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Joan Gitzel'
     },
@@ -1887,7 +1887,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '15.00',
         newprice: '19.00',
         image: "../../../img/store/findaharp/sheetmusic/SacredLever.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Joan Gitzel'
     },
@@ -1906,7 +1906,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '5.00',
         newprice: '15.00',
         image: "../../../img/store/findaharp/sheetmusic/OldTunesGit.jpg", 
-        description: "Join thousands of harpists who have learned the ropes on this classic harp collection.",
+        descriptiontext: "Join thousands of harpists who have learned the ropes on this classic harp collection.",
         newused: 'used',
         origincollection: 'Joan Gitzel'
     },
@@ -1925,7 +1925,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '9.00',
         newprice: '16.00',
         image: "../../../img/store/findaharp/sheetmusic/PlayTheF.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Joan Gitzel'
     },
@@ -1944,7 +1944,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '4.00',
         newprice: '10.00',
         image: "../../../img/store/findaharp/sheetmusic/LittleFountain.jpg", 
-        description: "Work on your four-note chords in this beautiful waterfall piece.",
+        descriptiontext: "Work on your four-note chords in this beautiful waterfall piece.",
         newused: 'used',
         origincollection: 'Joan Gitzel'
     },
@@ -1963,7 +1963,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '5.00',
         newprice: '10.00',
         image: "../../../img/store/findaharp/sheetmusic/PachelbelGit.jpg", 
-        description: "The most often requested wedding piece. Beautiful and comforting.",
+        descriptiontext: "The most often requested wedding piece. Beautiful and comforting.",
         newused: 'used',
         origincollection: 'Joan Gitzel'
     },
@@ -1982,7 +1982,7 @@ exports.FINDAHARP_PRODUCTS = [
         price: '8.00',
         newprice: '30.00',
         image: "../../../img/store/findaharp/sheetmusic/GrossiGit.jpg", 
-        description: "",
+        descriptiontext: "",
         newused: 'used',
         origincollection: 'Joan Gitzel'
     }

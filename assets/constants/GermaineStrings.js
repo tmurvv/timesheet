@@ -14,7 +14,7 @@ exports.GERMAINE_STRINGS = [
         price: '31.50',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 35.5,
         origincollection: 'Germaine Luyben'
@@ -34,7 +34,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.65',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 36,
         origincollection: 'Germaine Luyben'
@@ -54,7 +54,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.65',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 37,
         origincollection: 'Germaine Luyben'
@@ -74,7 +74,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.65',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 38,
         origincollection: 'Germaine Luyben'
@@ -94,7 +94,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.65',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 39,
         origincollection: 'Germaine Luyben'
@@ -114,7 +114,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.65',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 40,
         origincollection: 'Germaine Luyben'
@@ -134,7 +134,7 @@ exports.GERMAINE_STRINGS = [
         price: '31.50',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 28.5,
         origincollection: 'Germaine Luyben'
@@ -154,7 +154,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.35',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 31,
         origincollection: 'Germaine Luyben'
@@ -174,7 +174,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.35',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 32,
         origincollection: 'Germaine Luyben'
@@ -194,7 +194,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.35',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 33,
         origincollection: 'Germaine Luyben'
@@ -214,7 +214,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.35',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 34,
         origincollection: 'Germaine Luyben'
@@ -234,7 +234,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.35',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 35,
         origincollection: 'Germaine Luyben'
@@ -254,7 +254,7 @@ exports.GERMAINE_STRINGS = [
         price: '43.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2013.",
+        descriptiontext: "Brand new in package. Purchased 2013.",
         newused: 'used',
         order: 28.5,
         origincollection: 'Germaine Luyben'
@@ -274,7 +274,7 @@ exports.GERMAINE_STRINGS = [
         price: '9.40',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 29,
         origincollection: 'Germaine Luyben'
@@ -294,7 +294,7 @@ exports.GERMAINE_STRINGS = [
         price: '9.40',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 30,
         origincollection: 'Germaine Luyben'
@@ -314,7 +314,7 @@ exports.GERMAINE_STRINGS = [
         price: '9.40',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 31,
         origincollection: 'Germaine Luyben'
@@ -334,7 +334,7 @@ exports.GERMAINE_STRINGS = [
         price: '9.40',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 31,
         origincollection: 'Germaine Luyben'
@@ -354,7 +354,7 @@ exports.GERMAINE_STRINGS = [
         price: '9.40',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 32,
         origincollection: 'Germaine Luyben'
@@ -374,7 +374,7 @@ exports.GERMAINE_STRINGS = [
         price: '9.40',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 32,
         origincollection: 'Germaine Luyben'
@@ -394,7 +394,7 @@ exports.GERMAINE_STRINGS = [
         price: '9.40',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 33,
         origincollection: 'Germaine Luyben'
@@ -414,7 +414,7 @@ exports.GERMAINE_STRINGS = [
         price: '9.40',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 33,
         origincollection: 'Germaine Luyben'
@@ -436,7 +436,7 @@ exports.GERMAINE_STRINGS = [
         price: '39.25',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2013.",
+        descriptiontext: "Brand new in package. Purchased 2013.",
         newused: 'used',
         order: 21.5,
         origincollection: 'Germaine Luyben'
@@ -456,7 +456,7 @@ exports.GERMAINE_STRINGS = [
         price: '7.80',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 22,
         origincollection: 'Germaine Luyben'
@@ -476,7 +476,7 @@ exports.GERMAINE_STRINGS = [
         price: '7.80',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 22,
         origincollection: 'Germaine Luyben'
@@ -496,7 +496,7 @@ exports.GERMAINE_STRINGS = [
         price: '7.80',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 23,
         origincollection: 'Germaine Luyben'
@@ -516,7 +516,7 @@ exports.GERMAINE_STRINGS = [
         price: '7.80',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 24,
         origincollection: 'Germaine Luyben'
@@ -536,7 +536,7 @@ exports.GERMAINE_STRINGS = [
         price: '7.80',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 25,
         origincollection: 'Germaine Luyben'
@@ -556,7 +556,7 @@ exports.GERMAINE_STRINGS = [
         price: '7.80',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 26,
         origincollection: 'Germaine Luyben'
@@ -576,7 +576,7 @@ exports.GERMAINE_STRINGS = [
         price: '7.80',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 27,
         origincollection: 'Germaine Luyben'
@@ -596,7 +596,7 @@ exports.GERMAINE_STRINGS = [
         price: '7.80',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 28,
         origincollection: 'Germaine Luyben'
@@ -616,7 +616,7 @@ exports.GERMAINE_STRINGS = [
         price: '39.25',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2013.",
+        descriptiontext: "Brand new in package. Purchased 2013.",
         newused: 'used',
         order: 7.5,
         origincollection: 'Germaine Luyben'
@@ -635,7 +635,7 @@ exports.GERMAINE_STRINGS = [
         price: '12.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Partly used set. Remaining strings never strung on harp, but E, C, B, A, partly used (only enough left for 1 more restringing). D, G, F unused. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Partly used set. Remaining strings never strung on harp, but E, C, B, A, partly used (only enough left for 1 more restringing). D, G, F unused. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 7.5,
         origincollection: 'Germaine Luyben'
@@ -655,7 +655,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 8,
         origincollection: 'Germaine Luyben'
@@ -675,7 +675,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 8,
         origincollection: 'Germaine Luyben'
@@ -694,7 +694,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 8,
         origincollection: 'Germaine Luyben'
@@ -714,7 +714,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 9,
         origincollection: 'Germaine Luyben'
@@ -734,7 +734,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 9,
         origincollection: 'Germaine Luyben'
@@ -754,7 +754,7 @@ exports.GERMAINE_STRINGS = [
         price: '1.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
+        descriptiontext: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
         newused: 'used',
         order: 9,
         origincollection: 'Germaine Luyben'
@@ -774,7 +774,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 10,
         origincollection: 'Germaine Luyben'
@@ -794,7 +794,7 @@ exports.GERMAINE_STRINGS = [
         price: '1.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
+        descriptiontext: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
         newused: 'used',
         order: 10,
         origincollection: 'Germaine Luyben'
@@ -814,7 +814,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 11,
         origincollection: 'Germaine Luyben'
@@ -834,7 +834,7 @@ exports.GERMAINE_STRINGS = [
         price: '1.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
+        descriptiontext: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
         newused: 'used',
         order: 11,
         origincollection: 'Germaine Luyben'
@@ -854,7 +854,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 12,
         origincollection: 'Germaine Luyben'
@@ -874,7 +874,7 @@ exports.GERMAINE_STRINGS = [
         price: '1.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
+        descriptiontext: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
         newused: 'used',
         order: 12,
         origincollection: 'Germaine Luyben'
@@ -894,7 +894,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 13,
         origincollection: 'Germaine Luyben'
@@ -914,7 +914,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 13,
         origincollection: 'Germaine Luyben'
@@ -934,7 +934,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 14,
         origincollection: 'Germaine Luyben'
@@ -954,7 +954,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 14,
         origincollection: 'Germaine Luyben'
@@ -974,7 +974,7 @@ exports.GERMAINE_STRINGS = [
         price: '40.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 14.5,
         origincollection: 'Germaine Luyben'
@@ -994,7 +994,7 @@ exports.GERMAINE_STRINGS = [
         price: '12.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Partly used set. Remaining strings never strung on harp, but E, C, B, A, partly used (only enough left for 1 more restringing). D, G, F unused. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Partly used set. Remaining strings never strung on harp, but E, C, B, A, partly used (only enough left for 1 more restringing). D, G, F unused. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 14.5,
         origincollection: 'Germaine Luyben'
@@ -1014,7 +1014,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 15,
         origincollection: 'Germaine Luyben'
@@ -1034,7 +1034,7 @@ exports.GERMAINE_STRINGS = [
         price: '1.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
+        descriptiontext: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.",
         newused: 'used',
         order: 15,
         origincollection: 'Germaine Luyben'
@@ -1054,7 +1054,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 16,
         origincollection: 'Germaine Luyben'
@@ -1074,7 +1074,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 16,
         origincollection: 'Germaine Luyben'
@@ -1094,7 +1094,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 17,
         origincollection: 'Germaine Luyben'
@@ -1114,7 +1114,7 @@ exports.GERMAINE_STRINGS = [
         price: '1.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.All used items Sold As Is, No returns.",
+        descriptiontext: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013.All used items Sold As Is, No returns.",
         newused: 'used',
         order: 17,
         origincollection: 'Germaine Luyben'
@@ -1134,7 +1134,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 18,
         origincollection: 'Germaine Luyben'
@@ -1154,7 +1154,7 @@ exports.GERMAINE_STRINGS = [
         price: '1.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 18,
         origincollection: 'Germaine Luyben'
@@ -1174,7 +1174,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 19,
         origincollection: 'Germaine Luyben'
@@ -1194,7 +1194,7 @@ exports.GERMAINE_STRINGS = [
         price: '1.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Only enough left for 1 more restringing. Never strung on harp. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 19,
         origincollection: 'Germaine Luyben'
@@ -1214,7 +1214,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 20,
         origincollection: 'Germaine Luyben'
@@ -1234,7 +1234,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 20,
         origincollection: 'Germaine Luyben'
@@ -1254,7 +1254,7 @@ exports.GERMAINE_STRINGS = [
         price: '6.75',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 21,
         origincollection: 'Germaine Luyben'
@@ -1274,7 +1274,7 @@ exports.GERMAINE_STRINGS = [
         price: '4.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
+        descriptiontext: "Brand new in package. Purchased 2013. All used items Sold As Is, No returns.",
         newused: 'used',
         order: 21,
         origincollection: 'Germaine Luyben'
@@ -1294,7 +1294,7 @@ exports.GERMAINE_STRINGS = [
         price: '40.00',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 7.5,
         origincollection: 'Germaine Luyben'
@@ -1314,7 +1314,7 @@ exports.GERMAINE_STRINGS = [
         price: '5.95',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 8,
         origincollection: 'Germaine Luyben'
@@ -1334,7 +1334,7 @@ exports.GERMAINE_STRINGS = [
         price: '5.95',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 9,
         origincollection: 'Germaine Luyben'
@@ -1354,7 +1354,7 @@ exports.GERMAINE_STRINGS = [
         price: '5.95',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 10,
         origincollection: 'Germaine Luyben'
@@ -1374,7 +1374,7 @@ exports.GERMAINE_STRINGS = [
         price: '5.95',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 11,
         origincollection: 'Germaine Luyben'
@@ -1394,7 +1394,7 @@ exports.GERMAINE_STRINGS = [
         price: '5.95',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 12,
         origincollection: 'Germaine Luyben'
@@ -1414,7 +1414,7 @@ exports.GERMAINE_STRINGS = [
         price: '5.95',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png",
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 13,
         origincollection: 'Germaine Luyben'
@@ -1434,7 +1434,7 @@ exports.GERMAINE_STRINGS = [
         price: '5.95',
         newprice: '',
         image: "../../../img/golden_harp_full_grey_not_found.png", 
-        description: "Brand new in package. Purchased 2017.",
+        descriptiontext: "Brand new in package. Purchased 2017.",
         newused: 'used',
         order: 14,
         origincollection: 'Germaine Luyben'
