@@ -5,8 +5,8 @@ const uuid = require('uuid');
 
 const { FINDAHARP_PRODUCTS } = require('../../constants/FindaHarpProducts');
 const { HARPSETC_EXTRA } = require('../../constants/HarpsEtcExtra');
-const { title } = require('process');
 const { GERMAINE_STRINGS } = require('../../constants/GermaineStrings');
+const { STRUMMED_STRINGS } = require('../../constants/StrummedStrings');
 
 async function getLinkInfo(url) {
     const response = await axios({url: `https://www.harpsetc.com/bow-brand-natural-gut-1st-octave-set-00g-f.html`, 'strictSSL': false});
@@ -231,7 +231,10 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     console.log('storeItems-END FAH', storeItems.length);
     // Germaine Strings
     storeItems = [...storeItems, ...GERMAINE_STRINGS];
-    console.log('storeItems-END FAH', storeItems.length);
+    console.log('storeItems-END GERMAINE', storeItems.length);
+    // Strummed Strings
+    storeItems = [...storeItems, ...STRUMMED_STRINGS];
+    console.log('storeItems-END STRUMMED', storeItems.length);
     
     //write to product file
     fs.writeFile('assets/constants/storeItemsList.json', JSON.stringify(storeItems), function (err) {

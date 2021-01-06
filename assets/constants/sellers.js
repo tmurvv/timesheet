@@ -159,6 +159,24 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
     );
     //#endregion
+    //#region Strummed Strings
+    const StrummedStrings = new SellerPaths(
+        'Strummed Strings', //name
+        '', //email
+        'Logan, Utah', //short location
+        'West', //region
+        '41.7370', //lat 
+        '-111.8338', //long
+        'https://harptisha.com/TestArea/strummedStringsSales.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
+    );
+    //#endregion
 //#endregion
 //#region VENDORS LINKING TO PRODUCTS
     //#region Harps Etc. lever
@@ -394,6 +412,7 @@ exports.sellerArray = [
     FourHarpMusic,
     BlevinsHarps,
     ChiaraArpa,
+    // StrummedStrings,
     HarpsEtcLever, //removed for SSL violations
     HarpsEtcPedal, //removed for SSL violations
     HarpsEtcWire, //removed for SSL violations
