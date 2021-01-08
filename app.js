@@ -97,49 +97,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //#region partner agreements
-// michigan harp center
-app.get('/api/v1/partners/michiganharpcenter', (req,res) => {
-    res.status(200).render('base', {
-        seller: 'Michigan Harp Center',
-        sellerId: 'michiganharpcenter',
-        startDate: 'January 7, 2021',
-        fee: '3%',
-        minimum: '$40.00usd'
-    });
-});
-app.post('/api/v1/partners/michiganharpcenteragree', async (req,res) => {
-    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
-        return res.status(400).render('base', {
-            agreement: 'fail',
-            seller: 'Michigan Harp Center',
-            sellerId: 'michiganharpcenter',
-            startDate: 'January 7, 2021',
-            fee: '3%',
-            minimum: '$40.00usd'
-        });
-    }
-    try {
-        const uploadagreement = Object.assign({ 
-            seller: req.body.seller,
-            sellerId: req.body.sellerId,
-            startdate: req.body.startdate,
-            fee: req.body.fee,
-            minimum: req.body.minimum,
-            scheduletext: req.body.scheduletext
-        });
-        const addedagreement = await Agreements.create(uploadagreement);
-        agreementSigned();
-        return res.status(200).render('base', {
-            agreement: 'success',
-            seller: req.body.seller
-        });
-    } catch (e) {
-        return res.status(500).render('base', {
-            error: 'server error',
-            message: e.message
-        });
-    }
-});
 // blevins harps
 app.get('/api/v1/partners/blevinsharps', (req,res) => {
     res.status(200).render('base', {
@@ -331,6 +288,49 @@ app.post('/api/v1/partners/vixenharpsagree', async (req,res) => {
             startDate: 'January 2, 2021',
             fee: '3%',
             minimum: '$45.00cad'
+        });
+    }
+    try {
+        const uploadagreement = Object.assign({ 
+            seller: req.body.seller,
+            sellerId: req.body.sellerId,
+            startdate: req.body.startdate,
+            fee: req.body.fee,
+            minimum: req.body.minimum,
+            scheduletext: req.body.scheduletext
+        });
+        const addedagreement = await Agreements.create(uploadagreement);
+        agreementSigned();
+        return res.status(200).render('base', {
+            agreement: 'success',
+            seller: req.body.seller
+        });
+    } catch (e) {
+        return res.status(500).render('base', {
+            error: 'server error',
+            message: e.message
+        });
+    }
+});
+// Strummed Strings
+app.get('/api/v1/partners/strummedstrings', (req,res) => {
+    res.status(200).render('base', {
+        seller: 'Strummed Strings',
+        sellerId: 'strummedstrings',
+        startDate: 'January 7th, 2021',
+        fee: '5%',
+        minimum: '$40.00'
+    });
+});
+app.post('/api/v1/partners/strummedstringsagree', async (req,res) => {
+    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
+        return res.status(400).render('base', {
+            agreement: 'fail',
+            seller: 'Strummed Strings',
+            sellerId: 'strummedstrings',
+            startDate: 'January 7, 2021',
+            fee: '5%',
+            minimum: '$40.00'
         });
     }
     try {

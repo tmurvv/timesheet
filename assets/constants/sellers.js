@@ -159,6 +159,24 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
     );
     //#endregion
+    //#region nova harps
+    const NovaHarps = new SellerPaths(
+        'nova harps', //name
+        'karen@harpmail.com', //email
+        'Halifax, NS, Canada', //short location
+        'Canada-East', //region
+        '44.6488', //lat 
+        '-63.5752', //long
+        'https://harptisha.com/TestArea/novaSales.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
+    );
+    //#endregion
     //#region Strummed Strings
     const StrummedStrings = new SellerPaths(
         'Strummed Strings', //name
@@ -404,7 +422,7 @@ exports.sellerArray = [
     MichiganHarpCenterPedalHarp,
     MichiganHarpCenterFloorHarp,
     MichiganHarpCenterLapHarp,
-    WestCoastHarps, 
+    // WestCoastHarps, 
     Findaharp,
     VavraHarp,
     VixenHarps,
@@ -412,6 +430,7 @@ exports.sellerArray = [
     FourHarpMusic,
     BlevinsHarps,
     ChiaraArpa,
+    NovaHarps,
     // StrummedStrings,
     HarpsEtcLever, //removed for SSL violations
     HarpsEtcPedal, //removed for SSL violations
