@@ -432,10 +432,10 @@ exports.sellerArray = [
     ChiaraArpa,
     NovaHarps,
     // StrummedStrings,
-    HarpsEtcLever, //removed for SSL violations
-    HarpsEtcPedal, //removed for SSL violations
-    HarpsEtcWire, //removed for SSL violations
-    HarpsEtcHistorical //removed for SSL violations
+    HarpsEtcLever,
+    HarpsEtcPedal,
+    HarpsEtcWire,
+    HarpsEtcHistorical
 ];
 
 // EXAMPLE OF CUSTOM FUNCTION
