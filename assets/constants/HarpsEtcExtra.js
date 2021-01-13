@@ -1,5 +1,31 @@
 exports.HARPSETC_EXTRA = [
     {
+        id: "KNCL-LGKE",
+        store: 'harpsetc',
+        artist_first: 'Yolanda',
+        artist_last: 'Kondonassis',
+        category: 'music',
+        subcategories: ['Collections', 'Pedal'],
+        title: "Yolanda Kondonassis Collection", 
+        price: 25.99,
+        descriptiontext: "Kondonassis, Y. For Intermediate-advanced pedal harpist.",
+        image: "https://www.harpsetc.com/images/thumbnails/280/363/product/6/92910762007824112343791_300[1].jpg", 
+        newused: 'new'
+    },
+    {
+        id: "HNTV-LBNW",
+        store: 'harpsetc',
+        artist_first: 'G.F.',
+        artist_last: 'Handel',
+        category: 'music',
+        subcategories: ['Pedal'],
+        title: "Handel, Theme and Variations", 
+        price: 15.99,
+        descriptiontext: "Handel Tema Con Variazioni. Advanced pedal harp.",
+        image: "https://www.harpsetc.com/images/detailed/8/49005259.gif", 
+        newused: 'new'
+    },
+    {
         id: "BSWR-DKEN",
         store: 'harpsetc',
         artist_first: '',

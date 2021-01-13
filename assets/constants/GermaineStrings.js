@@ -1,7 +1,7 @@
 exports.GERMAINE_STRINGS = [
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire Set: 6th Octave E - A",
         subcategories: ['Wire','Set', 'Wire Set'], 
@@ -21,7 +21,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 6th Octave E",
         subcategories: ['Wire', 'Lever'], 
@@ -41,7 +41,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 6th Octave D",
         subcategories: ['Wire', 'Lever'], 
@@ -61,7 +61,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 6th Octave C",
         subcategories: ['Wire', 'Lever'], 
@@ -81,7 +81,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 6th Octave B",
         subcategories: ['Wire', 'Lever'], 
@@ -101,7 +101,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 6th Octave A",
         subcategories: ['Wire', 'Lever'], 
@@ -121,7 +121,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire Set: 5th Octave C - F",
         subcategories: ['Wire','Set', 'Wire Set'], 
@@ -141,7 +141,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 5th Octave C",
         subcategories: ['Wire', 'Lever'], 
@@ -161,7 +161,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 5th Octave B",
         subcategories: ['Wire', 'Lever'], 
@@ -181,7 +181,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 5th Octave A",
         subcategories: ['Wire', 'Lever'], 
@@ -201,7 +201,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 5th Octave G",
         subcategories: ['Wire', 'Lever'], 
@@ -221,7 +221,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Bow Brand Lever Bass Wire - 5th Octave F",
         subcategories: ['Wire', 'Lever'], 
@@ -241,7 +241,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut 5th Octave Set: 5th Octave E - A",
         subcategories: ['Gut','Set'], 
@@ -261,7 +261,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 5th Octave E",
         subcategories: ['Gut'], 
@@ -281,7 +281,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 5th Octave D",
         subcategories: ['Gut'], 
@@ -301,7 +301,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 5th Octave C",
         subcategories: ['Gut'], 
@@ -321,7 +321,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 5th Octave C",
         subcategories: ['Gut'], 
@@ -341,7 +341,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 5th Octave B",
         subcategories: ['Gut'], 
@@ -361,7 +361,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 5th Octave B",
         subcategories: ['Gut'], 
@@ -381,7 +381,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 5th Octave A",
         subcategories: ['Gut'], 
@@ -401,7 +401,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 5th Octave A",
         subcategories: ['Gut'], 
@@ -423,7 +423,7 @@ exports.GERMAINE_STRINGS = [
 
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut 4th Octave Set: 4th Octave E - F",
         subcategories: ['Gut','Set'], 
@@ -443,7 +443,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 4th Octave E",
         subcategories: ['Gut'], 
@@ -463,7 +463,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 4th Octave E",
         subcategories: ['Gut'], 
@@ -483,7 +483,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 4th Octave D",
         subcategories: ['Gut'], 
@@ -503,7 +503,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 4th Octave C",
         subcategories: ['Gut'], 
@@ -523,7 +523,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 4th Octave B",
         subcategories: ['Gut'], 
@@ -543,7 +543,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 4th Octave A",
         subcategories: ['Gut'], 
@@ -563,7 +563,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 4th Octave G",
         subcategories: ['Gut'], 
@@ -583,7 +583,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 4th Octave F",
         subcategories: ['Gut'], 
@@ -603,7 +603,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut 2nd Octave Set: E - F",
         subcategories: ['Gut','Set'], 
@@ -622,7 +622,7 @@ exports.GERMAINE_STRINGS = [
         origincollection: 'Germaine Luyben'
     },{
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave Complete Set",
         subcategories: ['gut'], 
@@ -642,7 +642,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave E",
         subcategories: ['Gut'], 
@@ -662,7 +662,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave E",
         subcategories: ['Gut'], 
@@ -681,7 +681,7 @@ exports.GERMAINE_STRINGS = [
         origincollection: 'Germaine Luyben'
     },{
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave E",
         subcategories: ['gut'], 
@@ -701,7 +701,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave D",
         subcategories: ['Gut'], 
@@ -721,7 +721,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave D",
         subcategories: ['Gut'], 
@@ -741,7 +741,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave D",
         subcategories: ['gut'], 
@@ -761,7 +761,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave C",
         subcategories: ['Gut'], 
@@ -781,7 +781,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave C",
         subcategories: ['gut'], 
@@ -801,7 +801,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave B",
         subcategories: ['Gut'], 
@@ -821,7 +821,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave B",
         subcategories: ['gut'], 
@@ -841,7 +841,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave A",
         subcategories: ['Gut'], 
@@ -861,7 +861,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave A",
         subcategories: ['gut'], 
@@ -881,7 +881,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave G",
         subcategories: ['Gut'], 
@@ -901,7 +901,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave G",
         subcategories: ['gut'], 
@@ -921,7 +921,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-MDIQ',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave F",
         subcategories: ['Gut'], 
@@ -941,7 +941,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 2nd Octave F",
         subcategories: ['gut'], 
@@ -961,10 +961,10 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave Complete Set",
-        subcategories: ['gut'], 
+        subcategories: ['gut', 'Featured'], 
         artist_first: "",
         artist_last: "",
         condition: '10',
@@ -981,7 +981,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave Complete Set",
         subcategories: ['gut'], 
@@ -1001,7 +1001,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave E",
         subcategories: ['gut'], 
@@ -1021,7 +1021,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave E",
         subcategories: ['gut'], 
@@ -1041,7 +1041,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave D",
         subcategories: ['gut'], 
@@ -1061,7 +1061,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave D",
         subcategories: ['gut'], 
@@ -1081,7 +1081,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave C",
         subcategories: ['gut'], 
@@ -1101,7 +1101,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave C",
         subcategories: ['gut'], 
@@ -1121,7 +1121,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave B",
         subcategories: ['gut'], 
@@ -1141,7 +1141,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave B",
         subcategories: ['gut'], 
@@ -1161,7 +1161,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave A",
         subcategories: ['gut'], 
@@ -1181,7 +1181,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave A",
         subcategories: ['gut'], 
@@ -1201,7 +1201,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave G",
         subcategories: ['gut'], 
@@ -1221,7 +1221,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave G",
         subcategories: ['gut'], 
@@ -1241,7 +1241,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave F",
         subcategories: ['gut'], 
@@ -1261,7 +1261,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'BR3R-JKDB',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Burgundy Gut - 3rd Octave F",
         subcategories: ['gut'], 
@@ -1281,7 +1281,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'SV2C-DBIS',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Savarez KF Composite - 2nd Octave Complete Set",
         subcategories: [], 
@@ -1301,7 +1301,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'SV2E-CVME',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Savarez KF Composite - 2nd Octave E",
         subcategories: [], 
@@ -1321,7 +1321,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'SV2E-CVME',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Savarez KF Composite - 2nd Octave D",
         subcategories: [], 
@@ -1341,7 +1341,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'SV2E-CVME',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Savarez KF Composite - 2nd Octave C",
         subcategories: [], 
@@ -1361,7 +1361,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'SV2E-CVME',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Savarez KF Composite - 2nd Octave B",
         subcategories: [], 
@@ -1381,7 +1381,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'SV2E-CVME',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Savarez KF Composite - 2nd Octave A",
         subcategories: [], 
@@ -1401,7 +1401,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'SV2E-CVME',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Savarez KF Composite - 2nd Octave G",
         subcategories: [], 
@@ -1421,7 +1421,7 @@ exports.GERMAINE_STRINGS = [
     },
     {
         id: 'SV2E-CVME',
-        store: 'findaharp',
+        store: 'FAH-GLSat',
         category: 'strings', 
         title: "Savarez KF Composite - 2nd Octave F",
         subcategories: [], 
