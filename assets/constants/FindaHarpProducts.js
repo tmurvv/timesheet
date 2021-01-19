@@ -1,5 +1,16 @@
 exports.FINDAHARP_PRODUCTS = [
     {
+        id: "MSST-MWOV",
+        store: 'findaharp',
+        category: 'accessories',
+        subcategories: ['Featured', 'Music stand'],
+        title: "EMS Georgian Wooden Music Stand", 
+        price: 135.00, 
+        image: "../../../img/store/findaharp/accessories/woodenStand.jpg", 
+        descriptiontext: "Costs $240USD new. Solid ash, stained rosewood/mahogany. Excellent condition.",
+        newused: 'used'
+    },
+    {
         id: "VNHP-ZBYT",
         store: 'findaharp',
         artist_first: 'Gioachino',
