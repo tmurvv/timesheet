@@ -180,7 +180,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Strummed Strings
     const StrummedStrings = new SellerPaths(
         'Strummed Strings', //name
-        '', //email
+        'julie@normanfamily.org', //email
         'Logan, Utah', //short location
         'West', //region
         '41.7370', //lat 
