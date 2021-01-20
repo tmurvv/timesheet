@@ -919,7 +919,7 @@ exports.globalMakesModels = [
                 "_id": uuid(),
                 "productTitle": "Hallel Harp",
                 "productMaker": "Marini Made Harps",
-                "productType": "lever-free",
+                "productType": "lever",
                 "productSize": 27
             }
         ]
