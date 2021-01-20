@@ -431,7 +431,7 @@ exports.sellerArray = [
     BlevinsHarps,
     ChiaraArpa,
     NovaHarps,
-    // StrummedStrings,
+    StrummedStrings,
     HarpsEtcLever,
     HarpsEtcPedal,
     HarpsEtcWire,

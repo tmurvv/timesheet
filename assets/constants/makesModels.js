@@ -911,6 +911,20 @@ exports.globalMakesModels = [
         ]
     },
     {
+        "sellerAliases": ['Marini'],
+        "sellerName": "Marini Made Harps",
+        "sellerProducts": [
+            {
+                "productAliases": ['Hallel', 'Hallel 27', 'Hallel Harp 27'],
+                "_id": uuid(),
+                "productTitle": "Hallel Harp",
+                "productMaker": "Marini Made Harps",
+                "productType": "lever-free",
+                "productSize": 27
+            }
+        ]
+    },
+    {
         "sellerAliases": ["Muma"],
         "sellerName": "Roger Muma",
         "sellerProducts": [
