@@ -200,7 +200,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Harps Etc. lever
     const HarpsEtcLever = new SellerPathsLink(
         'HarpsEtc', //name
-        'info@harpsetc.com', //email
+        'harpsetc@gmail.com', //email
         'San Francisco area', //short location
         'Pacific', //region
         '37.900690', // lat 
@@ -226,7 +226,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Harps Etc. Pedal
     const HarpsEtcPedal = new SellerPathsLink(
         'HarpsEtc', //name
-        'info@harpsetc.com', //email
+        'harpsetc@gmail.com', //email
         'San Francisco area', //short location
         'Pacific', //region
         '37.900690', // lat 
@@ -252,7 +252,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Harps Etc. Wire
     const HarpsEtcWire = new SellerPathsLink(
         'HarpsEtc', //name
-        'info@harpsetc.com', //email
+        'harpsetc@gmail.com', //email
         'San Francisco area', //short location
         'Pacific', //region
         '37.900690', // lat 
@@ -278,7 +278,7 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     //#region Harps Etc. Historical
     const HarpsEtcHistorical = new SellerPathsLink(
         'HarpsEtc', //name
-        'info@harpsetc.com', //email
+        'harpsetc@gmail.com', //email
         'San Francisco area', //short location
         'Pacific', //region
         '37.900690', // lat 
