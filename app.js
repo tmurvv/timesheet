@@ -26,6 +26,7 @@ const AppError = require('./utils/AppError');
 const globalErrorHandler = require('./controllers/errorController');
 const viewRouter = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
+const userharpsRouter = require('./routes/userharpsRoutes');
 const productRouter = require('./routes/productRoutes');
 const partnerRouter = require('./routes/partnerRoutes');
 const authController = require('./controllers/authController');
@@ -87,7 +88,8 @@ app.use(express.json({limit: '10kb'}))
 
 //Router
 app.use('/', viewRouter); 
-app.use('/api/v1/users', userRouter); 
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/userharps', userharpsRouter);
 app.use('/api/v1/products', productRouter); 
 // app.use('/api/v1/partners', partnerRouter); 
 
@@ -226,49 +228,6 @@ app.post('/api/v1/partners/harpangelagree', async (req,res) => {
         });
     }
 });
-// West Coast Harps
-app.get('/api/v1/partners/westcoastharps', (req,res) => {
-    res.status(200).render('base', {
-        seller: 'West Coast Harps',
-        sellerId: 'westcoastharps',
-        startDate: 'January 7, 2021',
-        fee: '3%',
-        minimum: '$45.00cad'
-    });
-});
-app.post('/api/v1/partners/westcoastharpsagree', async (req,res) => {
-    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
-        return res.status(400).render('base', {
-            agreement: 'fail',
-            seller: 'West Coast Harps',
-            sellerId: 'westcoastharps',
-            startDate: 'January 7, 2021',
-            fee: '3%',
-            minimum: '$45.00cad'
-        });
-    }
-    try {
-        const uploadagreement = Object.assign({ 
-            seller: req.body.seller,
-            sellerId: req.body.sellerId,
-            startdate: req.body.startdate,
-            fee: req.body.fee,
-            minimum: req.body.minimum,
-            scheduletext: req.body.scheduletext
-        });
-        const addedagreement = await Agreements.create(uploadagreement);
-        agreementSigned();
-        return res.status(200).render('base', {
-            agreement: 'success',
-            seller: req.body.seller
-        });
-    } catch (e) {
-        return res.status(500).render('base', {
-            error: 'server error',
-            message: e.message
-        });
-    }
-});
 // Vixen Harps
 app.get('/api/v1/partners/vixenharps', (req,res) => {
     res.status(200).render('base', {
@@ -312,93 +271,7 @@ app.post('/api/v1/partners/vixenharpsagree', async (req,res) => {
         });
     }
 });
-// Strummed Strings
-app.get('/api/v1/partners/strummedstrings', (req,res) => {
-    res.status(200).render('base', {
-        seller: 'Strummed Strings',
-        sellerId: 'strummedstrings',
-        startDate: 'January 7th, 2021',
-        fee: '5%',
-        minimum: '$40.00'
-    });
-});
-app.post('/api/v1/partners/strummedstringsagree', async (req,res) => {
-    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
-        return res.status(400).render('base', {
-            agreement: 'fail',
-            seller: 'Strummed Strings',
-            sellerId: 'strummedstrings',
-            startDate: 'January 7, 2021',
-            fee: '5%',
-            minimum: '$40.00'
-        });
-    }
-    try {
-        const uploadagreement = Object.assign({ 
-            seller: req.body.seller,
-            sellerId: req.body.sellerId,
-            startdate: req.body.startdate,
-            fee: req.body.fee,
-            minimum: req.body.minimum,
-            scheduletext: req.body.scheduletext
-        });
-        const addedagreement = await Agreements.create(uploadagreement);
-        agreementSigned();
-        return res.status(200).render('base', {
-            agreement: 'success',
-            seller: req.body.seller
-        });
-    } catch (e) {
-        return res.status(500).render('base', {
-            error: 'server error',
-            message: e.message
-        });
-    }
-});
-//findaharp
-app.get('/api/v1/partners/findaharp', (req,res) => {
-    res.status(200).render('base', {
-        seller: 'Find a Harp',
-        sellerId: 'findaharp',
-        startDate: 'January 7, 2021',
-        fee: '3%',
-        minimum: '$45.00cad'
-    });
-});
 
-app.post('/api/v1/partners/findaharpagree', async (req,res) => {
-    if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
-        return res.status(400).render('base', {
-            agreement: 'fail',
-            seller: req.body.seller,
-            sellerId: 'findaharp',
-            startDate: 'January 7, 2021',
-            fee: '3%',
-            minimum: '$45.00cad'
-        });
-    }
-    try {
-        const uploadagreement = Object.assign({ 
-            seller: req.body.seller,
-            sellerId: req.body.sellerId,
-            startdate: req.body.startdate,
-            fee: req.body.fee,
-            minimum: req.body.minimum,
-            scheduletext: req.body.scheduletext
-        });
-        const addedagreement = await Agreements.create(uploadagreement);
-        agreementSigned();
-        return res.status(200).render('base', {
-            agreement: 'success',
-            seller: req.body.seller
-        });
-    } catch (e) {
-        return res.status(500).render('base', {
-            agreement: 'server error',
-            message: e.message
-        });
-    }
-});
 //#endregion
 
 // app.post('/api/v1/uploadlisting', upload.single('photo'), (req, res) => {
@@ -419,7 +292,6 @@ app.post('/api/v1/partners/findaharpagree', async (req,res) => {
 // app.post('/api/v1/uploadlisting', authController.protect, authController.restrictTo('admin', 'seller'), upload.single('photo'), async (req, res) => { // BREAKING security
 app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
     
-    console.log('imin')
     if(req.file) {
         fs.rename(`${__dirname}/assets/img/${req.file.filename}`, `${__dirname}/assets/img/${req.file.originalname}`, function (err) {
             if (err) throw err;
@@ -459,8 +331,7 @@ app.post('/api/v1/uploadlisting', upload.single('photo'), async (req, res) => {
 // app.post('/api/v1/uploadlisting', authController.protect, authController.restrictTo('admin', 'seller'), upload.single('photo'), async (req, res) => { // BREAKING security
 app.post('/api/v1/uploadstoreitem', upload.single('photo'), async (req, res) => {
     const photoSuccess='true';
-    const subcategories = []
-    console.log(req.body);
+    const subcategories = [];
     //prepare subcategory list
     if (req.body.harpsolo) subcategories.push('Harp Solo');
     if (req.body.harpensemble) subcategories.push('Harp Ensemble');
@@ -682,7 +553,6 @@ app.get('/assets/img/:name', function (req, res, next) {
 // This is your real test secret API key.
 
 app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
-    console.log(req.body)
     const calculateOrderAmount = items => {
         // Replace this constant with a calculation of the order's amount
         // Calculate the order total on the server to prevent
@@ -715,7 +585,27 @@ app.post("/api/v1/create-stripe-payment-intent", async (req, res) => {
     
 });
 
-// Run get store items
+// Run get userharps list
+app.get('/api/v1/userharps/', catchAsync(async (req, res) => {
+   // get product list
+   fs.readFile(path.join(__dirname, '/assets/constants/storeItemsList.json'), (err, data) => {
+        if (err) {
+            console.error(err)
+            return
+        }
+        
+        // send results 
+        data = JSON.parse(data);
+        res.status(200).json({
+            title: 'OneStopHarpShop | Used Harps',
+            status: 'success',
+            storeitems: data
+        });
+    });
+}));
+
+
+
 app.get('/api/v1/storeitems', catchAsync(async (req, res) => {
    // get product list
    fs.readFile(path.join(__dirname, '/assets/constants/storeItemsList.json'), (err, data) => {

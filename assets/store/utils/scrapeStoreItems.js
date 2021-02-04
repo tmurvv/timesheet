@@ -266,7 +266,7 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             // get description
             const description = $S('.content-description').html();
             const descriptionText = $S('.content-description').text();
-            const title = $S('.ty-product-block-title').text().trim();
+            let title = $S('.ty-product-block-title').text().trim();
             // NOT YET IMPLEMENTED -- skip item if Digital Download
             if (title.toUpperCase().includes('PDF')) return;
             const product = {};
@@ -278,6 +278,9 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             product.store = 'harpsetc';
             product.title = title;
             if (title.toUpperCase().includes('PDF')) category = 'Digital Downloads'; // NOT YET IMPLEMENTED this line nullified by shortcut above
+            // Merchant has two names for tarnish resitant
+            if (product.title.includes('Pedal Bass Wire (Tarnish-Resistant Nickle-Plated)')) product.title=title.replace('Pedal Bass Wire (Tarnish-Resistant Nickle-Plated)','Pedal Bass Wire (Tarnish-Resistant)')
+            if (product.title.includes('Pedal Bass Wire(Tarnish-Resistant Nickle-Plated)')) product.title=title.replace('Pedal Bass Wire(Tarnish-Resistant Nickle-Plated)','Pedal Bass Wire (Tarnish-Resistant)')
             // Merchant does not include Dusty Strings or Triplett in title
             if (subsubcategory&&subsubcategory.toLowerCase()==='16dusty') {product.title = `Dusty Strings ${product.title}`;product.subcategories.push['Dusty Strings']}
             if (subsubcategory&&subsubcategory.toLowerCase()==='17triplett') {product.title = `Triplett ${product.title}`;product.subcategories.push['Triplett'];}
