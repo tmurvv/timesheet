@@ -288,7 +288,7 @@ app.post('/api/v1/partners/wk', async (req,res) => {
         return res.status(400).render('base', {
             agreement: 'fail',
             seller: 'wk',
-            sellerId: 'vixenharps',
+            sellerId: 'wk',
             startDate: 'February 8, 2021',
             fee: '5%',
             minimum: '$45.00cad'
