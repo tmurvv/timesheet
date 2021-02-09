@@ -274,7 +274,7 @@ app.post('/api/v1/partners/vixenharpsagree', async (req,res) => {
 
 //#endregion
 // Willow Karlene
-app.get('/api/v1/partners/wkagree', (req,res) => {
+app.get('/api/v1/partners/wk', (req,res) => {
     res.status(200).render('base', {
         seller: 'Willow Karlene',
         sellerId: 'wk',
@@ -283,7 +283,7 @@ app.get('/api/v1/partners/wkagree', (req,res) => {
         minimum: '$45.00cad'
     });
 });
-app.post('/api/v1/partners/wk', async (req,res) => {
+app.post('/api/v1/partners/wkagree', async (req,res) => {
     if (!(req.body.feecheck&&req.body.feecheck==='on'&&req.body.termscheck&&req.body.termscheck==='on')) {
         return res.status(400).render('base', {
             agreement: 'fail',
