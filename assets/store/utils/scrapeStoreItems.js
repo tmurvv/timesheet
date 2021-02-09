@@ -282,18 +282,18 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             if (product.title.includes('Pedal Bass Wire (Tarnish-Resistant Nickle-Plated)')) product.title=title.replace('Pedal Bass Wire (Tarnish-Resistant Nickle-Plated)','Pedal Bass Wire (Tarnish-Resistant)')
             if (product.title.includes('Pedal Bass Wire(Tarnish-Resistant Nickle-Plated)')) product.title=title.replace('Pedal Bass Wire(Tarnish-Resistant Nickle-Plated)','Pedal Bass Wire (Tarnish-Resistant)')
             // Merchant does not include Dusty Strings or Triplett in title
-            if (subsubcategory&&subsubcategory.toLowerCase()==='16dusty') {product.title = `Dusty Strings ${product.title}`;product.subcategories.push['Dusty Strings']}
-            if (subsubcategory&&subsubcategory.toLowerCase()==='17triplett') {product.title = `Triplett ${product.title}`;product.subcategories.push['Triplett'];}
-            if (subsubcategory&&subsubcategory.toLowerCase()==='18rees') {product.title = `Rees ${product.title}`;product.subcategories.push['Rees']}
-            if (subsubcategory&&subsubcategory.toLowerCase()==='19stoney') {product.title = `Stoney End ${product.title}`;product.subcategories.push['Stoney End']}
-            if (subsubcategory&&subsubcategory.toLowerCase()==='19stoney') {product.title = product.subcategories.push['Delta']}
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('dusty')) {product.title = `Dusty Strings ${product.title}`;product.subcategories.push['Dusty Strings']}
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('triplett')) {product.title = `Triplett ${product.title}`;product.subcategories.push['Triplett'];}
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('rees')) {product.title = `Rees ${product.title}`;product.subcategories.push['Rees']}
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('stoney')) {product.title = `Stoney End ${product.title}`;product.subcategories.push['Stoney End']}
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('delta')) {product.title = `Delta ${product.title}`; product.subcategories.push['Delta']}
             product.price = $S('.ty-price-num').text().trim();
-            product.description = description&&description;
+            product.description = (description&&description)||'';
             product.descriptiontext = descriptionText&&descriptionText;
             product.image = $S('.ty-pict   ').first().attr('src');
             product.newused = 'new';
             //To order strings 'EDCBAGF'
-            if (category==='strings') product.order = getOrder(product.title);
+            if (category==='strings') product.order = getOrder(String(product.title));
             // To get gut, wire, etc... and pedal, lever, wire harp, etc...
             if (category==='strings') {
                 if (title.toUpperCase().includes('GUT')) product.subcategories.push('Gut');
