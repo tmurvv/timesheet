@@ -274,7 +274,7 @@ app.post('/api/v1/partners/vixenharpsagree', async (req,res) => {
 
 //#endregion
 // Willow Karlene
-app.get('/api/v1/partners/wk', (req,res) => {
+app.get('/api/v1/partners/wkagree', (req,res) => {
     res.status(200).render('base', {
         seller: 'Willow Karlene',
         sellerId: 'wk',
