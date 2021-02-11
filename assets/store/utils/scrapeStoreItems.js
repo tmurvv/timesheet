@@ -8,6 +8,7 @@ const { HARPSETC_EXTRA } = require('../../constants/HarpsEtcExtra');
 const { GERMAINE_STRINGS } = require('../../constants/GermaineStrings');
 const { STRUMMED_STRINGS } = require('../../constants/StrummedStrings');
 const { MICHIGAN_HARP_CENTER } = require('../../constants/MHCProducts');
+const { VIXEN_HARPS_PRODUCTS } = require('../../constants/VixenHarpsProducts');
 
 async function getLinkInfo(url) {
     const response = await axios({url: `https://www.harpsetc.com/bow-brand-natural-gut-1st-octave-set-00g-f.html`, 'strictSSL': false});
@@ -238,6 +239,9 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     console.log('storeItems-END STRUMMED', storeItems.length);
     // Michigan Harp Center
     storeItems = [...storeItems, ...MICHIGAN_HARP_CENTER];
+    console.log('storeItems-END MHC', storeItems.length);
+    // Vixen Harps
+    storeItems = [...storeItems, ...VIXEN_HARPS_PRODUCTS];
     console.log('storeItems-END MHC', storeItems.length);
     
     //write to product file

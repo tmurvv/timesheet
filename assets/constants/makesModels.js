@@ -720,6 +720,18 @@ exports.globalMakesModels = [
                 "productSize": 47
             },
             {
+                "productAliases": [
+                    "Electro-Acoustic",
+                    "Electro Acoustic",
+                    "Style 2000"
+                ],
+                "_id": "5e8b7deea03397444c706239",
+                "productTitle": "Lyon & Healy Style 2000 CG ElectroAcoustic",
+                "productMaker": "Lyon & Healy",
+                "productType": "electric",
+                "productSize": null
+            },
+            {
                 "productAliases": [],
                 "_id": uuid(),
                 "productTitle": "The Troubadour",
@@ -1218,6 +1230,14 @@ exports.globalMakesModels = [
                 "productMaker": "Salvi",
                 "productType": "lever",
                 "productSize": 38
+            },
+            {
+                "productAliases": [],
+                "_id": uuid(),
+                "productTitle": "Hermes",
+                "productMaker": "Salvi",
+                "productType": "lever",
+                "productSize": 40
             },
             {
                 "productAliases": [],
