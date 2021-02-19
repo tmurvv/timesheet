@@ -9,6 +9,7 @@ const { GERMAINE_STRINGS } = require('../../constants/GermaineStrings');
 const { STRUMMED_STRINGS } = require('../../constants/StrummedStrings');
 const { MICHIGAN_HARP_CENTER } = require('../../constants/MHCProducts');
 const { VIXEN_HARPS_PRODUCTS } = require('../../constants/VixenHarpsProducts');
+const { debug } = require('console');
 
 async function getLinkInfo(url) {
     const response = await axios({url: `https://www.harpsetc.com/bow-brand-natural-gut-1st-octave-set-00g-f.html`, 'strictSSL': false});
@@ -26,6 +27,8 @@ async function getLinkInfo(url) {
     return product;
 }
 function getOrder(title) {
+    if (title.includes('#')) return parseInt(title.substr(title.indexOf('#')+1,2))
+        
     if (!title.toUpperCase().includes('SET')&&(title.includes('00G')&&(title.includes('00G')||title.includes('OOG')))) return -.5; // Above 1st Octave 00G
     if (!title.toUpperCase().includes('SET')&&(title.includes('0F')||title.includes('OF')||title.includes('0 Octave F'))) return -.3; // Above 1st Octave 0F
     if (title.includes('1st')){
@@ -116,7 +119,7 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/voice`,'music', 'lever harp', 'voice/harp');
     console.log('storeItems', storeItems.length);
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/xmas-and-holiday-music`,'music', 'lever harp', 'Holiday');
-    console.log('storeItems', storeItems.length);
+    console.log('END-Lever storeItems', storeItems.length);
 
     // pedal
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-music`,'music', 'pedal harp', 'harp solo');
@@ -146,7 +149,7 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/misc.-instruments`,'music', 'pedal harp', 'other ensembles');
     console.log('storeItems', storeItems.length);
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/holiday-music`,'music', 'pedal harp', 'Holiday');
-    console.log('storeItems', storeItems.length);
+    console.log('END PEDAL storeItems', storeItems.length);
     
     // Books and Videos
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/books`,'music', '', 'Books');
@@ -178,7 +181,7 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/crowns`,'accessories', '08crowns');
     console.log('storeItems', storeItems.length);
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/for-students`,'accessories', '09forstudent');
-    console.log('storeItems', storeItems.length);
+    console.log('END Accessories storeItems', storeItems.length);
     //#endregion
     //#region strings
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/string-sets/?sef_rewrite=1`,'strings', 'z', '21stringsets');
@@ -222,7 +225,7 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/stoney-end/`,'strings', 'z','19stoney end');
     console.log('storeItems.length', storeItems.length)
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/delta/`,'strings', 'z', '20delta');
-    console.log('storeItems.length', storeItems.length)
+    console.log('END strings storeItems.length', storeItems.length)
 
     // Wire Sets
     storeItems = [...storeItems, ...HARPSETC_EXTRA];
@@ -243,6 +246,7 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     // Vixen Harps
     storeItems = [...storeItems, ...VIXEN_HARPS_PRODUCTS];
     console.log('storeItems-END MHC', storeItems.length);
+    console.log('END ALL')
     
     //write to product file
     fs.writeFile('assets/constants/storeItemsList.json', JSON.stringify(storeItems), function (err) {
@@ -258,7 +262,8 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
     const $ = cheerio.load(html);
     let productTable = $('.ty-product-list').toArray();
     
-    await Promise.all(productTable.map(async item => {  
+    // await Promise.all(productTable.map(async item => {  
+    await productTable.map(async item => {  
         const product = {};
         const secondaryUrl = $(item).find('.ty-product-list__image').find('a').attr('href');
         
@@ -282,20 +287,21 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             product.store = 'harpsetc';
             product.title = title;
             if (title.toUpperCase().includes('PDF')) category = 'Digital Downloads'; // NOT YET IMPLEMENTED this line nullified by shortcut above
-            // Merchant has two names for tarnish resitant
-            if (product.title.includes('Pedal Bass Wire (Tarnish-Resistant Nickle-Plated)')) product.title=title.replace('Pedal Bass Wire (Tarnish-Resistant Nickle-Plated)','Pedal Bass Wire (Tarnish-Resistant)')
-            if (product.title.includes('Pedal Bass Wire(Tarnish-Resistant Nickle-Plated)')) product.title=title.replace('Pedal Bass Wire(Tarnish-Resistant Nickle-Plated)','Pedal Bass Wire (Tarnish-Resistant)')
-            // Merchant does not include Dusty Strings or Triplett in title
-            if (subsubcategory&&subsubcategory.toLowerCase().includes('dusty')) {product.title = `Dusty Strings ${product.title}`;product.subcategories.push['Dusty Strings']}
-            if (subsubcategory&&subsubcategory.toLowerCase().includes('triplett')) {product.title = `Triplett ${product.title}`;product.subcategories.push['Triplett'];}
-            if (subsubcategory&&subsubcategory.toLowerCase().includes('rees')) {product.title = `Rees ${product.title}`;product.subcategories.push['Rees']}
-            if (subsubcategory&&subsubcategory.toLowerCase().includes('stoney')) {product.title = `Stoney End ${product.title}`;product.subcategories.push['Stoney End']}
-            if (subsubcategory&&subsubcategory.toLowerCase().includes('delta')) {product.title = `Delta ${product.title}`; product.subcategories.push['Delta']}
             product.price = $S('.ty-price-num').text().trim();
             product.description = (description&&description)||'';
             product.descriptiontext = descriptionText&&descriptionText;
             product.image = $S('.ty-pict   ').first().attr('src');
             product.newused = 'new';
+            // Merchant has two names for tarnish resitant
+            if (product.title.includes('Pedal Bass Wire (Tarnish-Resistant Nickle-Plated)')) product.title=title.replace('Pedal Bass Wire (Tarnish-Resistant Nickle-Plated)','Pedal Bass Wire (Tarnish-Resistant)')
+            if (product.title.includes('Pedal Bass Wire(Tarnish-Resistant Nickle-Plated)')) product.title=title.replace('Pedal Bass Wire(Tarnish-Resistant Nickle-Plated)','Pedal Bass Wire (Tarnish-Resistant)')
+            // Merchant does not include Dusty Strings or Triplett in title
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('dusty')) {product.title = `Dusty Strings ${product.title}`;product.subcategories.push['Dusty Strings'];product.image='img/golden_harp_full_grey_dusty.png';}
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('triplett')) {product.title = `Triplett ${product.title}`;product.subcategories.push['Triplett'];product.image='img/golden_harp_full_grey_triplett.png';}
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('rees')) {product.title = `Rees ${product.title}`;product.subcategories.push['Rees'];product.image='img/golden_harp_full_grey_rees.png';}
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('stoney')) {product.title = `Stoney End ${product.title}`;product.subcategories.push['Stoney End'];product.image='img/golden_harp_full_grey_stoney.png';}
+            if (subsubcategory&&subsubcategory.toLowerCase().includes('delta')) {product.title = `Delta ${product.title}`; product.subcategories.push['Delta'];product.image='img/golden_harp_full_grey_delta.png';}
+            
             //To order strings 'EDCBAGF'
             if (category==='strings') product.order = getOrder(String(product.title));
             // To get gut, wire, etc... and pedal, lever, wire harp, etc...
@@ -310,7 +316,7 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
                 if (title.toUpperCase().includes('BRONZE WIRE')) product.subcategories.push('Bronze Wire Monofilament');
                 if (title.toUpperCase().includes('NYLON')&&title.toUpperCase().includes('MONO')) product.subcategories.push('Nylon Monofilament');
             }
-            //To get level & categories
+             //To get level & categories
             if (category==='music') {
                 if (subcategory) product.harptype=subcategory;
                 if (subsubcategory) product.subcategories.push(subsubcategory);
@@ -326,12 +332,18 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             answerArray.push(product);
         } catch(e) {
             console.log('error', e.message)
-        }         
-    }));
+        }        
+    });
+    // find next button
+    let nextUrl;
+    const btnArray = $('.ty-pagination__text').toArray();
+    btnArray.map(btn=>{
+        if (btn.children[0].data==="Next") nextUrl= btn.parent.attribs.href;
+    });
     // get next button href
-    if (!$('.ty-pagination').find('a').last().attr('href')) return answerArray
+    if (!nextUrl) return answerArray
 
-    const nextUrl = $('.ty-pagination').find('a').last().attr('href');
+    // const nextUrl = $('.ty-pagination').find('a').last().attr('href');
     // return answerArray;
     return scrapeStoreItemsSub(answerArray, nextUrl, category, subcategory, subsubcategory);
 }
