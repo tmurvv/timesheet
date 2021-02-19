@@ -227,6 +227,7 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/delta/`,'strings', 'z', '20delta');
     console.log('END strings storeItems.length', storeItems.length)
 
+
     // Wire Sets
     storeItems = [...storeItems, ...HARPSETC_EXTRA];
     console.log('storeItems-END HarpsE', storeItems.length)
