@@ -9,8 +9,8 @@ const { GERMAINE_STRINGS } = require('../../constants/GermaineStrings');
 const { STRUMMED_STRINGS } = require('../../constants/StrummedStrings');
 const { MICHIGAN_HARP_CENTER } = require('../../constants/MHCProducts');
 const { VIXEN_HARPS_PRODUCTS } = require('../../constants/VixenHarpsProducts');
-const { debug } = require('console');
-
+const origStoreItems = require('../../constants/storeItemsList.json');
+console.log(origStoreItems.length)
 async function getLinkInfo(url) {
     const response = await axios({url: `https://www.harpsetc.com/bow-brand-natural-gut-1st-octave-set-00g-f.html`, 'strictSSL': false});
     const html = response.data.text;
@@ -100,26 +100,27 @@ function getOrder(title) {
     return 1000;
 }
 exports.scrapeStoreItems = async (answerArray, url) => {
-    let storeItems = [];
+    let storeItems = [...origStoreItems];
+    console.log('store', storeItems.length)
     console.log(storeItems.length);
     // Music
-    // Harps Etc - Music - lever
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/music`,'music', 'lever harp', 'harp solo');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/ensemble`,'music', 'lever harp', 'harp ensemble');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/misc-instruments`,'music', 'lever harp', 'other ensembles');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/methods-and-studies`,'music', 'lever harp', 'Method Books');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/pop-and-collections`,'music', 'lever harp', 'Pop');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/solo-collections`,'music', 'lever harp', 'Collections');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/voice`,'music', 'lever harp', 'voice/harp');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/xmas-and-holiday-music`,'music', 'lever harp', 'Holiday');
-    console.log('END-Lever storeItems', storeItems.length);
+    // // Harps Etc - Music - lever
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/music`,'music', 'lever harp', 'harp solo');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/ensemble`,'music', 'lever harp', 'harp ensemble');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/misc-instruments`,'music', 'lever harp', 'other ensembles');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/methods-and-studies`,'music', 'lever harp', 'Method Books');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/pop-and-collections`,'music', 'lever harp', 'Pop');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/solo-collections`,'music', 'lever harp', 'Collections');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/voice`,'music', 'lever harp', 'voice/harp');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/xmas-and-holiday-music`,'music', 'lever harp', 'Holiday');
+    // console.log('END-Lever storeItems', storeItems.length);
 
     // pedal
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-music`,'music', 'pedal harp', 'harp solo');
@@ -151,102 +152,103 @@ exports.scrapeStoreItems = async (answerArray, url) => {
     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/holiday-music`,'music', 'pedal harp', 'Holiday');
     console.log('END PEDAL storeItems', storeItems.length);
     
-    // Books and Videos
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/books`,'music', '', 'Books');
-    console.log('storeItems', storeItems.length);
+    // // Books and Videos
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/books`,'music', '', 'Books');
+    // console.log('storeItems', storeItems.length);
     
-    // CDs
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/music-cds`,'cds', '', '');
-    console.log('storeItems', storeItems.length);
+    // // CDs
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/music-cds`,'cds', '', '');
+    // console.log('storeItems', storeItems.length);
 
-    // gifts
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/gifts/`,'gifts');
-    console.log('storeItems', storeItems.length);
+    // // gifts
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/gifts/`,'gifts');
+    // console.log('storeItems', storeItems.length);
 
-    // #region accessories
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/covers`,'accessories', '06covers');
-    console.log('storeItems-Accessories', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/electronics`,'accessories', '04electronics');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/harp-care`,'accessories', '05harpcare');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/transportation`,'accessories', '07transportation');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/tuning-keys`,'accessories', '01tuningkeys');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/music-stands`,'accessories', '03musicstands');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/benches`,'accessories', '02benches');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/crowns`,'accessories', '08crowns');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/for-students`,'accessories', '09forstudent');
-    console.log('END Accessories storeItems', storeItems.length);
-    //#endregion
-    //#region strings
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/string-sets/?sef_rewrite=1`,'strings', 'z', '21stringsets');
-    console.log('storeItems-strings-BB', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-natural-gut/?sef_rewrite=1`,'strings', 'Bow Brand', '01Natural Gut');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-gut/`,'strings','Bow Brand', '04Lever Gut');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-concedo/`,'strings','Bow Brand', '02Concedo');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-burgundy-gut/`,'strings','Bow Brand', '03Burgundy');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-nylon/`,'strings','Bow Brand', '05Nylon');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bass-wire-silver-plated/`,'strings','Bow Brand', '07Silver Plated');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-bass-wire-tarnish-resistant/`,'strings','Bow Brand', '08Tarnish Resistant');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-bass-wire/`,'strings','Bow Brand', '09Lever Base Wire');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-professional-lever-wire/`,'strings','Bow Brand', '10Professional Lever Wire');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-nylon/`,'strings','Bow Brand', '06Lever Nylon');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/artist-nylon-strings/`,'strings', 'z', '11artist nylon');
-    console.log('storeItems-Artist Nylon', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bronze-wire-monofilament/`,'strings', 'Bronze Wire Monofilament','14bronze wire mono');
-    console.log('storeItems.length', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/dusty-strings/`,'strings', 'z','16dusty');
-    console.log('storeItems.length', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/savarez-kf/`,'strings', 'z','12savarez');
-    console.log('storeItems.length', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/nylon-monofilament/`,'strings', 'Nylon Wire Monofilament', '13nylon monofilament');
-    console.log('storeItems.length', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/silkgut/`,'strings', 'z','15silkgut');
-    console.log('storeItems.length', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/triplett/`,'strings', 'z','17triplett');
-    console.log('storeItems.length', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/rees/`,'strings', 'z','18rees');
-    console.log('storeItems.length', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/stoney-end/`,'strings', 'z','19stoney end');
-    console.log('storeItems.length', storeItems.length)
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/delta/`,'strings', 'z', '20delta');
-    console.log('END strings storeItems.length', storeItems.length)
+    // // #region accessories
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/covers`,'accessories', '06covers');
+    // console.log('storeItems-Accessories', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/electronics`,'accessories', '04electronics');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/harp-care`,'accessories', '05harpcare');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/transportation`,'accessories', '07transportation');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/tuning-keys`,'accessories', '01tuningkeys');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/music-stands`,'accessories', '03musicstands');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/benches`,'accessories', '02benches');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/crowns`,'accessories', '08crowns');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/for-students`,'accessories', '09forstudent');
+    // console.log('END Accessories storeItems', storeItems.length);
+    // //#endregion
+    // //#region strings
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/string-sets/?sef_rewrite=1`,'strings', 'z', '21stringsets');
+    // console.log('storeItems-strings-BB', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-natural-gut/?sef_rewrite=1`,'strings', 'Bow Brand', '01Natural Gut');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-gut/`,'strings','Bow Brand', '04Lever Gut');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-concedo/`,'strings','Bow Brand', '02Concedo');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-burgundy-gut/`,'strings','Bow Brand', '03Burgundy');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-nylon/`,'strings','Bow Brand', '05Nylon');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bass-wire-silver-plated/`,'strings','Bow Brand', '07Silver Plated');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-bass-wire-tarnish-resistant/`,'strings','Bow Brand', '08Tarnish Resistant');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-bass-wire/`,'strings','Bow Brand', '09Lever Base Wire');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-professional-lever-wire/`,'strings','Bow Brand', '10Professional Lever Wire');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-nylon/`,'strings','Bow Brand', '06Lever Nylon');
+    // console.log('storeItems', storeItems.length);
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/artist-nylon-strings/`,'strings', 'z', '11artist nylon');
+    // console.log('storeItems-Artist Nylon', storeItems.length)
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bronze-wire-monofilament/`,'strings', 'Bronze Wire Monofilament','14bronze wire mono');
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/dusty-strings/`,'strings', 'z','16dusty');
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/savarez-kf/`,'strings', 'z','12savarez');
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/nylon-monofilament/`,'strings', 'Nylon Wire Monofilament', '13nylon monofilament');
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/silkgut/`,'strings', 'z','15silkgut');
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/triplett/`,'strings', 'z','17triplett');
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/rees/`,'strings', 'z','18rees');
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/stoney-end/`,'strings', 'z','19stoney end');
+    // console.log('storeItems.length', storeItems.length)
+    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/delta/`,'strings', 'z', '20delta');
+    // console.log('END strings storeItems.length', storeItems.length)
 
 
-    // Wire Sets
-    storeItems = [...storeItems, ...HARPSETC_EXTRA];
-    console.log('storeItems-END HarpsE', storeItems.length)
-    //#endregion
-    // Find a Harp - music and strings
-    storeItems = [...storeItems, ...FINDAHARP_PRODUCTS];
-    console.log('storeItems-END FAH', storeItems.length);
-    // Germaine Strings
-    storeItems = [...storeItems, ...GERMAINE_STRINGS];
-    console.log('storeItems-END GERMAINE', storeItems.length);
-    // Strummed Strings
-    storeItems = [...storeItems, ...STRUMMED_STRINGS];
-    console.log('storeItems-END STRUMMED', storeItems.length);
-    // Michigan Harp Center
-    storeItems = [...storeItems, ...MICHIGAN_HARP_CENTER];
-    console.log('storeItems-END MHC', storeItems.length);
-    // Vixen Harps
-    storeItems = [...storeItems, ...VIXEN_HARPS_PRODUCTS];
-    console.log('storeItems-END MHC', storeItems.length);
+    // // Wire Sets
+    // storeItems = [...storeItems, ...HARPSETC_EXTRA];
+    // console.log('storeItems-END HarpsE', storeItems.length)
+    // //#endregion
+    // // Find a Harp - music and strings
+    // storeItems = [...storeItems, ...FINDAHARP_PRODUCTS];
+    // console.log('storeItems-END FAH', storeItems.length);
+    // // Germaine Strings
+    // storeItems = [...storeItems, ...GERMAINE_STRINGS];
+    // console.log('storeItems-END GERMAINE', storeItems.length);
+    // // Strummed Strings
+    // storeItems = [...storeItems, ...STRUMMED_STRINGS];
+    // console.log('storeItems-END STRUMMED', storeItems.length);
+    // // Michigan Harp Center
+    // storeItems = [...storeItems, ...MICHIGAN_HARP_CENTER];
+    // console.log('storeItems-END MHC', storeItems.length);
+    // // Vixen Harps
+    // storeItems = [...storeItems, ...VIXEN_HARPS_PRODUCTS];
+    // console.log('storeItems-END MHC', storeItems.length);
+    
     console.log('END ALL')
     
     //write to product file
@@ -332,24 +334,23 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
             }
             answerArray.push(product);
         } catch(e) {
+            console.log('nextUrl', url)
             console.log('error', e.message)
         }        
     });
-    // find next button
-    let nextUrl;
-    const btnArray = $('.ty-pagination__text').toArray();
-    btnArray.map(btn=>{
-        if (btn.children[0].data==="Next") nextUrl= btn.parent.attribs.href;
-    });
+    
     // get next button href
-    if (!nextUrl) return answerArray
+    const nextUrl =$('.ty-pagination__selected').next().attr('href');
+    
+    // const nextUrl = $('.ty-pagination').find('a').last().attr('href'); // Does not work on more that 8ish pages
 
-    // const nextUrl = $('.ty-pagination').find('a').last().attr('href');
+    // console.log(answerArray.length)
+    if (nextUrl===undefined||!nextUrl) console.log('out')
+    if (nextUrl===undefined||!nextUrl) return answerArray
+
     // return answerArray;
     return scrapeStoreItemsSub(answerArray, nextUrl, category, subcategory, subsubcategory);
 }
-
-
 
 //-------------------
     // console.log('imin scrape')
