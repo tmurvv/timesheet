@@ -10,7 +10,7 @@ const { STRUMMED_STRINGS } = require('../../constants/StrummedStrings');
 const { MICHIGAN_HARP_CENTER } = require('../../constants/MHCProducts');
 const { VIXEN_HARPS_PRODUCTS } = require('../../constants/VixenHarpsProducts');
 const origStoreItems = require('../../constants/storeItemsList.json');
-console.log(origStoreItems.length)
+
 async function getLinkInfo(url) {
     const response = await axios({url: `https://www.harpsetc.com/bow-brand-natural-gut-1st-octave-set-00g-f.html`, 'strictSSL': false});
     const html = response.data.text;
