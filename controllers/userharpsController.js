@@ -79,44 +79,81 @@ exports.createUserharps = async (req, res) => {
 
 exports.loginUserharps = async (req, res) => {
     console.log('login', req.body)
-    try {
-        // find Userharps
-        let userharpsInfo;
-        let harplist;
-        // if not cookie check
-        if (req.body.oldemail&&req.body.oldharpname) {
-            userharpsInfo = await Userharps.findOne({email: req.body.oldemail, harpname: req.body.oldharpname});
-            harplist = await Userharps.find({email: req.body.oldemail})
-        } else {
-            throw new Error('Harpname or email not found.');
+    if (req.body.oldharpname&&req.body.oldharpname==='get list') {
+        try {
+            // find Userharps
+            let harplist;
+            // if not cookie check
+            if (req.body.oldemail) {
+                harplist = await Userharps.find({email: req.body.oldemail})
+            } else {
+                throw new Error('Email not provided.');
+            }
+            // console.log('login harplist', harplist)
+            // console.log(userharpsInfo)
+            // if cookie check
+            // if (req.body.cookieId) userharpsInfo = await Userharps.findById(req.body.cookieId);
+            // check userharps found
+            if (!harplist) throw new Error('No harps found for this email.');
+        
+           // add JWT and send
+            createSendToken(harplist, true, 200, res);
+            console.log('success')
+        } catch (e) {
+            console.log('login error', e.message)
+            if (!req.body.cookieId) res.status(400).json({
+                title: 'FindAHarp.com | Login Userharps',
+                status: 'fail',
+                message: e.message,
+                userharpsemail: req.body.email
+            });
+            if (req.body.cookieId) res.status(400).json({
+                title: 'FindAHarp.com | Login Userharps',
+                status: 'fail',
+                message: "JWT cookie login failed"
+            });
         }
-        // console.log('login harplist', harplist)
-        // console.log(userharpsInfo)
-        // if cookie check
-        // if (req.body.cookieId) userharpsInfo = await Userharps.findById(req.body.cookieId);
-        // check userharps found
-        if (!userharpsInfo) throw new Error('Harp not found.');
-        // remove password from result
-        let userharpsCopy = {...userharpsInfo._doc};
-        if (harplist) userharpsCopy.harplist = harplist;
-    
-       // add JWT and send
-        createSendToken(userharpsCopy, true, 200, res);
-        console.log('success')
-    } catch (e) {
-        console.log('login error', e.message)
-        if (!req.body.cookieId) res.status(400).json({
-            title: 'FindAHarp.com | Login Userharps',
-            status: 'fail',
-            message: e.message,
-            userharpsemail: req.body.email
-        });
-        if (req.body.cookieId) res.status(400).json({
-            title: 'FindAHarp.com | Login Userharps',
-            status: 'fail',
-            message: "JWT cookie login failed"
-        });
+    } else {
+        try {
+            // find Userharps
+            let userharpsInfo;
+            let harplist;
+            // if not cookie check
+            if (req.body.oldemail&&req.body.oldharpname) {
+                userharpsInfo = await Userharps.findOne({email: req.body.oldemail, harpname: req.body.oldharpname});
+                harplist = await Userharps.find({email: req.body.oldemail})
+            } else {
+                throw new Error('Harpname or email not found.');
+            }
+            // console.log('login harplist', harplist)
+            // console.log(userharpsInfo)
+            // if cookie check
+            // if (req.body.cookieId) userharpsInfo = await Userharps.findById(req.body.cookieId);
+            // check userharps found
+            if (!userharpsInfo) throw new Error('Harp not found.');
+            // remove password from result
+            let userharpsCopy = {...userharpsInfo._doc};
+            if (harplist) userharpsCopy.harplist = harplist;
+        
+           // add JWT and send
+            createSendToken(userharpsCopy, true, 200, res);
+            console.log('success')
+        } catch (e) {
+            console.log('login error', e.message)
+            if (!req.body.cookieId) res.status(400).json({
+                title: 'FindAHarp.com | Login Userharps',
+                status: 'fail',
+                message: e.message,
+                userharpsemail: req.body.email
+            });
+            if (req.body.cookieId) res.status(400).json({
+                title: 'FindAHarp.com | Login Userharps',
+                status: 'fail',
+                message: "JWT cookie login failed"
+            });
+        }
     }
+    
 }
 exports.getAll = async (req, res) => {
     try {
@@ -164,7 +201,8 @@ exports.getUserharpsList = async (req, res) => {
 }
 
 exports.updateUserharps = async (req, res) => {
-    console.log('update body', req.body)
+    console.log('update harp', req.body)
+    // console.log('update body', req.body)
     // get userharps  
     const userharpInfo = await Userharps.findOne({harpname: req.body.oldharpname, email: req.body.oldemail});
     // error if no userharps
@@ -179,8 +217,7 @@ exports.updateUserharps = async (req, res) => {
     // create new updateUserharps object
     const updateUserharp = {
         harpname: req.body.harpname,
-        email: req.body.email,
-        stringform: req.body.stringform
+        email: req.body.email
     }
     // update the userharps
     try {

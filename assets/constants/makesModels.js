@@ -728,7 +728,7 @@ exports.globalMakesModels = [
                     "Style 2000CG"
                 ],
                 "_id": "5e8b7deea03397444c706239",
-                "productTitle": "Lyon & Healy Style 2000 CG ElectroAcoustic",
+                "productTitle": "Style 2000 CG ElectroAcoustic",
                 "productMaker": "Lyon & Healy",
                 "productType": "electric",
                 "productSize": null
