@@ -78,14 +78,18 @@ exports.createUserharps = async (req, res) => {
 }  
 
 exports.loginUserharps = async (req, res) => {
+
     console.log('login', req.body)
-    if (req.body.oldharpname&&req.body.oldharpname==='get list') {
+    console.log('login', req.params)
+    console.log('login', req.query)
+    if (req.query.oldharpname&&req.query.oldharpname==='get list') {
+        console.log('getlist')
         try {
             // find Userharps
             let harplist;
             // if not cookie check
-            if (req.body.oldemail) {
-                harplist = await Userharps.find({email: req.body.oldemail})
+            if (req.query.oldemail) {
+                harplist = await Userharps.find({email: req.query.oldemail})
             } else {
                 throw new Error('Email not provided.');
             }
@@ -114,14 +118,16 @@ exports.loginUserharps = async (req, res) => {
             });
         }
     } else {
+        console.log('login harp')
         try {
             // find Userharps
             let userharpsInfo;
             let harplist;
             // if not cookie check
-            if (req.body.oldemail&&req.body.oldharpname) {
-                userharpsInfo = await Userharps.findOne({email: req.body.oldemail, harpname: req.body.oldharpname});
-                harplist = await Userharps.find({email: req.body.oldemail})
+            if (req.query.oldemail&&req.query.oldharpname) {
+                userharpsInfo = await Userharps.findOne({email: req.query.oldemail, harpname: req.query.oldharpname});
+                harplist = await Userharps.find({email: req.query.oldemail});
+                console.log('harp loggedin', userharpsInfo.harpname);
             } else {
                 throw new Error('Harpname or email not found.');
             }
@@ -136,7 +142,14 @@ exports.loginUserharps = async (req, res) => {
             if (harplist) userharpsCopy.harplist = harplist;
         
            // add JWT and send
-            createSendToken(userharpsCopy, true, 200, res);
+           res.status(200).json({
+                // "Access-Control-Allow-Origin": "*",
+                status: 'success',
+                // harpToken,
+                userharp: userharpsCopy,
+                // login
+            });
+            // createSendToken(userharpsCopy, true, 200, res);
             console.log('success')
         } catch (e) {
             console.log('login error', e.message)
@@ -217,7 +230,8 @@ exports.updateUserharps = async (req, res) => {
     // create new updateUserharps object
     const updateUserharp = {
         harpname: req.body.harpname,
-        email: req.body.email
+        email: req.body.email,
+        stringform: req.body.stringform
     }
     // update the userharps
     try {
@@ -264,9 +278,10 @@ exports.getOne = async (req, res) => {
 
 exports.deleteUserharps = async (req, res) => {
     // get userharps  
-    const userharpsInfo = await Userharps.findById(req.params.userharpsid);
+    const userharp = await Userharps.findOne({harpname: req.body.harpname, email: req.body.email});
+    const deleteharpid = userharp._id;
     // error if no userharps
-    if (!userharpsInfo) {
+    if (!userharp) {
         return res.status(500).json({
             title: 'FindAHarp.com | Update Userharps',
             status: 'fail',
@@ -274,44 +289,44 @@ exports.deleteUserharps = async (req, res) => {
         });
     }
     // check password
-    try {
-        if(!await bcrypt.compare(req.query.editpassword, userharpsInfo.password)) {
-            return res.status(500).json({
-                title: 'FindAHarp.com | Update Userharps',
-                status: 'fail',
-                message: `Password incorrect.`
-            });
-        }
-    } catch(e) {
-        return res.status(500).json({
-            title: 'FindAHarp.com | Delete Userharps',
-            status: 'fail',
-            data: {
-                message: `Something went wrong while deleting userharps: ${e.message}`
-            }
-        });
-    }
+    // try {
+    //     if(!await bcrypt.compare(req.query.editpassword, userharpsInfo.password)) {
+    //         return res.status(500).json({
+    //             title: 'FindAHarp.com | Update Userharps',
+    //             status: 'fail',
+    //             message: `Password incorrect.`
+    //         });
+    //     }
+    // } catch(e) {
+    //     return res.status(500).json({
+    //         title: 'FindAHarp.com | Delete Userharps',
+    //         status: 'fail',
+    //         data: {
+    //             message: `Something went wrong while deleting userharps: ${e.message}`
+    //         }
+    //     });
+    // }
     
     try {
         // find and delete userharps
-        const userharps = await Userharps.findByIdAndDelete(req.params.userharpsid);
+        const deletedharp = await Userharps.findByIdAndDelete(deleteharpid);
         // throw error if not successful
-        if (!userharps) throw new Error();
+        if (!deletedharp) throw new Error();
         // return result
         return res.status(200).json({
             title: 'FindAHarp.com | Delete Userharps',
             status: 'success',
             data: {
                 message: 'Userharps deleted',
-                userharps
+                deletedharp
             }
         });
     } catch (e) {
         return res.status(500).json({
-            title: 'FindAHarp.com | Delete Userharps',
+            title: 'FindAHarp.com | Delete Harp',
             status: 'fail',
             data: {
-                message: `Something went wrong while deleting userharps: ${e.message}`
+                message: `Something went wrong while deleting harp: ${e.message}`
             }
         });
     }
