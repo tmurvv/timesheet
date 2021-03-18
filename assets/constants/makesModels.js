@@ -577,6 +577,16 @@ exports.globalMakesModels = [
             },
             {
                 "productAliases": [
+                    " 11 "
+                ],
+                "_id": uuid(),
+                "productTitle": "Style 11",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 47
+            },
+            {
+                "productAliases": [
                     " 14 ",
                     " style 14",
                     " Style 14"
@@ -715,6 +725,16 @@ exports.globalMakesModels = [
                 ],
                 "_id": "5e8b7deea03397444c706239",
                 "productTitle": "Style 17",
+                "productMaker": "Lyon & Healy",
+                "productType": "pedal",
+                "productSize": 47
+            },
+            {
+                "productAliases": [
+                    "26"
+                ],
+                "_id": "5e8b7deea03397444c706239",
+                "productTitle": "Style 26",
                 "productMaker": "Lyon & Healy",
                 "productType": "pedal",
                 "productSize": 47
@@ -1564,6 +1584,21 @@ exports.globalMakesModels = [
                 "productAliases": [
                 ],
                 "_id": uuid(),
+                "productTitle": "Starke",
+                "productMaker": "Wurlitzer",
+                "productType": "pedal",
+                "productSize": 46
+            }
+        ]
+    },
+    {
+        "sellerAliases": [],
+        "sellerName": "Wurlitzer",
+        "sellerProducts": [
+            {
+                "productAliases": [
+                ],
+                "_id": uuid(),
                 "productTitle": "Wurlitzer",
                 "productMaker": "Wurlitzer",
                 "productType": "pedal",
@@ -1571,6 +1606,7 @@ exports.globalMakesModels = [
             }
         ]
     },
+    
     {
         "sellerAliases": [
             "Unknown"

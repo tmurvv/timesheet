@@ -140,7 +140,7 @@ exports.loginUserharps = async (req, res) => {
             // remove password from result
             let userharpsCopy = {...userharpsInfo._doc};
             if (harplist) userharpsCopy.harplist = harplist;
-        
+        console.log('userharpscopy', userharpsCopy)
            // add JWT and send
            res.status(200).json({
                 // "Access-Control-Allow-Origin": "*",
@@ -218,6 +218,7 @@ exports.updateUserharps = async (req, res) => {
     // console.log('update body', req.body)
     // get userharps  
     const userharpInfo = await Userharps.findOne({harpname: req.body.oldharpname, email: req.body.oldemail});
+    
     // error if no userharps
     if (!userharpInfo) {
         console.log('nouserharps')
@@ -235,6 +236,7 @@ exports.updateUserharps = async (req, res) => {
     }
     // update the userharps
     try {
+        console.log('intry', updateUserharp)
         await Userharps.findByIdAndUpdate(userharpInfo._id, updateUserharp);
         const updatedUserharp = await Userharps.findById(userharpInfo._id);
         if (!updatedUserharp) throw new Error();

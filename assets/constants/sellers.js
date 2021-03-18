@@ -249,6 +249,32 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
     );
     HarpsEtcPedal.sellerAxiosResponsePath = '';
     //#endregion
+    //#region Harps Etc. Pedal
+    const HarpsEtcPedalP2 = new SellerPathsLink(
+        'HarpsEtc', //name
+        'harpsetc@gmail.com', //email
+        'San Francisco area', //short location
+        'Pacific', //region
+        '37.900690', // lat 
+        '-122.061810', //long
+        'https://www.harpsetc.com/harps-en/certified-used-harps/certified-used-pedal-harps/page-2/?sef_rewrite=1', //productsurl
+        '.ty-product-list__info', //mainPathId
+        null, //customFns
+        ($, item) => $(item).find('.ty-product-list__item-name').text().trim(), //titleFn
+        ($, item) => $(item).find('.ty-product-list__price').text().trim(), //priceFn 
+        ($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
+        null, //longDescFn
+        null, //imageUrl
+        ($, item) => $(item).parent().prev().find('a').attr('href'), //findLinkUrlFn
+        '.ty-product-block', //mainPathIdLink
+        null, //titleLinkFn
+        null, //priceLinkFn
+        null, //shortDescLinkFn
+        ($, item) => {if($(item).find('.content-description').html()) return $(item).find('.content-description').html()}, //longDescLinkFn,
+        ($, item) => $(item).find('.ty-pict   ').first().attr('src') //imageUrlLinkFn
+    );
+    HarpsEtcPedalP2.sellerAxiosResponsePath = '';
+    //#endregion
     //#region Harps Etc. Wire
     const HarpsEtcWire = new SellerPathsLink(
         'HarpsEtc', //name
@@ -434,6 +460,7 @@ exports.sellerArray = [
     StrummedStrings,
     HarpsEtcLever,
     HarpsEtcPedal,
+    HarpsEtcPedalP2,
     HarpsEtcWire,
     HarpsEtcHistorical
 ];
