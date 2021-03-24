@@ -44,7 +44,7 @@ const usersSchema = new mongoose.Schema({
     role: {
         type: String, 
         enum: {
-            values: ['user', 'seller', 'admin', 'other', 'not set'],
+            values: ['user', 'seller', 'newsletteronly', 'admin', 'other', 'not set'],
             message: 'User Type must be user, seller, admin, not set, or other.'
         },
         default: 'user'

@@ -1,7 +1,6 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // to allow scraping of webstores with invalid ssl
 require('https').globalAgent.options.ca = require('ssl-root-cas/latest').create();
 
-
 // packages
 const fs = require('fs');
 const atob = require('atob');
@@ -28,6 +27,7 @@ const viewRouter = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
 const userharpsRouter = require('./routes/userharpsRoutes');
 const productRouter = require('./routes/productRoutes');
+const newsletterRouter = require('./routes/newsletterRoutes');
 const partnerRouter = require('./routes/partnerRoutes');
 const authController = require('./controllers/authController');
 const { scrapeAds } = require('./utils/harpAdScraper');
@@ -38,14 +38,17 @@ const { Agreements } = require('./assets/data/Schemas');
 const { ProductUploads } = require('./assets/data/Schemas');
 const { StoreItemUpload } = require('./assets/data/Schemas');
 const { ContactRequests, MakesModels, Products } = require('./assets/data/Schemas');
+// const { newsletter} = require('./assets/newsletter/newslettertemplate.html');
 const { 
     sendMailUserToSeller, 
     contactUsForm, 
     emailVerifySend, 
     sendReceipt, 
-    agreementSigned 
+    agreementSigned, 
+    sendNewsletter
 } = require('./email');
 const { refreshMakesModels } = require('./utils/codeStorage/rarelyUsedUtils');
+const { contactToUser } = require('./utils/contactToUser');
 
 // program setup
 const app = express();
@@ -80,6 +83,7 @@ app.use(express.static(".")); // put in for Stripe test
 //utilities ** see commented code below
 app.use(express.json({limit: '10kb'}))
 
+// sendNewsletter(); // BREAKING
 // // misc
 // app.use((req, res, next) => {
 //     console.log(req.headers);
@@ -91,6 +95,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/userharps', userharpsRouter);
 app.use('/api/v1/products', productRouter); 
+app.use('/api/v1/newsletter',newsletterRouter); 
 // app.use('/api/v1/partners', partnerRouter); 
 
 //parser for pug
@@ -648,9 +653,6 @@ app.get('/api/v1/userharps/', catchAsync(async (req, res) => {
         });
     });
 }));
-
-
-
 app.get('/api/v1/storeitems', catchAsync(async (req, res) => {
    // get product list
    fs.readFile(path.join(__dirname, '/assets/constants/storeItemsList.json'), (err, data) => {
@@ -678,6 +680,8 @@ app.get('/api/v1/scrapestoreitems', catchAsync(async (req, res) => {
     });
 }));
  
+
+
 // Catch invalid routes
 app.all('*', (req,res,next) => {
     next(new AppError(`Web address 'findaharp-api${req.originalUrl}' not found. Please see findaharp-api docs for valid addresses.`, 404));
