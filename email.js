@@ -355,7 +355,7 @@ exports.verifyEmail = async(req,res) => {
 }
 
 exports.sendReceipt = async (body) => {
-     // encode email
+    // encode email
     //  const emailEncode = btoa(body.user.shippingemail);
     // create transporter
      const transporter = TRANSPORTER;
