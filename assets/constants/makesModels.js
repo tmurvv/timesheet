@@ -854,11 +854,17 @@ exports.globalMakesModels = [
                 "productSize": 34
             },
             {
-                "productAliases": [
-                    "Prelude"
-                ],
+                "productAliases": [],
                 "_id": "5e8b7deea03397444c70623d",
                 "productTitle": "Prelude 40",
+                "productMaker": "Lyon & Healy",
+                "productType": "lever",
+                "productSize": 40
+            },
+            {
+                "productAliases": [],
+                "_id": "5e8b7deea03397444c70623d",
+                "productTitle": "Prelude 38",
                 "productMaker": "Lyon & Healy",
                 "productType": "lever",
                 "productSize": 40
