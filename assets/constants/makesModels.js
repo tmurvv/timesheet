@@ -867,7 +867,7 @@ exports.globalMakesModels = [
                 "productTitle": "Prelude 38",
                 "productMaker": "Lyon & Healy",
                 "productType": "lever",
-                "productSize": 40
+                "productSize": 38
             },
             {
                 "productAliases": [
