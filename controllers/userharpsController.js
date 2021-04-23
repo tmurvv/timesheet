@@ -278,18 +278,20 @@ exports.getOne = async (req, res) => {
     });
 }
 
-exports.deleteUserharps = async (req, res) => {
+exports.deleteUserharp = async (req, res) => {
+    console.log(req.body)
     // get userharps  
     const userharp = await Userharps.findOne({harpname: req.body.harpname, email: req.body.email});
-    const deleteharpid = userharp._id;
+    
     // error if no userharps
     if (!userharp) {
-        return res.status(500).json({
+        return res.status(400).json({
             title: 'FindAHarp.com | Update Userharps',
             status: 'fail',
-            message: `Userharps not found.`
+            message: `Harp not found.`
         });
     }
+    const deleteharpid = userharp._id;
     // check password
     // try {
     //     if(!await bcrypt.compare(req.query.editpassword, userharpsInfo.password)) {

@@ -10,6 +10,7 @@ const { STRUMMED_STRINGS } = require('../../constants/StrummedStrings');
 const { MICHIGAN_HARP_CENTER } = require('../../constants/MHCProducts');
 const { VIXEN_HARPS_PRODUCTS } = require('../../constants/VixenHarpsProducts');
 const origStoreItems = require('../../constants/storeItemsList.json');
+// const storeItemsListMusic = require('../../constants/storeItemsListMusic.json');
 
 async function getLinkInfo(url) {
     const response = await axios({url: `https://www.harpsetc.com/bow-brand-natural-gut-1st-octave-set-00g-f.html`, 'strictSSL': false});
@@ -100,161 +101,392 @@ function getOrder(title) {
     return 1000;
 }
 exports.scrapeStoreItems = async (answerArray, url) => {
-    let storeItems = [...origStoreItems];
+    console.log("READ INSTRUCTIONS IN COMMENTS BEFORE RUNNING");
+    /************
+     * INSTRUCTIONS:
+     * Run in two batches, Music and then everything else
+     * First storeItems is empty, write to file is storeItemsListMusic
+     * then spread storeItemsListMusic into storeItems, write to file is storeItemsList
+     ************/
+
+
+    // let storeItems = [...storeItemsListMusic];
     console.log('store', storeItems.length)
-    console.log(storeItems.length);
     // Music
-    // // Harps Etc - Music - lever
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/music`,'music', 'lever harp', 'harp solo');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/ensemble`,'music', 'lever harp', 'harp ensemble');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/misc-instruments`,'music', 'lever harp', 'other ensembles');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/methods-and-studies`,'music', 'lever harp', 'Method Books');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/pop-and-collections`,'music', 'lever harp', 'Pop');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/solo-collections`,'music', 'lever harp', 'Collections');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/voice`,'music', 'lever harp', 'voice/harp');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/xmas-and-holiday-music`,'music', 'lever harp', 'Holiday');
-    // console.log('END-Lever storeItems', storeItems.length);
-
-    // pedal
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-music`,'music', 'pedal harp', 'harp solo');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-collections-en`,'music', 'pedal harp', 'Collections');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/popular`,'music', 'pedal harp', 'pop');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-with-orchestra`,'music', 'pedal harp', 'Concertos');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/methods-and-studies-en`,'music', 'pedal harp', 'Method Books');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/ensemble-en`,'music', 'pedal harp', 'harp ensemble');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/voice-en`,'music', 'pedal harp', 'voice/harp');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/with-flute`,'music', 'pedal harp', 'flute/harp');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/with-flute-and-strings`,'music', 'pedal harp', 'flute/harp');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/orchestral-parts`,'music', 'pedal harp', 'Orchestra Parts');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/ensemble-en`,'music', 'pedal harp', 'harp ensemble');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/with-keyboard`,'music', 'pedal harp', 'other ensembles');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/misc.-instruments`,'music', 'pedal harp', 'other ensembles');
-    console.log('storeItems', storeItems.length);
-    storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/holiday-music`,'music', 'pedal harp', 'Holiday');
-    console.log('END PEDAL storeItems', storeItems.length);
+    // Harps Etc - Music - lever
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/music`,'music', 'lever harp', 'harp solo');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/ensemble`,'music', 'lever harp', 'harp ensemble');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/misc-instruments`,'music', 'lever harp', 'other ensembles');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/methods-and-studies`,'music', 'lever harp', 'Method Books');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/pop-and-collections`,'music', 'lever harp', 'Pop');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/solo-collections`,'music', 'lever harp', 'Collections');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/voice`,'music', 'lever harp', 'voice/harp');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/lever-harps/xmas-and-holiday-music`,'music', 'lever harp', 'Holiday');
+    //     console.log('END-Lever storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
     
-    // // Books and Videos
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/books`,'music', '', 'Books');
-    // console.log('storeItems', storeItems.length);
+    // // pedal
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-music`,'music', 'pedal harp', 'harp solo');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-collections-en`,'music', 'pedal harp', 'Collections');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/popular`,'music', 'pedal harp', 'pop');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/solo-with-orchestra`,'music', 'pedal harp', 'Concertos');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/methods-and-studies-en`,'music', 'pedal harp', 'Method Books');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/ensemble-en`,'music', 'pedal harp', 'harp ensemble');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/voice-en`,'music', 'pedal harp', 'voice/harp');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/with-flute`,'music', 'pedal harp', 'flute/harp');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/with-flute-and-strings`,'music', 'pedal harp', 'flute/harp');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/orchestral-parts`,'music', 'pedal harp', 'Orchestra Parts');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/ensemble-en`,'music', 'pedal harp', 'harp ensemble');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/with-keyboard`,'music', 'pedal harp', 'other ensembles');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/misc.-instruments`,'music', 'pedal harp', 'other ensembles');
+    //     console.log('storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
+    // try {
+    //     storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/sheet-music/pedal-harps/holiday-music`,'music', 'pedal harp', 'Holiday');
+    //     console.log('END PEDAL storeItems', storeItems.length);
+    // } catch(e) {
+    //     console.log('storeItems error', e.message);
+    // }
     
-    // // CDs
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/music-cds`,'cds', '', '');
-    // console.log('storeItems', storeItems.length);
+    // Books and Videos
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/books`,'music', '', 'Books');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    
+    
+    // CDs
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/music-cds`,'cds', '', '');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
 
-    // // gifts
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/gifts/`,'gifts');
-    // console.log('storeItems', storeItems.length);
+    // gifts
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/gifts/`,'gifts');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
 
-    // // #region accessories
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/covers`,'accessories', '06covers');
-    // console.log('storeItems-Accessories', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/electronics`,'accessories', '04electronics');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/harp-care`,'accessories', '05harpcare');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/transportation`,'accessories', '07transportation');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/tuning-keys`,'accessories', '01tuningkeys');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/music-stands`,'accessories', '03musicstands');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/benches`,'accessories', '02benches');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/crowns`,'accessories', '08crowns');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/for-students`,'accessories', '09forstudent');
-    // console.log('END Accessories storeItems', storeItems.length);
-    // //#endregion
-    // //#region strings
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/string-sets/?sef_rewrite=1`,'strings', 'z', '21stringsets');
-    // console.log('storeItems-strings-BB', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-natural-gut/?sef_rewrite=1`,'strings', 'Bow Brand', '01Natural Gut');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-gut/`,'strings','Bow Brand', '04Lever Gut');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-concedo/`,'strings','Bow Brand', '02Concedo');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-burgundy-gut/`,'strings','Bow Brand', '03Burgundy');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-nylon/`,'strings','Bow Brand', '05Nylon');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bass-wire-silver-plated/`,'strings','Bow Brand', '07Silver Plated');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-bass-wire-tarnish-resistant/`,'strings','Bow Brand', '08Tarnish Resistant');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-bass-wire/`,'strings','Bow Brand', '09Lever Base Wire');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-professional-lever-wire/`,'strings','Bow Brand', '10Professional Lever Wire');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-nylon/`,'strings','Bow Brand', '06Lever Nylon');
-    // console.log('storeItems', storeItems.length);
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/artist-nylon-strings/`,'strings', 'z', '11artist nylon');
-    // console.log('storeItems-Artist Nylon', storeItems.length)
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bronze-wire-monofilament/`,'strings', 'Bronze Wire Monofilament','14bronze wire mono');
-    // console.log('storeItems.length', storeItems.length)
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/dusty-strings/`,'strings', 'z','16dusty');
-    // console.log('storeItems.length', storeItems.length)
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/savarez-kf/`,'strings', 'z','12savarez');
-    // console.log('storeItems.length', storeItems.length)
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/nylon-monofilament/`,'strings', 'Nylon Wire Monofilament', '13nylon monofilament');
-    // console.log('storeItems.length', storeItems.length)
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/silkgut/`,'strings', 'z','15silkgut');
-    // console.log('storeItems.length', storeItems.length)
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/triplett/`,'strings', 'z','17triplett');
-    // console.log('storeItems.length', storeItems.length)
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/rees/`,'strings', 'z','18rees');
-    // console.log('storeItems.length', storeItems.length)
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/stoney-end/`,'strings', 'z','19stoney end');
-    // console.log('storeItems.length', storeItems.length)
-    // storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/delta/`,'strings', 'z', '20delta');
-    // console.log('END strings storeItems.length', storeItems.length)
-
-
-    // // Wire Sets
-    // storeItems = [...storeItems, ...HARPSETC_EXTRA];
-    // console.log('storeItems-END HarpsE', storeItems.length)
-    // //#endregion
-    // // Find a Harp - music and strings
-    // storeItems = [...storeItems, ...FINDAHARP_PRODUCTS];
-    // console.log('storeItems-END FAH', storeItems.length);
-    // // Germaine Strings
-    // storeItems = [...storeItems, ...GERMAINE_STRINGS];
-    // console.log('storeItems-END GERMAINE', storeItems.length);
-    // // Strummed Strings
-    // storeItems = [...storeItems, ...STRUMMED_STRINGS];
-    // console.log('storeItems-END STRUMMED', storeItems.length);
-    // // Michigan Harp Center
-    // storeItems = [...storeItems, ...MICHIGAN_HARP_CENTER];
-    // console.log('storeItems-END MHC', storeItems.length);
-    // // Vixen Harps
-    // storeItems = [...storeItems, ...VIXEN_HARPS_PRODUCTS];
-    // console.log('storeItems-END MHC', storeItems.length);
+    // #region accessories
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/covers`,'accessories', '06covers');
+        console.log('storeItems-Accessories', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/electronics`,'accessories', '04electronics');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/harp-care`,'accessories', '05harpcare');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/transportation`,'accessories', '07transportation');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/tuning-keys`,'accessories', '01tuningkeys');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/music-stands`,'accessories', '03musicstands');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/benches`,'accessories', '02benches');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/crowns`,'accessories', '08crowns');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/accessories/for-students`,'accessories', '09forstudent');
+        console.log('END Accessories storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    //#endregion
+    //#region strings
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/string-sets/?sef_rewrite=1`,'strings', 'z', '21stringsets');
+        console.log('storeItems-strings-BB', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-natural-gut/?sef_rewrite=1`,'strings', 'Bow Brand', '01Natural Gut');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-gut/`,'strings','Bow Brand', '04Lever Gut');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-concedo/`,'strings','Bow Brand', '02Concedo');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-burgundy-gut/`,'strings','Bow Brand', '03Burgundy');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-nylon/`,'strings','Bow Brand', '05Nylon');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bass-wire-silver-plated/`,'strings','Bow Brand', '07Silver Plated');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-bass-wire-tarnish-resistant/`,'strings','Bow Brand', '08Tarnish Resistant');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-bass-wire/`,'strings','Bow Brand', '09Lever Base Wire');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-professional-lever-wire/`,'strings','Bow Brand', '10Professional Lever Wire');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bow-brand/bow-brand-lever-nylon/`,'strings','Bow Brand', '06Lever Nylon');
+        console.log('storeItems', storeItems.length);
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/artist-nylon-strings/`,'strings', 'z', '11artist nylon');
+        console.log('storeItems-Artist Nylon', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/bronze-wire-monofilament/`,'strings', 'Bronze Wire Monofilament','14bronze wire mono');
+        console.log('storeItems.length', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/dusty-strings/`,'strings', 'z','16dusty');
+        console.log('storeItems.length', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/savarez-kf/`,'strings', 'z','12savarez');
+        console.log('storeItems.length', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/nylon-monofilament/`,'strings', 'Nylon Wire Monofilament', '13nylon monofilament');
+        console.log('storeItems.length', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/silkgut/`,'strings', 'z','15silkgut');
+        console.log('storeItems.length', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/triplett/`,'strings', 'z','17triplett');
+        console.log('storeItems.length', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/rees/`,'strings', 'z','18rees');
+        console.log('storeItems.length', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/stoney-end/`,'strings', 'z','19stoney end');
+        console.log('storeItems.length', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    try {
+        storeItems = await scrapeStoreItemsSub(storeItems,`https://www.harpsetc.com/strings/delta/`,'strings', 'z', '20delta');
+        console.log('END strings storeItems.length', storeItems.length)
+    } catch(e) {
+        console.log('storeItems error', e.message);
+    }
+    // Wire Sets
+    storeItems = [...storeItems, ...HARPSETC_EXTRA];
+    console.log('storeItems-END HarpsE', storeItems.length)
+    //#endregion
+    // Find a Harp - music and strings
+    storeItems = [...storeItems, ...FINDAHARP_PRODUCTS];
+    console.log('storeItems-END FAH', storeItems.length);
+    // Germaine Strings
+    storeItems = [...storeItems, ...GERMAINE_STRINGS];
+    console.log('storeItems-END GERMAINE', storeItems.length);
+    // Strummed Strings
+    storeItems = [...storeItems, ...STRUMMED_STRINGS];
+    console.log('storeItems-END STRUMMED', storeItems.length);
+    // Michigan Harp Center
+    storeItems = [...storeItems, ...MICHIGAN_HARP_CENTER];
+    console.log('storeItems-END MHC', storeItems.length);
+    // Vixen Harps
+    storeItems = [...storeItems, ...VIXEN_HARPS_PRODUCTS];
+    console.log('storeItems-END MHC', storeItems.length);
     
     console.log('END ALL')
     
-    //write to product file
-    fs.writeFile('assets/constants/storeItemsList.json', JSON.stringify(storeItems), function (err) {
-        if (err) console.log('Error writing store-item list function:', err.message);
-    });
+    //write to music file
+    // fs.writeFile('assets/constants/storeItemsListMusic.json', JSON.stringify(storeItems), function (err) {
+    //     if (err) console.log('Error writing store-item list function:', err.message);
+    // });
+    // //write to product file
+    // fs.writeFile('assets/constants/storeItemsList.json', JSON.stringify(storeItems), function (err) {
+    //     if (err) console.log('Error writing store-item list function:', err.message);
+    // });
 
     // return scrapeStoreItemsSub(answerArray, url);
 }
@@ -345,38 +577,8 @@ const scrapeStoreItemsSub = async (answerArray, url, category, subcategory, subs
     // const nextUrl = $('.ty-pagination').find('a').last().attr('href'); // Does not work on more that 8ish pages
 
     // console.log(answerArray.length)
-    if (nextUrl===undefined||!nextUrl) console.log('out')
     if (nextUrl===undefined||!nextUrl) return answerArray
 
     // return answerArray;
     return scrapeStoreItemsSub(answerArray, nextUrl, category, subcategory, subsubcategory);
 }
-
-//-------------------
-    // console.log('imin scrape')
-    // const response = await axios({url: `https://www.harpsetc.com/bow-brand-natural-gut-1st-octave-set-00g-f.html`, 'strictSSL': false});
-    // const html = response.data.text;
-    // // console.log(html);
-
-    // const $ = cheerio.load(html);
-
-    // const product = {};
-    // product.storeId = $('.ty-product-block__left').find('form').attr('name').substring(13);
-    // product.title = $('.ty-product-block-title').text().trim();
-    // product.price = $('.ty-price-num').text().trim();
-    // product.description = $('.content-description').text().trim();
-    // product.image = $('.ty-pict   ').first().attr('src');
-
-    // console.log('answer', product)
-    //-----------
-    // const productTable = $('.ty-price-block');
-    // console.log(($, item) => $(item).find('.ty-product-list__item-name').text().trim()); //titleFn
-    // ($, item) => $(item).find('.ty-product-list__price').text().trim(), //priceFn 
-    // ($, item) => $(item).find('.ty-product-list__description').text().trim(), //shortDescFn
-        
-    // console.log(response.data)
-    // const html = seller.hasOwnProperty('sellerAxiosResponsePath') ? data.text : data;
-    // const $ = cheerio.load(html);
-    // const productTable = $(seller.mainPathId);
-    // console.log('Seller', seller.name)
-    // console.log('# of Products:', productTable.length);

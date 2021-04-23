@@ -195,6 +195,24 @@ const { SellerPathsLink } = require('../classes/SellerPathsLink');
         ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
     );
     //#endregion
+    //#region MarinaHarp
+    const MarinaHarp = new SellerPaths(
+        'MarinaHarp', //name
+        'marinaharp@gmail.com', //email
+        'Reno, Nevada', //short location
+        'West', //region
+        '39.5296', //lat 
+        '-119.8138', //long
+        'https://harptisha.com/TestArea/osterSales.php', //productsUrl
+        '.productContainer', //mainPathId
+        null, //customFns 
+        ($, item) => $(item).find('.findaharp-title').text().trim(), // titleFn
+        ($, item) => $(item).find('.findaharp-price').text().trim(), // priceFn,
+        ($, item) => $(item).find('.findaharp-shortDesc').text().trim(), // shortDescFn
+        ($, item) => $(item).find('.findaharp-longDesc').html(), // longDescFn
+        ($, item) => `https://www.harptisha.com/${$(item).find('.findaharp-img').find('img').attr('src')}` // productImageUrlFn
+    );
+    //#endregion
 //#endregion
 //#region VENDORS LINKING TO PRODUCTS
     //#region Harps Etc. lever
@@ -448,7 +466,6 @@ exports.sellerArray = [
     MichiganHarpCenterPedalHarp,
     MichiganHarpCenterFloorHarp,
     MichiganHarpCenterLapHarp,
-    // WestCoastHarps, 
     Findaharp,
     VavraHarp,
     VixenHarps,
@@ -462,7 +479,8 @@ exports.sellerArray = [
     HarpsEtcPedal,
     HarpsEtcPedalP2,
     HarpsEtcWire,
-    HarpsEtcHistorical
+    HarpsEtcHistorical,
+    MarinaHarp
 ];
 
 // EXAMPLE OF CUSTOM FUNCTION

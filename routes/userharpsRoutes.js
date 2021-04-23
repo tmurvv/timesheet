@@ -9,6 +9,6 @@ router.get('/loginuserharp', userharpsController.loginUserharps);
 router.post('/', userharpsController.getOne);
 router.post('/getuserharplist', userharpsController.getUserharpsList);
 router.patch('/updateuserharp', userharpsController.updateUserharps);
-router.post('/deleteuserharps', userharpsController.deleteUserharps);
+router.post('/deleteuserharp', userharpsController.deleteUserharp);
 
 module.exports = router;

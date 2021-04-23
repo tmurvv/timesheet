@@ -501,7 +501,7 @@
                     "Ravena 26"
                 ],
                 "_id": "5e90f5fca814a556ac2c913b",
-                "productTitle": "Ravenna 26 ",
+                "productTitle": "Ravenna 26 2014",
                 "productMaker": "Dusty Strings",
                 "productType": "lever",
                 "productSize": 26
@@ -1181,7 +1181,7 @@
                 "productTitle": "Merlin",
                 "productMaker": "R Harps",
                 "productType": "lever",
-                "productSize": 36
+                "productSize": 35
             }
         ]
     },
@@ -1212,6 +1212,66 @@
                 "productMaker": "Vavra",
                 "productType": "lever",
                 "productSize": 22
+            }
+        ]
+    },
+    {
+        "makerAliases": [],
+        "makerName": "Vavra",
+        "makerProducts": [
+            {
+                "productAliases": [],
+                "_id": "2b01da28-cc59-11ea-87d0-0242ac130003",
+                "productTitle": "Celtic Honey 22 Stave Back",
+                "productMaker": "Vavra",
+                "productType": "lever",
+                "productSize": 22,
+                "stock_url": "/img/builderPartners/VavraModels/CelticHoney22StaveBack.jpg"
+            }
+        ]
+    },
+    {
+        "makerAliases": [],
+        "makerName": "Vavra",
+        "makerProducts": [
+            {
+                "productAliases": [],
+                "_id": "2b01da28-cc59-11ea-87d0-0242ac130003",
+                "productTitle": "Celtic Honey 22 Therapy Back",
+                "productMaker": "Vavra",
+                "productType": "lever",
+                "productSize": 22,
+                "stock_url": "/img/builderPartners/VavraModels/CelticHoney22TherapyBack.jpg"
+            }
+        ]
+    },
+    {
+        "makerAliases": [],
+        "makerName": "Vavra",
+        "makerProducts": [
+            {
+                "productAliases": [],
+                "_id": "2b01da28-cc59-11ea-87d0-0242ac130003",
+                "productTitle": "Celtic 26",
+                "productMaker": "Vavra",
+                "productType": "lever",
+                "productSize": 26,
+                "stock_url": "/img/builderPartners/VavraModels/Celtic26.jpg"
+            }
+        ]
+    },
+    {
+        "makerAliases": [],
+        "makerName": "Vavra",
+        "makerProducts": [
+            {
+                "productAliases": [],
+                "_id": "2b01da28-cc59-11ea-87d0-0242ac130003",
+                "productTitle": "Celtic Concert 34",
+                "productMaker": "Vavra",
+                "productType": "lever",
+                "productSize": 34,
+                "stock_url": "/img/builderPartners/VavraModels/Celtic34.jpg"
             }
         ]
     },
